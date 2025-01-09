@@ -32,7 +32,7 @@ from torchvision.transforms import Compose
 
 # -
 
-from myutilsdatasets.audio import (
+from myutils.datasets.audio import (
     ASV2019LA_AudioDs,
     ASV2021_AudioDs,
     ASV2021LA_AudioDs,
@@ -43,9 +43,9 @@ from myutilsdatasets.audio import (
     VGGSound_AudioDs,
     WaveFake_AudioDs,
 )
-from myutilstools import color_print
-from myutilstorch.transforms.audio import AudioRawBoost, SpecAugmentTransform_Wave
-from myutilstorchaudio.transforms import LFCC, RandomNoise, RawBoost, RandomBackgroundNoise
+from myutils.tools import color_print
+from myutils.torch.transforms.audio import AudioRawBoost, SpecAugmentTransform_Wave
+from myutils.torchaudio.transforms import LFCC, RandomNoise, RawBoost, RandomBackgroundNoise
 
 # + editable=true slideshow={"slide_type": ""}
 try:
@@ -375,8 +375,8 @@ def build_feature(cfg):
 
 # ## Transform
 
-from myutilstorchaudio.transforms import RandomAudioCompression
-from myutilstorchaudio.transforms.self_operation import (
+from myutils.torchaudio.transforms import RandomAudioCompression
+from myutils.torchaudio.transforms.self_operation import (
     AudioToTensor,
     CentralAudioClip,
     RandomAudioClip,
@@ -451,7 +451,7 @@ def build_transforms(cfg=None, args=None):
         ]
 
     # if args.cfg.startswith('MPE_LCNN'):
-    #     from myutilstorchaudio.transforms import MPE_LFCC
+    #     from myutils.torchaudio.transforms import MPE_LFCC
     #     for key in res:
     #         res[key].append(MPE_LFCC())
     

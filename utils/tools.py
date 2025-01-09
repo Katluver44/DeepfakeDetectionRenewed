@@ -17,11 +17,11 @@ import os
 import datetime
 import shutil
 
-from myutilstorch.lightning.loggers import CustomNameCSVLogger
+from myutils.torch.lightning.loggers import CustomNameCSVLogger
 
 
 def build_logger(args, root_dir):
-    from myutilstorch.lightning.loggers import CustomNameCSVLogger
+    from myutils.torch.lightning.loggers import CustomNameCSVLogger
 
     # name = args.cfg if args.ablation is None else args.cfg + "-" + args.ablation
     model_name = args.cfg.split('/')[0]

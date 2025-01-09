@@ -45,6 +45,9 @@ python train.py --gpu 0 --cfg 'OursPhonemeGAT/MLAAD_cross_lang'  -t 1 -v 0;\
 
 ## Acknowledgments
 
+Please feel free to contact me (zkyhitsz@gmail.com) if you have any questions. 
+
+
 Please cite the following paper if you use this code:
 ```bibtex
 @article{zhang2024phoneme,
