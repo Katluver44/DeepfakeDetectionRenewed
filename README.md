@@ -11,12 +11,13 @@ Recent advancements in text-to-speech and speech conversion technologies have en
 
 
 ## Requirements
-- Python 3.8+
-- PyTorch 1.10+
-- librosa 0.9.0+
-- numpy 1.21+
-- scipy 1.7+
-- tqdm 4.62+
+
+```bash
+pip install -r requirements.txt
+```
+Actually, the package versions are not strict. Maybe the latest versions of torch and pytorch_lightning can still work.
+
+
 
 ## Usage
 
@@ -36,7 +37,20 @@ python train.py --gpu 0 --cfg 'OursPhonemeGAT/ASV2021_inner'  -t 1 -v 0;\
 python train.py --gpu 0 --cfg 'OursPhonemeGAT/ASV2021_inner'  -t 1 -v 0 --test_noise 1 --test_noise_level 20 --test_noise_type 'bg';\
 
 
-
 python train.py --gpu 0 --cfg 'OursPhonemeGAT/MLAAD_cross_lang'  -v 0;\
 python train.py --gpu 0 --cfg 'OursPhonemeGAT/MLAAD_cross_lang'  -t 1 -v 0;\
+```
+
+
+
+## Acknowledgments
+
+Please cite the following paper if you use this code:
+```bibtex
+@article{zhang2024phoneme,
+  title={Phoneme-Level Feature Discrepancies: A Key to Detecting Sophisticated Speech Deepfakes},
+  author={Zhang, Kuiyuan and Hua, Zhongyun and Lan, Rushi and Zhang, Yushu and Guo, Yifang},
+  journal={arXiv preprint arXiv:2412.12619},
+  year={2024}
+}
 ```
