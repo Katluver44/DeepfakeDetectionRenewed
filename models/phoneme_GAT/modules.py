@@ -14,8 +14,8 @@ import scipy.io as sio
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from myutilstorch.deepfake_detection import DeepfakeAudioClassification
-from myutilstorch.losses import BinaryTokenContrastLoss, CLIPLoss1D
+from myutils.torch.deepfake_detection import DeepfakeAudioClassification
+from myutils.torch.losses import BinaryTokenContrastLoss, CLIPLoss1D
 from einops import rearrange
 from torch import Tensor
 from torch.autograd import Variable
@@ -710,7 +710,7 @@ class Phoneme_GAT_lit(DeepfakeAudioClassification):
         self.save_hyperparameters()
 
     def configure_loss_fn(self):
-        from myutilstorch.losses import LabelSmoothingBCE
+        from myutils.torch.losses import LabelSmoothingBCE
 
         self.bce_loss = nn.BCEWithLogitsLoss()
         # self.bce_loss = LabelSmoothingBCE(label_smoothing=0.05)
@@ -783,7 +783,7 @@ class Phoneme_GAT_lit(DeepfakeAudioClassification):
         return [optimizer]
 
     # def configure_optimizers(self):
-    #     from myutilstorch.optim.selective_weight_decay import (
+    #     from myutils.torch.optim.selective_weight_decay import (
     #         Optimizers_with_selective_weight_decay,
     #         Optimizers_with_selective_weight_decay_for_modulelist,
     #     )

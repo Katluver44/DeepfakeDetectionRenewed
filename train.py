@@ -10,7 +10,7 @@ pl.seed_everything(42)
 torch.set_float32_matmul_precision("medium")
 torch.backends.cudnn.benchmark = True
 
-from myutilstools import color_print, to_list
+from myutils.tools import color_print, to_list
 
 from config import get_cfg_defaults
 from data.make_dataset import make_data
