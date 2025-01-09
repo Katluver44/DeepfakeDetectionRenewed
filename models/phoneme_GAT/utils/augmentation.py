@@ -22,7 +22,7 @@ import time
 
 import numpy as np
 import torch
-from ay2.tools import TimerContextManager
+from myutilstools import TimerContextManager
 
 
 # -
