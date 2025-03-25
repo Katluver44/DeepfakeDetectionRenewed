@@ -24,9 +24,9 @@ import pandas as pd
 import torchvision
 from tqdm import tqdm
 
-from ay2.tools import check_dir, read_file_paths_from_folder, to_list
-from ay2.tools.audio import AudioConverter
-from ay2.tools.video import VideoConverter
+from myutils..tools import check_dir, read_file_paths_from_folder, to_list
+from myutils..tools.audio import AudioConverter
+from myutils..tools.video import VideoConverter
 
 # + editable=true slideshow={"slide_type": ""} tags=["active-ipynb", "style-solution"]
 # # import sys
@@ -39,7 +39,7 @@ from ..base import AudioVisualDataset
 
 
 # + tags=["active-ipynb", "style-solution"] editable=true slideshow={"slide_type": ""}
-# from ay2.datasets.base import AudioVisualDataset
+# from myutils..datasets.base import AudioVisualDataset
 # -
 
 class VGGSound_PrepareDataset:

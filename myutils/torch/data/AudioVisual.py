@@ -34,8 +34,8 @@ from torchaudio.functional import apply_codec
 from torchvision.io import read_video
 
 # + editable=true slideshow={"slide_type": ""}
-from ay2.tools.audio.read_info import read_audio_fps
-from ay2.tools.video.read import (
+from myutils..tools.audio.read_info import read_audio_fps
+from myutils..tools.video.read import (
     read_video_clip_cv2,
     read_video_clip_from_frames,
     read_video_from_frames,

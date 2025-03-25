@@ -82,7 +82,7 @@ class BatchRandomRotation(nn.Module):
 # import numpy as np
 # import requests as req
 # from PIL import Image
-# from ay2.visualization import Plot
+# from myutils..visualization import Plot
 #
 # img_src = "https://img0.baidu.com/it/u=259444276,4281031064&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=313"
 # response = req.get(img_src)

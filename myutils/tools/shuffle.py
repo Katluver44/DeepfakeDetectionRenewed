@@ -14,7 +14,7 @@
 # ---
 
 import numpy as np
-from ay2.math import logistic_map
+from myutils..math import logistic_map
 
 
 def random_shuffle_with_seed(_list, seed, map_func="logistic_map"):

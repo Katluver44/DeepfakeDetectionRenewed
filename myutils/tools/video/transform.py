@@ -73,7 +73,7 @@ def resize_video_file(video_path, dest_path, frame_size, fps=25):
 # v1.shape, v2.shape
 # -
 
-from ay2.tools import read_file_paths_from_folder
+from myutils..tools import read_file_paths_from_folder
 
 video_paths = read_file_paths_from_folder('/home/ay/data/0-原始数据集/LAV-DF', exts='mp4')
 

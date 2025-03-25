@@ -29,7 +29,7 @@ from pytorch_lightning import Callback, LightningModule, Trainer
 from torch import Tensor
 from torch.utils.data import DataLoader
 from tqdm.auto import tqdm
-from ay2.tools import check_dir
+from myutils..tools import check_dir
 
 
 # -
@@ -68,7 +68,7 @@ class Collect_Callback(Callback):
                 print(key, res[key].shape)
         save_path = os.path.join(self.save_path, stage + '.npz')
         check_dir(save_path)
-        from ay2.tools import find_unsame_name_for_file
+        from myutils..tools import find_unsame_name_for_file
         save_path = find_unsame_name_for_file(save_path)
         np.savez(save_path, **res)
         print(f"Collect_Callback: Save collection res in {stage} stage at {save_path}.")

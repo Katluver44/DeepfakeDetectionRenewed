@@ -51,7 +51,7 @@ def jpg_compression(img, quality):
 #
 # import numpy as np
 # import requests as req
-# from ay2.visualization import Plot
+# from myutils..visualization import Plot
 # from PIL import Image
 #
 # img_src = "http://pic.imeitou.com/uploads/allimg/210618/3-21061P92632.jpg"

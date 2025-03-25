@@ -23,7 +23,7 @@ import numpy as np
 import torchvision
 from torchvision.io import read_video
 
-from ay2.tools.image import read_rgb_image
+from myutils..tools.image import read_rgb_image
 
 from .errors import CV2CannotOpenVideoError
 
@@ -97,7 +97,7 @@ def read_video_clip_cv2(video_path, start_frame=0, end_frame=None):
 
 # + tags=["style-solution", "active-ipynb"] editable=true slideshow={"slide_type": ""}
 # video = read_video_clip_cv2(video_path='/home/ay/data/0-原始数据集/LAV-DF/test/000018.mp4')
-# from ay2.visualization import Plot
+# from myutils..visualization import Plot
 # Plot.plot_images([video[0]])
 # -
 

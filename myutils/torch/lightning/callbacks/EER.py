@@ -30,7 +30,7 @@ from torch.utils.data import DataLoader
 from tqdm.auto import tqdm
 # -
 
-from ay2.torch.metrics import EER
+from myutils..torch.metrics import EER
 
 
 class EER_Callback(Callback):

@@ -14,8 +14,8 @@ from tqdm.auto import tqdm
 
 # %%
 # %%
-from ay2.datasets.base import AudioDataset
-from ay2.tools import read_file_paths_from_folder, to_list
+from myutils..datasets.base import AudioDataset
+from myutils..tools import read_file_paths_from_folder, to_list
 
 # %%
 ROOT_PATH = "/home/ay/data2/DiffSSD/synthetic_speech_dataset_zenodo_v1"

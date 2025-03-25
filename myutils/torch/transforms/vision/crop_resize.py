@@ -110,7 +110,7 @@ class RandomResizedCrop:
 # + tags=["active-ipynb"]
 # import torchvision
 #
-# from ay2.visualization import Plot
+# from myutils..visualization import Plot
 #
 # model = RandomResizedCrop(size=224, scale=(0.5, 0.7))
 # x, _, metadata = torchvision.io.read_video(
