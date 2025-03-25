@@ -17,8 +17,8 @@ from pandarallel import pandarallel
 from tqdm.auto import tqdm
 
 # %%
-from ay2.datasets.base import AudioDataset
-from ay2.tools import read_file_paths_from_folder, to_list
+from myutils..datasets.base import AudioDataset
+from myutils..tools import read_file_paths_from_folder, to_list
 
 # %% [markdown]
 # # Download dataset
@@ -174,7 +174,7 @@ def read_txt_labels(root_path):
 # data.sample(100)
 
 # %%
-# from ay2.tools.pandas import check_same_labels_for_duplicated_column
+# from myutils..tools.pandas import check_same_labels_for_duplicated_column
 # check_same_labels_for_duplicated_column(data, column1='filename', column2='label')
 
 # %% [markdown]

@@ -178,7 +178,7 @@ class AV_Deepfake_Localization_Dataset(AudioVisualDataset):
         return res
 
 # + tags=["style-solution", "active-ipynb"] editable=true slideshow={"slide_type": ""}
-# from ay2.datasets.AudioVisual import LAV_DF
+# from myutils..datasets.AudioVisual import LAV_DF
 #
 # lavdf = LAV_DF(root_path="/home/ay/data/0-原始数据集/LAV-DF")
 #

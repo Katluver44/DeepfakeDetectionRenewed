@@ -24,9 +24,9 @@ from typing import Union
 
 import pandas as pd
 
-from ay2.tools.audio import read_audio_fps_len
-from ay2.tools import check_dir, read_file_paths_from_folder, to_list
-from ay2.tools.pandas import DF_spliter
+from myutils..tools.audio import read_audio_fps_len
+from myutils..tools import check_dir, read_file_paths_from_folder, to_list
+from myutils..tools.pandas import DF_spliter
 from pandarallel import pandarallel
 from tqdm.auto import tqdm
 
@@ -117,7 +117,7 @@ class AudioDataset(Base):
 
 
     def read_audio_info(self, data: pd.DataFrame) -> pd.DataFrame:
-        from ay2.tools.audio.read_info import read_audio_fps_len
+        from myutils..tools.audio.read_info import read_audio_fps_len
 
         pandarallel.initialize(progress_bar=True, nb_workers=20)
         data[
@@ -135,7 +135,7 @@ class AudioVisualDataset(AudioDataset):
     
     
     def read_video_info(self, data: pd.DataFrame) -> pd.DataFrame:
-        from ay2.tools.video.read_info import read_video_fps_len_height_width
+        from myutils..tools.video.read_info import read_video_fps_len_height_width
 
         pandarallel.initialize(progress_bar=True, nb_workers=10)
         data[
@@ -152,7 +152,7 @@ class VideoDataset(Base):
 
     
     def read_video_info(self, data: pd.DataFrame) -> pd.DataFrame:
-        from ay2.tools.video.read_info import read_video_fps_len_height_width
+        from myutils..tools.video.read_info import read_video_fps_len_height_width
 
         pandarallel.initialize(progress_bar=True, nb_workers=10)
         data[

@@ -57,7 +57,7 @@ def read_audio_fps(path):
     return sampling_rate
 
 # + tags=["active-ipynb", "style-solution"] editable=true slideshow={"slide_type": ""}
-# from ay2.tools import check_dir, read_file_paths_from_folder
+# from myutils..tools import check_dir, read_file_paths_from_folder
 # from tqdm import tqdm
 #
 # root_path = "/home/ay/data/DATA/2-datasets/1-df-audio/VGGSound"

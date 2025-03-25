@@ -17,8 +17,8 @@
 # %autoreload 2
 
 # + editable=true slideshow={"slide_type": ""}
-from ay2.tools.image import read_rgb_image
-from ay2.torch.data.base import SampleTransformDataset
+from myutils..tools.image import read_rgb_image
+from myutils..torch.data.base import SampleTransformDataset
 # -
 
 __all__ = ["ImageDataset", "DeepfakeImageDataset"]
@@ -85,7 +85,7 @@ class DeepfakeImageDataset(ImageDataset):
         return res
 
 # + tags=["style-solution", "active-ipynb"]
-# from ay2.datasets.video import FFPP
+# from myutils..datasets.video import FFPP
 #
 #
 # def load_FFPP_splits(deepfake_methods, quality="c23"):

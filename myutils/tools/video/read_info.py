@@ -48,7 +48,7 @@ def read_video_fps_len(path):
     return FPS, frame_count
 
 # + editable=true slideshow={"slide_type": ""} tags=["active-ipynb", "style-solution"]
-# from ay2.tools import check_dir, read_file_paths_from_folder
+# from myutils..tools import check_dir, read_file_paths_from_folder
 # from tqdm import tqdm
 #
 # wav_paths = read_file_paths_from_folder("/home/ay/data/DATA/dataset/2-audiovisual/VGG-Sound", exts=["mp4"])

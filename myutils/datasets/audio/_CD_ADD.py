@@ -82,7 +82,7 @@
 import os
 import sys
 import pandas as pd
-from ay2.tools import read_file_paths_from_folder
+from myutils..tools import read_file_paths_from_folder
 
 # %% [markdown]
 # ## help Function to generate metadata
@@ -159,7 +159,7 @@ def generate_metadata(root_path: str) -> pd.DataFrame:
 # ## AudioDataset
 
 # %%
-from ay2.datasets.base import AudioDataset
+from myutils..datasets.base import AudioDataset
 from argparse import  Namespace
 
 
