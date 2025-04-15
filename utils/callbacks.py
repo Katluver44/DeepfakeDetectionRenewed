@@ -1,14 +1,14 @@
-from myutils.torch.lightning.callbacks import (
+from ay2.torch.lightning.callbacks import (
     Color_progress_bar,
     EER_Callback,
 )
 from pytorch_lightning.callbacks import EarlyStopping, ModelCheckpoint
 
-from myutils.torch.lightning.callbacks.metrics import (
+from ay2.torch.lightning.callbacks.metrics import (
     BinaryACC_Callback,
     BinaryAUC_Callback,
 )
-from myutils.torch.lightning.callbacks import Collect_Callback
+from ay2.torch.lightning.callbacks import Collect_Callback
 
 
 def common_callbacks():

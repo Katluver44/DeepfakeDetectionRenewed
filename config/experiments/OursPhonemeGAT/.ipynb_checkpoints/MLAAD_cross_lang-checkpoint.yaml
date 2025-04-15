@@ -1,7 +1,0 @@
-DATASET:
-  name: 'MLAAD'
-  task: 'cross_lang'
-  
-
-MODEL:
-  method_classes: 32

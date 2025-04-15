@@ -18,6 +18,16 @@ pip install -r requirements.txt
 Actually, the package versions are not strict. Maybe the latest versions of torch and pytorch_lightning can still work.
 
 
+You have to install the required Python packages using pip:
+```bash
+pip install torch torchaudio torchvision librosa einops transformers pytorch_lightning lightning-flash phonemizer
+pip install torch-yin
+```
+where, you can use the python version 3.9 or higher (My tests are using python 3.9).
+
+Besides, you need to install the `ffmpeg` in your system. Note, Torchaudio may need the version of `ffmpeg` to be lower than 7, and install ffmpeg first and then install torchaudio.
+
+
 
 ## Usage
 
