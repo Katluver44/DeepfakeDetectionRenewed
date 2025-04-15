@@ -1,4 +1,0 @@
-DATASET:
-  name: 'WaveFake'
-  task: 'cross_method'
-  

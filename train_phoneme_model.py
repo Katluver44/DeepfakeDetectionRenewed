@@ -13,8 +13,8 @@ import random
 import pandas as pd
 import pytorch_lightning as pl
 import torch
-from myutils..datasets.audio import MultiLanguageCommonVoice, Partial_CommonVoice_AudioDs
-from myutils..tools.text import Phonemer_Tokenizer_Recombination
+from ay2.datasets.audio import MultiLanguageCommonVoice, Partial_CommonVoice_AudioDs
+from ay2.tools.text import Phonemer_Tokenizer_Recombination
 # -
 
 pl.seed_everything(42)
@@ -24,7 +24,8 @@ torch.set_float32_matmul_precision("medium")
 # # Step 1: load dataset
 
 # vocab_path = "/home/ay/data/0-原始数据集/common_voice_11_0/vocab_phoneme"
-vocab_path = "/home/ay/data/0-原始数据集/common_voice/vocab_phoneme"
+# vocab_path = "/home/ay/data/0-原始数据集/common_voice/vocab_phoneme"
+vocab_path = "/home/ay/tmp/PLFD-ADD/vocab_phoneme"
 languages = ["en", "de", "es", "fr", "it", "pl", "ru", "uk", "zh-CN"]
 
 # +
