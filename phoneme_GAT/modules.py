@@ -429,22 +429,11 @@ class Phoneme_GAT(nn.Module):
 
         if backbone.lower() == 'wav2vec':
             network_name='wav2vec'
-            # pretrained_path=None
-            # pretrained_path = "/home/ay/data/DATA/1-model_save/01-phoneme/phoneme_recongition/version_4/checkpoints/best-epoch=57-val-per=0.268208.ckpt"
-            # pretrained_path = "/home/ay/data/DATA/1-model_save/01-phoneme/phoneme_recongition/version_0/checkpoints/best-epoch=28-val-per=0.278449.ckpt"
-            # pretrained_path = "/home/ay/data/DATA/1-model_save/01-phoneme/phoneme_recongition/version_5/checkpoints/best-epoch=49-val-per=0.273750.ckpt"
-            # pretrained_path = "/home/ay/data/best-epoch=49-val-per=0.440167.ckpt"
-            # pretrained_path = "/home/ay/data/best-epoch=32-val-per=0.398863.ckpt"
             pretrained_path = "/home/ay/data/best-epoch=49-val-per=0.362394.ckpt"
         ## wavlm
         elif backbone.lower() == 'wavlm':
             network_name = "wavlm"
-            # pretrained_path = "/home/ay/data/phonemes/wavlm/best-epoch=13-val-per=0.575074.ckpt"
-            # pretrained_path = "/home/ay/data/phonemes/wavlm/best-epoch=14-val-per=0.547916.ckpt"
-            # pretrained_path = "/home/ay/data/phonemes/wavlm/best-epoch=19-val-per=0.489741.ckpt"
-            # pretrained_path = "/home/ay/data/phonemes/wavlm/best-epoch=30-val-per=0.436879.ckpt"
             pretrained_path = "/home/ay/data/phonemes/wavlm/best-epoch=42-val-per=0.407000.ckpt"
-            # pretrained_path = "/home/ay/data/phonemes/wavlm/freeze_feature_extractor/best-epoch=44-val-per=0.406913.ckpt"
         total_num_phonemes = 687  ## 198, or 687
 
         self.phoneme_model = load_phoneme_model(
