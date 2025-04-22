@@ -20,7 +20,7 @@ Actually, the package versions are not strict. Maybe the latest versions of torc
 
 You have to install the required Python packages using pip:
 ```bash
-pip install torch torchaudio torchvision librosa einops transformers pytorch_lightning lightning-flash phonemizer
+pip install torch torchaudio torchvision librosa einops transformers pytorch_lightning  phonemizer
 pip install torch-yin
 ```
 where, you can use the python version 3.9 or higher (My tests are using python 3.9).
@@ -31,25 +31,7 @@ Besides, you need to install the `ffmpeg` in your system. Note, Torchaudio may n
 
 ## Usage
 
-
-One can run the following commands to train or test our method.
-```bash
-python train.py --gpu 0 --cfg 'OursPhonemeGAT/ASV2019_LA'  -v 0;\
-python train.py --gpu 0 --cfg 'OursPhonemeGAT/ASV2019_LA'  -t 1 -v 0;\
-
-
-python train.py --gpu 0 --cfg 'OursPhonemeGAT/ASV2021_LA'  -v 0;\
-python train.py --gpu 0 --cfg 'OursPhonemeGAT/ASV2021_LA'  -t 1 -v 0;\
-
-
-python train.py --gpu 0 --cfg 'OursPhonemeGAT/ASV2021_inner'  -v 0;\
-python train.py --gpu 0 --cfg 'OursPhonemeGAT/ASV2021_inner'  -t 1 -v 0;\
-python train.py --gpu 0 --cfg 'OursPhonemeGAT/ASV2021_inner'  -t 1 -v 0 --test_noise 1 --test_noise_level 20 --test_noise_type 'bg';\
-
-
-python train.py --gpu 0 --cfg 'OursPhonemeGAT/MLAAD_cross_lang'  -v 0;\
-python train.py --gpu 0 --cfg 'OursPhonemeGAT/MLAAD_cross_lang'  -t 1 -v 0;\
-```
+Please see the `demo.ipynb` for usage details. You can download the pretrained phoneme recognition model in [google drive](https://drive.google.com/file/d/1SbqynkUQxxlhazklZz9OgcVK7Fl2aT-z/view?usp=drive_link).
 
 
 
@@ -60,10 +42,16 @@ Please feel free to contact me (zkyhitsz@gmail.com) if you have any questions.
 
 Please cite the following paper if you use this code:
 ```bibtex
-@article{zhang2024phoneme,
-  title={Phoneme-Level Feature Discrepancies: A Key to Detecting Sophisticated Speech Deepfakes},
-  author={Zhang, Kuiyuan and Hua, Zhongyun and Lan, Rushi and Zhang, Yushu and Guo, Yifang},
-  journal={arXiv preprint arXiv:2412.12619},
-  year={2024}
+@article{Zhang_Hua_Lan_Zhang_Guo_2025, 
+  title={Phoneme-Level Feature Discrepancies: A Key to Detecting Sophisticated Speech Deepfakes}, 
+  volume={39}, 
+  url={https://ojs.aaai.org/index.php/AAAI/article/view/32093}, 
+  DOI={10.1609/aaai.v39i1.32093}, 
+  number={1}, 
+  journal={Proceedings of the AAAI Conference on Artificial Intelligence}, 
+  author={Zhang, Kuiyuan and Hua, Zhongyun and Lan, Rushi and Zhang, Yushu and Guo, Yifang}, 
+  year={2025}, 
+  month={Apr.}, 
+  pages={1066-1074} 
 }
 ```
