@@ -433,7 +433,10 @@ class Phoneme_GAT(nn.Module):
         ## wavlm
         elif backbone.lower() == 'wavlm':
             network_name = "wavlm"
-            pretrained_path = "/home/ay/data/phonemes/wavlm/best-epoch=42-val-per=0.407000.ckpt"
+            # Use the checkpoint in the project root directory
+            import os
+            project_root = os.path.dirname(os.path.dirname(__file__))
+            pretrained_path = os.path.join(project_root, "Best Epoch 42 Validation 0.407.ckpt")
         total_num_phonemes = 687  ## 198, or 687
 
         self.phoneme_model = load_phoneme_model(

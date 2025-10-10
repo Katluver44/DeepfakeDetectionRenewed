@@ -326,10 +326,8 @@ def load_phoneme_model(network_name='wav2vec', pretrained_path=None, total_num_p
     from ay2.tools.text import Phonemer_Tokenizer_Recombination
     # from phoneme_model import BaseModule, network_param, optim_param
 
-    # vocab_path = "/home/ay/data/0-原始数据集/common_voice_11_0/vocab_phoneme"
-    # languages = ["en", "es", "de"]
-    
-    vocab_path = "/home/ay/tmp/PLFD-ADD/vocab_phoneme"
+    # Use relative path to vocab_phoneme directory
+    vocab_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "vocab_phoneme")
     print("Now, load vocab json files from ", vocab_path, "Please make sure the vocab files are correct")
     
     
@@ -345,10 +343,10 @@ def load_phoneme_model(network_name='wav2vec', pretrained_path=None, total_num_p
     network_param.network_name = network_name
 
     if network_name.lower() == 'wavlm':
-        network_param.pretrained_name="/home/ay/.cache/huggingface/hub/models--microsoft--wavlm-base/snapshots/efa81aae7ff777e464159e0f877d54eac5b84f81/"
-    # pretrained_name="microsoft/wavlm-base",
+        # Use HuggingFace model ID - will download automatically if not cached
+        network_param.pretrained_name = "microsoft/wavlm-base"
     else:
-        network_param.pretrained_name="/usr/local/ay_data/0-model_weights/models--facebook--wav2vec2-base-960h"
+        network_param.pretrained_name = "facebook/wav2vec2-base-960h"
 
 
     if pretrained_path is None:

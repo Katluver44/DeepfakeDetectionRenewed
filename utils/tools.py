@@ -17,39 +17,32 @@ import os
 import datetime
 import shutil
 
-from ay2.torch.lightning.loggers import CustomNameCSVLogger
+
+def clear_folder(folder_path):
+    """Clear all contents of a folder."""
+    if os.path.exists(folder_path):
+        for filename in os.listdir(folder_path):
+            file_path = os.path.join(folder_path, filename)
+            try:
+                if os.path.isfile(file_path) or os.path.islink(file_path):
+                    os.unlink(file_path)
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)
+            except Exception as e:
+                print(f'Failed to delete {file_path}. Reason: {e}')
 
 
 def build_logger(args, root_dir):
-    from ay2.torch.lightning.loggers import CustomNameCSVLogger
-
-    # name = args.cfg if args.ablation is None else args.cfg + "-" + args.ablation
-    model_name = args.cfg.split('/')[0]
-    task = args.cfg.replace(model_name+'/', '')
-    name = args.cfg if args.ablation is None else f"{model_name}/{args.ablation}/{task}"
-
-
-    if args.test:
-        savename = 'test.csv' if not args.collect else 'collect.csv'
-        logger = CustomNameCSVLogger(
-            root_dir,
-            name=name,
-            version=args.version,
-            csv_name = savename
-        )
-    else:
-        import pytorch_lightning as pl
-        # logger = pl.loggers.CSVLogger(
-        #     root_dir,
-        #     name=name,
-        #     version=args.version,
-        # )
-        logger = CustomNameCSVLogger(
-            root_dir,
-            name=name,
-            version=args.version,
-            csv_name = 'metrics.csv'
-        )
+    import pytorch_lightning as pl
+    
+    # Simplified logger - use standard CSVLogger
+    name = args.cfg if args.ablation is None else args.cfg + "-" + args.ablation
+    
+    logger = pl.loggers.CSVLogger(
+        root_dir,
+        name=name,
+        version=args.version,
+    )
     return logger
 
 

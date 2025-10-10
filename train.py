@@ -23,7 +23,7 @@ from utils import (
     write_model_summary,
 )
 
-ROOT_DIR = "/home/ay/data/DATA/1-model_save/00-Deepfake/1-df-audio"
+ROOT_DIR = "./model_checkpoints"
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -34,7 +34,7 @@ if __name__ == "__main__":
 
 
     # parser.add_argument("--specaug", type=str, default='ss')
-    parser.add_argument("--gpu", type=int, nargs="+", default=0)
+    parser.add_argument("--gpu", type=int, nargs="+", default=[0])
     parser.add_argument("--batch_size", type=int, default=-1)
     parser.add_argument("--grad", type=int, default=1)
     parser.add_argument("--precision", type=int, default=32)
@@ -59,11 +59,25 @@ if __name__ == "__main__":
     if args.seed != 42:
         pl.seed_everything(args.seed)
 
+    # Get config - will use defaults if YAML file doesn't exist
     cfg = get_cfg_defaults(
         "config/experiments/%s.yaml" % args.cfg, ablation=args.ablation
     )
+    
+    # Override batch size if specified
     if args.batch_size > 0:
+        # Config is frozen, so we need to defrost, modify, and freeze again
+        cfg.defrost()
         cfg.DATASET.batch_size = args.batch_size
+        cfg.freeze()
+    
+    # Check if GPU is available
+    import os
+    if not torch.cuda.is_available():
+        print("CUDA not available, using CPU")
+        args.gpu = []
+    
+    # Load data
     ds, dl = make_data(cfg.DATASET, args=args)
 
     args.profiler = (
@@ -76,22 +90,34 @@ if __name__ == "__main__":
     model = make_model(args.cfg, cfg, args)
     callbacks = make_callbacks(args, cfg)
 
+    # Determine accelerator and devices
+    if torch.cuda.is_available() and len(args.gpu) > 0:
+        accelerator = "gpu"
+        devices = args.gpu if isinstance(args.gpu, list) else [args.gpu]
+    else:
+        accelerator = "cpu"
+        devices = "auto"
+    
+    # Use minimal batches for quick testing (override if profiler is used)
+    limit_train = 10 if not args.use_profiler else 100
+    limit_val = 5 if not args.use_profiler else 100
+    
     trainer = pl.Trainer(
         max_epochs=2 if args.use_profiler else cfg.MODEL.epochs,
-        accelerator="gpu",
-        devices=args.gpu,
+        accelerator=accelerator,
+        devices=devices,
         logger=build_logger(args, ROOT_DIR),
         check_val_every_n_epoch=1,
         callbacks=callbacks,
         default_root_dir=ROOT_DIR,
-        strategy="ddp_find_unused_parameters_true" if len(args.gpu) > 1 else "auto",
+        strategy="ddp_find_unused_parameters_true" if (accelerator == "gpu" and len(devices) > 1) else "auto",
         profiler=args.profiler,
         enable_checkpointing=False if args.use_profiler else True,
-        limit_train_batches=100 if args.use_profiler else 1.0,
-        limit_val_batches=100 if args.use_profiler else 1.0,
+        limit_train_batches=limit_train,
+        limit_val_batches=limit_val,
         num_sanity_val_steps=0,
         accumulate_grad_batches=args.grad,
-        precision="16-mixed" if args.precision == 16 else "32",
+        precision="16-mixed" if (args.precision == 16 and accelerator == "gpu") else "32",
     )
 
     color_print(f"logger path : {trainer.logger.log_dir}")

@@ -1,14 +1,14 @@
-from ay2.torch.lightning.callbacks import (
-    Color_progress_bar,
-    EER_Callback,
-)
-from pytorch_lightning.callbacks import EarlyStopping, ModelCheckpoint
+from pytorch_lightning.callbacks import EarlyStopping, ModelCheckpoint, TQDMProgressBar
 
-from ay2.torch.lightning.callbacks.metrics import (
+# Use local callbacks instead of ay2
+from callbacks import (
+    EER_Callback,
     BinaryACC_Callback,
     BinaryAUC_Callback,
 )
-from ay2.torch.lightning.callbacks import Collect_Callback
+
+# Fallback for progress bar
+Color_progress_bar = TQDMProgressBar
 
 
 def common_callbacks():
@@ -65,15 +65,8 @@ def training_callbacks(args):
 
 
 def make_collect_callbacks(args, cfg):
-    name = args.cfg.replace("/", "-")
-    callbacks = [
-        Collect_Callback(
-            batch_keys=["label", "vocoder_label"],
-            output_keys=["feature"],
-            save_path=f"./0-实验结果/npz/{name}",
-        )
-    ]
-    return callbacks
+    # Collect callbacks not implemented yet - return empty list
+    return []
 
 
 def make_callbacks(args, cfg):
