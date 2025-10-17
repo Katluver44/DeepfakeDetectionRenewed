@@ -8,7 +8,7 @@ Upload your code to RunPod, then run:
 
 ```bash
 cd /workspace/PLFD-ADD
-HF_TOKEN=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 bash setup_runpod.sh
+HF_TOKEN=your_token_here bash setup_runpod.sh
 ```
 
 This installs everything automatically!
@@ -24,8 +24,8 @@ apt-get install -y ffmpeg espeak-ng libespeak-ng1
 pip install datasets==2.14.0 pyarrow==14.0.1
 pip install -r requirements_runpod.txt
 
-# 3. HuggingFace login
-huggingface-cli login --token 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
+# 3. HuggingFace login (use your own token from .env)
+huggingface-cli login --token $HF_TOKEN
 ```
 
 ### Test Installation

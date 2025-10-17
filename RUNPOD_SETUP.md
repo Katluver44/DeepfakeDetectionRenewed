@@ -34,7 +34,7 @@ cd PLFD-ADD
 ```bash
 cd /workspace/PLFD-ADD
 chmod +x setup_runpod.sh
-HF_TOKEN=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 bash setup_runpod.sh
+HF_TOKEN=your_token_here bash setup_runpod.sh
 ```
 
 **Method 2: Manual Installation**
@@ -49,7 +49,7 @@ apt-get install -y ffmpeg espeak-ng libespeak-ng1
 pip install -r requirements_runpod.txt
 
 # Login to HuggingFace (for dataset access)
-huggingface-cli login --token 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
+huggingface-cli login --token $HF_TOKEN
 ```
 
 ### Step 4: Test the Setup
@@ -159,7 +159,7 @@ python train.py --cfg GMM --gpu 0 --batch_size 8
 ### Issue 2: "Dataset not found"
 **Solution:** Login to HuggingFace
 ```bash
-huggingface-cli login --token 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
+huggingface-cli login --token $HF_TOKEN
 ```
 
 ### Issue 3: "FFmpeg not found"

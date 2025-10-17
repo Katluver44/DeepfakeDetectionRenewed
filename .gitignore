@@ -1,3 +1,37 @@
-**.pyc
-**.DS_Store
-**.ckpt
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyc
+
+# macOS
+.DS_Store
+*.DS_Store
+
+# PyTorch checkpoints
+*.ckpt
+*.pth
+*.pt
+
+# Environment variables (IMPORTANT: Contains sensitive tokens)
+.env
+.env.local
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Logs and model checkpoints
+logs/
+lightning_logs/
+model_checkpoints/
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo

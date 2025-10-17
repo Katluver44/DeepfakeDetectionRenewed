@@ -352,13 +352,16 @@ def load_phoneme_model(network_name='wav2vec', pretrained_path=None, total_num_p
     if pretrained_path is None:
         model = BaseModule(network_param, optim_param, tokenizer=tokenizer, total_num_phonemes=total_num_phonemes)
     else:
+        # Add safe globals for PyTorch 2.6+ compatibility
+        import torch.serialization
+        torch.serialization.add_safe_globals([Namespace])
+        
         model = BaseModule.load_from_checkpoint(
             pretrained_path,
             network_param=network_param,
             optim_param=optim_param,
             tokenizer=tokenizer,
             total_num_phonemes=total_num_phonemes,
-            weights_only=False
         ).cpu()
         # model = BaseModule(network_param, optim_param, tokenizer=tokenizer)
         # model  = model.load_state_dict(torch.load(pretrained_path))

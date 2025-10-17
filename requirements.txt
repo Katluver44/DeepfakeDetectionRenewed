@@ -18,3 +18,4 @@ torch-yin
 torchmetrics
 scikit-learn
 rich
+python-dotenv
