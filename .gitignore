@@ -1,3 +1,11 @@
-**.pyc
-**.DS_Store
-**.ckpt
+data/
+venv/
+logs/
+pretrained/
+__pycache__/
+.ipynb_checkpoints/
+.env
+*.ckpt
+*.pt
+*.npz
+*.wav
