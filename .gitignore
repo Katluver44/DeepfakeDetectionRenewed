@@ -9,3 +9,6 @@ __pycache__/
 *.pt
 *.npz
 *.wav
+secret.txt
+wandb/
+yes.pth
