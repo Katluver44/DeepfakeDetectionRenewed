@@ -124,10 +124,10 @@ class Phoneme_GAT(nn.Module):
 
         if backbone.lower() == "wav2vec":
             network_name = "wav2vec"
-            pretrained_path = "/workspace/DeepfakeDetectionRenewed/pretrained/best-epoch=49-val-per=0.362394.ckpt"
+            pretrained_path = "/lambda/nfs/algo/workspace/DeepfakeDetectionRenewed/pretrained/best-epoch=49-val-per=0.362394.ckpt"
         elif backbone.lower() == "wavlm":
             network_name = "wavlm"
-            pretrained_path = "/workspace/DeepfakeDetectionRenewed/pretrained/best-epoch=42-val-per=0.407000.ckpt"
+            pretrained_path = "/lambda/nfs/algo//workspace/DeepfakeDetectionRenewed/pretrained/best-epoch=42-val-per=0.407000.ckpt"
         else:
             raise ValueError(f"Unknown backbone {backbone}")
 
