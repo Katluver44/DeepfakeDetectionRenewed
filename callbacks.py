@@ -17,6 +17,7 @@ from torchmetrics.classification import BinaryAccuracy, BinaryAUROC
 
 
 # +
+
 def calculate_eer(y, y_score) -> Tuple[float, float, np.ndarray, np.ndarray]:
     """
     Args:
