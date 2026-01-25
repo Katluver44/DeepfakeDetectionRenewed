@@ -411,9 +411,10 @@ class Phoneme_GAT(nn.Module):
         self.phoneme_model.eval()
 
         # Trainable copy of encoder
-        self.encoder = deepcopy(self.transformer_in_phoneme_model.encoder)
-        self.encoder.requires_grad_(True)
-        self.encoder.train()
+        #self.encoder = deepcopy(self.transformer_in_phoneme_model.encoder)
+        #self.encoder.requires_grad_(False) #originally true but they got sum bs going on
+        #self.encoder.train()
+        self.encoder = self.transformer_in_phoneme_model.encoder
 
         # GAT for phoneme-level temporal modeling
         self.use_GAT = use_GAT

@@ -221,7 +221,7 @@ def combine_consecutive_identical(strings):
 def load_phoneme_model(network_name="wav2vec", pretrained_path=None, total_num_phonemes=198):
     from ay2.tools.text import Phonemer_Tokenizer_Recombination
 
-    vocab_path = "/lambda/nfs/algo/workspace/DeepfakeDetectionRenewed/vocab_phoneme"
+    vocab_path = "/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/vocab_phoneme"
     print("Now, load vocab json files from", vocab_path, "Please make sure the vocab files are correct")
 
     languages = ["en", "de", "es", "fr", "it", "pl", "ru", "uk", "zh-CN"]
