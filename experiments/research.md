@@ -256,6 +256,81 @@ This is a publishable mechanistic finding because:
 
 ---
 
+## Experiment 5 — Per-Attack-System Attention Analysis (`gat_attention_by_system.py`)
+
+**Script:** `experiments/gat_attention_by_system.py`
+**Holdout:** validation split, 500 samples per system (3500 total, no 50/50 balancing)
+**Edges processed:** 1 178 205 (across all 3 GAT layers, all systems)
+**Output files:** `experiments/results/gat_by_system_*.png`, `gat_by_system_summary.csv`
+
+ASVspoof 2019 LA validation contains **6 attack systems (A01–A06)** plus bonafide (`-`),
+each with 3716 utterances. Repeating the attention analysis per-system reveals whether
+the sibilant collapse finding from Exp 4 is a universal deepfake property or
+is concentrated in specific vocoders.
+
+### Summary table
+
+| System | Label | Sib→Sib | Δ | Nas→Sib | Δ | n(Sib→Sib) | n(Nas→Sib) |
+|---|---|---|---|---|---|---|---|
+| `-` | bonafide | 0.1100 | — | 0.1184 | — | **15** | 48 |
+| A01 | spoof | 0.1255 | **+0.016** | 0.1043 | −0.014 | 9 | 33 |
+| A02 | spoof | 0.1173 | +0.007 | 0.1284 | +0.010 | 9 | 15 |
+| A03 | spoof | 0.0883 | **−0.022** | 0.1037 | −0.015 | 12 | 42 |
+| A04 | spoof | 0.0931 | **−0.017** | 0.1013 | −0.017 | 39 | 30 |
+| A05 | spoof | 0.1009 | −0.009 | 0.1042 | −0.014 | **57** | 69 |
+| A06 | spoof | 0.1178 | +0.008 | 0.0910 | −0.027 | 15 | 24 |
+
+### Key findings
+
+**1. The sibilant self-attention collapse is NOT universal.**
+
+A03, A04, and A05 consistently show lower Sib→Sib attention than bonafide (Δ = −0.009 to −0.022),
+consistent with the Exp 4 finding. However A01, A02, and A06 show the **opposite**: their
+sibilant self-attention is equal to or higher than bonafide (+0.007 to +0.016).
+
+The aggregated analysis in Exp 4 averaged over all systems, so the A03/A04 signal dominated
+when those systems happened to be over-represented in the balanced 300-sample draw.
+The "collapse" is a property of specific attack systems, not deepfake audio in general.
+
+**2. Edge counts are critically small — confidence is limited.**
+
+The Sib→Sib cell for most systems has **9–57 edges** across 500 utterances and 3 GAT layers.
+The bonafide baseline itself has only **n=15** Sib→Sib edges. With counts this small,
+the deltas of ±0.01–0.02 are unreliable — a handful of utterances with unusual phoneme
+sequences can swing the number substantially. The sibilant class is simply rare in the
+phoneme graph (confirming the node count from Exp 3: 36/7518 = 0.5% of all nodes).
+
+**3. Nasal→Sibilant is more consistent but still noisy.**
+
+5 of 6 systems show lower Nasal→Sibilant attention than bonafide (A02 is the exception,
++0.010). The effect is in the same direction across most systems (Δ = −0.014 to −0.027),
+but counts are again modest (15–69 edges per system). A06 shows the largest drop (−0.027).
+
+**4. What this means for Experiment 4**
+
+The "sibilant attention fingerprint" framing from Exp 4 needs to be qualified:
+- It is a real signal for some attack systems (A03/A04 specifically) but is *reversed* for others.
+- The Nasal→Sibilant reduction is more reproducible across systems but smaller in magnitude.
+- Neither finding has the statistical power to be published as a universal deepfake property
+  without either (a) larger sample sizes or (b) the test set (A07–A19) for replication.
+
+The correct framing is: **different attack systems produce different phoneme-graph
+attention signatures**, which is itself an interesting and publishable finding — the model
+may be responding to vocoder-specific artifacts rather than a single universal "deepfake
+signal". A03/A04 appear to share a vocoder family that disrupts sibilant coherence;
+A01/A02 use a different synthesis path that does not.
+
+### Recommended next step
+
+Run the same analysis on the test split (A07–A19) once accessible, to:
+1. Replicate the Nasal→Sibilant direction on held-out attack systems.
+2. Test whether A07–A19 cluster into the same "sibilant-collapsing" vs
+   "sibilant-preserving" groups as A03–A04 vs A01–A02.
+3. Use larger per-system sample sizes (all 3716 per system) for the test set
+   to get reliable edge counts for rare class pairs.
+
+---
+
 ## Results Directory
 
 Large output files are stored under `experiments/results/`:
@@ -266,6 +341,10 @@ Large output files are stored under `experiments/results/`:
 | `phoneme_pc1_mean_delta.png` | Exp 3 — per-class mean PC1 delta bar chart |
 | `gat_attention_heatmap.png` | Exp 4 — 3-panel attention matrix (normal / deepfake / Δ) |
 | `gat_attention_topedges.png` | Exp 4 — top-15 class→class edges by \|Δ\| |
+| `gat_by_system_heatmaps.png` | Exp 5 — per-system 9×9 heatmaps (bonafide / system / Δ) |
+| `gat_by_system_counts.png` | Exp 5 — edge count matrices per system (confidence proxy) |
+| `gat_by_system_sibil.png` | Exp 5 — sibilant self-attention and nasal→sibilant bar chart |
+| `gat_by_system_summary.csv` | Exp 5 — numeric table, all systems |
 
 Smaller plots from `plot_embeddings.py` are stored directly in `experiments/`:
 
