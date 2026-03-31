@@ -403,6 +403,81 @@ All probe weights and feature matrices are in `experiments/results/linear_probe/
 
 ---
 
+## Experiment 7 — 6-Way Attack-System Probe (Vocoder Fingerprinting)
+
+**Script:** `experiments/multiclass_probe.py`
+**Goal:** Within the spoof region only (A01–A06), can a linear probe distinguish which
+vocoder/attack system generated a sample? Tests whether system identity is linearly encoded
+in the model's internal representations.
+
+**Data:** 3 000 spoof samples (500 × 6 systems) from the same feature files as Exp 6.
+**Probe:** Multinomial `LogisticRegression(C=1, class_weight='balanced', max_iter=2000)`.
+**Split:** Same stratified 80/20 scheme (2400 train / 600 test).
+**Chance level:** 1/6 ≈ 16.7%.
+
+### Full probe ranking (by macro-F1)
+
+| Rank | Probe | Acc | Macro F1 | Dim |
+|------|-------|-----|----------|-----|
+| 1 | `gat_l0` | **0.9183** | **0.9180** | 768 |
+| 2 | `gat_l1` | 0.8933 | 0.8926 | 768 |
+| 3 | `gat_l2` | 0.8533 | 0.8522 | 768 |
+| 4 | `head_l2_h2` | 0.8517 | 0.8497 | 128 |
+| 5 | `head_l2_h1` | 0.8383 | 0.8366 | 128 |
+| 6–21 | other heads | 0.79–0.83 | 0.79–0.83 | 128 |
+| **22** | `bilstm` | **0.7500** | **0.7492** | 768 |
+
+### Best probe breakdown (gat_l0, per system)
+
+| System | Precision | Recall | F1 |
+|--------|-----------|--------|----|
+| A01 | 0.89 | 0.88 | 0.88 |
+| A02 | 0.87 | 0.83 | 0.85 |
+| A03 | 0.94 | 0.96 | 0.95 |
+| A04 | 0.95 | 0.95 | 0.95 |
+| A05 | 0.90 | 0.95 | 0.93 |
+| A06 | 0.95 | 0.94 | 0.94 |
+
+### Key findings
+
+**1. System identity is strongly linearly encoded — especially in GAT layer 0.**
+`gat_l0` achieves 91.8% accuracy on a 6-class problem (chance = 16.7%), meaning the
+*first* GAT layer's node embeddings carry a strong vocoder fingerprint that is largely
+preserved as a linear signal. The model appears to be using vocoder-specific patterns from
+the very first layer of message-passing.
+
+**2. The ranking flips vs. Exp 6 (binary deepfake detection).**
+In Exp 6, layer 2 heads were best for binary spoof/bonafide separation.
+Here, `gat_l0` is the best vocoder discriminator — layers 1 and 2 *destroy* system-specific
+information as they build the detection signal. This implies the GAT is progressively
+abstracting away vocoder identity in favour of a generic "is-this-spoofed" representation.
+
+**3. BiLSTM is worst for vocoder ID (75%), best for binary detection.**
+The BiLSTM's temporal integration further collapses vocoder-specific information.
+It trades vocoder identity for detection reliability — exactly what you'd want in a
+deployable detector.
+
+**4. A01/A02 are hardest to distinguish (F1 ≈ 0.85–0.88); A03/A04/A06 are clearest (0.94–0.95).**
+This is consistent with the Exp 5 finding that A01/A02 show atypical attention patterns
+(e.g., elevated sibilant self-attention) vs. A03–A06. They may share a closer synthesis
+family or produce more natural-sounding output that is harder to fingerprint.
+
+**5. Probe similarity plot confirms the layer hierarchy.**
+The `probe_similarity.png` prediction-agreement matrix shows: full-layer probes (gat_l0/1/2)
+form their own cluster with high mutual agreement; individual heads within each layer also
+cluster together; `bilstm` is the most distinct predictor.
+
+### Artifacts saved
+
+Stored in `experiments/results/multiclass_probe/`:
+- `confusion_{name}.png` — normalised 6×6 confusion matrix per probe (22 files)
+- `multiclass_ranking.png` — macro-F1 bar chart, colour-coded by probe type
+- `probe_similarity.png` — pairwise prediction-agreement heatmap
+- `multiclass_summary.csv` — full metrics table (acc, macro-F1, per-system P/R/F1)
+- `probe_mc_{name}.npz` — probe weights (coef, intercept, scaler) per representation
+
+---
+
 ## Results Directory
 
 Large output files are stored under `experiments/results/`:
@@ -421,6 +496,11 @@ Large output files are stored under `experiments/results/`:
 | `linear_probe/probe_metrics_summary.csv` | Exp 6 — full metrics table |
 | `linear_probe/features_*.npz` | Exp 6 — (N, D) feature matrices per probe |
 | `linear_probe/probe_*.npz` | Exp 6 — probe weights + metrics per probe |
+| `multiclass_probe/multiclass_ranking.png` | Exp 7 — macro-F1 bar chart, 6-way probe |
+| `multiclass_probe/probe_similarity.png` | Exp 7 — inter-probe prediction agreement |
+| `multiclass_probe/confusion_*.png` | Exp 7 — per-probe 6×6 confusion matrices |
+| `multiclass_probe/multiclass_summary.csv` | Exp 7 — full per-system metrics table |
+| `multiclass_probe/probe_mc_*.npz` | Exp 7 — multiclass probe weights |
 
 Smaller plots from `plot_embeddings.py` are stored directly in `experiments/`:
 
