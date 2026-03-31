@@ -25,6 +25,7 @@ Saves to experiments/results/act_patching_probe/:
   act_probe_records.npz          — per-node (cls, system_id, delta_true, delta_all_6)
   act_probe_class_stats.csv      — per-class: mean Δ_true, mean shift to each system
   act_probe_shift_matrix.png     — 9-class × 6-system heatmap of mean ΔP
+  act_probe_shift_matrix_unitnorm.png — same heatmap after per-system signed L2 normalization
   act_probe_true_system_delta.png — mean Δ_true bar chart per phoneme class, split by system
   act_probe_confusion_shift.png  — for each system: how does patching redistribute prob mass?
 """
@@ -295,6 +296,16 @@ def plot_shift_matrix(mat: np.ndarray, row_labels: list[str],
     print(f"Saved: {out_path.name}")
 
 
+def normalize_system_profiles_unit_norm(mat: np.ndarray, eps: float = 1e-12) -> np.ndarray:
+    """Normalize each system column to signed L2 unit norm across phoneme classes."""
+    mat = np.asarray(mat, dtype=np.float64)
+    norms = np.linalg.norm(mat, axis=0, keepdims=True)
+    safe_norms = np.where(norms > eps, norms, 1.0)
+    normed = mat / safe_norms
+    normed[:, norms[0] <= eps] = 0.0
+    return normed
+
+
 def plot_true_delta_bars(stats: dict, out_path: Path) -> None:
     """Bar chart: mean Δ_true per class (averaged over all systems), sorted descending."""
     classes = [c for c in CLASS_ORDER if stats.get(c)]
@@ -545,6 +556,13 @@ def main():
         title="Mean ΔP per (phoneme class, vocoder system)\n"
               "Positive = patching that class reduces system probability",
         out_path=OUT_DIR / "act_probe_shift_matrix.png",
+    )
+    shift_mat_unitnorm = normalize_system_profiles_unit_norm(shift_mat)
+    plot_shift_matrix(
+        shift_mat_unitnorm, CLASS_ORDER, SYSTEMS,
+        title="Per-system unit-norm ΔP profiles by phoneme class\n"
+              "Signed L2 normalization highlights shape, not magnitude",
+        out_path=OUT_DIR / "act_probe_shift_matrix_unitnorm.png",
     )
 
     # Aggregate Δ_true per class (pooling across systems, weighted by node count)

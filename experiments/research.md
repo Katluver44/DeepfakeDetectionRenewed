@@ -574,6 +574,113 @@ Stored in `experiments/results/act_patching/`:
 
 ---
 
+## Experiment 9 — Probe-Guided Activation Patching by Attack System
+
+**Script:** `experiments/act_patching_probe.py`
+
+**Goal:** Test whether each phoneme node carries evidence for the spoofer's *true* attack
+system, not just for the generic spoof-vs-bonafide decision. This reuses the same layer-0 GAT
+node patching setup from Exp 8, but measures how much the patch changes the score of a pretrained
+6-way attack-system probe.
+
+For each correctly-probed spoof utterance and node `i`, the script computes:
+
+```
+Δ_i(system) = s_true(x) - s_true_patch(x, i)
+```
+
+where `s_true` is the probe score for the utterance's true spoof system (A01-A06) and
+`s_true_patch(x, i)` is the score after replacing node `i` with the bonafide class mean.
+It also reports counterfactual shifts for all six system heads.
+
+**Data:** Validation split, 3,500 samples (7 systems). 2,885 utterances retained after
+skipping 115 where the attack-system probe's top-1 prediction was wrong. Total node records:
+115,784.
+
+### Results — true-system score drop by phoneme class
+
+| Class | Mean Δ_true | n |
+|---|---|---|
+| **Sibilants** | **+0.004216** | 578 |
+| Nasals | +0.002802 | 1,672 |
+| Other | +0.002516 | 46,390 |
+| Diphthongs | +0.002445 | 6,772 |
+| Vowels | +0.002377 | 35,713 |
+| Fricatives | +0.002352 | 7,096 |
+| Stops | +0.002323 | 9,565 |
+| Affricates | +0.002080 | 3,883 |
+| Approximants | +0.001768 | 4,115 |
+
+### Per-system patch direction
+
+Across almost every phoneme class, patching toward bonafide means:
+
+- raises A01 the most (`~ +0.0009` to `+0.0016`)
+- raises A02 slightly (`~ +0.0002` to `+0.0007`)
+- leaves A03 near zero
+- suppresses A04 slightly (`~ -0.0004` to `-0.0012`)
+- raises A05 (`~ +0.0007` to `+0.0032`)
+- suppresses A06 the most strongly (`~ -0.0017` to `-0.0040`)
+
+The strongest class-specific effects are:
+
+- `Sibilants -> A05`: `+0.003222`
+- `Sibilants -> A06`: `-0.003972`
+- `Nasals -> A05`: `+0.001969`
+- `Nasals -> A06`: `-0.002831`
+- `Fricatives -> A01`: `+0.001641`
+
+### Key findings
+
+**1. The system-ID signal is real, but far weaker than the generic spoof signal from Exp 8.**
+In Exp 8, one-node bonafide patching reduced the spoof logit by about `+1.72` to `+1.95`
+depending on class. Here the same patch only shifts the true attack-system probe score by
+roughly `+0.0018` to `+0.0042`. That suggests layer-0 node representations are dominated by
+generic spoof evidence, while attack-family identity is a smaller secondary factor.
+
+**2. Sibilants flip from weakest generic spoof carriers to strongest system markers.**
+In Exp 8, sibilants had the smallest causal effect on the binary spoof logit (`+1.721`, last
+place). Here they rank first for true-system identification (`+0.004216`). So sibilants do not
+carry much *generic* spoof evidence, but they appear unusually informative about *which* attack
+family generated the audio.
+
+**3. Nasals remain important in both views.**
+Nasals were mid-tier in Exp 8 (`+1.822`) and second-highest here (`+0.002802`). They look like
+the most stable cross-experiment class: useful both for spoof detection overall and for attack
+system fingerprinting.
+
+**4. The patch has a strongly directional system effect.**
+Across nearly all classes, bonafide patching consistently pushes the probe away from A06 and
+toward A01/A05. That implies the bonafide class anchor is not neutral in multiclass probe space;
+it lies closer to some attack-system directions than others.
+
+**5. A03 is almost invariant to bonafide patching.**
+The A03 column stays near zero for every class, unlike the clearer positive A01/A05 and negative
+A04/A06 trends. Its evidence may be more distributed across many nodes or encoded in directions
+that simple class-mean replacement does not disrupt much.
+
+### Interpretation
+
+Exp 8 and Exp 9 together separate two notions of "important phoneme":
+
+- for **binary spoof detection**, the strongest causal classes are diphthongs and approximants
+- for **attack-system fingerprinting**, the strongest causal classes are sibilants and nasals
+
+So the model family seems to use different phoneme subspaces for different tasks. Smooth
+formant-transition phones help decide whether speech is fake at all, while noisy / resonant
+phones help distinguish which synthesizer family generated it.
+
+### Artifacts saved
+
+Stored in `experiments/results/act_patching_probe/`:
+- `act_probe_records.npz` — per-node patch records and per-system score shifts
+- `act_probe_class_stats.csv` — mean true-system and per-system deltas by phoneme class
+- `act_probe_shift_matrix.png` — class × system mean patch-shift heatmap
+- `act_probe_true_system_delta.png` — true-system mean Δ by phoneme class
+- `act_probe_per_system.png` — per-system bar plots across phoneme classes
+
+---
+
 ## Results Directory
 
 Large output files are stored under `experiments/results/`:
@@ -602,6 +709,11 @@ Large output files are stored under `experiments/results/`:
 | `act_patching/act_patching_class_stats.csv` | Exp 8 — mean/std/n per class |
 | `act_patching/act_patching_records.npz` | Exp 8 — full per-node records |
 | `act_patching/bonafide_class_means.npz` | Exp 8 — bonafide class mean layer-0 vectors |
+| `act_patching_probe/act_probe_shift_matrix.png` | Exp 9 — class × attack-system patch-shift heatmap |
+| `act_patching_probe/act_probe_true_system_delta.png` | Exp 9 — true-system mean Δ by phoneme class |
+| `act_patching_probe/act_probe_per_system.png` | Exp 9 — per-system patch effects across classes |
+| `act_patching_probe/act_probe_class_stats.csv` | Exp 9 — full class-by-system delta table |
+| `act_patching_probe/act_probe_records.npz` | Exp 9 — full per-node probe patch records |
 
 Smaller plots from `plot_embeddings.py` are stored directly in `experiments/`:
 
