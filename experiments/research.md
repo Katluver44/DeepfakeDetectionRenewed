@@ -478,6 +478,102 @@ Stored in `experiments/results/multiclass_probe/`:
 
 ---
 
+## Experiment 8 — Layer-0 GAT Activation Patching
+
+**Script:** `experiments/act_patching.py`
+
+**Goal:** Establish the *causal* contribution of each phoneme node to the spoof classification
+decision. For each node `i` in a correctly-classified spoof utterance `x`, we measure:
+
+```
+Δ_i = L(x) − L_patch(x, i)
+```
+
+where `L_patch(x, i)` is the logit after replacing node `i`'s layer-0 GAT representation
+`h_i^(0)(x)` with `h̄_{c_i}^(0)` — the mean layer-0 output for phoneme class `c_i` computed
+across the bonafide set. The downstream layers (GAT 1+2, BiLSTM, classifier) see an otherwise
+unmodified graph; only node `i`'s content changes to "what this phoneme would look like in
+real speech."
+
+- `Δ > 0`: node was pushing toward "spoof" — replacing with bonafide content reduced the logit
+- `Δ ≈ 0`: node was not contributing to the spoof decision
+- `Δ < 0`: node was acting as a counterweight toward bonafide (suppressing the spoof score)
+
+**Implementation details:**
+- Phase 1: compute one 768-d class mean per phoneme class from 16,742 bonafide nodes
+- Phase 2: for each spoof utterance, build N copies of the phoneme graph (N = node count),
+  patch one node per copy, run GAT layers 1+2 → BiLSTM → mean pool → classify in one batched
+  forward pass
+- Only utterances where `L(x) > 0` (model predicted spoof) are included
+- Utterances with zero-edge graphs get self-loops added before the batched pass
+
+**Data:** Validation split, same 3500-sample set. 2,639 correctly-classified spoof utterances
+(361 skipped — model predicted bonafide on those), 108,437 total node records.
+
+### Results — mean causal effect per phoneme class
+
+| Class | Mean Δ | Std | n |
+|-------|--------|-----|---|
+| Diphthongs | **+1.946** | 1.936 | 6,245 |
+| Approximants | +1.910 | 1.930 | 3,839 |
+| Vowels | +1.887 | 1.946 | 33,568 |
+| Fricatives | +1.871 | 1.950 | 6,686 |
+| Other | +1.858 | 1.950 | 43,427 |
+| Stops | +1.850 | 1.885 | 8,927 |
+| Nasals | +1.822 | 1.872 | 1,560 |
+| Affricates | +1.743 | 1.860 | 3,660 |
+| **Sibilants** | **+1.721** | 1.904 | **525** |
+
+### Key findings
+
+**1. All classes have Δ > 0 — every phoneme class carries spoof-relevant content.**
+Replacing any node's layer-0 representation with the bonafide class mean always reduces the
+spoof logit on average. There is no class that pushes the model toward bonafide in spoof audio
+(no Δ < 0 in aggregate). The model appears to use information from every phoneme class.
+
+**2. Sibilants show the smallest causal effect (+1.721), consistent with earlier experiments.**
+This is the quantitative causal confirmation of the "sibilant collapse" observed in Exp 4/5.
+In spoof audio, sibilant layer-0 representations are already most similar to bonafide
+(smallest Δ when patched to bonafide means). The model is getting less spoof-specific signal
+from sibilants than from any other class.
+
+**3. Diphthongs and Approximants are the strongest spoof carriers (+1.946, +1.910).**
+Patching these to bonafide means causes the largest drop in spoof confidence. These sound
+classes — which involve smooth formant transitions (diphthongs) and liquid/glide articulation
+(approximants) — appear to be where vocoders most distinctively deviate from natural speech at
+the feature level encoded by layer 0 of the GAT.
+
+**4. Affricates are second-lowest (+1.743), sibilants lowest (+1.721).**
+Both involve sibilant components (affricates are stop+sibilant sequences). This suggests a
+broader pattern: sounds with high-frequency frication / turbulent airflow components are
+harder for vocoders to fake convincingly *and* are already close to bonafide in the model's
+representation, making them weak contributors to the spoof decision.
+
+**5. The spread (std ≈ 1.9 for all classes) is large relative to the means.**
+Node-level Δ values span a wide range even within a class. The class means are meaningful
+population-level statistics, but individual nodes vary greatly — some nodes in every class
+have near-zero or even negative Δ. The signal is not deterministic per class.
+
+**6. Cross-referencing with Exp 3 (PC1) and Exp 6 (linear probes):**
+- Exp 3 found sibilants most discriminative on PC1 — but PC1 is a *representation* statistic,
+  not a causal one. Sibilants being separable on PC1 does not mean they *cause* the
+  classification; Exp 8 shows they actually cause the least.
+- The disconnect is explained by Exp 5: sibilant representations in spoof are *collapsed*
+  toward zero (fake=0.000 attention), which makes them easy to distinguish on a projection
+  axis, but patching them to bonafide means moves them to a state the model already wasn't
+  relying on heavily.
+
+### Artifacts saved
+
+Stored in `experiments/results/act_patching/`:
+- `bonafide_class_means.npz` — (9 × 768) mean layer-0 GAT output per phoneme class (bonafide)
+- `act_patching_records.npz` — per-node arrays: `cls_names`, `deltas`, `logit_origs`, `system_ids`
+- `act_patching_class_stats.csv` — mean Δ, std, n per class
+- `act_patching_violin.png` — Δ distribution violin + mean bar chart per class
+- `act_patching_by_system.png` — class × attack system mean Δ heatmap
+
+---
+
 ## Results Directory
 
 Large output files are stored under `experiments/results/`:
@@ -501,6 +597,11 @@ Large output files are stored under `experiments/results/`:
 | `multiclass_probe/confusion_*.png` | Exp 7 — per-probe 6×6 confusion matrices |
 | `multiclass_probe/multiclass_summary.csv` | Exp 7 — full per-system metrics table |
 | `multiclass_probe/probe_mc_*.npz` | Exp 7 — multiclass probe weights |
+| `act_patching/act_patching_violin.png` | Exp 8 — Δ distribution per phoneme class |
+| `act_patching/act_patching_by_system.png` | Exp 8 — class × system mean Δ heatmap |
+| `act_patching/act_patching_class_stats.csv` | Exp 8 — mean/std/n per class |
+| `act_patching/act_patching_records.npz` | Exp 8 — full per-node records |
+| `act_patching/bonafide_class_means.npz` | Exp 8 — bonafide class mean layer-0 vectors |
 
 Smaller plots from `plot_embeddings.py` are stored directly in `experiments/`:
 
