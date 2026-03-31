@@ -78,6 +78,7 @@ N_SAMPLES      = 300   # more utterances → more edges → stable matrix estima
 BATCH_SIZE     = 10
 SEED           = 42
 N_GAT_LAYERS   = 3     # must match gat_config in modules.py
+DEVICE         = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 LANG_ORDER = ["de", "en", "es", "fr", "it", "pl", "ru", "uk", "zh-CN"]
 SPECIAL    = ["|", "</s>", "<s>", "<unk>", "<pad>"]
@@ -436,15 +437,16 @@ def main() -> None:
     from phoneme_GAT.modules import Phoneme_GAT_lit
 
     cfg = Namespace(PhonemeGAT=Namespace(
-        backbone="wavlm", use_raw=True, use_GAT=True,
+        backbone="wavlm", use_raw=False, use_GAT=True,
         n_edges=10, use_aug=True, use_pool=True, use_clip=True))
 
     print(f"\nLoading checkpoint: {DEFAULT_CKPT}")
     lit = Phoneme_GAT_lit.load_from_checkpoint(
         str(DEFAULT_CKPT), cfg=cfg, map_location="cpu", strict=True)
+    lit.to(DEVICE)
     lit.eval(); lit.freeze()
     gat_model = lit.model
-    print("Model ready.\n")
+    print(f"Model ready on {DEVICE}.\n")
 
     # ── Enable attention logging on every GAT layer ──────────────────────────
     for layer in gat_model.GAT.gat_net:
@@ -463,10 +465,10 @@ def main() -> None:
 
     with torch.no_grad():
         for batch_idx, batch in enumerate(loader):
-            audio  = batch["audio"]
-            labels = batch["label"]   # (B,)
+            audio  = batch["audio"].to(DEVICE)
+            labels = batch["label"]   # (B,) — kept on CPU for accumulation
             B      = labels.shape[0]
-            num_frames = torch.full((B,), TARGET_SAMPLES // 320 - 1)
+            num_frames = torch.full((B,), TARGET_SAMPLES // 320 - 1, device=DEVICE)
 
             _ = gat_model(audio, num_frames, profiler=None, use_aug=False, stage="eval")
 

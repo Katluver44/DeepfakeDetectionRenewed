@@ -499,7 +499,7 @@ def main() -> None:
     from phoneme_GAT.modules import Phoneme_GAT_lit
 
     cfg = Namespace(PhonemeGAT=Namespace(
-        backbone="wavlm", use_raw=True, use_GAT=True,
+        backbone="wavlm", use_raw=False, use_GAT=True,
         n_edges=10, use_aug=True, use_pool=True, use_clip=True,
     ))
 
@@ -507,10 +507,12 @@ def main() -> None:
     lit_model = Phoneme_GAT_lit.load_from_checkpoint(
         str(DEFAULT_CKPT), cfg=cfg, map_location="cpu", strict=True,
     )
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    lit_model.to(device)
     lit_model.eval()
     lit_model.freeze()
     gat_model = lit_model.model     # Phoneme_GAT instance
-    print("Model ready.\n")
+    print(f"Model ready on {device}.\n")
 
     # Install capture hook
     capture = PhonemeCapture(gat_model)
@@ -524,10 +526,10 @@ def main() -> None:
 
     with torch.no_grad():
         for batch in loader:
-            audio  = batch["audio"]
-            labels = batch["label"]
+            audio  = batch["audio"].to(device)
+            labels = batch["label"]   # kept on CPU for accumulation
             B      = labels.shape[0]
-            num_frames = torch.full((B,), TARGET_SAMPLES // 320 - 1)
+            num_frames = torch.full((B,), TARGET_SAMPLES // 320 - 1, device=device)
 
             out = gat_model(audio, num_frames, profiler=None, use_aug=False, stage="eval")
 

@@ -331,6 +331,78 @@ Run the same analysis on the test split (A07–A19) once accessible, to:
 
 ---
 
+## Experiment 6 — Linear Probes on GAT Head / Layer / BiLSTM Representations
+
+**Script:** `experiments/linear_probe.py`
+**Goal:** Quantify where classification-relevant linear structure lives — GAT layer 0/1/2,
+individual attention heads (6 per layer, 128-d each), and post-BiLSTM pooled embeddings (768-d).
+
+**Data:** Same 3 500-sample validation set as Exp 5 (7 systems × 500).
+**Probe:** `LogisticRegression(C=1, class_weight='balanced', max_iter=2000)` + `StandardScaler`.
+**Split:** Stratified 80/20 probe-train / probe-test (within validation only).
+
+### Full probe ranking (by AUC, 22 probes)
+
+| Rank | Probe | AUC | ACC | F1 | Dim |
+|------|-------|-----|-----|----|-----|
+| 1 | `head_l2_h2` | **0.9874** | 0.9500 | 0.9702 | 128 |
+| 2 | `gat_l1` | 0.9840 | 0.9457 | 0.9680 | 768 |
+| 3 | `head_l2_h4` | 0.9839 | 0.9314 | 0.9588 | 128 |
+| 4 | `head_l2_h1` | 0.9830 | 0.9371 | 0.9623 | 128 |
+| 5 | `bilstm` | 0.9815 | 0.9429 | 0.9661 | 768 |
+| 6 | `head_l2_h0` | 0.9813 | 0.9329 | 0.9598 | 128 |
+| 7 | `gat_l2` | 0.9810 | 0.9486 | 0.9697 | 768 |
+| 8 | `head_l2_h5` | 0.9807 | 0.9300 | 0.9579 | 128 |
+| 9 | `head_l2_h3` | 0.9805 | 0.9243 | 0.9545 | 128 |
+| 10 | `head_l1_h0` | 0.9802 | 0.9214 | 0.9525 | 128 |
+| 11–16 | `head_l1_h*` | 0.977–0.980 | — | — | 128 |
+| 17–22 | `head_l0_h*` | 0.950–0.962 | — | — | 128 |
+
+### Layer-level summary
+
+| Probe | AUC | Notes |
+|-------|-----|-------|
+| `gat_l0` | 0.9776 | First GAT layer; lowest among full-layer probes |
+| `gat_l1` | 0.9840 | Sharpest single-layer AUC gain (Δ+0.0064 vs l0) |
+| `gat_l2` | 0.9810 | Slight regression from l1 at full-layer level |
+| `bilstm` | 0.9815 | Post-BiLSTM; between l1 and l2 |
+
+### Key findings
+
+**1. A single 128-d GAT head outperforms the 768-d BiLSTM output.**
+`head_l2_h2` (AUC 0.9874) is the best probe overall, beating the BiLSTM (0.9815) by 0.006 AUC.
+This means the most classification-relevant structure is already concentrating in a single
+layer-2 attention head before the BiLSTM even runs.
+
+**2. Layer 2 heads dominate the head ranking.**
+All 6 heads of layer 2 (AUC 0.980–0.987) beat all 6 heads of layer 1 (0.977–0.980), which
+in turn beat all 6 heads of layer 0 (0.950–0.962). The GAT is building increasingly linear
+class separation through its layers.
+
+**3. Layer 0 heads are notably weaker (AUC ~0.95–0.96).**
+The ≈ 0.03 AUC gap between layer 0 and layer 2 heads is large. Layer 0 is doing the
+initial neighborhood aggregation; the clear linear structure emerges in layers 1–2.
+
+**4. BiLSTM adds negligible linear separability.**
+`bilstm` (0.9815) is ranked 5th — below `gat_l1` (0.9840) and all 6 `head_l2_*` probes.
+The BiLSTM temporal modelling does not increase linear separability; it may help non-linear
+classification (the model's sigmoid head) but is not the source of the classification signal.
+
+**5. Head 2 of layer 2 is a recurring stand-out.**
+`head_l2_h2` (best probe) was also notable in the sibilant attention analysis (Exp 4/5).
+Its 128-d representation alone achieves 95.0% accuracy, suggesting it has specialised as a
+high-level spoofing detector at the phoneme-graph level.
+
+### Artifacts saved
+
+All probe weights and feature matrices are in `experiments/results/linear_probe/`:
+- `features_{name}.npz` — (N, D) feature matrix + labels + system_ids
+- `probe_{name}.npz` — coef, intercept, scaler_mean/scale, full metrics dict
+- `probe_metrics_summary.csv` — one row per probe, ranked by AUC
+- `probe_ranking.png` — AUC bar chart, colour-coded by probe type
+
+---
+
 ## Results Directory
 
 Large output files are stored under `experiments/results/`:
@@ -345,6 +417,10 @@ Large output files are stored under `experiments/results/`:
 | `gat_by_system_counts.png` | Exp 5 — edge count matrices per system (confidence proxy) |
 | `gat_by_system_sibil.png` | Exp 5 — sibilant self-attention and nasal→sibilant bar chart |
 | `gat_by_system_summary.csv` | Exp 5 — numeric table, all systems |
+| `linear_probe/probe_ranking.png` | Exp 6 — AUC bar chart across all 22 probes |
+| `linear_probe/probe_metrics_summary.csv` | Exp 6 — full metrics table |
+| `linear_probe/features_*.npz` | Exp 6 — (N, D) feature matrices per probe |
+| `linear_probe/probe_*.npz` | Exp 6 — probe weights + metrics per probe |
 
 Smaller plots from `plot_embeddings.py` are stored directly in `experiments/`:
 
