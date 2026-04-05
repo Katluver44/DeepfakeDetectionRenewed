@@ -3,3 +3,10 @@ models/
 .venv2
 ay2/
 data/
+*.pth
+*.ckpt
+data/
+.ipynb_checkpoints/
+pretrained/
+secret.txt
+venv/
