@@ -1,0 +1,30 @@
+2026-04-02 04:41:47,854 INFO    MainThread:10608 [wandb_setup.py:_flush():81] Current SDK version is 0.24.0
+2026-04-02 04:41:47,854 INFO    MainThread:10608 [wandb_setup.py:_flush():81] Configure stats pid to 10608
+2026-04-02 04:41:47,854 INFO    MainThread:10608 [wandb_setup.py:_flush():81] Loading settings from environment variables
+2026-04-02 04:41:47,854 INFO    MainThread:10608 [wandb_init.py:setup_run_log_directory():717] Logging user logs to /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/wandb/run-20260402_044147-sxz4mn2d/logs/debug.log
+2026-04-02 04:41:47,855 INFO    MainThread:10608 [wandb_init.py:setup_run_log_directory():718] Logging internal logs to /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/wandb/run-20260402_044147-sxz4mn2d/logs/debug-internal.log
+2026-04-02 04:41:47,855 INFO    MainThread:10608 [wandb_init.py:monkeypatch_ipython():636] configuring jupyter hooks <wandb.sdk.wandb_init._WandbInit object at 0x71636c1d7e80>
+2026-04-02 04:41:47,855 INFO    MainThread:10608 [wandb_init.py:init():844] calling init triggers
+2026-04-02 04:41:47,855 INFO    MainThread:10608 [wandb_init.py:init():849] wandb.init called with sweep_config: {}
+config: {'test_run': True, 'learning_rate': 0.02, 'architecture': 'CNN', 'dataset': 'dummy', 'epochs': 10, '_wandb': {}}
+2026-04-02 04:41:47,855 INFO    MainThread:10608 [wandb_init.py:init():892] starting backend
+2026-04-02 04:41:48,256 INFO    MainThread:10608 [wandb_init.py:init():895] sending inform_init request
+2026-04-02 04:41:48,262 INFO    MainThread:10608 [wandb_init.py:init():903] backend started and connected
+2026-04-02 04:41:48,266 INFO    MainThread:10608 [wandb_run.py:_label_probe_notebook():1334] probe notebook
+2026-04-02 04:41:48,266 INFO    MainThread:10608 [wandb_run.py:_label_probe_notebook():1344] Unable to probe notebook: 'NoneType' object has no attribute 'get'
+2026-04-02 04:41:48,267 INFO    MainThread:10608 [wandb_init.py:init():973] updated telemetry
+2026-04-02 04:41:48,452 INFO    MainThread:10608 [wandb_init.py:init():997] communicating run to backend with 90.0 second timeout
+2026-04-02 04:41:48,816 INFO    MainThread:10608 [wandb_init.py:init():1044] starting run threads in backend
+2026-04-02 04:41:49,312 INFO    MainThread:10608 [wandb_run.py:_console_start():2529] atexit reg
+2026-04-02 04:41:49,312 INFO    MainThread:10608 [wandb_run.py:_redirect():2377] redirect: wrap_raw
+2026-04-02 04:41:49,312 INFO    MainThread:10608 [wandb_run.py:_redirect():2446] Wrapping output streams.
+2026-04-02 04:41:49,313 INFO    MainThread:10608 [wandb_run.py:_redirect():2469] Redirects installed.
+2026-04-02 04:41:49,317 INFO    MainThread:10608 [wandb_init.py:init():1084] run started, returning control to user process
+2026-04-02 04:41:49,321 INFO    MainThread:10608 [wandb_run.py:_finish():2295] finishing run krishrawat0222-f/DeepfakeDetectionRenewed/sxz4mn2d
+2026-04-02 04:41:49,322 INFO    MainThread:10608 [jupyter.py:save_history():435] not saving jupyter history
+2026-04-02 04:41:49,322 INFO    MainThread:10608 [jupyter.py:save_ipynb():359] not saving jupyter notebook
+2026-04-02 04:41:49,322 INFO    MainThread:10608 [wandb_init.py:_jupyter_teardown():621] cleaning up jupyter logic
+2026-04-02 04:41:49,322 INFO    MainThread:10608 [wandb_run.py:_atexit_cleanup():2494] got exitcode: 0
+2026-04-02 04:41:49,322 INFO    MainThread:10608 [wandb_run.py:_restore():2476] restore
+2026-04-02 04:41:49,323 INFO    MainThread:10608 [wandb_run.py:_restore():2482] restore done
+2026-04-02 04:41:49,981 INFO    MainThread:10608 [wandb_run.py:_footer_sync_info():3870] logging synced files

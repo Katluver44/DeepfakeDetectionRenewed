@@ -1,0 +1,31 @@
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+======================================================================
+Starting adversarial fine-tuning...
+  Data    : HF test split, indices 5000+ (66237 samples)
+  Augs    : stochastic (5 augmentations, params randomised)
+  Frozen  : WavLM backbone
+  Epochs  : 5  |  Batch size: 20
+======================================================================
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name          | Type                    | Params | Mode
+------------------------------------------------------------------
+0 | model         | Phoneme_GAT             | 106 M  | train
+1 | bce_loss      | BCEWithLogitsLoss       | 0      | train
+2 | ce_loss       | CrossEntropyLoss        | 0      | train
+3 | contrast_loss | BinaryTokenContrastLoss | 0      | train
+4 | clip_head     | Sequential              | 1.2 M  | train
+5 | clip_loss     | CLIPLoss1D              | 1      | train
+------------------------------------------------------------------
+13.5 M    Trainable params
+94.4 M    Non-trainable params
+107 M     Total params
+431.401   Total estimated model params size (MB)
+`Trainer.fit` stopped: `max_epochs=5` reached.
+
+✅ Adversarial fine-tuning complete.
+✅ Saved:
+   adv_goat.pth   — state dict (weights only)
+   adv_goat.ckpt  — full Lightning checkpoint (restorable with load_from_checkpoint)

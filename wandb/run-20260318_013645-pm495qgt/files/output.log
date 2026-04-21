@@ -1,0 +1,40 @@
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name          | Type                    | Params | Mode
+------------------------------------------------------------------
+0 | model         | Phoneme_GAT             | 106 M  | train
+1 | bce_loss      | BCEWithLogitsLoss       | 0      | train
+2 | ce_loss       | CrossEntropyLoss        | 0      | train
+3 | contrast_loss | BinaryTokenContrastLoss | 0      | train
+4 | clip_head     | Sequential              | 1.2 M  | train
+5 | clip_loss     | CLIPLoss1D              | 1      | train
+------------------------------------------------------------------
+13.5 M    Trainable params
+94.4 M    Non-trainable params
+107 M     Total params
+431.401   Total estimated model params size (MB)
+`Trainer.fit` stopped: `max_epochs=5` reached.
+
+✅ Adversarial fine-tuning complete.
+No such comm: 8e72733bfc9846bfbf1532d22c7210dc
+No such comm: acd6fafdfc9a4cb9899c454cae8e8633
+No such comm: 54a4baeeff494dabbf6efd5733c3e1ab
+No such comm: 952a67e50d0143c1a0d3a5793d8fe688
+No such comm: 090b61af650945e8905e4ce762b14aeb
+No such comm: 020c5565b9d343faa281849ef22ed79e
+Now, load vocab json files from /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/vocab_phoneme Please make sure the vocab files are correct
+Load WavLM model!!!!!!!
+Some weights of WavLMForCTC were not initialized from the model checkpoint at microsoft/wavlm-base and are newly initialized: ['encoder.pos_conv_embed.conv.parametrizations.weight.original0', 'encoder.pos_conv_embed.conv.parametrizations.weight.original1', 'lm_head.weight', 'lm_head.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+torch.Size([687, 768])
+Now, load vocab json files from /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/vocab_phoneme Please make sure the vocab files are correct
+Load WavLM model!!!!!!!
+Some weights of WavLMForCTC were not initialized from the model checkpoint at microsoft/wavlm-base and are newly initialized: ['encoder.pos_conv_embed.conv.parametrizations.weight.original0', 'encoder.pos_conv_embed.conv.parametrizations.weight.original1', 'lm_head.weight', 'lm_head.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+torch.Size([687, 768])
+Frozen    : 94,381,936  (87.5%)
+Trainable : 13,468,258  (12.5%)
+LR        : 5e-05  |  KL lambda: 0.3

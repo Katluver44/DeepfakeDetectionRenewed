@@ -1,0 +1,19 @@
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name          | Type                    | Params | Mode
+------------------------------------------------------------------
+0 | model         | Phoneme_GAT             | 106 M  | train
+1 | bce_loss      | BCEWithLogitsLoss       | 0      | train
+2 | ce_loss       | CrossEntropyLoss        | 0      | train
+3 | contrast_loss | BinaryTokenContrastLoss | 0      | train
+4 | clip_head     | Sequential              | 1.2 M  | train
+5 | clip_loss     | CLIPLoss1D              | 1      | train
+------------------------------------------------------------------
+12.9 M    Trainable params
+94.9 M    Non-trainable params
+107 M     Total params
+431.401   Total estimated model params size (MB)
+Epoch 6: 100%|██████████| 1666/1666 [02:30<00:00, 11.08it/s, v_num=w7ug, val-loss=1.170, val-cls_loss=1.170, val-clip_loss=0.0101, val-aug_loss=0.000, val-acc=0.500, val-auc=0.959, val-eer=0.074, val-tpr=1.000, val-tnr=0.000, val-fpr=1.000, val-fnr=0.000, train-loss=0.226, train-cls_loss=0.219, train-clip_loss=0.00664, train-aug_loss=0.00673, train-acc=0.913, train-auc=0.971, train-eer=0.0865, train-tpr=1.000, train-tnr=0.000, train-fpr=0.0777, train-fnr=0.096]
+✅ Patched torch.load to default weights_only=False for this kernel session.
+`Trainer.fit` stopped: `max_epochs=7` reached.
+[34m[1mwandb[0m: [32m[41mERROR[0m The nbformat package was not found. It is required to save notebook history.

@@ -1,0 +1,344 @@
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     Validate metric           DataLoader 0
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+         val-acc            0.9346666932106018
+         val-auc            0.9831719994544983
+      val-aug_loss                  0.0
+      val-clip_loss         0.04174782335758209
+      val-cls_loss          0.17783433198928833
+         val-eer            0.06599999964237213
+         val-fnr            0.09466666728258133
+         val-fpr           0.035999998450279236
+        val-loss            0.1987082064151764
+         val-tnr                    0.0
+         val-tpr                    1.0
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Running augmentation: 'codec_mp3' | params: {'bitrate': '32k'}
+
+  [WARN] batch 0 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 1 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 2 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 3 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 4 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 5 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 6 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 7 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 8 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 9 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  processed ~200 samples …
+  [WARN] batch 10 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 11 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 12 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 13 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 14 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 15 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 16 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 17 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 18 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 19 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  processed ~400 samples …
+  [WARN] batch 20 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 21 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 22 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 23 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 24 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 25 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 26 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 27 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 28 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 29 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  processed ~600 samples …
+  [WARN] batch 30 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 31 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 32 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 33 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 34 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 35 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 36 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 37 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 38 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 39 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  processed ~800 samples …
+  [WARN] batch 40 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 41 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 42 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 43 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 44 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 45 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 46 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 47 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 48 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 49 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  processed ~1000 samples …
+  [WARN] batch 50 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 51 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 52 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 53 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 54 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 55 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 56 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 57 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 58 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 59 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  processed ~1200 samples …
+  [WARN] batch 60 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 61 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 62 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 63 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 64 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 65 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 66 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 67 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 68 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 69 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  processed ~1400 samples …
+  [WARN] batch 70 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 71 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 72 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 73 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 74 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 75 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 76 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 77 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 78 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 79 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  processed ~1600 samples …
+  [WARN] batch 80 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 81 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 82 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 83 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 84 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 85 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 86 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 87 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 88 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 89 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  processed ~1800 samples …
+  [WARN] batch 90 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 91 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 92 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 93 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 94 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 95 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 96 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 97 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 98 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 99 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  processed ~2000 samples …
+  [WARN] batch 100 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 101 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 102 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 103 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 104 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 105 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 106 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 107 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 108 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 109 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  processed ~2200 samples …
+  [WARN] batch 110 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 111 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 112 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 113 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 114 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 115 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 116 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 117 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 118 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 119 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  processed ~2400 samples …
+  [WARN] batch 120 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 121 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 122 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 123 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 124 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 125 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 126 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 127 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 128 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 129 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  processed ~2600 samples …
+  [WARN] batch 130 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 131 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 132 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 133 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 134 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 135 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 136 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 137 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 138 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 139 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  processed ~2800 samples …
+  [WARN] batch 140 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 141 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 142 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 143 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 144 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 145 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 146 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 147 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 148 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  [WARN] batch 149 failed: ('FFmpeg backend expects non-`None` value for argument `compression` to be of ', "type `torchaudio.io.CodecConfig`, but received value of type <class 'int'>")
+  processed ~3000 samples …
+Running augmentation: 'time_stretch' | params: {'rate': 1.07}
+
+  processed ~200 samples …
+  processed ~400 samples …
+  processed ~600 samples …
+  processed ~800 samples …
+  processed ~1000 samples …
+  processed ~1200 samples …
+  processed ~1400 samples …
+  processed ~1600 samples …
+  processed ~1800 samples …
+  processed ~2000 samples …
+  processed ~2200 samples …
+  processed ~2400 samples …
+  processed ~2600 samples …
+  processed ~2800 samples …
+  processed ~3000 samples …
+
+✅  'time_stretch' {'rate': 1.07}  →  tensor shape: torch.Size([3000, 1, 48000])
+
+🎧  10 random clips  ──  time_stretch {'rate': 1.07}
+──────────────────────────────────────────────────
+  clip  1  (val idx 2619)
+  clip  2  (val idx 456)
+  clip  3  (val idx 102)
+  clip  4  (val idx 1126)
+  clip  5  (val idx 1003)
+  clip  6  (val idx 914)
+  clip  7  (val idx 571)
+  clip  8  (val idx 419)
+  clip  9  (val idx 2771)
+  clip 10  (val idx 2233)
+Running augmentation: 'codec_mulaw' | params: {}
+
+  processed ~200 samples …
+  processed ~400 samples …
+  processed ~600 samples …
+  processed ~800 samples …
+  processed ~1000 samples …
+  processed ~1200 samples …
+  processed ~1400 samples …
+  processed ~1600 samples …
+  processed ~1800 samples …
+  processed ~2000 samples …
+  processed ~2200 samples …
+  processed ~2400 samples …
+  processed ~2600 samples …
+  processed ~2800 samples …
+  processed ~3000 samples …
+
+✅  'codec_mulaw' {}  →  tensor shape: torch.Size([3000, 1, 48000])
+
+🎧  10 random clips  ──  codec_mulaw {}
+──────────────────────────────────────────────────
+  clip  1  (val idx 2619)
+  clip  2  (val idx 456)
+  clip  3  (val idx 102)
+  clip  4  (val idx 1126)
+  clip  5  (val idx 1003)
+  clip  6  (val idx 914)
+  clip  7  (val idx 571)
+  clip  8  (val idx 419)
+  clip  9  (val idx 2771)
+  clip 10  (val idx 2233)
+Now, load vocab json files from /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/vocab_phoneme Please make sure the vocab files are correct
+Load WavLM model!!!!!!!
+Some weights of WavLMForCTC were not initialized from the model checkpoint at microsoft/wavlm-base and are newly initialized: ['encoder.pos_conv_embed.conv.parametrizations.weight.original0', 'encoder.pos_conv_embed.conv.parametrizations.weight.original1', 'lm_head.weight', 'lm_head.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+torch.Size([687, 768])
+logit torch.Size([3])
+hidden_states torch.Size([3, 768])
+phoneme_feat torch.Size([3, 149, 768])
+encoder_feat torch.Size([3, 149, 768])
+phoneme_cls_logit torch.Size([3, 687])
+phoneme_cls_label torch.Size([3])
+aug_logit torch.Size([3])
+aug_frame_logit torch.Size([3])
+aug_labels torch.Size([3])
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+Now, load vocab json files from /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/vocab_phoneme Please make sure the vocab files are correct
+Load WavLM model!!!!!!!
+Some weights of WavLMForCTC were not initialized from the model checkpoint at microsoft/wavlm-base and are newly initialized: ['encoder.pos_conv_embed.conv.parametrizations.weight.original0', 'encoder.pos_conv_embed.conv.parametrizations.weight.original1', 'lm_head.weight', 'lm_head.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+torch.Size([687, 768])
+/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/venv/lib/python3.10/site-packages/pytorch_lightning/loggers/wandb.py:396: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     Validate metric           DataLoader 0
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+         val-acc            0.9346666932106018
+         val-auc            0.9831719994544983
+      val-aug_loss                  0.0
+      val-clip_loss         0.04174782335758209
+      val-cls_loss          0.1778343915939331
+         val-eer            0.06599999964237213
+         val-fnr            0.09466666728258133
+         val-fpr           0.035999998450279236
+        val-loss            0.19870829582214355
+         val-tnr                    0.0
+         val-tpr                    1.0
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Running augmentation: 'time_stretch' | params: {'rate': 2}
+
+  processed ~200 samples …
+  processed ~400 samples …
+  processed ~600 samples …
+  processed ~800 samples …
+  processed ~1000 samples …
+  processed ~1200 samples …
+  processed ~1400 samples …
+  processed ~1600 samples …
+  processed ~1800 samples …
+  processed ~2000 samples …
+  processed ~2200 samples …
+  processed ~2400 samples …
+  processed ~2600 samples …
+  processed ~2800 samples …
+  processed ~3000 samples …
+
+✅  'time_stretch' {'rate': 2}  →  tensor shape: torch.Size([3000, 1, 48000])
+
+🎧  10 random clips  ──  time_stretch {'rate': 2}
+──────────────────────────────────────────────────
+  clip  1  (val idx 2619)
+  clip  2  (val idx 456)
+  clip  3  (val idx 102)
+  clip  4  (val idx 1126)
+  clip  5  (val idx 1003)
+  clip  6  (val idx 914)
+  clip  7  (val idx 571)
+  clip  8  (val idx 419)
+  clip  9  (val idx 2771)
+  clip 10  (val idx 2233)
+Now, load vocab json files from /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/vocab_phoneme Please make sure the vocab files are correct
+Load WavLM model!!!!!!!
+Some weights of WavLMForCTC were not initialized from the model checkpoint at microsoft/wavlm-base and are newly initialized: ['encoder.pos_conv_embed.conv.parametrizations.weight.original0', 'encoder.pos_conv_embed.conv.parametrizations.weight.original1', 'lm_head.weight', 'lm_head.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+torch.Size([687, 768])
+logit torch.Size([3])
+hidden_states torch.Size([3, 768])
+phoneme_feat torch.Size([3, 149, 768])
+encoder_feat torch.Size([3, 149, 768])
+phoneme_cls_logit torch.Size([3, 687])
+phoneme_cls_label torch.Size([3])
+aug_logit torch.Size([3])
+aug_frame_logit torch.Size([3])
+aug_labels torch.Size([3])
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+Now, load vocab json files from /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/vocab_phoneme Please make sure the vocab files are correct
+Load WavLM model!!!!!!!
+Some weights of WavLMForCTC were not initialized from the model checkpoint at microsoft/wavlm-base and are newly initialized: ['encoder.pos_conv_embed.conv.parametrizations.weight.original0', 'encoder.pos_conv_embed.conv.parametrizations.weight.original1', 'lm_head.weight', 'lm_head.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+torch.Size([687, 768])
+/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/venv/lib/python3.10/site-packages/pytorch_lightning/loggers/wandb.py:396: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/venv/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py:54: Detected KeyboardInterrupt, attempting graceful shutdown...
+[rank: 0] Received SIGTERM: 15

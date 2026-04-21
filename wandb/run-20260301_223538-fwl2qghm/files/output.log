@@ -1,0 +1,71 @@
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     Validate metric           DataLoader 0
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+         val-acc                    0.5
+         val-auc            0.5231215357780457
+      val-aug_loss                  0.0
+      val-clip_loss         2.9957308769226074
+      val-cls_loss           4.382538318634033
+         val-eer            0.45257142186164856
+         val-fnr                    0.0
+         val-fpr                    1.0
+        val-loss             5.880403518676758
+         val-tnr                    0.0
+         val-tpr                    1.0
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+No such comm: 0f8fbddea08b4214aef0e6f407a1e1a3
+No such comm: 2609cb61687c48faaed58c409bda5abc
+No such comm: 5a6330c8721448a0aa4bd1eab4988b4b
+No such comm: 4757d0b3f2264ee0ad5830717a12e369
+No such comm: a3e798053e904bc4900f43d121a32fd7
+No such comm: 83fa2b7dec4a421199b3caa8869d33ed
+No such comm: 98b3fb6cab2c4bbb8aad102a47e67d5d
+No such comm: 7627b3bd519845239566806c4c2c268f
+No such comm: 4beefcedcf0444fabd88bf52d36470b4
+No such comm: 810272e1bd194415b7a9a728a254f356
+No such comm: 9f98e243ceaa4dc487052ab90ea48969
+No such comm: 69cdf76426b6462da32adb8ba9bd59c8
+No such comm: 651cbe8a9e284b7eaf12da54a8c1e9e9
+No such comm: 067cedbe33b0445b8290d65258b65674
+No such comm: bededf75379946dca94de9935c9f0921
+No such comm: 4cf1800090934ae78d107564ac7aaeca
+No such comm: 3d1dbcf49c8e4b84adcf34c5535dec4d
+No such comm: 8289155eaaf74435966ab68444dac6e0
+No such comm: ce2a3fc42c2340dc91a645ebc42a1abd
+No such comm: 614bc0658a5749d4ab4e08fe73fb6a5d
+No such comm: b6018fa19670432abc6cd58700381ba2
+No such comm: c8641d5b28c0465aaeff2527b9a24662
+No such comm: 92875cde59ab45afaa662a3f58978502
+No such comm: 2776fa396dbb42d2a2db84f77824a337
+No such comm: 3d36d69c541b4857b95f53ef7704b0ec
+No such comm: 68691a1f0d8e4cb4885d9fea895069d8
+No such comm: fc636e937c754d1eb7ce3f3a092f0061
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     Validate metric           DataLoader 0
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+         val-acc                    0.5
+         val-auc            0.5196235179901123
+      val-aug_loss                  0.0
+      val-clip_loss         2.9957308769226074
+      val-cls_loss           4.382540225982666
+         val-eer            0.4551111161708832
+         val-fnr                    0.0
+         val-fpr                    1.0
+        val-loss             5.880403518676758
+         val-tnr                    0.0
+         val-tpr                    1.0
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+No such comm: ed8f5a38e8914824854b67bb46d12452
+No such comm: f9ef75bf2f4c4be795580e0bd2ec9315
+No such comm: fe6e0b8d348443e1b2acd4c69d9fa9a3
+No such comm: 4ff0729898b34ffbb6c4bf51a4bd4963
+No such comm: b6a17b1f95924c8ca881fceb23a4af8b
+No such comm: 36a02bf24b44464e8e10ad1cc2739585
+No such comm: af7ba269dc97450183bc094c7b681e8c
+No such comm: 64657db5775d48beb65da2708a5bdcf1
+No such comm: 6ce1f40b37db472b8e158bcb6f7672c1
+No such comm: 2fe92b44679e4ac597480f7ab71e8212
+No such comm: 029c568ee90a4d77b905b46271a15ce1
+✅ Patched torch.load to default weights_only=False for this kernel session.

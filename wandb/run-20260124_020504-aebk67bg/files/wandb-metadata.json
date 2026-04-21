@@ -1,0 +1,38 @@
+{
+  "os": "Linux-6.8.0-1040-nvidia-x86_64-with-glibc2.35",
+  "python": "CPython 3.10.12",
+  "startedAt": "2026-01-24T02:05:04.476596Z",
+  "program": "<python with no main file>",
+  "git": {
+    "remote": "https://github.com/Katluver44/DeepfakeDetectionRenewed.git",
+    "commit": "8f873ee8073c26f57980f4d1a059afee72727c87"
+  },
+  "email": "yashaspatil@gmail.com",
+  "root": "/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed",
+  "host": "132-145-136-207",
+  "executable": "/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/venv/bin/python",
+  "cpu_count": 30,
+  "cpu_count_logical": 30,
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "532608356352",
+      "used": "29383815168"
+    }
+  },
+  "memory": {
+    "total": "232205713408"
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA A100-SXM4-40GB",
+      "memoryTotal": "42949672960",
+      "cudaCores": 6912,
+      "architecture": "Ampere",
+      "uuid": "GPU-79710991-751a-0f82-23bb-8f87c9364ba2"
+    }
+  ],
+  "cudaVersion": "12.8",
+  "writerId": "ed800t59ijbp08xh01l7zgmvxrqy2h0d"
+}

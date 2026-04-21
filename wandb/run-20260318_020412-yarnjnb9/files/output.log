@@ -1,0 +1,46 @@
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name          | Type                    | Params | Mode
+------------------------------------------------------------------
+0 | model         | Phoneme_GAT             | 106 M  | train
+1 | bce_loss      | BCEWithLogitsLoss       | 0      | train
+2 | ce_loss       | CrossEntropyLoss        | 0      | train
+3 | contrast_loss | BinaryTokenContrastLoss | 0      | train
+4 | clip_head     | Sequential              | 1.2 M  | train
+5 | clip_loss     | CLIPLoss1D              | 1      | train
+------------------------------------------------------------------
+13.5 M    Trainable params
+94.4 M    Non-trainable params
+107 M     Total params
+431.401   Total estimated model params size (MB)
+`Trainer.fit` stopped: `max_epochs=5` reached.
+
+✅ Adversarial fine-tuning complete.
+No such comm: 7bd521d7a1e94f6f858703b0e10ada83
+No such comm: b97c1fcbb7d94e399a3b4556f67a13aa
+No such comm: 390319cd552c4704b19f1013dc116f8b
+No such comm: 40be888f8f2b475ebb1e593062e7b639
+No such comm: 1a3038275d8f4578ac64b7947102b7a0
+No such comm: 156fd0923fdb4fe6913e2fffadd1dd29
+Batch audio shape : torch.Size([20, 1, 48000])
+Batch label shape : torch.Size([20])
+Dataset size: 3000 samples  |  150 batches/epoch
+Batch audio shape : torch.Size([20, 1, 48000])
+Batch label shape : torch.Size([20])
+Batches per epoch : 150
+Now, load vocab json files from /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/vocab_phoneme Please make sure the vocab files are correct
+Load WavLM model!!!!!!!
+Some weights of WavLMForCTC were not initialized from the model checkpoint at microsoft/wavlm-base and are newly initialized: ['encoder.pos_conv_embed.conv.parametrizations.weight.original0', 'encoder.pos_conv_embed.conv.parametrizations.weight.original1', 'lm_head.weight', 'lm_head.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+torch.Size([687, 768])
+Now, load vocab json files from /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/vocab_phoneme Please make sure the vocab files are correct
+Load WavLM model!!!!!!!
+Some weights of WavLMForCTC were not initialized from the model checkpoint at microsoft/wavlm-base and are newly initialized: ['encoder.pos_conv_embed.conv.parametrizations.weight.original0', 'encoder.pos_conv_embed.conv.parametrizations.weight.original1', 'lm_head.weight', 'lm_head.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+torch.Size([687, 768])
+Frozen    : 94,381,936  (87.5%)
+Trainable : 13,468,258  (12.5%)
+LR        : 5e-05  |  KL lambda: 0.1

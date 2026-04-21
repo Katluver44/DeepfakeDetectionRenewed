@@ -1,0 +1,12 @@
+{"time":"2026-03-14T06:40:55.328309675Z","level":"INFO","msg":"stream: starting","core version":"0.24.0"}
+{"time":"2026-03-14T06:40:55.488604165Z","level":"INFO","msg":"stream: created new stream","id":"hikrndss"}
+{"time":"2026-03-14T06:40:55.488783879Z","level":"INFO","msg":"handler: started","stream_id":"hikrndss"}
+{"time":"2026-03-14T06:40:55.492352393Z","level":"INFO","msg":"stream: started","id":"hikrndss"}
+{"time":"2026-03-14T06:40:55.492361903Z","level":"INFO","msg":"writer: started","stream_id":"hikrndss"}
+{"time":"2026-03-14T06:40:55.492390404Z","level":"INFO","msg":"sender: started","stream_id":"hikrndss"}
+{"time":"2026-03-14T06:41:16.15832806Z","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-03-14T06:41:16.446846734Z","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-03-14T06:41:16.456338274Z","level":"INFO","msg":"stream: closing","id":"hikrndss"}
+{"time":"2026-03-14T06:41:16.456507388Z","level":"INFO","msg":"handler: closed","stream_id":"hikrndss"}
+{"time":"2026-03-14T06:41:16.459278861Z","level":"INFO","msg":"sender: closed","stream_id":"hikrndss"}
+{"time":"2026-03-14T06:41:16.459355353Z","level":"INFO","msg":"stream: closed","id":"hikrndss"}

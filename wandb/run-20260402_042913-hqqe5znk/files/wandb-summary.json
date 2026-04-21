@@ -1,0 +1,1 @@
+{"t60":0.6,"val_fnr":0.3606666666666667,"val_fpr":0.3606666666666667,"room_scale":0.5,"val_tpr":0.6393333333333333,"active_aug":"reverberation","_timestamp":1.7751041698946266e+09,"_runtime":23,"val_tnr":0.6393333333333333,"val_auc":0.69598,"val_acc":0.6393333333333333,"_step":0,"val_eer":0.3606666666666667,"_wandb":{"runtime":23}}

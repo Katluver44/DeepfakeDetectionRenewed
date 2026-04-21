@@ -1,0 +1,12 @@
+{"time":"2026-03-06T02:13:50.18231068Z","level":"INFO","msg":"stream: starting","core version":"0.24.0"}
+{"time":"2026-03-06T02:13:50.339159113Z","level":"INFO","msg":"stream: created new stream","id":"tyf1slir"}
+{"time":"2026-03-06T02:13:50.339608727Z","level":"INFO","msg":"handler: started","stream_id":"tyf1slir"}
+{"time":"2026-03-06T02:13:50.346169347Z","level":"INFO","msg":"stream: started","id":"tyf1slir"}
+{"time":"2026-03-06T02:13:50.346197444Z","level":"INFO","msg":"writer: started","stream_id":"tyf1slir"}
+{"time":"2026-03-06T02:13:50.346237694Z","level":"INFO","msg":"sender: started","stream_id":"tyf1slir"}
+{"time":"2026-03-06T02:18:47.613429182Z","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-03-06T02:18:48.205493959Z","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-03-06T02:18:48.212920117Z","level":"INFO","msg":"stream: closing","id":"tyf1slir"}
+{"time":"2026-03-06T02:18:48.21592889Z","level":"INFO","msg":"handler: closed","stream_id":"tyf1slir"}
+{"time":"2026-03-06T02:18:48.219161373Z","level":"INFO","msg":"sender: closed","stream_id":"tyf1slir"}
+{"time":"2026-03-06T02:18:48.219212746Z","level":"INFO","msg":"stream: closed","id":"tyf1slir"}

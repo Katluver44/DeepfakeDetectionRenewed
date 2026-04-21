@@ -1,0 +1,102 @@
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.2.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "/home/cog/ryan-dir/DeepfakeDetectionRenewed/experiments/act_patching.py", line 34, in <module>
+    import torch  # must be before matplotlib to avoid NumPy C-API conflict
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/__init__.py", line 2276, in <module>
+    from torch import quantization as quantization  # usort: skip
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/quantization/__init__.py", line 2, in <module>
+    from .fake_quantize import *  # noqa: F403
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/quantization/fake_quantize.py", line 10, in <module>
+    from torch.ao.quantization.fake_quantize import (
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/ao/quantization/__init__.py", line 12, in <module>
+    from .pt2e._numeric_debugger import (  # noqa: F401
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/ao/quantization/pt2e/_numeric_debugger.py", line 9, in <module>
+    from torch.ao.quantization.pt2e.graph_utils import bfs_trace_with_node_process
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/ao/quantization/pt2e/graph_utils.py", line 9, in <module>
+    from torch.export import ExportedProgram
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/export/__init__.py", line 61, in <module>
+    from .decomp_utils import CustomDecompTable
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/export/decomp_utils.py", line 5, in <module>
+    from torch._export.utils import (
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/_export/__init__.py", line 48, in <module>
+    from .wrappers import _wrap_submodules
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/_export/wrappers.py", line 7, in <module>
+    from torch._higher_order_ops.flat_apply import (
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/_higher_order_ops/__init__.py", line 1, in <module>
+    from torch._higher_order_ops._invoke_quant import (
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/_higher_order_ops/_invoke_quant.py", line 8, in <module>
+    from torch._higher_order_ops.base_hop import BaseHOP, FunctionWithNoFreeVars
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/_higher_order_ops/base_hop.py", line 9, in <module>
+    from torch._higher_order_ops.auto_functionalize import FunctionalCallableWithEpilogue
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/_higher_order_ops/auto_functionalize.py", line 13, in <module>
+    from torch._higher_order_ops.utils import (
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/_higher_order_ops/utils.py", line 16, in <module>
+    from torch._subclasses.functional_tensor import (
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/_subclasses/functional_tensor.py", line 46, in <module>
+    class FunctionalTensor(torch.Tensor):
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/_subclasses/functional_tensor.py", line 279, in FunctionalTensor
+    cpu = _conversion_method_template(device=torch.device("cpu"))
+/home/cog/.local/lib/python3.10/site-packages/torch/_subclasses/functional_tensor.py:279: UserWarning: Failed to initialize NumPy: 
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.2.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+ (Triggered internally at /opt/pytorch/torch/csrc/utils/tensor_numpy.cpp:81.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+/home/cog/ryan-dir/DeepfakeDetectionRenewed/.venv2/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+Device: cuda
+Phoneme ID → class map: 687 entries
+Loading checkpoint: /home/cog/ryan-dir/DeepfakeDetectionRenewed/models/robust_goat.ckpt
+Load WavLM model!!!!!!!
+Loading weights:   0%|          | 0/248 [00:00<?, ?it/s]Loading weights: 100%|██████████| 248/248 [00:00<00:00, 10265.85it/s]
+[1mWavLMForCTC LOAD REPORT[0m from: microsoft/wavlm-base
+Key            | Status  | 
+---------------+---------+-
+lm_head.weight | MISSING | 
+lm_head.bias   | MISSING | 
+
+Notes:
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+torch.Size([687, 768])
+Model ready on cuda.
+
+Dataset 'validation': 3500 samples  (7 systems)
+Phase 1: computing bonafide class means...
+  Classes with bonafide means: ['Affricates', 'Approximants', 'Diphthongs', 'Fricatives', 'Nasals', 'Other', 'Sibilants', 'Stops', 'Vowels']
+  Total bonafide nodes used: 16742
+
+Phase 2: activation patching on spoof samples...
+  Patched: 2639 utterances  (361 skipped, wrong prediction)
+  Total node records: 108437
+
+Class                Mean Δ      Std       n
+────────────────────────────────────────────
+  Vowels          +1.8872   1.9461    33568
+  Diphthongs      +1.9456   1.9359     6245
+  Approximants    +1.9095   1.9299     3839
+  Nasals          +1.8223   1.8716     1560
+  Stops           +1.8496   1.8854     8927
+  Fricatives      +1.8708   1.9501     6686
+  Sibilants       +1.7211   1.9044      525
+  Affricates      +1.7433   1.8603     3660
+  Other           +1.8578   1.9503    43427
+
+Saved: act_patching_class_stats.csv
+Saved: act_patching_violin.png
+Saved: act_patching_by_system.png
+
+All artefacts saved to /home/cog/ryan-dir/DeepfakeDetectionRenewed/experiments/results/act_patching/

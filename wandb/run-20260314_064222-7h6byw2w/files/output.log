@@ -1,0 +1,22 @@
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/venv/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:424: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=29` in the `DataLoader` to improve performance.
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     Validate metric           DataLoader 0
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+         val-acc             0.925000011920929
+         val-auc            0.9767764806747437
+      val-aug_loss                  0.0
+      val-clip_loss         0.04975013807415962
+      val-cls_loss          0.19399432837963104
+         val-eer            0.07599999755620956
+         val-fnr            0.07999999821186066
+         val-fpr            0.07000000029802322
+        val-loss            0.2188694030046463
+         val-tnr                    0.0
+         val-tpr                    1.0
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+[CSV UPDATED] augmentation_attack_results.csv
+[34m[1mwandb[0m: [33mWARNING[0m Symlinked 1 file into the W&B run directory; call wandb.save again to sync new files.

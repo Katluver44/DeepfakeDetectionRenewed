@@ -1,0 +1,76 @@
+_wandb:
+    value:
+        cli_version: 0.24.0
+        e:
+            plnmlv3rt57fa3m9bv4wcjru1ng74dx5:
+                codePath: algovirginia/workspace/DeepfakeDetectionRenewed/experiments.ipynb
+                cpu_count: 30
+                cpu_count_logical: 30
+                cudaVersion: "12.8"
+                disk:
+                    /:
+                        total: "1456701079552"
+                        used: "26715918336"
+                email: yashaspatil@gmail.com
+                executable: /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/venv/bin/python
+                git:
+                    commit: e98366503f2e8a9461a0ff5b37ba536b40839ba7
+                    remote: https://github.com/Katluver44/DeepfakeDetectionRenewed.git
+                gpu: NVIDIA A10
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Ampere
+                      cudaCores: 9216
+                      memoryTotal: "24146608128"
+                      name: NVIDIA A10
+                      uuid: GPU-6bb28676-2643-1346-b12c-8438e89e1935
+                host: 158-101-122-192
+                memory:
+                    total: "238546423808"
+                os: Linux-6.8.0-1040-nvidia-x86_64-with-glibc2.35
+                program: algovirginia/workspace/DeepfakeDetectionRenewed/experiments.ipynb
+                python: CPython 3.10.12
+                root: /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed
+                startedAt: "2026-02-24T05:17:56.916832Z"
+                writerId: plnmlv3rt57fa3m9bv4wcjru1ng74dx5
+        m: []
+        python_version: 3.10.12
+        t:
+            "1":
+                - 1
+                - 5
+                - 9
+                - 11
+                - 49
+                - 51
+                - 53
+                - 103
+            "2":
+                - 1
+                - 5
+                - 9
+                - 11
+                - 49
+                - 51
+                - 53
+                - 103
+            "3":
+                - 2
+                - 16
+            "4": 3.10.12
+            "5": 0.24.0
+            "6": 4.36.2
+            "8":
+                - 1
+            "12": 0.24.0
+            "13": linux-x86_64
+architecture:
+    value: CNN
+dataset:
+    value: dummy
+epochs:
+    value: 10
+learning_rate:
+    value: 0.02
+test_run:
+    value: true

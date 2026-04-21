@@ -1,0 +1,7 @@
+State dict: 144 keys.  First 5: ['first_bn.weight', 'first_bn.bias', 'first_bn.running_mean', 'first_bn.running_var', 'first_bn.num_batches_tracked']
+
+🔍 Detected genuine Whisper architecture
+   embed_dim=384 → Whisper 'tiny'
+   Encoder loaded. Missing=67  Unexpected=144
+✅ whisper.pth loaded as Whisper on cuda
+✅ Metric helpers ready.

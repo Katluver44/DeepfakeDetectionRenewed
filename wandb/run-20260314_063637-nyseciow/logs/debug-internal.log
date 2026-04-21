@@ -1,0 +1,12 @@
+{"time":"2026-03-14T06:36:37.660053454Z","level":"INFO","msg":"stream: starting","core version":"0.24.0"}
+{"time":"2026-03-14T06:36:37.82284486Z","level":"INFO","msg":"stream: created new stream","id":"nyseciow"}
+{"time":"2026-03-14T06:36:37.823042065Z","level":"INFO","msg":"handler: started","stream_id":"nyseciow"}
+{"time":"2026-03-14T06:36:37.826842965Z","level":"INFO","msg":"stream: started","id":"nyseciow"}
+{"time":"2026-03-14T06:36:37.826890846Z","level":"INFO","msg":"sender: started","stream_id":"nyseciow"}
+{"time":"2026-03-14T06:36:37.826863617Z","level":"INFO","msg":"writer: started","stream_id":"nyseciow"}
+{"time":"2026-03-14T06:37:02.918657168Z","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-03-14T06:37:03.085500082Z","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-03-14T06:37:03.096287186Z","level":"INFO","msg":"stream: closing","id":"nyseciow"}
+{"time":"2026-03-14T06:37:03.096380979Z","level":"INFO","msg":"handler: closed","stream_id":"nyseciow"}
+{"time":"2026-03-14T06:37:03.09837036Z","level":"INFO","msg":"sender: closed","stream_id":"nyseciow"}
+{"time":"2026-03-14T06:37:03.098428462Z","level":"INFO","msg":"stream: closed","id":"nyseciow"}

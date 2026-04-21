@@ -1,0 +1,12 @@
+{"time":"2026-03-14T06:44:41.389176154Z","level":"INFO","msg":"stream: starting","core version":"0.24.0"}
+{"time":"2026-03-14T06:44:41.554365103Z","level":"INFO","msg":"stream: created new stream","id":"jcd4gnuh"}
+{"time":"2026-03-14T06:44:41.554505787Z","level":"INFO","msg":"handler: started","stream_id":"jcd4gnuh"}
+{"time":"2026-03-14T06:44:41.557898696Z","level":"INFO","msg":"stream: started","id":"jcd4gnuh"}
+{"time":"2026-03-14T06:44:41.557920627Z","level":"INFO","msg":"writer: started","stream_id":"jcd4gnuh"}
+{"time":"2026-03-14T06:44:41.557941527Z","level":"INFO","msg":"sender: started","stream_id":"jcd4gnuh"}
+{"time":"2026-03-14T06:45:06.507176853Z","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-03-14T06:45:06.792924596Z","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-03-14T06:45:06.804307496Z","level":"INFO","msg":"stream: closing","id":"jcd4gnuh"}
+{"time":"2026-03-14T06:45:06.804392908Z","level":"INFO","msg":"handler: closed","stream_id":"jcd4gnuh"}
+{"time":"2026-03-14T06:45:06.806891394Z","level":"INFO","msg":"sender: closed","stream_id":"jcd4gnuh"}
+{"time":"2026-03-14T06:45:06.806946405Z","level":"INFO","msg":"stream: closed","id":"jcd4gnuh"}

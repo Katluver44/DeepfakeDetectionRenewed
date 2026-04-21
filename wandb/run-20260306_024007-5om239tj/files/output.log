@@ -1,0 +1,49 @@
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/venv/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:424: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=29` in the `DataLoader` to improve performance.
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     Validate metric           DataLoader 0
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+         val-acc            0.9363333582878113
+         val-auc            0.9840960502624512
+      val-aug_loss                  0.0
+      val-clip_loss         0.04124395549297333
+      val-cls_loss          0.17212727665901184
+         val-eer            0.06333333253860474
+         val-fnr            0.09066666662693024
+         val-fpr           0.036666665226221085
+        val-loss            0.1927492469549179
+         val-tnr                    0.0
+         val-tpr                    1.0
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Running augmentation: 'phase_noise' | params: {'noise_level': 0.012}
+
+  processed ~200 samples …
+  processed ~400 samples …
+  processed ~600 samples …
+  processed ~800 samples …
+  processed ~1000 samples …
+  processed ~1200 samples …
+  processed ~1400 samples …
+  processed ~1600 samples …
+  processed ~1800 samples …
+  processed ~2000 samples …
+  processed ~2200 samples …
+  processed ~2400 samples …
+  processed ~2600 samples …
+  processed ~2800 samples …
+  processed ~3000 samples …
+
+✅  'phase_noise' {'noise_level': 0.012}  →  tensor shape: torch.Size([3000, 1, 48000])
+
+🎧  10 random clips  ──  phase_noise {'noise_level': 0.012}
+──────────────────────────────────────────────────
+  clip  1  (val idx 2619)
+  clip  2  (val idx 456)
+  clip  3  (val idx 102)
+  clip  4  (val idx 1126)
+  clip  5  (val idx 1003)
+  clip  6  (val idx 914)
+  clip  7  (val idx 571)
+  clip  8  (val idx 419)
+  clip  9  (val idx 2771)
+  clip 10  (val idx 2233)

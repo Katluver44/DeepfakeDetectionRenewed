@@ -1,0 +1,27 @@
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name          | Type                    | Params | Mode
+------------------------------------------------------------------
+0 | model         | Phoneme_GAT             | 106 M  | train
+1 | bce_loss      | BCEWithLogitsLoss       | 0      | train
+2 | ce_loss       | CrossEntropyLoss        | 0      | train
+3 | contrast_loss | BinaryTokenContrastLoss | 0      | train
+4 | clip_head     | Sequential              | 1.2 M  | train
+5 | clip_loss     | CLIPLoss1D              | 1      | train
+------------------------------------------------------------------
+13.5 M    Trainable params
+94.4 M    Non-trainable params
+107 M     Total params
+431.401   Total estimated model params size (MB)
+`Trainer.fit` stopped: `max_epochs=5` reached.
+
+✅ Adversarial fine-tuning complete.
+No such comm: 310d6cd8f5d64f86b9a5aaf967d3ba2f
+No such comm: 375a70d91a2f4b61b860a9fc9fe39776
+No such comm: 8a40fdab37f148e4af9b4c51ab8bcf35
+No such comm: f7a22e4dd3cb4b368365070a5e29fad2
+No such comm: 1b97a8a5a7f34b9482ed6eb5ba8edf21
+No such comm: 4ce5240c697046cc8c94e8eeb993156f

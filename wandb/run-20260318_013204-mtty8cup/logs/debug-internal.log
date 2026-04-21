@@ -1,0 +1,12 @@
+{"time":"2026-03-18T01:32:04.121037162Z","level":"INFO","msg":"stream: starting","core version":"0.24.0"}
+{"time":"2026-03-18T01:32:04.283753419Z","level":"INFO","msg":"stream: created new stream","id":"mtty8cup"}
+{"time":"2026-03-18T01:32:04.284049953Z","level":"INFO","msg":"handler: started","stream_id":"mtty8cup"}
+{"time":"2026-03-18T01:32:04.288137069Z","level":"INFO","msg":"stream: started","id":"mtty8cup"}
+{"time":"2026-03-18T01:32:04.288171136Z","level":"INFO","msg":"writer: started","stream_id":"mtty8cup"}
+{"time":"2026-03-18T01:32:04.288189567Z","level":"INFO","msg":"sender: started","stream_id":"mtty8cup"}
+{"time":"2026-03-18T01:36:38.779196959Z","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-03-18T01:36:45.707622519Z","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-03-18T01:36:45.715497114Z","level":"INFO","msg":"stream: closing","id":"mtty8cup"}
+{"time":"2026-03-18T01:36:45.715651824Z","level":"INFO","msg":"handler: closed","stream_id":"mtty8cup"}
+{"time":"2026-03-18T01:36:45.718541315Z","level":"INFO","msg":"sender: closed","stream_id":"mtty8cup"}
+{"time":"2026-03-18T01:36:45.718615218Z","level":"INFO","msg":"stream: closed","id":"mtty8cup"}

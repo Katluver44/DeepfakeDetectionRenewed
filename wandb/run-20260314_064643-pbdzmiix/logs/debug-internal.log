@@ -1,0 +1,12 @@
+{"time":"2026-03-14T06:46:43.272367823Z","level":"INFO","msg":"stream: starting","core version":"0.24.0"}
+{"time":"2026-03-14T06:46:43.436415411Z","level":"INFO","msg":"stream: created new stream","id":"pbdzmiix"}
+{"time":"2026-03-14T06:46:43.436607627Z","level":"INFO","msg":"handler: started","stream_id":"pbdzmiix"}
+{"time":"2026-03-14T06:46:43.4401573Z","level":"INFO","msg":"stream: started","id":"pbdzmiix"}
+{"time":"2026-03-14T06:46:43.440229391Z","level":"INFO","msg":"writer: started","stream_id":"pbdzmiix"}
+{"time":"2026-03-14T06:46:43.440269853Z","level":"INFO","msg":"sender: started","stream_id":"pbdzmiix"}
+{"time":"2026-03-14T06:47:10.359906797Z","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-03-14T06:47:10.584109518Z","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-03-14T06:47:10.595388535Z","level":"INFO","msg":"stream: closing","id":"pbdzmiix"}
+{"time":"2026-03-14T06:47:10.595506107Z","level":"INFO","msg":"handler: closed","stream_id":"pbdzmiix"}
+{"time":"2026-03-14T06:47:10.597404487Z","level":"INFO","msg":"sender: closed","stream_id":"pbdzmiix"}
+{"time":"2026-03-14T06:47:10.597467559Z","level":"INFO","msg":"stream: closed","id":"pbdzmiix"}

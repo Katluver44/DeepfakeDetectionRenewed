@@ -1,0 +1,215 @@
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     Validate metric           DataLoader 0
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+         val-acc            0.9346666932106018
+         val-auc            0.9831719994544983
+      val-aug_loss                  0.0
+      val-clip_loss         0.04174782335758209
+      val-cls_loss          0.1778343915939331
+         val-eer            0.06599999964237213
+         val-fnr            0.09466666728258133
+         val-fpr           0.035999998450279236
+        val-loss            0.19870831072330475
+         val-tnr                    0.0
+         val-tpr                    1.0
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Running augmentation: 'time_stretch' | params: {'rate': 2}
+
+  processed ~200 samples …
+  processed ~400 samples …
+  processed ~600 samples …
+  processed ~800 samples …
+  processed ~1000 samples …
+  processed ~1200 samples …
+  processed ~1400 samples …
+  processed ~1600 samples …
+  processed ~1800 samples …
+  processed ~2000 samples …
+  processed ~2200 samples …
+  processed ~2400 samples …
+  processed ~2600 samples …
+  processed ~2800 samples …
+  processed ~3000 samples …
+
+✅  'time_stretch' {'rate': 2}  →  tensor shape: torch.Size([3000, 1, 48000])
+
+🎧  10 random clips  ──  time_stretch {'rate': 2}
+──────────────────────────────────────────────────
+  clip  1  (val idx 2619)
+  clip  2  (val idx 456)
+  clip  3  (val idx 102)
+  clip  4  (val idx 1126)
+  clip  5  (val idx 1003)
+  clip  6  (val idx 914)
+  clip  7  (val idx 571)
+  clip  8  (val idx 419)
+  clip  9  (val idx 2771)
+  clip 10  (val idx 2233)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+Now, load vocab json files from /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/vocab_phoneme Please make sure the vocab files are correct
+Load WavLM model!!!!!!!
+Some weights of WavLMForCTC were not initialized from the model checkpoint at microsoft/wavlm-base and are newly initialized: ['encoder.pos_conv_embed.conv.parametrizations.weight.original1', 'encoder.pos_conv_embed.conv.parametrizations.weight.original0', 'lm_head.bias', 'lm_head.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+torch.Size([687, 768])
+/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/venv/lib/python3.10/site-packages/pytorch_lightning/loggers/wandb.py:396: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     Validate metric           DataLoader 0
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+         val-acc            0.9336666464805603
+         val-auc            0.9814159870147705
+      val-aug_loss                  0.0
+      val-clip_loss        0.042464300990104675
+      val-cls_loss          0.18968622386455536
+         val-eer            0.07400000095367432
+         val-fnr            0.09733333438634872
+         val-fpr            0.03533333167433739
+        val-loss            0.21091830730438232
+         val-tnr                    0.0
+         val-tpr                    1.0
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Running augmentation: 'time_stretch' | params: {'rate': 2}
+
+  processed ~200 samples …
+  processed ~400 samples …
+  processed ~600 samples …
+  processed ~800 samples …
+  processed ~1000 samples …
+  processed ~1200 samples …
+  processed ~1400 samples …
+  processed ~1600 samples …
+  processed ~1800 samples …
+  processed ~2000 samples …
+  processed ~2200 samples …
+  processed ~2400 samples …
+  processed ~2600 samples …
+  processed ~2800 samples …
+  processed ~3000 samples …
+
+✅  'time_stretch' {'rate': 2}  →  tensor shape: torch.Size([3000, 1, 48000])
+
+🎧  10 random clips  ──  time_stretch {'rate': 2}
+──────────────────────────────────────────────────
+  clip  1  (val idx 2619)
+  clip  2  (val idx 456)
+  clip  3  (val idx 102)
+  clip  4  (val idx 1126)
+  clip  5  (val idx 1003)
+  clip  6  (val idx 914)
+  clip  7  (val idx 571)
+  clip  8  (val idx 419)
+  clip  9  (val idx 2771)
+  clip 10  (val idx 2233)
+Now, load vocab json files from /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/vocab_phoneme Please make sure the vocab files are correct
+Load WavLM model!!!!!!!
+Some weights of WavLMForCTC were not initialized from the model checkpoint at microsoft/wavlm-base and are newly initialized: ['encoder.pos_conv_embed.conv.parametrizations.weight.original1', 'encoder.pos_conv_embed.conv.parametrizations.weight.original0', 'lm_head.bias', 'lm_head.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+torch.Size([687, 768])
+logit torch.Size([3])
+hidden_states torch.Size([3, 768])
+phoneme_feat torch.Size([3, 149, 768])
+encoder_feat torch.Size([3, 149, 768])
+phoneme_cls_logit torch.Size([3, 687])
+phoneme_cls_label torch.Size([3])
+aug_logit torch.Size([3])
+aug_frame_logit torch.Size([3])
+aug_labels torch.Size([3])
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+Now, load vocab json files from /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/vocab_phoneme Please make sure the vocab files are correct
+Load WavLM model!!!!!!!
+Some weights of WavLMForCTC were not initialized from the model checkpoint at microsoft/wavlm-base and are newly initialized: ['encoder.pos_conv_embed.conv.parametrizations.weight.original1', 'encoder.pos_conv_embed.conv.parametrizations.weight.original0', 'lm_head.bias', 'lm_head.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+torch.Size([687, 768])
+/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/venv/lib/python3.10/site-packages/pytorch_lightning/loggers/wandb.py:396: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     Validate metric           DataLoader 0
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+         val-acc            0.5006666779518127
+         val-auc            0.4927213191986084
+      val-aug_loss                  0.0
+      val-clip_loss          1.490681767463684
+      val-cls_loss          2.6375858783721924
+         val-eer            0.5053333044052124
+         val-fnr           0.0006666666595265269
+         val-fpr            0.9980000257492065
+        val-loss            3.3829267024993896
+         val-tnr                    0.0
+         val-tpr                    1.0
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Running augmentation: 'time_stretch' | params: {'rate': 1.07}
+
+  processed ~200 samples …
+  processed ~400 samples …
+  processed ~600 samples …
+  processed ~800 samples …
+  processed ~1000 samples …
+  processed ~1200 samples …
+  processed ~1400 samples …
+  processed ~1600 samples …
+  processed ~1800 samples …
+  processed ~2000 samples …
+  processed ~2200 samples …
+  processed ~2400 samples …
+  processed ~2600 samples …
+  processed ~2800 samples …
+  processed ~3000 samples …
+
+✅  'time_stretch' {'rate': 1.07}  →  tensor shape: torch.Size([3000, 1, 48000])
+
+🎧  10 random clips  ──  time_stretch {'rate': 1.07}
+──────────────────────────────────────────────────
+  clip  1  (val idx 2619)
+  clip  2  (val idx 456)
+  clip  3  (val idx 102)
+  clip  4  (val idx 1126)
+  clip  5  (val idx 1003)
+  clip  6  (val idx 914)
+  clip  7  (val idx 571)
+  clip  8  (val idx 419)
+  clip  9  (val idx 2771)
+  clip 10  (val idx 2233)
+Now, load vocab json files from /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/vocab_phoneme Please make sure the vocab files are correct
+Load WavLM model!!!!!!!
+Some weights of WavLMForCTC were not initialized from the model checkpoint at microsoft/wavlm-base and are newly initialized: ['encoder.pos_conv_embed.conv.parametrizations.weight.original1', 'encoder.pos_conv_embed.conv.parametrizations.weight.original0', 'lm_head.bias', 'lm_head.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+torch.Size([687, 768])
+logit torch.Size([3])
+hidden_states torch.Size([3, 768])
+phoneme_feat torch.Size([3, 149, 768])
+encoder_feat torch.Size([3, 149, 768])
+phoneme_cls_logit torch.Size([3, 687])
+phoneme_cls_label torch.Size([3])
+aug_logit torch.Size([3])
+aug_frame_logit torch.Size([3])
+aug_labels torch.Size([3])
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+Now, load vocab json files from /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/vocab_phoneme Please make sure the vocab files are correct
+Load WavLM model!!!!!!!
+Some weights of WavLMForCTC were not initialized from the model checkpoint at microsoft/wavlm-base and are newly initialized: ['encoder.pos_conv_embed.conv.parametrizations.weight.original1', 'encoder.pos_conv_embed.conv.parametrizations.weight.original0', 'lm_head.bias', 'lm_head.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+torch.Size([687, 768])
+/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/venv/lib/python3.10/site-packages/pytorch_lightning/loggers/wandb.py:396: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     Validate metric           DataLoader 0
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+         val-acc             0.906333327293396
+         val-auc            0.9720870852470398
+      val-aug_loss                  0.0
+      val-clip_loss         0.04631933569908142
+      val-cls_loss          0.2301584631204605
+         val-eer            0.08733333647251129
+         val-fnr            0.06599999964237213
+         val-fpr            0.12133333086967468
+        val-loss            0.2533181309700012
+         val-tnr                    0.0
+         val-tpr                    1.0
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

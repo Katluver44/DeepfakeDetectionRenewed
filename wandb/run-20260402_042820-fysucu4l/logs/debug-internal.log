@@ -1,0 +1,12 @@
+{"time":"2026-04-02T04:28:20.964381415Z","level":"INFO","msg":"stream: starting","core version":"0.24.0"}
+{"time":"2026-04-02T04:28:21.121316041Z","level":"INFO","msg":"stream: created new stream","id":"fysucu4l"}
+{"time":"2026-04-02T04:28:21.121482833Z","level":"INFO","msg":"handler: started","stream_id":"fysucu4l"}
+{"time":"2026-04-02T04:28:21.125905173Z","level":"INFO","msg":"stream: started","id":"fysucu4l"}
+{"time":"2026-04-02T04:28:21.125923485Z","level":"INFO","msg":"writer: started","stream_id":"fysucu4l"}
+{"time":"2026-04-02T04:28:21.125938601Z","level":"INFO","msg":"sender: started","stream_id":"fysucu4l"}
+{"time":"2026-04-02T04:29:12.77174553Z","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-04-02T04:29:12.925222579Z","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-04-02T04:29:12.932273479Z","level":"INFO","msg":"stream: closing","id":"fysucu4l"}
+{"time":"2026-04-02T04:29:12.932333825Z","level":"INFO","msg":"handler: closed","stream_id":"fysucu4l"}
+{"time":"2026-04-02T04:29:12.93498306Z","level":"INFO","msg":"sender: closed","stream_id":"fysucu4l"}
+{"time":"2026-04-02T04:29:12.935015962Z","level":"INFO","msg":"stream: closed","id":"fysucu4l"}

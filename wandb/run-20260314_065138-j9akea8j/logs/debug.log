@@ -1,0 +1,29 @@
+2026-03-14 06:51:38,364 INFO    MainThread:2866 [wandb_init.py:setup_run_log_directory():717] Logging user logs to wandb/run-20260314_065138-j9akea8j/logs/debug.log
+2026-03-14 06:51:38,364 INFO    MainThread:2866 [wandb_init.py:setup_run_log_directory():718] Logging internal logs to wandb/run-20260314_065138-j9akea8j/logs/debug-internal.log
+2026-03-14 06:51:38,364 INFO    MainThread:2866 [wandb_init.py:monkeypatch_ipython():636] configuring jupyter hooks <wandb.sdk.wandb_init._WandbInit object at 0x7f0fb21119f0>
+2026-03-14 06:51:38,364 INFO    MainThread:2866 [wandb_init.py:init():844] calling init triggers
+2026-03-14 06:51:38,365 INFO    MainThread:2866 [wandb_init.py:init():849] wandb.init called with sweep_config: {}
+config: {'_wandb': {}}
+2026-03-14 06:51:38,365 INFO    MainThread:2866 [wandb_init.py:init():892] starting backend
+2026-03-14 06:51:38,365 INFO    MainThread:2866 [wandb_init.py:init():895] sending inform_init request
+2026-03-14 06:51:38,367 INFO    MainThread:2866 [wandb_init.py:init():903] backend started and connected
+2026-03-14 06:51:38,372 INFO    MainThread:2866 [wandb_run.py:_label_probe_notebook():1334] probe notebook
+2026-03-14 06:51:38,372 INFO    MainThread:2866 [wandb_run.py:_label_probe_notebook():1344] Unable to probe notebook: 'NoneType' object has no attribute 'get'
+2026-03-14 06:51:38,372 INFO    MainThread:2866 [wandb_init.py:init():973] updated telemetry
+2026-03-14 06:51:38,395 INFO    MainThread:2866 [wandb_init.py:init():997] communicating run to backend with 90.0 second timeout
+2026-03-14 06:51:38,955 INFO    MainThread:2866 [wandb_init.py:init():1044] starting run threads in backend
+2026-03-14 06:51:39,489 INFO    MainThread:2866 [wandb_run.py:_console_start():2529] atexit reg
+2026-03-14 06:51:39,489 INFO    MainThread:2866 [wandb_run.py:_redirect():2377] redirect: wrap_raw
+2026-03-14 06:51:39,490 INFO    MainThread:2866 [wandb_run.py:_redirect():2446] Wrapping output streams.
+2026-03-14 06:51:39,490 INFO    MainThread:2866 [wandb_run.py:_redirect():2469] Redirects installed.
+2026-03-14 06:51:39,492 INFO    MainThread:2866 [wandb_init.py:init():1084] run started, returning control to user process
+2026-03-14 06:51:39,494 INFO    MainThread:2866 [wandb_run.py:_config_callback():1404] config_cb None None {'attack_family': 'reverberation', 'attack_params': {'t60': 0.7, 'room_scale': 0.65}, 'attack_param_json': '{"room_scale": 0.65, "t60": 0.7}', 'sweep_idx': 4, 'results_csv': 'augmentation_attack_results.csv'}
+2026-03-14 06:51:39,625 INFO    MainThread:2866 [wandb_run.py:_config_callback():1404] config_cb None None {'cfg': "Namespace(PhonemeGAT=Namespace(backbone='wavlm', use_raw=False, use_GAT=True, n_edges=1, use_aug=True, use_pool=True, use_clip=True))", 'args': None}
+2026-03-14 06:52:02,184 INFO    MainThread:2866 [wandb_run.py:_finish():2295] finishing run krishrawat0222-f/DeepfakeDetectionRenewed/j9akea8j
+2026-03-14 06:52:02,185 INFO    MainThread:2866 [jupyter.py:save_history():435] not saving jupyter history
+2026-03-14 06:52:02,185 INFO    MainThread:2866 [jupyter.py:save_ipynb():359] not saving jupyter notebook
+2026-03-14 06:52:02,185 INFO    MainThread:2866 [wandb_init.py:_jupyter_teardown():621] cleaning up jupyter logic
+2026-03-14 06:52:02,186 INFO    MainThread:2866 [wandb_run.py:_atexit_cleanup():2494] got exitcode: 0
+2026-03-14 06:52:02,186 INFO    MainThread:2866 [wandb_run.py:_restore():2476] restore
+2026-03-14 06:52:02,186 INFO    MainThread:2866 [wandb_run.py:_restore():2482] restore done
+2026-03-14 06:52:02,755 INFO    MainThread:2866 [wandb_run.py:_footer_sync_info():3870] logging synced files

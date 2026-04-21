@@ -1,0 +1,16 @@
+{"time":"2026-03-06T02:18:48.807880969Z","level":"INFO","msg":"stream: starting","core version":"0.24.0"}
+{"time":"2026-03-06T02:18:48.967471316Z","level":"INFO","msg":"stream: created new stream","id":"1jg96ppd"}
+{"time":"2026-03-06T02:18:48.967605601Z","level":"INFO","msg":"handler: started","stream_id":"1jg96ppd"}
+{"time":"2026-03-06T02:18:48.97276006Z","level":"INFO","msg":"stream: started","id":"1jg96ppd"}
+{"time":"2026-03-06T02:18:48.972778784Z","level":"INFO","msg":"writer: started","stream_id":"1jg96ppd"}
+{"time":"2026-03-06T02:18:48.972794544Z","level":"INFO","msg":"sender: started","stream_id":"1jg96ppd"}
+{"time":"2026-03-06T02:20:20.832732736Z","level":"ERROR","msg":"api: HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/files/krishrawat0222-f/DeepfakeDetectionRenewed/1jg96ppd/file_stream"}
+{"time":"2026-03-06T02:20:20.833644626Z","level":"ERROR+4","msg":"filestream: fatal error: filestream: failed to upload: 404 Not Found url=https://api.wandb.ai/files/krishrawat0222-f/DeepfakeDetectionRenewed/1jg96ppd/file_stream: {\"error\":\"run DeepfakeDetectionRenewed/1jg96ppd not found while streaming file\"}"}
+{"time":"2026-03-06T02:22:51.084647134Z","level":"ERROR","msg":"api: HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/graphql"}
+{"time":"2026-03-06T02:22:51.085909937Z","level":"ERROR","msg":"runfiles: CreateRunFiles returned error: returned error 404: {\"data\":{\"createRunFiles\":null},\"errors\":[{\"message\":\"run DeepfakeDetectionRenewed/1jg96ppd not found during createRunFiles\",\"path\":[\"createRunFiles\"]}]}"}
+{"time":"2026-03-06T02:22:51.103344818Z","level":"INFO","msg":"api: retrying HTTP error","status":409,"url":"https://api.wandb.ai/graphql","body":"{\"errors\":[{\"message\":\"run 1jg96ppd was previously created and deleted; try a new run id\",\"path\":[\"upsertBucket\"]}],\"data\":{\"upsertBucket\":null}}"}
+{"time":"2026-03-06T02:22:53.279519748Z","level":"INFO","msg":"api: retrying HTTP error","status":409,"url":"https://api.wandb.ai/graphql","body":"{\"errors\":[{\"message\":\"run 1jg96ppd was previously created and deleted; try a new run id\",\"path\":[\"upsertBucket\"]}],\"data\":{\"upsertBucket\":null}}"}
+{"time":"2026-03-06T02:22:58.249317573Z","level":"INFO","msg":"api: retrying HTTP error","status":409,"url":"https://api.wandb.ai/graphql","body":"{\"errors\":[{\"message\":\"run 1jg96ppd was previously created and deleted; try a new run id\",\"path\":[\"upsertBucket\"]}],\"data\":{\"upsertBucket\":null}}"}
+{"time":"2026-03-06T02:23:07.224592398Z","level":"INFO","msg":"api: retrying HTTP error","status":409,"url":"https://api.wandb.ai/graphql","body":"{\"errors\":[{\"message\":\"run 1jg96ppd was previously created and deleted; try a new run id\",\"path\":[\"upsertBucket\"]}],\"data\":{\"upsertBucket\":null}}"}
+{"time":"2026-03-06T02:23:26.754343821Z","level":"INFO","msg":"api: retrying HTTP error","status":409,"url":"https://api.wandb.ai/graphql","body":"{\"errors\":[{\"message\":\"run 1jg96ppd was previously created and deleted; try a new run id\",\"path\":[\"upsertBucket\"]}],\"data\":{\"upsertBucket\":null}}"}
+{"time":"2026-03-06T02:23:34.158905006Z","level":"INFO","msg":"stream: closing","id":"1jg96ppd"}

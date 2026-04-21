@@ -1,0 +1,12 @@
+{"time":"2026-01-25T18:30:22.704453931Z","level":"INFO","msg":"stream: starting","core version":"0.24.0"}
+{"time":"2026-01-25T18:30:22.864933446Z","level":"INFO","msg":"stream: created new stream","id":"hrbposml"}
+{"time":"2026-01-25T18:30:22.86514202Z","level":"INFO","msg":"handler: started","stream_id":"hrbposml"}
+{"time":"2026-01-25T18:30:22.86868248Z","level":"INFO","msg":"stream: started","id":"hrbposml"}
+{"time":"2026-01-25T18:30:22.868729361Z","level":"INFO","msg":"sender: started","stream_id":"hrbposml"}
+{"time":"2026-01-25T18:30:22.86869673Z","level":"INFO","msg":"writer: started","stream_id":"hrbposml"}
+{"time":"2026-01-25T18:30:23.913616181Z","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-01-25T18:30:24.044939085Z","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-01-25T18:30:24.05415505Z","level":"INFO","msg":"stream: closing","id":"hrbposml"}
+{"time":"2026-01-25T18:30:24.054251953Z","level":"INFO","msg":"handler: closed","stream_id":"hrbposml"}
+{"time":"2026-01-25T18:30:24.056863142Z","level":"INFO","msg":"sender: closed","stream_id":"hrbposml"}
+{"time":"2026-01-25T18:30:24.056935602Z","level":"INFO","msg":"stream: closed","id":"hrbposml"}

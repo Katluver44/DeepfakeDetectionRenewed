@@ -1,0 +1,17 @@
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/venv/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:424: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=29` in the `DataLoader` to improve performance.
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     Validate metric           DataLoader 0
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+         val-acc            0.9359999895095825
+         val-auc            0.9829244613647461
+      val-aug_loss                  0.0
+      val-clip_loss        0.047543056309223175
+      val-cls_loss          0.17782479524612427
+         val-eer            0.06533333659172058
+         val-fnr            0.09066666662693024
+         val-fpr            0.03733333200216293
+        val-loss            0.20159633457660675
+         val-tnr                    0.0
+         val-tpr                    1.0
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

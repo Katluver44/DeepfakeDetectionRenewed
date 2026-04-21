@@ -1,0 +1,39 @@
+{
+  "os": "Linux-6.8.0-1040-nvidia-x86_64-with-glibc2.35",
+  "python": "CPython 3.10.12",
+  "startedAt": "2026-02-24T05:17:00.028725Z",
+  "program": "algovirginia/workspace/DeepfakeDetectionRenewed/experiments.ipynb",
+  "codePath": "algovirginia/workspace/DeepfakeDetectionRenewed/experiments.ipynb",
+  "git": {
+    "remote": "https://github.com/Katluver44/DeepfakeDetectionRenewed.git",
+    "commit": "e98366503f2e8a9461a0ff5b37ba536b40839ba7"
+  },
+  "email": "yashaspatil@gmail.com",
+  "root": "/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed",
+  "host": "158-101-122-192",
+  "executable": "/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/venv/bin/python",
+  "cpu_count": 30,
+  "cpu_count_logical": 30,
+  "gpu": "NVIDIA A10",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "1456701079552",
+      "used": "26715901952"
+    }
+  },
+  "memory": {
+    "total": "238546423808"
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA A10",
+      "memoryTotal": "24146608128",
+      "cudaCores": 9216,
+      "architecture": "Ampere",
+      "uuid": "GPU-6bb28676-2643-1346-b12c-8438e89e1935"
+    }
+  ],
+  "cudaVersion": "12.8",
+  "writerId": "hwwuzyc3422zmpjjeaoyapiff4svjpgk"
+}

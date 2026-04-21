@@ -1,0 +1,172 @@
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.2.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "/home/cog/ryan-dir/DeepfakeDetectionRenewed/experiments/unseen_systems.py", line 32, in <module>
+    import torch
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/__init__.py", line 2276, in <module>
+    from torch import quantization as quantization  # usort: skip
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/quantization/__init__.py", line 2, in <module>
+    from .fake_quantize import *  # noqa: F403
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/quantization/fake_quantize.py", line 10, in <module>
+    from torch.ao.quantization.fake_quantize import (
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/ao/quantization/__init__.py", line 12, in <module>
+    from .pt2e._numeric_debugger import (  # noqa: F401
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/ao/quantization/pt2e/_numeric_debugger.py", line 9, in <module>
+    from torch.ao.quantization.pt2e.graph_utils import bfs_trace_with_node_process
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/ao/quantization/pt2e/graph_utils.py", line 9, in <module>
+    from torch.export import ExportedProgram
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/export/__init__.py", line 61, in <module>
+    from .decomp_utils import CustomDecompTable
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/export/decomp_utils.py", line 5, in <module>
+    from torch._export.utils import (
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/_export/__init__.py", line 48, in <module>
+    from .wrappers import _wrap_submodules
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/_export/wrappers.py", line 7, in <module>
+    from torch._higher_order_ops.flat_apply import (
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/_higher_order_ops/__init__.py", line 1, in <module>
+    from torch._higher_order_ops._invoke_quant import (
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/_higher_order_ops/_invoke_quant.py", line 8, in <module>
+    from torch._higher_order_ops.base_hop import BaseHOP, FunctionWithNoFreeVars
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/_higher_order_ops/base_hop.py", line 9, in <module>
+    from torch._higher_order_ops.auto_functionalize import FunctionalCallableWithEpilogue
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/_higher_order_ops/auto_functionalize.py", line 13, in <module>
+    from torch._higher_order_ops.utils import (
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/_higher_order_ops/utils.py", line 16, in <module>
+    from torch._subclasses.functional_tensor import (
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/_subclasses/functional_tensor.py", line 46, in <module>
+    class FunctionalTensor(torch.Tensor):
+  File "/home/cog/.local/lib/python3.10/site-packages/torch/_subclasses/functional_tensor.py", line 279, in FunctionalTensor
+    cpu = _conversion_method_template(device=torch.device("cpu"))
+/home/cog/.local/lib/python3.10/site-packages/torch/_subclasses/functional_tensor.py:279: UserWarning: Failed to initialize NumPy: 
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.2.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+ (Triggered internally at /opt/pytorch/torch/csrc/utils/tensor_numpy.cpp:81.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+/home/cog/ryan-dir/DeepfakeDetectionRenewed/.venv2/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+Device: cuda
+Loading checkpoint: /home/cog/ryan-dir/DeepfakeDetectionRenewed/models/robust_goat.ckpt
+Load WavLM model!!!!!!!
+Loading weights:   0%|          | 0/248 [00:00<?, ?it/s]Loading weights: 100%|██████████| 248/248 [00:00<00:00, 10785.07it/s]
+[1mWavLMForCTC LOAD REPORT[0m from: microsoft/wavlm-base
+Key            | Status  | 
+---------------+---------+-
+lm_head.bias   | MISSING | 
+lm_head.weight | MISSING | 
+
+Notes:
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+torch.Size([687, 768])
+Model ready on cuda.
+
+Loading test split (unseen systems + bonafide)...
+  test split: 7000 samples from 14 systems
+    -: 500
+    A07: 500
+    A08: 500
+    A09: 500
+    A10: 500
+    A11: 500
+    A12: 500
+    A13: 500
+    A14: 500
+    A15: 500
+    A16: 500
+    A17: 500
+    A18: 500
+    A19: 500
+
+Loading validation split (training systems A01-A06 + bonafide for reference)...
+  validation split: 3500 samples from 7 systems
+    -: 500
+    A01: 500
+    A02: 500
+    A03: 500
+    A04: 500
+    A05: 500
+    A06: 500
+
+Extracting from test split...
+  400 done...
+  800 done...
+  1200 done...
+  1600 done...
+  2000 done...
+  2400 done...
+  2800 done...
+  3200 done...
+  3600 done...
+  4000 done...
+  4400 done...
+  4800 done...
+  5200 done...
+  5600 done...
+  6000 done...
+  6400 done...
+  6800 done...
+  7000 done...
+  test: 7000 samples
+
+Extracting from val split...
+  400 done...
+  800 done...
+  1200 done...
+  1600 done...
+  2000 done...
+  2400 done...
+  2800 done...
+  3200 done...
+  val: 3500 samples
+
+Total: 10500 embeddings
+Saved: embeddings.npz
+
+System    Split       N     Acc     AUC     EER    minDCF
+────────────────────────────────────────────────────────
+  -       test     1000  0.9490     nan     nan       nan
+  A01     val       500  0.9960  0.9994  0.0110    0.0400
+  A02     val       500  0.8980  0.9828  0.0750    0.3160
+  A03     val       500  0.9900  0.9971  0.0220    0.1380
+  A04     val       500  0.9400  0.9918  0.0570    0.2140
+  A05     val       500  0.9780  0.9950  0.0310    0.1400
+  A06     val       500  0.4460  0.8897  0.1840    0.8860
+  A07     test      500  0.9920  0.9963  0.0240    0.2300
+  A08     test      500  0.9880  0.9953  0.0300    0.2480
+  A09     test      500  1.0000  0.9986  0.0160    0.1480
+  A10     test      500  0.8800  0.9772  0.0790    0.5240
+  A11     test      500  0.9480  0.9872  0.0530    0.4160
+  A12     test      500  0.9740  0.9938  0.0420    0.2520
+  A13     test      500  1.0000  0.9997  0.0090    0.0580
+  A14     test      500  0.9520  0.9889  0.0520    0.3800
+  A15     test      500  0.9760  0.9910  0.0440    0.3520
+  A16     test      500  0.9480  0.9873  0.0540    0.3560
+  A17     test      500  0.9660  0.9903  0.0470    0.3460
+  A18     test      500  0.7180  0.9495  0.1270    0.7740
+  A19     test      500  0.5660  0.9127  0.1620    0.9400
+
+Saved: metrics.csv
+
+Running PCA...
+  PCA variance: PC1=13.2%  PC2=9.1%
+Saved: pca_unseen.png
+Running t-SNE (this may take a minute)...
+Traceback (most recent call last):
+  File "/home/cog/ryan-dir/DeepfakeDetectionRenewed/experiments/unseen_systems.py", line 534, in <module>
+    main()
+  File "/home/cog/ryan-dir/DeepfakeDetectionRenewed/experiments/unseen_systems.py", line 513, in main
+    tsne = TSNE(n_components=2, perplexity=40, n_iter=1000,
+TypeError: TSNE.__init__() got an unexpected keyword argument 'n_iter'

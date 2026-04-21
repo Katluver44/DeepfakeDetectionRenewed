@@ -1,0 +1,69 @@
+_wandb:
+    value:
+        cli_version: 0.24.0
+        e:
+            670e6rdl131tkxgycbb8eu1lhaol7bwq:
+                cpu_count: 30
+                cpu_count_logical: 30
+                cudaVersion: "12.8"
+                disk:
+                    /:
+                        total: "532608356352"
+                        used: "26117775360"
+                email: yashaspatil@gmail.com
+                executable: /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/venv/bin/python
+                git:
+                    commit: e98366503f2e8a9461a0ff5b37ba536b40839ba7
+                    remote: https://github.com/Katluver44/DeepfakeDetectionRenewed.git
+                gpu: NVIDIA A100-SXM4-40GB
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Ampere
+                      cudaCores: 6912
+                      memoryTotal: "42949672960"
+                      name: NVIDIA A100-SXM4-40GB
+                      uuid: GPU-b87b2500-0a02-b7c4-4673-82025dfd0289
+                host: 129-213-82-112
+                memory:
+                    total: "232205709312"
+                os: Linux-6.8.0-1040-nvidia-x86_64-with-glibc2.35
+                program: <python with no main file>
+                python: CPython 3.10.12
+                root: /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed
+                startedAt: "2026-01-30T00:31:16.687285Z"
+                writerId: 670e6rdl131tkxgycbb8eu1lhaol7bwq
+        m: []
+        python_version: 3.10.12
+        t:
+            "1":
+                - 1
+                - 5
+                - 11
+                - 49
+                - 53
+            "2":
+                - 1
+                - 5
+                - 11
+                - 49
+                - 53
+            "3":
+                - 2
+                - 16
+            "4": 3.10.12
+            "5": 0.24.0
+            "6": 4.36.2
+            "8":
+                - 1
+            "12": 0.24.0
+            "13": linux-x86_64
+architecture:
+    value: CNN
+dataset:
+    value: dummy
+epochs:
+    value: 10
+learning_rate:
+    value: 0.02
+test_run:
+    value: true
