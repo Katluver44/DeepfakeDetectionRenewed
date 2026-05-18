@@ -1,0 +1,4 @@
+config,mode,bonafide_acc,attack_acc,eer,auc
+h0_h4,uniform,0.9200,0.8633,0.1183,0.9435
+h0_h4_zero,zero,0.9400,0.7400,0.1433,0.9206
+h0_h4_bfmean,bonafide_mean,0.9200,0.8567,0.1167,0.9426

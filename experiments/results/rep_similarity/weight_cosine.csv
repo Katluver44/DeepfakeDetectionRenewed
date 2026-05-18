@@ -1,0 +1,7 @@
+group,weight_cos_sim
+GAT,-0.007457
+cls_head,0.278864
+encoder,1.000013
+other,0.983808
+phoneme_model,1.000013
+rnn,0.006425
