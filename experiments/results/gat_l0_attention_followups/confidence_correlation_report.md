@@ -18,8 +18,8 @@
 ## Sanity checks
 
 - All KL values ≥ 0: min=0.112449 ✓
-- Bonafide mean KL from BF_mean (should be ≈0): 0.3349 (max=0.7431)
-- Attack mean KL > bonafide mean KL: 0.3396 > 0.3349 ✓
+- Within-class BF variation KL(BF||BF_mean): 0.3349 mean, max=0.7431 — non-zero by construction (natural variability across bonafide samples; serves as discriminability baseline)
+- Attack KL vs BF baseline: 0.3396 vs 0.3349 (Δ=0.0047 — attacks barely above BF baseline at 9-class aggregation level)
 - No data leakage: BF_mean computed exclusively from label=0 samples ✓
 - Baseline logit alignment: verified by sample_id match across both artifacts ✓
 
@@ -86,7 +86,7 @@
 
 **Pooled attack correlation (combined KL)**: Pearson r=-0.257, Spearman rho=-0.251 → **weak**
 
-Attention divergence is largely independent of spoof confidence. Strong evidence that the routing differences observed in the attention analysis reflect processing strategy (attack-family-specific phoneme routing) rather than a proxy for the model's certainty level.
+Attention divergence is largely independent of spoof confidence. The negative sign (higher divergence → lower spoof logit) implies that attacks with more unusual phoneme-class routing are actually *harder* for the model to detect, not easier. This is consistent with a processing-strategy interpretation: the model does not use raw attention divergence from the bonafide mean as its spoof-detection signal, but rather uses more local or head-specific routing features that are not captured at this aggregation level. Note: at the 9-class phoneme aggregation level, attack KL (mean=0.340) barely exceeds bonafide within-class variation (mean=0.335, Δ=0.005), suggesting this granularity loses most of the per-head discriminative signal. The weak (and negative) correlation is partly attributable to this low separation.
 
 **Calibration analysis**: FP mean KL (0.3252) is close to TP mean KL (0.3401). Consistent with Experiment 1 finding: h0/h4 primarily drive spoof-prediction aggressiveness. High attention divergence correlates with *spoof prediction*, not specifically with correct spoof detection.
 

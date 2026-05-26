@@ -1,0 +1,200 @@
+/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/gat_attn_graphs.py:900: RuntimeWarning: Mean of empty slice
+  return np.nanmean(atk_matrices, axis=0) - np.nanmean(bon_matrices, axis=0)
+Loading cached all-layer artifacts: /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/results/gat_attn_graphs/all_layers_artifacts.pt
+  350 samples loaded
+  Cross-validation: system_id distribution matches layer-0 cache ✓
+
+  Systems: ['-', 'A01', 'A02', 'A03', 'A04', 'A05', 'A06']  |  valid samples: 350
+  Vocab: 687 tokens
+
+--- Building aggregated attention graphs ---
+  Built A_agg for 350 samples
+  Per-sample A_agg saved to /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/results/gat_attn_graphs/e1/a_agg_per_sample/
+
+  Symbol vocabulary: 88 unique phoneme symbols
+
+=== Sanity checks ===
+  Row-sum check: max deviation across all samples = 4.44e-16  (PASS)
+  Spot-check sample 0: recompute vs cached max_diff = 0.00e+00  (PASS)
+  Bonafide mean diagonal fraction of A_agg: 0.0317  (non-trivial due to skip-connection bias in l0; expected non-dominant)
+  All sanity checks PASSED ✓
+
+--- Computing per-sample symbol-pair matrices ---
+  Computed 350 per-sample (V=88) pair matrices
+  Saved: /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/results/gat_attn_graphs/e1/class_conditional_agg.npz
+
+=== E1 Intermediate Results ===
+
+  Per-attack mean |Δ| over all phoneme symbol pairs:
+  system    mean|Δ|    max|Δ|  n_valid
+  A01       0.01895   0.52508     2105
+  A02       0.02069   0.99990     2088
+  A03       0.01855   0.54594     2083
+  A04       0.01916   0.52631     2002
+  A05       0.02633   0.80194     1676
+  A06       0.02003   0.48955     1932
+
+  Top-10 phoneme pairs by |ΔA_agg| per attack system:
+
+  A01:
+  src      → tgt            bon       atk          Δ
+  aʊ       → ɲ          0.52631   0.00124   -0.52508
+  ɾ        → ə          0.55057   0.03899   -0.51159
+  l        → i          0.49319   0.01438   -0.47882
+  ɾ        → fʲ         0.43944   0.00000   -0.43944
+  j        → d          0.33915   0.00000   -0.33915
+  ɛɪ       → oː         0.34058   0.00405   -0.33653
+  θ        → ɑ          0.34356   0.02202   -0.32154
+  œ̃       → t          0.31756   0.02170   -0.29586
+  aʊ       → aʊ         0.29451   0.00919   -0.28532
+  aʊ       → x          0.25471   0.00842   -0.24629
+
+  A02:
+  src      → tgt            bon       atk          Δ
+  j        → ɾ          0.00010   1.00000   +0.99990
+  j        → œ          0.00107   0.61235   +0.61128
+  ɾ        → ə          0.55057   0.00000   -0.55057
+  l        → i          0.49319   0.01972   -0.47347
+  ɾ        → z          0.00068   0.40803   +0.40735
+  j        → x          0.00561   0.39218   +0.38657
+  θ        → ɑ          0.34356   0.00000   -0.34356
+  ɛɪ       → oː         0.34058   0.00372   -0.33686
+  ʊ        → uː         0.01341   0.34929   +0.33587
+  œ̃       → t          0.31756   0.00997   -0.30758
+
+  A03:
+  src      → tgt            bon       atk          Δ
+  ɾ        → ə          0.55057   0.00463   -0.54594
+  l        → i          0.49319   0.05928   -0.43391
+  ɾ        → uː         0.02684   0.39524   +0.36839
+  θ        → ɑ          0.34356   0.00000   -0.34356
+  ɛɪ       → oː         0.34058   0.00386   -0.33672
+  œ̃       → t          0.31756   0.01103   -0.30652
+  eə       → z          0.03630   0.33333   +0.29703
+  aʊ       → aʊ         0.29451   0.04159   -0.25292
+  tʲ       → øː         0.00530   0.24945   +0.24415
+  ɾ        → tʲ         0.23125   0.00163   -0.22962
+
+  A04:
+  src      → tgt            bon       atk          Δ
+  aʊ       → ɲ          0.52631   0.00000   -0.52631
+  l        → i          0.49319   0.00922   -0.48397
+  ɾ        → fʲ         0.43944   0.00329   -0.43616
+  ɛɪ       → oː         0.34058   0.00732   -0.33327
+  θ        → ɑ          0.34356   0.01856   -0.32500
+  œ̃       → t          0.31756   0.01081   -0.30674
+  aʊ       → aʊ         0.29451   0.05660   -0.23791
+  ɾ        → ɾ          0.23815   0.00074   -0.23741
+  ɾ        → tʲ         0.23125   0.00047   -0.23078
+  aʊ       → x          0.25471   0.03065   -0.22407
+
+  A05:
+  src      → tgt            bon       atk          Δ
+  ɾ        → ɹ          0.04791   0.84985   +0.80194
+  ɐ        → fʲ         0.00000   0.50000   +0.50000
+  aʊ       → f          0.09856   0.59171   +0.49315
+  ɛ        → oː         0.02034   0.50000   +0.47966
+  ɾ        → j          0.00000   0.41867   +0.41867
+  ɾ        → w          0.00154   0.36445   +0.36291
+  ɾ        → eɪ         0.01110   0.36391   +0.35281
+  θ        → ɑ          0.34356   0.00000   -0.34356
+  ɛɪ       → oː         0.34058   0.00265   -0.33793
+  iː       → e          0.01191   0.33414   +0.32223
+
+  A06:
+  src      → tgt            bon       atk          Δ
+  j        → ɔ̃         0.01809   0.50764   +0.48955
+  l        → i          0.49319   0.06142   -0.43178
+  j        → tʃ         0.08248   0.43027   +0.34778
+  ɛɪ       → oː         0.34058   0.00931   -0.33127
+  ɐ        → j          0.02012   0.33333   +0.31322
+  ɐ        → m          0.01833   0.30067   +0.28234
+  œ̃       → t          0.31756   0.06041   -0.25715
+  aʊ       → y          0.01541   0.25048   +0.23506
+  ɾ        → t          0.00887   0.24011   +0.23124
+  j        → t          0.04087   0.26820   +0.22732
+
+  Saved: /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/results/gat_attn_graphs/e1/top_delta_pairs.csv
+
+--- E2: Hub analysis ---
+
+=== E2 Intermediate Results ===
+
+  Table 1: Hub-identity shift (in-degree ranking vs bonafide)
+  system  top-5 overlap  top-10 overlap   Spearman ρ    p-value
+  A01                 1               3       +0.8866    0.00000
+  A02                 3               7       +0.8722    0.00000
+  A03                 2               5       +0.8678    0.00000
+  A04                 2               3       +0.8518    0.00000
+  A05                 3               4       +0.5082    0.00000
+  A06                 3               6       +0.7299    0.00000
+
+  Table 3: Gini coefficient of in-degree distribution
+  system           Gini   d_in mean   d_in max
+  -              0.4242     0.60421    4.96447
+  A01            0.2384     0.36619    1.67361
+  A02            0.3809     0.54196    3.67438
+  A03            0.2384     0.39798    1.74609
+  A04            0.2673     0.39101    1.74853
+  A05            0.5627     0.76668    5.68841
+  A06            0.5180     0.63867    4.82300
+
+  Top-5 phonemes by |Δd_in| — null systems A03, A05, A06:
+
+  A03:
+  phoneme      d_in(atk)   d_in(bon)      Δd_in
+  aʊ             0.98321     4.96447   -3.98126
+  œ̃             0.77453     3.28685   -2.51232
+  ɾ              1.74609     4.03374   -2.28766
+  l              0.81140     2.38217   -1.57077
+  ɲ              0.00000     1.44780   -1.44780
+
+  A05:
+  phoneme      d_in(atk)   d_in(bon)      Δd_in
+  s              3.97922     0.00000   +3.97922
+  CN-s           3.78448     0.00000   +3.78448
+  œ̃             1.01910     3.28685   -2.26775
+  |              3.76582     2.08191   +1.68391
+  ɐ              2.20753     0.57010   +1.63743
+
+  A06:
+  phoneme      d_in(atk)   d_in(bon)      Δd_in
+  CN-dʒ          3.36864     0.00000   +3.36864
+  ɾ              0.98953     4.03374   -3.04421
+  CN-ʌ           2.02764     0.00000   +2.02764
+  ɛɪ             0.31737     1.76043   -1.44307
+  l              1.05215     2.38217   -1.33002
+  Saved: /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/results/gat_attn_graphs/e2/hub_delta_null_systems.png
+
+  Saved: /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/results/gat_attn_graphs/e2/hub_identity_shift.csv
+  Saved: /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/results/gat_attn_graphs/e2/gini_indegree.csv
+
+--- Dry-run permutation test (1k perms for timing) ---
+
+  E1 dry-run (1000 perms, system A01, matrix shape 88×88)...
+    1000 perms took 5.1s  → 10k est per system: 51s  (× 6 systems = 305s total)
+
+  E2 dry-run (1000 perms, system A01, colsum shape 88)...
+    1000 perms took 0.1s  → 10k est per system: 1s  (× 6 systems = 7s total)
+
+--- E1: Full permutation test (10k perms) ---
+  E1 perm A01 (10000 perms)... done (45.9s)  0/1000 pairs survive Holm (p<0.05)
+  E1 perm A02 (10000 perms)... done (44.4s)  0/980 pairs survive Holm (p<0.05)
+  E1 perm A03 (10000 perms)... done (50.3s)  0/1041 pairs survive Holm (p<0.05)
+  E1 perm A04 (10000 perms)... done (47.5s)  0/937 pairs survive Holm (p<0.05)
+  E1 perm A05 (10000 perms)... done (47.6s)  0/647 pairs survive Holm (p<0.05)
+  E1 perm A06 (10000 perms)... done (48.3s)  0/894 pairs survive Holm (p<0.05)
+
+--- E2: Full permutation test (10k perms) ---
+  E2 perm A01 (10000 perms)... done (1.2s)  1/88 phonemes survive Holm (p<0.05)
+  E2 perm A02 (10000 perms)... done (1.1s)  0/88 phonemes survive Holm (p<0.05)
+  E2 perm A03 (10000 perms)... done (1.1s)  0/88 phonemes survive Holm (p<0.05)
+  E2 perm A04 (10000 perms)... done (1.1s)  0/88 phonemes survive Holm (p<0.05)
+  E2 perm A05 (10000 perms)... done (1.2s)  0/88 phonemes survive Holm (p<0.05)
+  E2 perm A06 (10000 perms)... done (1.2s)  0/88 phonemes survive Holm (p<0.05)
+
+--- Writing reports ---
+  Saved: /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/results/gat_attn_graphs/e1/e1_full_report.md
+  Saved: /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/results/gat_attn_graphs/e2/e2_full_report.md
+
+All outputs in: /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/results/gat_attn_graphs/

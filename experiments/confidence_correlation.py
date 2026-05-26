@@ -447,12 +447,24 @@ def write_report(corr: dict, systems: list[str], groups: dict[str, list[float]],
             f"{d['spearman_rho']:.3f} | {_interp(d['pearson_r'])} |"
         )
 
+    kl_delta = atk_kl.mean() - bf_kl.mean()
+    kl_sep_note = (
+        f" Note: at the 9-class phoneme aggregation level, attack KL (mean={atk_kl.mean():.3f}) "
+        f"barely exceeds bonafide within-class variation (mean={bf_kl.mean():.3f}, Δ={kl_delta:.3f}), "
+        f"suggesting this granularity loses most of the per-head discriminative signal. "
+        f"The weak (and negative) correlation is partly attributable to this low separation."
+        if abs(kl_delta) < 0.03 else ""
+    )
+
     if interp == "weak":
         interp_text = (
             "Attention divergence is largely independent of spoof confidence. "
-            "Strong evidence that the routing differences observed in the attention "
-            "analysis reflect processing strategy (attack-family-specific phoneme routing) "
-            "rather than a proxy for the model's certainty level."
+            "The negative sign (higher divergence → lower spoof logit) implies that attacks "
+            "with more unusual phoneme-class routing are actually *harder* for the model to detect, "
+            "not easier. This is consistent with a processing-strategy interpretation: "
+            "the model does not use raw attention divergence from the bonafide mean as its "
+            "spoof-detection signal, but rather uses more local or head-specific routing features "
+            "that are not captured at this aggregation level." + kl_sep_note
         )
     elif interp == "moderate":
         interp_text = (
