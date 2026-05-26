@@ -1,0 +1,9 @@
+rank,feature,lr_abs_coef,gbt_importance
+1,offdiag_frob,2.013226,0.626732
+2,eff_rank,0.604240,0.048469
+3,top5_mass,0.473919,0.078847
+4,entropy_in,0.383210,0.046367
+5,entropy_out,0.105218,0.040434
+6,gini_in,0.069832,0.102325
+7,diag_mass,0.036242,0.023566
+8,top1_mass,0.012336,0.033260
