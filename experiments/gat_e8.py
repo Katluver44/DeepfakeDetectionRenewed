@@ -744,6 +744,73 @@ def length_match_by_subsample(mlaad_sample: list[tuple], vcc2020_sample: list[tu
     return mla_valid, vcc_valid, mla_recs_out, vcc_recs_out
 
 
+def histogram_match_subsample(mlaad_sample: list[tuple], vcc2020_sample: list[tuple],
+                               mlaad_recs: list, vcc2020_recs: list,
+                               bin_width: int = 5,
+                               seed: int = E8_SEED) -> tuple[list, list, list, list]:
+    """Bin-based histogram matching: for each n_nodes bin keep min(n_mla, n_vcc)
+    samples from each dataset, giving identical marginal distributions.
+    Returns (mlaad_sample_out, vcc2020_sample_out, mlaad_recs_out, vcc2020_recs_out).
+    """
+    def _nc_map(recs):
+        return {r["path"]: r["n_nodes"] for r in recs if not r["is_degenerate"]}
+
+    mla_nc = _nc_map(mlaad_recs)
+    vcc_nc = _nc_map(vcc2020_recs)
+
+    mla_valid = [(p, s) for p, s in mlaad_sample  if p in mla_nc]
+    vcc_valid = [(p, s) for p, s in vcc2020_sample if p in vcc_nc]
+
+    # Determine overlapping range
+    all_nc = [mla_nc[p] for p, _ in mla_valid] + [vcc_nc[p] for p, _ in vcc_valid]
+    lo = int(np.percentile(all_nc, 5))
+    hi = int(np.percentile(all_nc, 95))
+    bins = range(lo, hi + bin_width, bin_width)
+
+    rng = random.Random(seed)
+
+    def _bin_idx(nc): return (nc - lo) // bin_width
+
+    # Group each dataset by bin
+    mla_bins: dict[int, list] = {}
+    for p, s in mla_valid:
+        nc = mla_nc[p]
+        if lo <= nc <= hi:
+            b = _bin_idx(nc)
+            mla_bins.setdefault(b, []).append((p, s))
+
+    vcc_bins: dict[int, list] = {}
+    for p, s in vcc_valid:
+        nc = vcc_nc[p]
+        if lo <= nc <= hi:
+            b = _bin_idx(nc)
+            vcc_bins.setdefault(b, []).append((p, s))
+
+    all_bins = sorted(set(mla_bins) | set(vcc_bins))
+    mla_out, vcc_out = [], []
+    for b in all_bins:
+        mla_b = mla_bins.get(b, [])
+        vcc_b = vcc_bins.get(b, [])
+        keep  = min(len(mla_b), len(vcc_b))
+        if keep == 0:
+            continue
+        rng.shuffle(mla_b); rng.shuffle(vcc_b)
+        mla_out.extend(mla_b[:keep])
+        vcc_out.extend(vcc_b[:keep])
+
+    mla_paths = {p for p, _ in mla_out}
+    vcc_paths = {p for p, _ in vcc_out}
+    mla_recs_out = [r for r in mlaad_recs  if r["path"] in mla_paths]
+    vcc_recs_out = [r for r in vcc2020_recs if r["path"] in vcc_paths]
+
+    med_mla_after = np.median([mla_nc[p] for p, _ in mla_out]) if mla_out else float("nan")
+    med_vcc_after = np.median([vcc_nc[p] for p, _ in vcc_out]) if vcc_out else float("nan")
+    print(f"  Histogram-matched: MLAAD={len(mla_out)} (median n_nodes={med_mla_after:.1f}), "
+          f"VCC2020={len(vcc_out)} (median n_nodes={med_vcc_after:.1f})")
+    print(f"  n_nodes range kept: [{lo}, {hi}]  bin_width={bin_width}")
+    return mla_out, vcc_out, mla_recs_out, vcc_recs_out
+
+
 # ── New E8: Feature matrix from records ───────────────────────────────────────
 
 def build_e8_feature_matrix(records: list) -> tuple[np.ndarray, np.ndarray,
@@ -1176,11 +1243,16 @@ def main():
                         help="Seed-1 checkpoint (default: models/robust_goat.ckpt)")
     parser.add_argument("--run-classification", action="store_true",
                         help="Run full classification (only after committing pre-registration)")
+    parser.add_argument("--length-match", action="store_true",
+                        help="Force histogram-based n_nodes matching between MLAAD and VCC2020 "
+                             "(H5 follow-up; implies --run-classification)")
     parser.add_argument("--force-download",  action="store_true",
                         help="Force re-download both datasets")
     parser.add_argument("--force-extract",   action="store_true",
                         help="Force re-extract features (ignore cache)")
     args = parser.parse_args()
+    if args.length_match:
+        args.run_classification = True
 
     np.random.seed(E8_SEED); random.seed(E8_SEED); torch.manual_seed(E8_SEED)
 
@@ -1191,11 +1263,18 @@ def main():
 
     hf_token = HF_TOKEN_PATH.read_text().strip() if HF_TOKEN_PATH.exists() else None
 
+    # Length-match run writes to a separate directory to preserve original results
+    run_out = (EXP_DIR / "results" / "e8_combined_generalization_lm"
+               if args.length_match else E8_OUT)
+    run_out.mkdir(parents=True, exist_ok=True)
+
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"\n=== E8: Combined TTS+VC Generalization Test ===")
+    if args.length_match:
+        print(f"  Mode: LENGTH-MATCHED (H5 follow-up)")
     print(f"  Device: {device}")
     print(f"  Checkpoint: {ckpt_path.name}")
-    print(f"  Output: {E8_OUT}/")
+    print(f"  Output: {run_out}/")
 
     # ── Stage 1: Download datasets ────────────────────────────────────────────
     print(f"\n{'='*66}")
@@ -1337,7 +1416,7 @@ def main():
             print(f"  Cross-set balance OK ✓")
 
     # Phoneme dist plot
-    phon_plot_path = E8_OUT / "phoneme_distributions.png"
+    phon_plot_path = run_out / "phoneme_distributions.png"
     plot_phoneme_distributions(asv_c, mla_c, vcc_c, phon_plot_path)
 
     if not dist_ok:
@@ -1377,10 +1456,12 @@ Pre-registration checklist:
 Next steps:
   1. Review (a)–(d) above.
   2. Commit this experiment file (gat_e8.py) before running classification.
-  3. Run with --run-classification to execute the 200-sample classification.
+  3. Run with --run-classification to execute the full classification.
+     Add --length-match to force histogram-based n_nodes matching (H5 follow-up).
 
-Command:
+Commands:
   venv/bin/python3 experiments/gat_e8.py --run-classification
+  venv/bin/python3 experiments/gat_e8.py --length-match
 """)
 
     if not args.run_classification:
@@ -1392,13 +1473,18 @@ Command:
     print("STAGE 3: FULL CLASSIFICATION")
     print(f"{'='*66}")
 
-    # Length-match subsampling if needed
+    # Length-match subsampling
     mlaad_sample_final   = mlaad_sample
     vcc2020_sample_final = vcc2020_sample
     mla_recs_final       = [r for r in mlaad_records  if not r["is_degenerate"]]
     vcc_recs_final       = [r for r in vcc2020_records if not r["is_degenerate"]]
 
-    if cross_rel > PHONEME_MATCH_THRESH:
+    if args.length_match:
+        print(f"\n  [H5 follow-up] Forcing histogram-based n_nodes matching...")
+        mlaad_sample_final, vcc2020_sample_final, mla_recs_final, vcc_recs_final = \
+            histogram_match_subsample(mlaad_sample, vcc2020_sample,
+                                      mlaad_records, vcc2020_records)
+    elif cross_rel > PHONEME_MATCH_THRESH:
         mlaad_sample_final, vcc2020_sample_final, mla_recs_final, vcc_recs_final = \
             length_match_by_subsample(mlaad_sample, vcc2020_sample,
                                       mlaad_records, vcc2020_records)
@@ -1441,26 +1527,26 @@ Command:
 
     # Hypothesis evaluation
     hyp_results = evaluate_hypotheses_e8(
-        X, y, y_pred, y_prob, sids, dsrc, e7_lr, phon_counts, e7_valid, E8_OUT)
+        X, y, y_pred, y_prob, sids, dsrc, e7_lr, phon_counts, e7_valid, run_out)
 
     # ── Plots ─────────────────────────────────────────────────────────────────
     print(f"\n{'='*66}")
     print("SAVING OUTPUTS")
     print(f"{'='*66}")
 
-    plot_2d_scatter(e7_valid, all_e8_records, E8_OUT / "scatter_2d.png")
-    plot_confusion_matrix(y, y_pred, E8_OUT / "confusion_matrix.png")
+    plot_2d_scatter(e7_valid, all_e8_records, run_out / "scatter_2d.png")
+    plot_confusion_matrix(y, y_pred, run_out / "confusion_matrix.png")
 
     # Manifest CSV
     all_sample_final = (mlaad_sample_final or mlaad_sample) + \
                        (vcc2020_sample_final or vcc2020_sample)
-    save_manifest_csv(all_sample_final, all_e8_records, E8_OUT / "manifest.csv")
+    save_manifest_csv(all_sample_final, all_e8_records, run_out / "manifest.csv")
     save_results_csv(y, y_pred, y_prob, sids, dsrc, paths,
-                     E8_OUT / "per_sample_results.csv")
+                     run_out / "per_sample_results.csv")
     save_metrics_md(hyp_results, bal_acc, prec, rec, f1, auc, ci,
-                    E8_OUT / "e8_report.md")
+                    run_out / "e8_report.md")
 
-    print(f"\n  All E8 outputs in: {E8_OUT}/")
+    print(f"\n  All E8 outputs in: {run_out}/")
     print(f"\nDone.")
 
 
