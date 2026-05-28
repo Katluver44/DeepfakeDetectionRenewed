@@ -1,0 +1,21 @@
+{
+  "files": [
+    "team01_intra-TEM1_SEF1_E30001.wav",
+    "team01_intra-TEM1_SEM2_E30005.wav",
+    "northandsouth_15_f000170.wav",
+    "midnight_passenger_02_f000156.wav"
+  ],
+  "orig_sample_rates": [
+    24000,
+    24000,
+    16000,
+    16000
+  ],
+  "logits": [
+    0.025533292442560196,
+    0.024502184242010117,
+    0.020033886656165123,
+    0.024711113423109055
+  ],
+  "elapsed_ms": 2915.6453609466553
+}
