@@ -1,0 +1,14 @@
+{
+  "target_heads": [
+    2,
+    4
+  ],
+  "n_common_systems": 10,
+  "h2_attack_mean_cosine_sim": 0.9528,
+  "h2_attack_min_cosine_sim": 0.9324,
+  "h2_attack_max_cosine_sim": 0.9639,
+  "h4_attack_mean_cosine_sim": 0.9481,
+  "h4_attack_min_cosine_sim": 0.9266,
+  "h4_attack_max_cosine_sim": 0.9601,
+  "interpretation": "cosine_sim close to 1.0 = attention routing stable across languages; low cosine_sim = head learns language-specific phoneme patterns"
+}

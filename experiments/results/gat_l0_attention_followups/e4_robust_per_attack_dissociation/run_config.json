@@ -1,0 +1,70 @@
+{
+  "checkpoint": "/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/models/robust_goat.ckpt",
+  "checkpoint_name": "robust_goat.ckpt",
+  "checkpoint_sha256": "184d1c545d567ede6f010105622cb8f168b6d482c1199639bfcb13a7583b9727",
+  "eval_set": {
+    "hf_dataset": "Bisher/ASVspoof_2019_LA",
+    "split": "validation",
+    "n_per_class": 50,
+    "attack_systems": [
+      "A01",
+      "A02",
+      "A03",
+      "A04",
+      "A05",
+      "A06"
+    ],
+    "dataset_hash": "edc0ab6c06285ff9"
+  },
+  "ablation_spec": {
+    "layer": 0,
+    "n_layers_total": 3,
+    "mode": "zero",
+    "critical_heads": [
+      0,
+      4
+    ],
+    "control_pool": [
+      1,
+      2,
+      3,
+      5
+    ],
+    "random_single_head": [
+      1
+    ],
+    "random_pair_heads": [
+      2,
+      3
+    ],
+    "nh": 6
+  },
+  "tts_vc_mapping": {
+    "A01": "TTS",
+    "A02": "TTS",
+    "A03": "TTS",
+    "A04": "TTS",
+    "A05": "VC",
+    "A06": "VC"
+  },
+  "tts_vc_source": "gat_e7.ROUTING_SYSTEMS / SKIP_SYSTEMS (ASVspoof 2019 official)",
+  "tts_systems": [
+    "A01",
+    "A02",
+    "A03",
+    "A04"
+  ],
+  "vc_systems": [
+    "A05",
+    "A06"
+  ],
+  "seed": 42,
+  "n_bootstrap": 1000,
+  "n_permutations": 1000,
+  "sanity_pass": true,
+  "sanity_details": {
+    "ablate_h0h4_parity": "OK \u2014 ablate_h0_h4 EER 0.1433 matches prior h0_h4_zero 0.1433 (diff=0.0000) \u2014 pipeline parity confirmed",
+    "baseline_parity": "OK \u2014 baseline EER 0.1000 matches prior baseline 0.1000 (diff=0.0000) \u2014 eval pipeline parity",
+    "random_ctrl_ratio": "OK \u2014 random control \u0394EERs in line with null: |\u0394_single|=0.0200 (0.46\u00d7), |\u0394_pair|=0.0167 (0.38\u00d7) vs |\u0394_h0h4|=0.0433"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "h0": {
+    "n_a03": 30,
+    "n_a05": 30,
+    "observed_l2": 0.05343,
+    "kl_a03_to_a05": 0.047771,
+    "kl_a05_to_a03": 0.048536,
+    "permutation_n": 1000,
+    "permutation_p_l2": 0.038,
+    "null_mean": 0.035283,
+    "null_std": 0.009077,
+    "null_min": 0.016486,
+    "null_max": 0.0733
+  },
+  "h4": {
+    "n_a03": 30,
+    "n_a05": 30,
+    "observed_l2": 0.077736,
+    "kl_a03_to_a05": 0.129175,
+    "kl_a05_to_a03": 0.096096,
+    "permutation_n": 1000,
+    "permutation_p_l2": 0.009,
+    "null_mean": 0.042343,
+    "null_std": 0.011364,
+    "null_min": 0.021001,
+    "null_max": 0.094676
+  }
+}

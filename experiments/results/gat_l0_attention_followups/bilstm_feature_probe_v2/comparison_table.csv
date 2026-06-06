@@ -1,0 +1,16 @@
+extraction_point,checkpoint,probe,eer,eer_ci_lo,eer_ci_hi,auroc,balanced_acc,macro_f1,best_C,converged
+post_wavlm,goat,binary,0.1008,0.0779,0.1187,0.9681,0.8992,,100.0,False
+post_wavlm,goat,7class,,,,,0.9863,0.9318,0.1,True
+post_wavlm,robust_goat,binary,0.1008,0.0779,0.1187,0.9681,0.8992,,100.0,False
+post_wavlm,robust_goat,7class,,,,,0.9863,0.9318,0.1,True
+pre_gat,goat,binary,0.08,0.063,0.0979,0.9738,0.9171,,0.1,True
+pre_gat,goat,7class,,,,,0.986,0.8427,0.1,True
+pre_gat,robust_goat,binary,0.08,0.063,0.0979,0.9738,0.9171,,0.1,True
+pre_gat,robust_goat,7class,,,,,0.986,0.8427,0.1,True
+post_gat,goat,binary,0.1138,0.0904,0.1313,0.9566,0.8812,,0.1,True
+post_gat,goat,7class,,,,,0.852,0.7139,0.1,True
+post_gat,robust_goat,binary,0.1,0.081,0.1189,0.9607,0.9021,,1.0,True
+post_gat,robust_goat,7class,,,,,0.9314,0.6749,10.0,False
+post_wavlm,delta_goat_minus_robust,binary,0.0,0.0,0.0,,,,,
+pre_gat,delta_goat_minus_robust,binary,0.0,0.0,0.0,,,,,
+post_gat,delta_goat_minus_robust,binary,0.0137,-0.0102,0.0339,,,,,

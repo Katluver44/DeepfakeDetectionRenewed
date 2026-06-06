@@ -1,0 +1,129 @@
+system_id,head,top3_sparsity,top5_sparsity,peak_src,peak_tgt,peak_magnitude,attn_variance,mean_entropy
+-,2,0.61,0.7162,Other,Other,0.2989,0.001874,1.4129
+-,4,0.5844,0.6944,Other,Other,0.2822,0.001726,1.4881
+Cartesia.ai (Sonic-3),2,0.6504,0.7537,Other,Other,0.3215,0.002144,1.3101
+Cartesia.ai (Sonic-3),4,0.6057,0.7038,Other,Other,0.2919,0.001847,1.3505
+Chatterbox,2,0.656,0.7794,Other,Other,0.319,0.002085,1.2863
+Chatterbox,4,0.6285,0.7493,Other,Other,0.3037,0.001914,1.371
+DeepGram,2,0.636,0.7551,Other,Other,0.3179,0.002072,1.2618
+DeepGram,4,0.603,0.7284,Other,Other,0.3005,0.001877,1.4236
+Edge-TTS,2,0.5762,0.7022,Other,Other,0.2714,0.001638,1.351
+Edge-TTS,4,0.5716,0.7,Other,Other,0.2682,0.001623,1.3554
+FireRedTTS-2.0,2,0.5922,0.6906,Other,Other,0.2758,0.001819,1.4018
+FireRedTTS-2.0,4,0.5696,0.6739,Other,Other,0.2624,0.001671,1.4263
+FishTTS,2,0.6325,0.7441,Other,Other,0.3081,0.001961,1.3132
+FishTTS,4,0.6079,0.7156,Other,Other,0.2938,0.00181,1.395
+Higgs-Audio-V2,2,0.6213,0.7237,Other,Other,0.3111,0.002006,1.3342
+Higgs-Audio-V2,4,0.6023,0.7065,Other,Other,0.2979,0.001881,1.3614
+Index-TTS-1.5,2,0.6223,0.7428,Other,Other,0.3165,0.002005,1.2654
+Index-TTS-1.5,4,0.5814,0.7031,Other,Other,0.2934,0.001757,1.3748
+Index-TTS-2.0,2,0.6554,0.7695,Other,Other,0.316,0.002159,1.2837
+Index-TTS-2.0,4,0.625,0.7499,Other,Other,0.2985,0.001978,1.3827
+Indri-TTS-0.1,2,0.627,0.7267,Other,Other,0.3051,0.001968,1.3646
+Indri-TTS-0.1,4,0.63,0.7314,Other,Other,0.3052,0.001983,1.4055
+Kani-TTS-370M,2,0.6233,0.743,Other,Other,0.3085,0.001998,1.2964
+Kani-TTS-370M,4,0.6011,0.7169,Other,Other,0.2953,0.001869,1.3878
+Kitten-TTS-Nano-0.1,2,0.6782,0.7742,Other,Other,0.3275,0.002326,1.2568
+Kitten-TTS-Nano-0.1,4,0.6533,0.7538,Other,Other,0.3127,0.00216,1.329
+Kitten-TTS-Nano-0.2,2,0.6715,0.7818,Other,Other,0.3474,0.002337,1.1069
+Kitten-TTS-Nano-0.2,4,0.63,0.7353,Other,Other,0.323,0.002056,1.2575
+Kyutai-TTS,2,0.6382,0.7443,Other,Other,0.3115,0.002064,1.3305
+Kyutai-TTS,4,0.6159,0.7217,Other,Other,0.2968,0.001925,1.3638
+Llasa-1B-Multilingual,2,0.6309,0.7435,Other,Other,0.3068,0.001998,1.2055
+Llasa-1B-Multilingual,4,0.6114,0.7215,Other,Other,0.2958,0.001877,1.3199
+Llasa-8B,2,0.6205,0.7425,Other,Other,0.3134,0.001956,1.2985
+Llasa-8B,4,0.5644,0.6784,Other,Other,0.2797,0.00162,1.373
+Mars5,2,0.6417,0.7492,Other,Other,0.3103,0.002127,1.4253
+Mars5,4,0.6172,0.7252,Other,Other,0.2945,0.001958,1.4907
+Marvis-TTS,2,0.6257,0.7418,Other,Other,0.3153,0.001966,1.2657
+Marvis-TTS,4,0.6102,0.7248,Other,Other,0.306,0.001869,1.4036
+MatchaTTS,2,0.6507,0.7483,Other,Other,0.3003,0.002042,1.3442
+MatchaTTS,4,0.6268,0.7217,Other,Other,0.2874,0.001901,1.3745
+Maya1 TTS,2,0.651,0.7601,Other,Other,0.3484,0.00221,1.2745
+Maya1 TTS,4,0.6216,0.7321,Other,Other,0.3286,0.00201,1.3684
+MegaTTS3,2,0.6187,0.7182,Other,Other,0.3022,0.001907,1.4779
+MegaTTS3,4,0.6027,0.7073,Other,Other,0.2934,0.001815,1.4592
+MeloTTS,2,0.6623,0.7632,Other,Other,0.319,0.002279,1.2481
+MeloTTS,4,0.6336,0.7365,Other,Other,0.302,0.002096,1.3294
+Metavoice-1B,2,0.5767,0.6813,Other,Other,0.2844,0.00174,1.5135
+Metavoice-1B,4,0.5807,0.6894,Other,Other,0.2832,0.001741,1.5305
+Microsoft VibeVoice 1.5B,2,0.6302,0.7524,Other,Other,0.3082,0.001999,1.3086
+Microsoft VibeVoice 1.5B,4,0.6107,0.7273,Other,Other,0.2952,0.001861,1.4106
+Microsoft VibeVoice Large,2,0.6218,0.7328,Other,Other,0.3006,0.001978,1.2684
+Microsoft VibeVoice Large,4,0.5983,0.7068,Other,Other,0.2874,0.001836,1.3657
+MiniCPM-o-2.6,2,0.6506,0.7496,Other,Other,0.3244,0.002152,1.343
+MiniCPM-o-2.6,4,0.6202,0.7274,Other,Other,0.3026,0.00195,1.3972
+Nari Dia-1.6B,2,0.6317,0.7506,Other,Other,0.3135,0.002047,1.3535
+Nari Dia-1.6B,4,0.6195,0.74,Other,Other,0.3029,0.001976,1.3969
+Nari Dia2,2,0.6219,0.7436,Other,Other,0.2927,0.001931,1.4069
+Nari Dia2,4,0.6156,0.7351,Other,Other,0.2874,0.001892,1.3899
+NeuTTS-Air,2,0.642,0.7436,Other,Other,0.309,0.002141,1.275
+NeuTTS-Air,4,0.6204,0.7278,Other,Other,0.2956,0.002002,1.3767
+OpenVoiceV2,2,0.6351,0.7315,Other,Other,0.3093,0.002016,1.3583
+OpenVoiceV2,4,0.6019,0.7017,Other,Other,0.2889,0.001816,1.431
+Openaudio-S1-Mini,2,0.6568,0.7684,Other,Other,0.3229,0.002136,1.3028
+Openaudio-S1-Mini,4,0.6244,0.7322,Other,Other,0.3031,0.001927,1.39
+OuteTTS,2,0.608,0.713,Other,Other,0.2975,0.001849,1.4147
+OuteTTS,4,0.5984,0.7056,Other,Other,0.2901,0.001788,1.4288
+Qwen2.5-Omni,2,0.6599,0.7717,Other,Other,0.3171,0.002174,1.2419
+Qwen2.5-Omni,4,0.6275,0.7348,Other,Other,0.2968,0.001963,1.3353
+RVC,2,0.6058,0.7079,Other,Other,0.3079,0.001935,1.4437
+RVC,4,0.6081,0.7114,Other,Other,0.3041,0.001924,1.4673
+"Resemble.ai (April 12th, 2025)",2,0.6306,0.7376,Other,Other,0.2972,0.001993,1.345
+"Resemble.ai (April 12th, 2025)",4,0.5995,0.7139,Other,Other,0.2804,0.001809,1.4181
+Ringg Squirrel TTS v1.0,2,0.631,0.7198,Other,Other,0.2998,0.002038,1.368
+Ringg Squirrel TTS v1.0,4,0.6072,0.701,Other,Other,0.2845,0.001889,1.4508
+SoulX-Podcast,2,0.6393,0.7529,Other,Other,0.3181,0.002115,1.2764
+SoulX-Podcast,4,0.6111,0.7206,Other,Other,0.3006,0.001934,1.3567
+Spark-TTS-0.5B,2,0.6325,0.7578,Other,Other,0.3151,0.002045,1.2605
+Spark-TTS-0.5B,4,0.5969,0.7171,Other,Other,0.2941,0.001822,1.3437
+Step-Audio-EditX,2,0.6461,0.7628,Other,Other,0.3086,0.002076,1.2484
+Step-Audio-EditX,4,0.6204,0.7327,Other,Other,0.2955,0.001915,1.3357
+Supertonic,2,0.6426,0.7749,Other,Other,0.3197,0.002089,1.2084
+Supertonic,4,0.6125,0.7399,Other,Other,0.3009,0.001896,1.3265
+Veena,2,0.598,0.7004,Other,Other,0.2934,0.001813,1.4062
+Veena,4,0.5736,0.6795,Other,Other,0.2781,0.001667,1.4775
+VoxCPM-0.5B,2,0.6263,0.7398,Other,Other,0.3064,0.001976,1.3028
+VoxCPM-0.5B,4,0.5993,0.7086,Other,Other,0.2894,0.001809,1.4032
+VoxCPM-1.5,2,0.6153,0.7259,Other,Other,0.2974,0.001934,1.3197
+VoxCPM-1.5,4,0.5915,0.6985,Other,Other,0.2831,0.00179,1.379
+Voxtream,2,0.6551,0.7542,Other,Other,0.3326,0.002184,1.301
+Voxtream,4,0.6234,0.7229,Other,Other,0.3134,0.001977,1.3661
+WhisperSpeech,2,0.6248,0.7318,Other,Other,0.3137,0.001976,1.3488
+WhisperSpeech,4,0.6032,0.7135,Other,Other,0.2995,0.00185,1.4391
+ZipVoice,2,0.6438,0.7575,Other,Other,0.3394,0.002196,1.2571
+ZipVoice,4,0.6047,0.7115,Other,Other,0.3127,0.001925,1.3288
+e2-tts,2,0.6775,0.7838,Other,Other,0.3406,0.002318,1.3245
+e2-tts,4,0.6449,0.751,Other,Other,0.322,0.002102,1.4213
+f5-tts,2,0.6702,0.7842,Other,Other,0.3194,0.002242,1.2664
+f5-tts,4,0.642,0.7515,Other,Other,0.3011,0.002049,1.3258
+facebook_mms-tts-eng,2,0.667,0.7679,Other,Other,0.3184,0.002195,1.3525
+facebook_mms-tts-eng,4,0.6361,0.7394,Other,Other,0.3021,0.002008,1.389
+griffin_lim,2,0.642,0.74,Other,Other,0.3154,0.002092,1.4723
+griffin_lim,4,0.6225,0.7288,Other,Other,0.3027,0.001968,1.5105
+kokoro,2,0.6687,0.7687,Other,Other,0.3223,0.002276,1.176
+kokoro,4,0.6501,0.7492,Other,Other,0.3102,0.002145,1.2661
+microsoft_speecht5_tts,2,0.6664,0.7713,Other,Other,0.3075,0.002274,1.2471
+microsoft_speecht5_tts,4,0.6306,0.7416,Other,Vowels,0.2858,0.002044,1.3729
+minimax_speech-02-turbo,2,0.6104,0.7257,Other,Other,0.3078,0.001916,1.3403
+minimax_speech-02-turbo,4,0.578,0.692,Other,Other,0.2906,0.001731,1.4001
+minimax_speech-2.6-hd,2,0.6301,0.734,Other,Other,0.3199,0.001999,1.361
+minimax_speech-2.6-hd,4,0.6163,0.7191,Other,Other,0.3105,0.001913,1.4093
+optispeech,2,0.6446,0.7667,Other,Other,0.3095,0.002123,1.3147
+optispeech,4,0.6246,0.7455,Other,Other,0.298,0.001999,1.2944
+orpheus-tts-0.1-finetune,2,0.6144,0.7161,Other,Other,0.3042,0.001871,1.3051
+orpheus-tts-0.1-finetune,4,0.5908,0.6889,Other,Other,0.2905,0.001723,1.356
+parler_tts_large_v1,2,0.603,0.7237,Other,Other,0.2936,0.00185,1.4354
+parler_tts_large_v1,4,0.5929,0.7111,Other,Other,0.285,0.001784,1.4612
+parler_tts_mini_v0.1,2,0.6283,0.734,Other,Other,0.3031,0.001974,1.3705
+parler_tts_mini_v0.1,4,0.6044,0.7073,Other,Other,0.287,0.001831,1.4014
+parler_tts_mini_v1,2,0.6072,0.7124,Other,Other,0.3123,0.001887,1.4855
+parler_tts_mini_v1,4,0.5798,0.6842,Other,Other,0.2977,0.001723,1.5362
+sesame_csm,2,0.6377,0.7404,Other,Other,0.3117,0.001965,1.3946
+sesame_csm,4,0.6263,0.729,Other,Other,0.3034,0.001901,1.4603
+suno_bark,2,0.5757,0.6772,Other,Other,0.282,0.001699,1.3437
+suno_bark,4,0.5744,0.6769,Other,Other,0.2782,0.001677,1.3715
+suno_bark-small,2,0.6675,0.7581,Other,Other,0.3347,0.002237,1.3728
+suno_bark-small,4,0.6369,0.7376,Other,Other,0.3144,0.002038,1.4386
+vixTTS,2,0.5955,0.7055,Other,Other,0.2787,0.001743,1.4299
+vixTTS,4,0.5809,0.6908,Other,Other,0.2676,0.001657,1.4729

@@ -1,0 +1,8 @@
+{
+  "eer_goat": 0.1138,
+  "eer_robust": 0.1,
+  "paired_delta": 0.0137,
+  "paired_ci_lo": -0.0102,
+  "paired_ci_hi": 0.0339,
+  "interpretation_flag": "GAT-localized"
+}

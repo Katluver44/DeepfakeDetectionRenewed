@@ -1,0 +1,188 @@
+{
+  "post_wavlm": {
+    "goat": {
+      "binary": {
+        "best_C": 100.0,
+        "n_iter": 2000,
+        "converged": false,
+        "train_bacc": 0.9668,
+        "eer": 0.1008,
+        "eer_ci_lo": 0.0779,
+        "eer_ci_hi": 0.1187,
+        "auroc": 0.9681,
+        "balanced_acc": 0.8992
+      },
+      "7class": {
+        "best_C": 0.1,
+        "n_iter": 393,
+        "converged": true,
+        "train_bacc": 0.9863,
+        "macro_f1": 0.9318,
+        "per_class_f1": {
+          "bonafide": 0.8265,
+          "A01": 0.9801,
+          "A02": 1.0,
+          "A03": 0.9874,
+          "A04": 0.8342,
+          "A05": 0.9828,
+          "A06": 0.9112
+        }
+      },
+      "pooling_scheme": "post_wavlm_frame_mean_pre_encoder"
+    },
+    "robust_goat": {
+      "binary": {
+        "best_C": 100.0,
+        "n_iter": 2000,
+        "converged": false,
+        "train_bacc": 0.9668,
+        "eer": 0.1008,
+        "eer_ci_lo": 0.0779,
+        "eer_ci_hi": 0.1187,
+        "auroc": 0.9681,
+        "balanced_acc": 0.8992
+      },
+      "7class": {
+        "best_C": 0.1,
+        "n_iter": 393,
+        "converged": true,
+        "train_bacc": 0.9863,
+        "macro_f1": 0.9318,
+        "per_class_f1": {
+          "bonafide": 0.8265,
+          "A01": 0.9801,
+          "A02": 1.0,
+          "A03": 0.9874,
+          "A04": 0.8342,
+          "A05": 0.9828,
+          "A06": 0.9112
+        }
+      },
+      "pooling_scheme": "post_wavlm_frame_mean_pre_encoder"
+    }
+  },
+  "pre_gat": {
+    "goat": {
+      "binary": {
+        "best_C": 0.1,
+        "n_iter": 152,
+        "converged": true,
+        "train_bacc": 0.9626,
+        "eer": 0.08,
+        "eer_ci_lo": 0.063,
+        "eer_ci_hi": 0.0979,
+        "auroc": 0.9738,
+        "balanced_acc": 0.9171
+      },
+      "7class": {
+        "best_C": 0.1,
+        "n_iter": 241,
+        "converged": true,
+        "train_bacc": 0.986,
+        "macro_f1": 0.8427,
+        "per_class_f1": {
+          "bonafide": 0.803,
+          "A01": 0.8551,
+          "A02": 0.8325,
+          "A03": 0.8536,
+          "A04": 0.8737,
+          "A05": 0.9192,
+          "A06": 0.7621
+        }
+      },
+      "pooling_scheme": "pre_gat_phoneme_mean_post_encoder"
+    },
+    "robust_goat": {
+      "binary": {
+        "best_C": 0.1,
+        "n_iter": 152,
+        "converged": true,
+        "train_bacc": 0.9626,
+        "eer": 0.08,
+        "eer_ci_lo": 0.063,
+        "eer_ci_hi": 0.0979,
+        "auroc": 0.9738,
+        "balanced_acc": 0.9171
+      },
+      "7class": {
+        "best_C": 0.1,
+        "n_iter": 237,
+        "converged": true,
+        "train_bacc": 0.986,
+        "macro_f1": 0.8427,
+        "per_class_f1": {
+          "bonafide": 0.803,
+          "A01": 0.8551,
+          "A02": 0.8325,
+          "A03": 0.8536,
+          "A04": 0.8737,
+          "A05": 0.9192,
+          "A06": 0.7621
+        }
+      },
+      "pooling_scheme": "pre_gat_phoneme_mean_post_encoder"
+    }
+  },
+  "post_gat": {
+    "goat": {
+      "binary": {
+        "best_C": 0.1,
+        "n_iter": 240,
+        "converged": true,
+        "train_bacc": 0.9255,
+        "eer": 0.1138,
+        "eer_ci_lo": 0.0904,
+        "eer_ci_hi": 0.1313,
+        "auroc": 0.9566,
+        "balanced_acc": 0.8812
+      },
+      "7class": {
+        "best_C": 0.1,
+        "n_iter": 442,
+        "converged": true,
+        "train_bacc": 0.852,
+        "macro_f1": 0.7139,
+        "per_class_f1": {
+          "bonafide": 0.702,
+          "A01": 0.6887,
+          "A02": 0.6992,
+          "A03": 0.7098,
+          "A04": 0.6972,
+          "A05": 0.89,
+          "A06": 0.6103
+        }
+      },
+      "pooling_scheme": "bilstm_mean_pool_post_gat"
+    },
+    "robust_goat": {
+      "binary": {
+        "best_C": 1.0,
+        "n_iter": 623,
+        "converged": true,
+        "train_bacc": 0.9311,
+        "eer": 0.1,
+        "eer_ci_lo": 0.081,
+        "eer_ci_hi": 0.1189,
+        "auroc": 0.9607,
+        "balanced_acc": 0.9021
+      },
+      "7class": {
+        "best_C": 10.0,
+        "n_iter": 2000,
+        "converged": false,
+        "train_bacc": 0.9314,
+        "macro_f1": 0.6749,
+        "per_class_f1": {
+          "bonafide": 0.6634,
+          "A01": 0.6864,
+          "A02": 0.6547,
+          "A03": 0.6552,
+          "A04": 0.7082,
+          "A05": 0.7879,
+          "A06": 0.5685
+        }
+      },
+      "pooling_scheme": "bilstm_mean_pool_post_gat"
+    }
+  }
+}

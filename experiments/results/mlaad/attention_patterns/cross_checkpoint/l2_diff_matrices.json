@@ -1,0 +1,518 @@
+{
+  "h2": {
+    "-": {
+      "l2_diff": 0.0558,
+      "cosine_sim": 0.9957
+    },
+    "Cartesia.ai (Sonic-3)": {
+      "l2_diff": 0.0423,
+      "cosine_sim": 0.9981
+    },
+    "Chatterbox": {
+      "l2_diff": 0.0383,
+      "cosine_sim": 0.9984
+    },
+    "DeepGram": {
+      "l2_diff": 0.0421,
+      "cosine_sim": 0.9978
+    },
+    "Edge-TTS": {
+      "l2_diff": 0.0547,
+      "cosine_sim": 0.9954
+    },
+    "FireRedTTS-2.0": {
+      "l2_diff": 0.063,
+      "cosine_sim": 0.9939
+    },
+    "FishTTS": {
+      "l2_diff": 0.0559,
+      "cosine_sim": 0.9959
+    },
+    "Higgs-Audio-V2": {
+      "l2_diff": 0.0475,
+      "cosine_sim": 0.9974
+    },
+    "Index-TTS-1.5": {
+      "l2_diff": 0.0437,
+      "cosine_sim": 0.9976
+    },
+    "Index-TTS-2.0": {
+      "l2_diff": 0.0427,
+      "cosine_sim": 0.9978
+    },
+    "Indri-TTS-0.1": {
+      "l2_diff": 0.0528,
+      "cosine_sim": 0.9968
+    },
+    "Kani-TTS-370M": {
+      "l2_diff": 0.0471,
+      "cosine_sim": 0.9971
+    },
+    "Kitten-TTS-Nano-0.1": {
+      "l2_diff": 0.0414,
+      "cosine_sim": 0.998
+    },
+    "Kitten-TTS-Nano-0.2": {
+      "l2_diff": 0.0333,
+      "cosine_sim": 0.999
+    },
+    "Kyutai-TTS": {
+      "l2_diff": 0.0455,
+      "cosine_sim": 0.9976
+    },
+    "Llasa-1B-Multilingual": {
+      "l2_diff": 0.0408,
+      "cosine_sim": 0.9982
+    },
+    "Llasa-8B": {
+      "l2_diff": 0.0484,
+      "cosine_sim": 0.9973
+    },
+    "Mars5": {
+      "l2_diff": 0.0602,
+      "cosine_sim": 0.9944
+    },
+    "Marvis-TTS": {
+      "l2_diff": 0.0361,
+      "cosine_sim": 0.9985
+    },
+    "MatchaTTS": {
+      "l2_diff": 0.0421,
+      "cosine_sim": 0.9981
+    },
+    "Maya1 TTS": {
+      "l2_diff": 0.0375,
+      "cosine_sim": 0.9983
+    },
+    "MegaTTS3": {
+      "l2_diff": 0.0661,
+      "cosine_sim": 0.9932
+    },
+    "MeloTTS": {
+      "l2_diff": 0.034,
+      "cosine_sim": 0.9987
+    },
+    "Metavoice-1B": {
+      "l2_diff": 0.0718,
+      "cosine_sim": 0.9903
+    },
+    "Microsoft VibeVoice 1.5B": {
+      "l2_diff": 0.0474,
+      "cosine_sim": 0.9974
+    },
+    "Microsoft VibeVoice Large": {
+      "l2_diff": 0.0457,
+      "cosine_sim": 0.9975
+    },
+    "MiniCPM-o-2.6": {
+      "l2_diff": 0.0551,
+      "cosine_sim": 0.9956
+    },
+    "Nari Dia-1.6B": {
+      "l2_diff": 0.0343,
+      "cosine_sim": 0.9984
+    },
+    "Nari Dia2": {
+      "l2_diff": 0.0557,
+      "cosine_sim": 0.9956
+    },
+    "NeuTTS-Air": {
+      "l2_diff": 0.0487,
+      "cosine_sim": 0.9971
+    },
+    "OpenVoiceV2": {
+      "l2_diff": 0.0569,
+      "cosine_sim": 0.9958
+    },
+    "Openaudio-S1-Mini": {
+      "l2_diff": 0.0362,
+      "cosine_sim": 0.9988
+    },
+    "OuteTTS": {
+      "l2_diff": 0.0515,
+      "cosine_sim": 0.9963
+    },
+    "Qwen2.5-Omni": {
+      "l2_diff": 0.0402,
+      "cosine_sim": 0.9981
+    },
+    "RVC": {
+      "l2_diff": 0.0525,
+      "cosine_sim": 0.9963
+    },
+    "Resemble.ai (April 12th, 2025)": {
+      "l2_diff": 0.0521,
+      "cosine_sim": 0.9964
+    },
+    "Ringg Squirrel TTS v1.0": {
+      "l2_diff": 0.0499,
+      "cosine_sim": 0.9968
+    },
+    "SoulX-Podcast": {
+      "l2_diff": 0.0385,
+      "cosine_sim": 0.9985
+    },
+    "Spark-TTS-0.5B": {
+      "l2_diff": 0.0434,
+      "cosine_sim": 0.9978
+    },
+    "Step-Audio-EditX": {
+      "l2_diff": 0.0513,
+      "cosine_sim": 0.9967
+    },
+    "Supertonic": {
+      "l2_diff": 0.0386,
+      "cosine_sim": 0.9984
+    },
+    "Veena": {
+      "l2_diff": 0.0607,
+      "cosine_sim": 0.9942
+    },
+    "VoxCPM-0.5B": {
+      "l2_diff": 0.0438,
+      "cosine_sim": 0.9975
+    },
+    "VoxCPM-1.5": {
+      "l2_diff": 0.0485,
+      "cosine_sim": 0.9972
+    },
+    "Voxtream": {
+      "l2_diff": 0.0496,
+      "cosine_sim": 0.9971
+    },
+    "WhisperSpeech": {
+      "l2_diff": 0.055,
+      "cosine_sim": 0.9964
+    },
+    "ZipVoice": {
+      "l2_diff": 0.0469,
+      "cosine_sim": 0.9978
+    },
+    "e2-tts": {
+      "l2_diff": 0.0449,
+      "cosine_sim": 0.9977
+    },
+    "f5-tts": {
+      "l2_diff": 0.0269,
+      "cosine_sim": 0.9993
+    },
+    "facebook_mms-tts-eng": {
+      "l2_diff": 0.0444,
+      "cosine_sim": 0.9979
+    },
+    "griffin_lim": {
+      "l2_diff": 0.0502,
+      "cosine_sim": 0.9965
+    },
+    "kokoro": {
+      "l2_diff": 0.0302,
+      "cosine_sim": 0.9989
+    },
+    "microsoft_speecht5_tts": {
+      "l2_diff": 0.0445,
+      "cosine_sim": 0.9976
+    },
+    "minimax_speech-02-turbo": {
+      "l2_diff": 0.0382,
+      "cosine_sim": 0.9984
+    },
+    "minimax_speech-2.6-hd": {
+      "l2_diff": 0.0477,
+      "cosine_sim": 0.9971
+    },
+    "optispeech": {
+      "l2_diff": 0.0319,
+      "cosine_sim": 0.9988
+    },
+    "orpheus-tts-0.1-finetune": {
+      "l2_diff": 0.0579,
+      "cosine_sim": 0.9959
+    },
+    "parler_tts_large_v1": {
+      "l2_diff": 0.0489,
+      "cosine_sim": 0.9965
+    },
+    "parler_tts_mini_v0.1": {
+      "l2_diff": 0.0462,
+      "cosine_sim": 0.9971
+    },
+    "parler_tts_mini_v1": {
+      "l2_diff": 0.0571,
+      "cosine_sim": 0.9957
+    },
+    "sesame_csm": {
+      "l2_diff": 0.0513,
+      "cosine_sim": 0.9966
+    },
+    "suno_bark": {
+      "l2_diff": 0.0548,
+      "cosine_sim": 0.9952
+    },
+    "suno_bark-small": {
+      "l2_diff": 0.0523,
+      "cosine_sim": 0.9964
+    },
+    "vixTTS": {
+      "l2_diff": 0.055,
+      "cosine_sim": 0.9955
+    }
+  },
+  "h4": {
+    "-": {
+      "l2_diff": 0.0347,
+      "cosine_sim": 0.9984
+    },
+    "Cartesia.ai (Sonic-3)": {
+      "l2_diff": 0.0266,
+      "cosine_sim": 0.9993
+    },
+    "Chatterbox": {
+      "l2_diff": 0.0279,
+      "cosine_sim": 0.9991
+    },
+    "DeepGram": {
+      "l2_diff": 0.0317,
+      "cosine_sim": 0.9988
+    },
+    "Edge-TTS": {
+      "l2_diff": 0.0376,
+      "cosine_sim": 0.9982
+    },
+    "FireRedTTS-2.0": {
+      "l2_diff": 0.0375,
+      "cosine_sim": 0.9981
+    },
+    "FishTTS": {
+      "l2_diff": 0.0339,
+      "cosine_sim": 0.9987
+    },
+    "Higgs-Audio-V2": {
+      "l2_diff": 0.0329,
+      "cosine_sim": 0.9988
+    },
+    "Index-TTS-1.5": {
+      "l2_diff": 0.0298,
+      "cosine_sim": 0.999
+    },
+    "Index-TTS-2.0": {
+      "l2_diff": 0.0373,
+      "cosine_sim": 0.9983
+    },
+    "Indri-TTS-0.1": {
+      "l2_diff": 0.0442,
+      "cosine_sim": 0.9978
+    },
+    "Kani-TTS-370M": {
+      "l2_diff": 0.0382,
+      "cosine_sim": 0.9982
+    },
+    "Kitten-TTS-Nano-0.1": {
+      "l2_diff": 0.0366,
+      "cosine_sim": 0.9984
+    },
+    "Kitten-TTS-Nano-0.2": {
+      "l2_diff": 0.0263,
+      "cosine_sim": 0.9993
+    },
+    "Kyutai-TTS": {
+      "l2_diff": 0.03,
+      "cosine_sim": 0.9989
+    },
+    "Llasa-1B-Multilingual": {
+      "l2_diff": 0.0361,
+      "cosine_sim": 0.9986
+    },
+    "Llasa-8B": {
+      "l2_diff": 0.0271,
+      "cosine_sim": 0.999
+    },
+    "Mars5": {
+      "l2_diff": 0.0315,
+      "cosine_sim": 0.9986
+    },
+    "Marvis-TTS": {
+      "l2_diff": 0.0323,
+      "cosine_sim": 0.9989
+    },
+    "MatchaTTS": {
+      "l2_diff": 0.032,
+      "cosine_sim": 0.9989
+    },
+    "Maya1 TTS": {
+      "l2_diff": 0.0291,
+      "cosine_sim": 0.999
+    },
+    "MegaTTS3": {
+      "l2_diff": 0.035,
+      "cosine_sim": 0.9983
+    },
+    "MeloTTS": {
+      "l2_diff": 0.0325,
+      "cosine_sim": 0.9987
+    },
+    "Metavoice-1B": {
+      "l2_diff": 0.0403,
+      "cosine_sim": 0.9975
+    },
+    "Microsoft VibeVoice 1.5B": {
+      "l2_diff": 0.0401,
+      "cosine_sim": 0.9981
+    },
+    "Microsoft VibeVoice Large": {
+      "l2_diff": 0.0312,
+      "cosine_sim": 0.9989
+    },
+    "MiniCPM-o-2.6": {
+      "l2_diff": 0.036,
+      "cosine_sim": 0.9983
+    },
+    "Nari Dia-1.6B": {
+      "l2_diff": 0.0277,
+      "cosine_sim": 0.9992
+    },
+    "Nari Dia2": {
+      "l2_diff": 0.0393,
+      "cosine_sim": 0.9981
+    },
+    "NeuTTS-Air": {
+      "l2_diff": 0.0362,
+      "cosine_sim": 0.9986
+    },
+    "OpenVoiceV2": {
+      "l2_diff": 0.0458,
+      "cosine_sim": 0.997
+    },
+    "Openaudio-S1-Mini": {
+      "l2_diff": 0.0329,
+      "cosine_sim": 0.9988
+    },
+    "OuteTTS": {
+      "l2_diff": 0.0344,
+      "cosine_sim": 0.9985
+    },
+    "Qwen2.5-Omni": {
+      "l2_diff": 0.0286,
+      "cosine_sim": 0.9991
+    },
+    "RVC": {
+      "l2_diff": 0.0332,
+      "cosine_sim": 0.9986
+    },
+    "Resemble.ai (April 12th, 2025)": {
+      "l2_diff": 0.0359,
+      "cosine_sim": 0.9982
+    },
+    "Ringg Squirrel TTS v1.0": {
+      "l2_diff": 0.0366,
+      "cosine_sim": 0.9982
+    },
+    "SoulX-Podcast": {
+      "l2_diff": 0.0317,
+      "cosine_sim": 0.9989
+    },
+    "Spark-TTS-0.5B": {
+      "l2_diff": 0.0321,
+      "cosine_sim": 0.9987
+    },
+    "Step-Audio-EditX": {
+      "l2_diff": 0.0335,
+      "cosine_sim": 0.9988
+    },
+    "Supertonic": {
+      "l2_diff": 0.0338,
+      "cosine_sim": 0.9987
+    },
+    "Veena": {
+      "l2_diff": 0.0408,
+      "cosine_sim": 0.9974
+    },
+    "VoxCPM-0.5B": {
+      "l2_diff": 0.0354,
+      "cosine_sim": 0.9985
+    },
+    "VoxCPM-1.5": {
+      "l2_diff": 0.0412,
+      "cosine_sim": 0.9977
+    },
+    "Voxtream": {
+      "l2_diff": 0.034,
+      "cosine_sim": 0.9988
+    },
+    "WhisperSpeech": {
+      "l2_diff": 0.0378,
+      "cosine_sim": 0.9984
+    },
+    "ZipVoice": {
+      "l2_diff": 0.0346,
+      "cosine_sim": 0.9985
+    },
+    "e2-tts": {
+      "l2_diff": 0.035,
+      "cosine_sim": 0.9987
+    },
+    "f5-tts": {
+      "l2_diff": 0.0288,
+      "cosine_sim": 0.9992
+    },
+    "facebook_mms-tts-eng": {
+      "l2_diff": 0.0381,
+      "cosine_sim": 0.9982
+    },
+    "griffin_lim": {
+      "l2_diff": 0.0347,
+      "cosine_sim": 0.9983
+    },
+    "kokoro": {
+      "l2_diff": 0.028,
+      "cosine_sim": 0.9992
+    },
+    "microsoft_speecht5_tts": {
+      "l2_diff": 0.0309,
+      "cosine_sim": 0.9989
+    },
+    "minimax_speech-02-turbo": {
+      "l2_diff": 0.0288,
+      "cosine_sim": 0.999
+    },
+    "minimax_speech-2.6-hd": {
+      "l2_diff": 0.045,
+      "cosine_sim": 0.9975
+    },
+    "optispeech": {
+      "l2_diff": 0.0333,
+      "cosine_sim": 0.9989
+    },
+    "orpheus-tts-0.1-finetune": {
+      "l2_diff": 0.042,
+      "cosine_sim": 0.9978
+    },
+    "parler_tts_large_v1": {
+      "l2_diff": 0.0352,
+      "cosine_sim": 0.9985
+    },
+    "parler_tts_mini_v0.1": {
+      "l2_diff": 0.0334,
+      "cosine_sim": 0.9986
+    },
+    "parler_tts_mini_v1": {
+      "l2_diff": 0.034,
+      "cosine_sim": 0.9985
+    },
+    "sesame_csm": {
+      "l2_diff": 0.0331,
+      "cosine_sim": 0.9987
+    },
+    "suno_bark": {
+      "l2_diff": 0.0316,
+      "cosine_sim": 0.9987
+    },
+    "suno_bark-small": {
+      "l2_diff": 0.0336,
+      "cosine_sim": 0.9986
+    },
+    "vixTTS": {
+      "l2_diff": 0.0385,
+      "cosine_sim": 0.9978
+    }
+  }
+}

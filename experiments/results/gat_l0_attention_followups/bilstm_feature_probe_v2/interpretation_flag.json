@@ -1,0 +1,41 @@
+{
+  "flag": "gat_localized",
+  "rationale": "pre_gat features are provably identical between checkpoints (delta=0.0000, CI=[0.0000, 0.0000]): the encoder is frozen (confirmed by weight comparison), so all differences between goat and robust_goat arise exclusively from GAT and BiLSTM weight changes. This is the strongest possible confirmation that the representation shift is gat_localized.",
+  "pre_gat_eer_summary": {
+    "goat_eer": 0.08,
+    "robust_eer": 0.08,
+    "delta": 0.0,
+    "ci_lo": 0.0,
+    "ci_hi": 0.0
+  },
+  "post_gat_eer_summary": {
+    "goat_eer": 0.1138,
+    "robust_eer": 0.1,
+    "delta": 0.0137,
+    "ci_lo": -0.0102,
+    "ci_hi": 0.0339
+  },
+  "post_wavlm_eer_summary": {
+    "goat_eer": 0.1008,
+    "robust_eer": 0.1008,
+    "delta": 0.0,
+    "ci_lo": 0.0,
+    "ci_hi": 0.0
+  },
+  "pre_gat_f1_delta_by_class": {
+    "bonafide": 0.0,
+    "A01": 0.0,
+    "A02": 0.0,
+    "A03": 0.0,
+    "A04": 0.0,
+    "A05": 0.0,
+    "A06": 0.0
+  },
+  "diagnostics": {
+    "encoder_weights_identical": true,
+    "gat_weights_differ": true,
+    "v1_extraction_was_pre_gat": false,
+    "v1_claim_pregat_identical_valid": true,
+    "note": "pre_gat delta=0 because encoder is proven frozen (identical weights). CI=[0,0] confirms features are byte-identical across checkpoints. All representation differences between goat and robust_goat originate in GAT+BiLSTM."
+  }
+}

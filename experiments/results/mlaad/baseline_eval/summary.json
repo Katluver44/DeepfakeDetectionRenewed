@@ -1,0 +1,19 @@
+{
+  "mlaad_goat": {
+    "in_distribution_eer": 0.2443149263124278,
+    "cross_language_eer": 0.26733390818756675,
+    "cross_language_gap": 0.023018981875138955
+  },
+  "mlaad_robust_goat": {
+    "in_distribution_eer": 0.2676058818556682,
+    "cross_language_eer": 0.316709780734171,
+    "cross_language_gap": 0.049103898878502805
+  },
+  "hypothesis": {
+    "prediction": "mlaad_robust_goat has smaller cross-language EER gap than mlaad_goat",
+    "confirmed": false,
+    "mlaad_goat_gap": 0.023018981875138955,
+    "mlaad_robust_goat_gap": 0.049103898878502805,
+    "note": "Smaller gap = better language-invariant generalization (abstraction-over-discriminability story)"
+  }
+}

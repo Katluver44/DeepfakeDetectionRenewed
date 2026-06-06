@@ -1,0 +1,104 @@
+{
+  "post_wavlm": {
+    "mlaad_goat": {
+      "in_distribution": {
+        "eer": 0.1522,
+        "eer_ci_lo": 0.136,
+        "eer_ci_hi": 0.169,
+        "auroc": 0.9235,
+        "balanced_acc": 0.8411
+      },
+      "cross_language": {
+        "eer": 0.1953,
+        "eer_ci_lo": 0.1685,
+        "eer_ci_hi": 0.2209,
+        "auroc": 0.8986,
+        "balanced_acc": 0.8076
+      }
+    },
+    "mlaad_robust_goat": {
+      "in_distribution": {
+        "eer": 0.1522,
+        "eer_ci_lo": 0.136,
+        "eer_ci_hi": 0.169,
+        "auroc": 0.9235,
+        "balanced_acc": 0.8411
+      },
+      "cross_language": {
+        "eer": 0.1953,
+        "eer_ci_lo": 0.1685,
+        "eer_ci_hi": 0.2209,
+        "auroc": 0.8986,
+        "balanced_acc": 0.8076
+      }
+    }
+  },
+  "pre_gat": {
+    "mlaad_goat": {
+      "in_distribution": {
+        "eer": 0.3976,
+        "eer_ci_lo": 0.3749,
+        "eer_ci_hi": 0.4187,
+        "auroc": 0.6356,
+        "balanced_acc": 0.5829
+      },
+      "cross_language": {
+        "eer": 0.4282,
+        "eer_ci_lo": 0.3944,
+        "eer_ci_hi": 0.463,
+        "auroc": 0.6101,
+        "balanced_acc": 0.5904
+      }
+    },
+    "mlaad_robust_goat": {
+      "in_distribution": {
+        "eer": 0.3976,
+        "eer_ci_lo": 0.3749,
+        "eer_ci_hi": 0.4187,
+        "auroc": 0.6356,
+        "balanced_acc": 0.5829
+      },
+      "cross_language": {
+        "eer": 0.4282,
+        "eer_ci_lo": 0.3955,
+        "eer_ci_hi": 0.463,
+        "auroc": 0.61,
+        "balanced_acc": 0.5926
+      }
+    }
+  },
+  "post_gat": {
+    "mlaad_goat": {
+      "in_distribution": {
+        "eer": 0.403,
+        "eer_ci_lo": 0.3841,
+        "eer_ci_hi": 0.4274,
+        "auroc": 0.6229,
+        "balanced_acc": 0.5539
+      },
+      "cross_language": {
+        "eer": 0.4726,
+        "eer_ci_lo": 0.4398,
+        "eer_ci_hi": 0.4993,
+        "auroc": 0.5512,
+        "balanced_acc": 0.5332
+      }
+    },
+    "mlaad_robust_goat": {
+      "in_distribution": {
+        "eer": 0.402,
+        "eer_ci_lo": 0.3819,
+        "eer_ci_hi": 0.4263,
+        "auroc": 0.6309,
+        "balanced_acc": 0.5759
+      },
+      "cross_language": {
+        "eer": 0.4635,
+        "eer_ci_lo": 0.4247,
+        "eer_ci_hi": 0.4973,
+        "auroc": 0.5687,
+        "balanced_acc": 0.5412
+      }
+    }
+  }
+}

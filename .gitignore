@@ -10,3 +10,28 @@ data/
 pretrained/
 secret.txt
 venv/
+
+# Checkpoint directories
+experiments/checkpoints/
+DeepfakeDetectionRenewed/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Claude Code tool memory
+.claude/
+
+# Generated experiment logs
+logs/e[0-9]*/
+logs/e[0-9]*.log
+logs/train_seed[0-9].log
+
+# Feature / artifact caches inside results
+experiments/results/**/feature_cache/
+experiments/results/**/cache/
+experiments/results/**/*.npz
+experiments/results/**/*.pt
+experiments/results/**/*.png
+experiments/results/**/*.pdf

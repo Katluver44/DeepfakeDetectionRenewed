@@ -1,0 +1,71 @@
+{
+  "version": "v2",
+  "extraction_points": [
+    "post_wavlm",
+    "pre_gat",
+    "post_gat"
+  ],
+  "pooling_schemes": {
+    "post_wavlm": "post_wavlm_frame_mean_pre_encoder",
+    "pre_gat": "pre_gat_phoneme_mean_post_encoder",
+    "post_gat": "bilstm_mean_pool_post_gat"
+  },
+  "checkpoints": {
+    "goat": "/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/models/goat.ckpt",
+    "robust_goat": "/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/models/robust_goat.ckpt"
+  },
+  "checkpoint_hashes": {
+    "goat": "8a70ba6ed705d9f0",
+    "robust_goat": "184d1c545d567ede"
+  },
+  "audit": {
+    "encoder_identical": true,
+    "gat_differs": true,
+    "weight_comparison": {
+      "encoder": {
+        "n_params": 89785712,
+        "max_diff": 0.0,
+        "l2_diff": 0.0
+      },
+      "GAT": {
+        "n_params": 3545856,
+        "max_diff": 0.2048955261707306,
+        "l2_diff": 201.61006033420563
+      },
+      "BiLSTM": {
+        "n_params": 7090176,
+        "max_diff": 0.1474226415157318,
+        "l2_diff": 326.6163241863251
+      },
+      "cls_head": {
+        "n_params": 594433,
+        "max_diff": 0.16087841987609863,
+        "l2_diff": 28.126585256308317
+      }
+    },
+    "extraction_correct_v1": false,
+    "v1_claim_valid": true
+  },
+  "dataset": {
+    "hf_name": "Bisher/ASVspoof_2019_LA",
+    "train_split": "train",
+    "eval_split": "validation",
+    "train_binary_hash": "c3f6656f4f34e4ae",
+    "train_7class_hash": "63a56673251bb020",
+    "eval_hash": "7690f681c0e75aa5"
+  },
+  "probe": {
+    "C_grid": [
+      0.01,
+      0.1,
+      1.0,
+      10.0,
+      100.0,
+      1000.0
+    ],
+    "max_iter": 2000,
+    "n_folds": 5,
+    "n_bootstrap": 1000,
+    "seed": 42
+  }
+}

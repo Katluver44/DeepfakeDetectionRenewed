@@ -1,0 +1,50 @@
+{
+  "mlaad_goat": {
+    "n_samples": 1327,
+    "n_bonafide": 1107,
+    "n_spoof": 220,
+    "pooled_eer": 0.26733390818756675,
+    "per_system_eer": {
+      "CaroTTS": 0.3802029045931485,
+      "Cartesia.ai (Sonic-3)": 0.31523825654923215,
+      "Chatterbox Multilingual": 0.3897018970189702,
+      "Edge-TTS": 0.22333402821207698,
+      "FishTTS": 0.2583148558758315,
+      "Higgs-Audio-V2": 0.294618660472319,
+      "Kani-TTS-370M": 0.25786318469245295,
+      "Kartoffelbox": 0.3665516958199885,
+      "Llasa-1B-Multilingual": 0.298380932527274,
+      "NVidia Magpie-TTS Multilingual": 0.2136404697380307,
+      "OuteTTS": 0.33197831978319786,
+      "RVC": 0.15634275390372954,
+      "Resemble.ai (April 12th, 2025)": 0.21926898756167046,
+      "facebook_mms-tts-deu": 0.2419828364950316,
+      "griffin_lim": 0.3062048328816621
+    },
+    "inference_time_seconds": 13.729269981384277
+  },
+  "mlaad_robust_goat": {
+    "n_samples": 1327,
+    "n_bonafide": 1107,
+    "n_spoof": 220,
+    "pooled_eer": 0.316709780734171,
+    "per_system_eer": {
+      "CaroTTS": 0.3874296435272045,
+      "Cartesia.ai (Sonic-3)": 0.31614159891598914,
+      "Chatterbox Multilingual": 0.39647696476964767,
+      "Edge-TTS": 0.263984434716142,
+      "FishTTS": 0.265993265993266,
+      "Higgs-Audio-V2": 0.3801780874951607,
+      "Kani-TTS-370M": 0.17672661575100596,
+      "Kartoffelbox": 0.358873285702554,
+      "Llasa-1B-Multilingual": 0.3707178097422,
+      "NVidia Magpie-TTS Multilingual": 0.23351400180668475,
+      "OuteTTS": 0.41429539295392953,
+      "RVC": 0.21689895470383275,
+      "Resemble.ai (April 12th, 2025)": 0.23733583489681048,
+      "facebook_mms-tts-deu": 0.2356594399277326,
+      "griffin_lim": 0.49254742547425473
+    },
+    "inference_time_seconds": 13.696832180023193
+  }
+}

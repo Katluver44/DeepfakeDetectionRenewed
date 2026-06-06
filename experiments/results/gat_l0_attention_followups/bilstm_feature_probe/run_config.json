@@ -1,0 +1,58 @@
+{
+  "checkpoints": {
+    "goat": "/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/models/goat.ckpt",
+    "robust_goat": "/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/models/robust_goat.ckpt"
+  },
+  "pooling_scheme": "bilstm_mean_pool_post_gat",
+  "pooling_note": "BiLSTM = nn.Sequential(nn.LSTM(768, 384, num_layers=2, bidirectional=True)). Mean-pool over valid phoneme positions (reduced_num_frames). WavLM encoder frozen; pre-GAT features identical across checkpoints.",
+  "dataset": {
+    "hf_name": "Bisher/ASVspoof_2019_LA",
+    "train_split": "train",
+    "eval_split": "validation",
+    "train_binary_counts": {
+      "-": 2500,
+      "A01": 416,
+      "A02": 416,
+      "A03": 416,
+      "A04": 416,
+      "A05": 416,
+      "A06": 416
+    },
+    "train_7class_counts": {
+      "-": 500,
+      "A01": 500,
+      "A02": 500,
+      "A03": 500,
+      "A04": 500,
+      "A05": 500,
+      "A06": 500
+    },
+    "eval_counts": {
+      "-": 200,
+      "A01": 200,
+      "A02": 200,
+      "A03": 200,
+      "A04": 200,
+      "A05": 200,
+      "A06": 200
+    },
+    "train_binary_hash": "c3f6656f4f34e4ae",
+    "train_7class_hash": "63a56673251bb020",
+    "eval_hash": "7690f681c0e75aa5"
+  },
+  "probe": {
+    "model": "LogisticRegression(solver='lbfgs', max_iter=1000)",
+    "C_grid": [
+      0.01,
+      0.1,
+      1.0,
+      10.0,
+      100.0
+    ],
+    "n_folds": 5,
+    "cv_metric": "balanced_accuracy",
+    "n_bootstrap": 1000,
+    "seed": 42
+  },
+  "sanity_pass": true
+}

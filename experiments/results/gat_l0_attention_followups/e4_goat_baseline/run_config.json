@@ -1,0 +1,46 @@
+{
+  "checkpoint": "/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/models/goat.ckpt",
+  "checkpoint_name": "goat.ckpt",
+  "ablation_spec": {
+    "layer": 0,
+    "mode": "zero",
+    "critical_heads": [
+      0,
+      4
+    ],
+    "complement_heads": [
+      1,
+      2,
+      3,
+      5
+    ],
+    "random_ctrl_heads": [
+      2,
+      3
+    ]
+  },
+  "eval_set": {
+    "hf_dataset": "Bisher/ASVspoof_2019_LA",
+    "split": "validation",
+    "n_per_class": 50,
+    "attack_systems": [
+      "A01",
+      "A02",
+      "A03",
+      "A04",
+      "A05",
+      "A06"
+    ],
+    "dataset_hash": "edc0ab6c06285ff9"
+  },
+  "seed": 42,
+  "n_bootstrap": 1000,
+  "nh": 6,
+  "sanity_pass": true,
+  "ci_overlap_random_ctrl_baseline": true,
+  "sanity_details": {
+    "baseline_eer": "OK \u2014 pooled EER=0.1400; verify against goat.ckpt reported eval EER",
+    "ablate_ne_keep": "OK \u2014 ablate_h0_h4=0.1400 \u2260 keep_h0_h4=0.1350 (diff=0.0050)",
+    "random_ctrl_ci_overlap": "OK \u2014 random_ctrl avg CI [0.075,0.227] overlaps baseline [0.063,0.204]"
+  }
+}

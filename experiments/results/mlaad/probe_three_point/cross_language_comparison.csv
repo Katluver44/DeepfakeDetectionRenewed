@@ -1,0 +1,7 @@
+extraction_point,checkpoint,eer,eer_ci_lo,eer_ci_hi,auroc,balanced_acc
+post_wavlm,mlaad_goat,0.1953,0.1685,0.2209,0.8986,0.8076
+post_wavlm,mlaad_robust_goat,0.1953,0.1685,0.2209,0.8986,0.8076
+pre_gat,mlaad_goat,0.4282,0.3944,0.463,0.6101,0.5904
+pre_gat,mlaad_robust_goat,0.4282,0.3955,0.463,0.61,0.5926
+post_gat,mlaad_goat,0.4726,0.4398,0.4993,0.5512,0.5332
+post_gat,mlaad_robust_goat,0.4635,0.4247,0.4973,0.5687,0.5412

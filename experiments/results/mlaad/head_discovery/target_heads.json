@@ -1,0 +1,19 @@
+{
+  "selected_checkpoint": "mlaad_robust_goat",
+  "ranking_source": "in_distribution",
+  "target_heads": [
+    2,
+    4
+  ],
+  "rationale": "Top-2 heads by descending mean KL(attack_h || bonafide_h) on mlaad_robust_goat in-distribution test set. KL range = 1.629\u00d7. Stable across splits: False.",
+  "kl_range": 1.629332888730232,
+  "top2_stable": false,
+  "same_heads_as_asvspoof": false,
+  "asvspoof_note": "Head identity is initialization-dependent; exact index match with ASVspoof {h0,h4} is not expected. Match: False.",
+  "decision": "proceed_with_caveat",
+  "decision_explanation": "KL range 1.63\u00d7 is in the moderate zone (1.5\u20132.0\u00d7). Specialization exists but is weaker than ASVspoof (3.1\u00d7). Proceed to Phase 3 but flag weaker specialization in the writeup. Note: top-2 heads differ across test sets \u2014 use in-distribution ranking for ablation targets.",
+  "cross_language_top2": [
+    5,
+    1
+  ]
+}

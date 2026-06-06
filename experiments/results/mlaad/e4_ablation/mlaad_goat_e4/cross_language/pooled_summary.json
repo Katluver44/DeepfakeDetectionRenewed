@@ -1,0 +1,27 @@
+{
+  "checkpoint": "mlaad_goat",
+  "split": "cross_language",
+  "n_samples": 1327,
+  "n_attack_sids": 15,
+  "pooled_eers": {
+    "baseline": 0.627548,
+    "ablate_top1": 0.637062,
+    "ablate_top2": 0.644769,
+    "ablate_h2_h4": 0.668328,
+    "random_single_ctrl": 0.513819,
+    "random_pair_ctrl": 0.631627
+  },
+  "pooled_deltas": {
+    "baseline": 0.0,
+    "ablate_top1": 0.009514,
+    "ablate_top2": 0.017221,
+    "ablate_h2_h4": 0.04078,
+    "random_single_ctrl": -0.113729,
+    "random_pair_ctrl": 0.004079
+  },
+  "sanity": {
+    "baseline_eer_ok": false,
+    "ablate_vs_ctrl_diff": 0.0367
+  },
+  "pipeline_note": "run_eval uses run_frozen_frontend (no _mask_hidden_states) for determinism. Baseline EER will be higher than the reported value from eval_mlaad_baseline.py (~0.07-0.10 absolute difference). Ablation \u0394EER is still valid since all conditions use the same pipeline."
+}

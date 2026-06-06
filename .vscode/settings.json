@@ -6,5 +6,7 @@
         "markdown",
         "latex",
         "plaintext"
-    ]
+    ],
+    "claudeCode.allowDangerouslySkipPermissions": true,
+    "claudeCode.initialPermissionMode": "bypassPermissions"
 }

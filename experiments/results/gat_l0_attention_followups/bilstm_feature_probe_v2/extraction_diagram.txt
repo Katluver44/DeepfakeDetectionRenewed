@@ -1,0 +1,67 @@
+ARCHITECTURE DIAGRAM — Phoneme_GAT (WavLM backbone)
+=====================================================
+
+ Input: raw audio (B, L=48000)
+    │
+    ▼  [FROZEN] transformer_in_phoneme_model.feature_extractor
+         CNN conv stack → (B, T=149, 512)
+    │
+    ▼  [FROZEN] transformer_in_phoneme_model.feature_projection
+         Linear(512 → 768) → (B, T=149, 768)
+    │
+    ◆◆◆◆◆  ← post_wavlm extraction point (mean over T=149 frames → (B, 768))
+    │
+    ▼  [FROZEN*] gat_model.encoder   (* alias of phoneme_model.encoder,
+         12-layer WavLM transformer    phoneme_model.requires_grad_(False) was
+         encoder → (B, T=149, 768)     called; weights confirmed identical
+                                        between checkpoints by sha256 comparison)
+    │
+    ▼  [non-param] reduce_feat
+         Adaptive phoneme pooling: avg frames with same CTC phoneme ID
+         (B, T=149, 768) + phoneme_ids → (total_phonemes, 768)
+    │
+    ◆◆◆◆◆  ← pre_gat extraction point (mean per sample over phonemes → (B, 768))
+    │
+    ▼  [TRAINABLE] gat_model.GAT
+         3-layer, 6-head GAT (GATLayer × 3)
+         (total_phonemes, 768) → (total_phonemes, 768)
+    │
+    ▼  split into per-sample sequences, pad
+    │
+    ▼  [TRAINABLE] gat_model.rnn
+         nn.LSTM(768 → 384, num_layers=2, bidirectional=True)
+         → (B, max_N, 768), mean-pool → (B, 768)
+    │
+    ◆◆◆◆◆  ← post_gat extraction point (BiLSTM mean-pool → (B, 768)) [v1 cache]
+    │
+    ▼  [non-param] norm_feat: L2 normalize per sample
+    │
+    ▼  [TRAINABLE] cls_head
+         Linear(768,768) → BatchNorm1d → ReLU → Dropout(0.1) → Linear(768,1)
+    │
+    ▼  logit (B,)
+
+Trainable components per extraction stage:
+  post_wavlm → (before any trainable component)
+  pre_gat    → encoder is FROZEN (weights identical, verified)
+             → reduce_feat has no parameters
+  post_gat   → GAT [trainable], BiLSTM [trainable]
+
+Frozen components:
+  feature_extractor, feature_projection — part of phoneme_model (requires_grad_(False))
+  encoder — alias of phoneme_model.encoder (same object); frozen same way
+  phoneme_model (CTC model for phoneme IDs) — fully frozen
+
+Weight diff between goat.ckpt and robust_goat.ckpt (verified at startup):
+  encoder   : max_diff=0.000000  → IDENTICAL (frozen confirmed)
+  GAT       : max_diff>0         → DIFFERENT (trainable, checkpoint-specific)
+  BiLSTM    : max_diff>0         → DIFFERENT (trainable, checkpoint-specific)
+  cls_head  : max_diff>0         → DIFFERENT (trainable, checkpoint-specific)
+
+AUDIT VERDICT (v1 bilstm_feature_probe.py):
+  v1 extraction point  : post_gat (BiLSTM mean-pool after GAT)
+  extraction_correct   : false  — v1 extracted POST-GAT, not pre-GAT
+  v1_claim_valid       : true   — "pre-GAT features identical across ckpts" is correct
+                                   because encoder is confirmed frozen (identical weights)
+  implication          : v1 results are valid but not pre-GAT;
+                          v2 adds the pre-GAT extraction to complete the decomposition

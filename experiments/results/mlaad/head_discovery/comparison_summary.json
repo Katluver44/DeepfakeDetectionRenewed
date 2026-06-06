@@ -1,0 +1,116 @@
+{
+  "asvspoof_reference": {
+    "robust_goat_kl_range": 3.1,
+    "goat_kl_range": 1.15,
+    "note": "KL max/min ratio across per-head mean KL scores, from original ASVspoof run"
+  },
+  "sanity_a_pass": true,
+  "mlaad_robust_goat": {
+    "in_distribution": {
+      "kl_range": 1.629332888730232,
+      "top2_heads": [
+        2,
+        4
+      ],
+      "head_kl": {
+        "0": 0.0649103514103146,
+        "1": 0.08968493452405955,
+        "2": 0.10576057037186239,
+        "3": 0.06885512315922052,
+        "4": 0.09993523162635794,
+        "5": 0.07977445040471286
+      },
+      "ranking": [
+        2,
+        4,
+        1,
+        5,
+        3,
+        0
+      ],
+      "n_attack_systems": 63,
+      "sanity_b_pass": true
+    },
+    "cross_language": {
+      "kl_range": 1.457444330428008,
+      "top2_heads": [
+        5,
+        1
+      ],
+      "head_kl": {
+        "0": 0.22029971746538393,
+        "1": 0.23533546256755553,
+        "2": 0.2051913053127423,
+        "3": 0.21256029086328931,
+        "4": 0.2323323637675845,
+        "5": 0.29905490458117867
+      },
+      "ranking": [
+        5,
+        1,
+        4,
+        0,
+        3,
+        2
+      ],
+      "n_attack_systems": 15,
+      "sanity_b_pass": true
+    },
+    "top2_stable_across_splits": false,
+    "top2_overlap": 0
+  },
+  "mlaad_goat": {
+    "in_distribution": {
+      "kl_range": 1.4209501922054242,
+      "top2_heads": [
+        2,
+        1
+      ],
+      "head_kl": {
+        "0": 0.06412230142714173,
+        "1": 0.08950278159918902,
+        "2": 0.09111459653755119,
+        "3": 0.06804055997862576,
+        "4": 0.08880774272193134,
+        "5": 0.08467278710827421
+      },
+      "ranking": [
+        2,
+        1,
+        4,
+        5,
+        3,
+        0
+      ],
+      "n_attack_systems": 63,
+      "sanity_b_pass": true
+    },
+    "cross_language": {
+      "kl_range": 1.2944730212840123,
+      "top2_heads": [
+        5,
+        4
+      ],
+      "head_kl": {
+        "0": 0.2148694497637307,
+        "1": 0.21124023747459744,
+        "2": 0.20899208265194028,
+        "3": 0.20683123496379116,
+        "4": 0.22655622767417655,
+        "5": 0.2677374536194822
+      },
+      "ranking": [
+        5,
+        4,
+        0,
+        1,
+        2,
+        3
+      ],
+      "n_attack_systems": 15,
+      "sanity_b_pass": true
+    },
+    "top2_stable_across_splits": false,
+    "top2_overlap": 0
+  }
+}

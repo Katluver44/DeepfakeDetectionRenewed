@@ -1,0 +1,96 @@
+{
+  "h2": {
+    "Cartesia.ai (Sonic-3)": {
+      "cosine_sim": 0.9324,
+      "l2_diff": 0.1817
+    },
+    "Edge-TTS": {
+      "cosine_sim": 0.9639,
+      "l2_diff": 0.1053
+    },
+    "FishTTS": {
+      "cosine_sim": 0.9571,
+      "l2_diff": 0.1305
+    },
+    "Higgs-Audio-V2": {
+      "cosine_sim": 0.9568,
+      "l2_diff": 0.1376
+    },
+    "Kani-TTS-370M": {
+      "cosine_sim": 0.9593,
+      "l2_diff": 0.1396
+    },
+    "Llasa-1B-Multilingual": {
+      "cosine_sim": 0.9578,
+      "l2_diff": 0.1318
+    },
+    "OuteTTS": {
+      "cosine_sim": 0.939,
+      "l2_diff": 0.1473
+    },
+    "RVC": {
+      "cosine_sim": 0.9541,
+      "l2_diff": 0.1379
+    },
+    "Resemble.ai (April 12th, 2025)": {
+      "cosine_sim": 0.9525,
+      "l2_diff": 0.1424
+    },
+    "griffin_lim": {
+      "cosine_sim": 0.9547,
+      "l2_diff": 0.1511
+    },
+    "bonafide": {
+      "cosine_sim": 0.9972,
+      "l2_diff": 0.0384,
+      "note": "EN bonafide in both splits"
+    }
+  },
+  "h4": {
+    "Cartesia.ai (Sonic-3)": {
+      "cosine_sim": 0.9266,
+      "l2_diff": 0.1641
+    },
+    "Edge-TTS": {
+      "cosine_sim": 0.9601,
+      "l2_diff": 0.1085
+    },
+    "FishTTS": {
+      "cosine_sim": 0.9516,
+      "l2_diff": 0.1266
+    },
+    "Higgs-Audio-V2": {
+      "cosine_sim": 0.9499,
+      "l2_diff": 0.1394
+    },
+    "Kani-TTS-370M": {
+      "cosine_sim": 0.9569,
+      "l2_diff": 0.128
+    },
+    "Llasa-1B-Multilingual": {
+      "cosine_sim": 0.9559,
+      "l2_diff": 0.1288
+    },
+    "OuteTTS": {
+      "cosine_sim": 0.935,
+      "l2_diff": 0.1459
+    },
+    "RVC": {
+      "cosine_sim": 0.9503,
+      "l2_diff": 0.1425
+    },
+    "Resemble.ai (April 12th, 2025)": {
+      "cosine_sim": 0.9449,
+      "l2_diff": 0.1383
+    },
+    "griffin_lim": {
+      "cosine_sim": 0.9496,
+      "l2_diff": 0.1449
+    },
+    "bonafide": {
+      "cosine_sim": 0.9965,
+      "l2_diff": 0.0358,
+      "note": "EN bonafide in both splits"
+    }
+  }
+}

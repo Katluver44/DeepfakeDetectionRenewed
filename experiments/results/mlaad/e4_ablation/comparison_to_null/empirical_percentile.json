@@ -1,0 +1,39 @@
+{
+  "critical_heads": [
+    2,
+    4
+  ],
+  "checkpoint_for_null": "mlaad_goat",
+  "mlaad_goat": {
+    "ablate_h2_h4_delta_eer": 0.090463,
+    "ablate_direction": {
+      "label": "ablate {[2, 4]}",
+      "observed": 0.09046335346552326,
+      "n_null": 14,
+      "null_values": [
+        0.0021674196669265178,
+        0.07745883546396398,
+        0.016788696542460735,
+        0.029793214544019953,
+        0.0,
+        0.04333078158609094,
+        -0.0010837098334632866,
+        0.01353756704207093,
+        -0.006502259000779609,
+        0.05416787992072364,
+        0.044414491419554225,
+        0.004867888374364804,
+        -0.005418549167316322,
+        0.010286437541681126
+      ],
+      "rank_from_bottom": 14,
+      "empirical_percentile": 100.0,
+      "p_one_sided_above": 0.0,
+      "p_one_sided_below": 1.0,
+      "interpretation": "14/14 null pairs have \u0394EER < 0.0905; 0/14 have \u0394EER > 0.0905"
+    }
+  },
+  "mlaad_robust_goat": {
+    "ablate_h2_h4_delta_eer": 0.057419
+  }
+}

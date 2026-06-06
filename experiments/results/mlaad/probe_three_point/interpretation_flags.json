@@ -1,0 +1,13 @@
+{
+  "interpretation": {
+    "flag": "gat_localized",
+    "rationale": "pre_gat EER identical (delta=+0.0000): encoder is frozen, confirming all representation changes are post-encoder (GAT/BiLSTM).",
+    "pre_gat_eer_goat": 0.3976,
+    "pre_gat_eer_robust": 0.3976,
+    "delta": 0.0,
+    "ci_overlap": true
+  },
+  "post_gat_delta_eer": -0.001,
+  "post_gat_delta_auroc": 0.008,
+  "note": "Positive delta_eer = robust_goat is harder to linearly separate (less discriminative post-GAT features). Negative delta = easier."
+}

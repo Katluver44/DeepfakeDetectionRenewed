@@ -1,0 +1,107 @@
+{
+  "rules": {
+    "generalizes_cleanly": "Same direction + magnitude ratio >= 50%.",
+    "generalizes_with_caveats": "Same direction but magnitude ratio < 50%, or caveat applies.",
+    "does_not_generalize": "Opposite directions or one dataset null when other is strong.",
+    "mlaad_specific": "Only measurable on MLAAD (multilingual).",
+    "asvspoof_specific": "Only meaningful on ASVspoof (labeled attack systems)."
+  },
+  "claims": {
+    "KL range widening (robust > baseline)": {
+      "verdict": "generalizes_with_caveats",
+      "asv_value": "robust=3.19x  goat=1.13x  widening=+2.06x",
+      "mlaad_value": "robust=1.63x  goat=1.42x  widening=+0.21x",
+      "notes": "ASVspoof has 3.2x range vs MLAAD 1.6x \u2014 same direction but ASVspoof effect is ~2.5x larger. Widening is present on both but weaker for MLAAD."
+    },
+    "Top-2 ablation effect in robust checkpoint": {
+      "verdict": "generalizes_cleanly",
+      "asv_value": "\u0394=+0.0433  ctrl \u0394=+0.0033  gap=+0.0400",
+      "mlaad_value": "\u0394=+0.0574  ctrl \u0394=-0.0146  gap=+0.0720",
+      "notes": "Both datasets: ablation \u0394EER well above random ctrl. Mag ratio \u2248 0.55 (ASVspoof gap=0.040, MLAAD gap=0.072)."
+    },
+    "Top-2 ablation effect in baseline checkpoint (using robust's head IDs)": {
+      "verdict": "does_not_generalize",
+      "asv_value": "\u0394=+0.0000  null_pct=57.1%  (own-heads \u0394=-0.0200)",
+      "mlaad_value": "\u0394=+0.0905  null_pct=100.0%",
+      "notes": "ASVspoof: robust_goat's heads {h0,h4} don't transfer to goat (\u0394EER=0, 57th pct). MLAAD: robust_goat's heads {h2,h4} fully transfer to goat (\u0394EER=+0.090, 100th pct). Head identity is checkpoint-invariant in MLAAD but not in ASVspoof."
+    },
+    "Null distribution percentile (cross-checkpoint ablation test)": {
+      "verdict": "does_not_generalize",
+      "asv_value": "57.1%  \u0394_observed=+0.0000",
+      "mlaad_value": "100.0%  \u0394_observed=+0.0905",
+      "notes": "Both tests use the same paradigm: apply robust's target heads to the goat and compare to 14-pair exhaustive null. ASVspoof result is chance-level (57%); MLAAD is at maximum (100%). This reinforces claim 3: head identity only cross-checkpoint stable in MLAAD."
+    },
+    "Entropy collapse (robust_goat top heads sharper than goat's)": {
+      "verdict": "generalizes_with_caveats",
+      "asv_value": "top1(h0): goat=2.035 \u2192 robust=1.406 \u0394=-0.628; top2(h4): goat=2.036 \u2192 robust=1.592 \u0394=-0.444",
+      "mlaad_value": "top1(h2): goat=1.584 \u2192 robust=1.413 \u0394=-0.171; top2(h4): goat=1.625 \u2192 robust=1.488 \u0394=-0.137",
+      "notes": "Both: robustness training sharpens top heads (lower entropy). Effect ~3x smaller in MLAAD (\u0394\u2248\u22120.15) than ASVspoof (\u0394\u2248\u22120.50). Same direction across all systems."
+    },
+    "Top-1 head differentiates more than top-2 (entropy / L2)": {
+      "verdict": "generalizes_cleanly",
+      "asv_value": "h0 entropy \u0394=-0.628 > h4 \u0394=-0.444  ratio=0.71",
+      "mlaad_value": "h2 L2=0.047 > h4 L2=0.034  ratio=0.73",
+      "notes": "Top-1 head shows consistently larger differentiation than top-2 on both datasets."
+    },
+    "Functional division of labor (general detector + attack-type encoder)": {
+      "verdict": "generalizes_with_caveats",
+      "asv_value": "h0: Other\u2192Other peak, attack-insensitive; h4: Vowels\u2192Other peak, attack-specific routing (TTS/VC p=0.641)",
+      "mlaad_value": "h2: Other\u2192? peak; h4: Other\u2192? peak; both target 'Other'",
+      "notes": "ASVspoof shows clear h0/h4 functional split; TTS/VC dissociation is not significant (p=0.641). MLAAD has 63 attack systems so per-system patterns are noisier. Both top heads attend to 'Other' class primarily. Clear functional split not confirmed on MLAAD."
+    },
+    "Per-class F1 cascade (attack-system classification performance)": {
+      "verdict": "asvspoof_specific",
+      "asv_value": "7-class probe: goat macro_F1=0.713 post_gat; A05 highest F1=0.89",
+      "mlaad_value": "Binary probe only (63 systems, not individually labeled in probe)",
+      "notes": "ASVspoof has 6 labeled attack systems enabling per-class F1. MLAAD's 63 systems are too numerous for stable per-class estimates with the available sample sizes."
+    },
+    "GAT-localized: pre_gat features byte-identical between checkpoints": {
+      "verdict": "generalizes_cleanly",
+      "asv_value": "pre_gat EER delta=0.0000  CI=[0.0, 0.0]  flag=gat_localized",
+      "mlaad_value": "pre_gat EER delta=0.0000  flag=gat_localized",
+      "notes": "Strongest claim: encoder weights are frozen; all robustness-training changes are localized to GAT+BiLSTM. Confirmed byte-identically on both datasets."
+    },
+    "Linear probe ordering: post_wavlm vs pre_gat vs post_gat EER": {
+      "verdict": "does_not_generalize",
+      "asv_value": "post_wavlm=0.1008  pre_gat=0.0800  post_gat_g=0.1138  order: pre_gat < post_wavlm < post_gat",
+      "mlaad_value": "post_wavlm=0.1522  pre_gat=0.3976  post_gat_g=0.4030  order: post_wavlm << pre_gat \u2248 post_gat",
+      "notes": "Opposite orderings. ASVspoof: phoneme pooling (pre_gat) IMPROVES linear separability over raw WavLM \u2014 encoder adds discriminative structure. MLAAD: phoneme pooling DRAMATICALLY degrades separability (EER 0.15\u21920.40). Both still confirm GAT-localized since the change between checkpoints is zero at pre_gat. This may reflect the difference in dataset difficulty: ASVspoof has 6 known attack systems; MLAAD has 63 heterogeneous TTS/VC systems spanning 2025 models."
+    },
+    "Cross-language generalization gap": {
+      "verdict": "mlaad_specific",
+      "asv_value": "N/A \u2014 ASVspoof 2019 LA is English-only",
+      "mlaad_value": "post_wavlm gap=+0.0431  pre_gat gap=+0.0306  post_gat gap=+0.0615  ablating h2+h4 reduces robust gap by 0.216",
+      "notes": "MLAAD provides a direct cross-language test. Post-GAT features degrade most across languages (gap=+0.070 vs +0.043 at post_wavlm). Ablating h2+h4 on robust_goat reduces the in/out-of-distribution gap by 0.217, identifying these heads as language-overfitting components."
+    },
+    "Language-invariant attention routing (cross-language cosine stability)": {
+      "verdict": "mlaad_specific",
+      "asv_value": "N/A \u2014 monolingual dataset",
+      "mlaad_value": "h2: cos_sim=0.9528  h4: cos_sim=0.9481 (10 shared attack systems, in-dist vs cross-lang)",
+      "notes": "Despite ablating these heads dramatically improving cross-language EER, the attention PATTERNS themselves are stable (cos_sim\u22480.95). Contradiction: heads encode language-harmful features at the routing level but their attention matrices look similar across languages. Suggests downstream representation use (BiLSTM) is the language-sensitive component, not the attention selection itself."
+    }
+  },
+  "summary": {
+    "generalizes_cleanly": [
+      "Top-2 ablation effect in robust checkpoint",
+      "Top-1 head differentiates more than top-2 (entropy / L2)",
+      "GAT-localized: pre_gat features byte-identical between checkpoints"
+    ],
+    "generalizes_with_caveats": [
+      "KL range widening (robust > baseline)",
+      "Entropy collapse (robust_goat top heads sharper than goat's)",
+      "Functional division of labor (general detector + attack-type encoder)"
+    ],
+    "does_not_generalize": [
+      "Top-2 ablation effect in baseline checkpoint (using robust's head IDs)",
+      "Null distribution percentile (cross-checkpoint ablation test)",
+      "Linear probe ordering: post_wavlm vs pre_gat vs post_gat EER"
+    ],
+    "mlaad_specific": [
+      "Cross-language generalization gap",
+      "Language-invariant attention routing (cross-language cosine stability)"
+    ],
+    "asvspoof_specific": [
+      "Per-class F1 cascade (attack-system classification performance)"
+    ]
+  }
+}

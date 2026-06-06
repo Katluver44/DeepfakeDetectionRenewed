@@ -1,0 +1,646 @@
+{
+  "h2": {
+    "-": {
+      "mlaad_goat": 1.5838,
+      "mlaad_robust_goat": 1.4129,
+      "delta": -0.1709
+    },
+    "Cartesia.ai (Sonic-3)": {
+      "mlaad_goat": 1.4583,
+      "mlaad_robust_goat": 1.3101,
+      "delta": -0.1482
+    },
+    "Chatterbox": {
+      "mlaad_goat": 1.4143,
+      "mlaad_robust_goat": 1.2863,
+      "delta": -0.128
+    },
+    "DeepGram": {
+      "mlaad_goat": 1.4015,
+      "mlaad_robust_goat": 1.2618,
+      "delta": -0.1397
+    },
+    "Edge-TTS": {
+      "mlaad_goat": 1.5287,
+      "mlaad_robust_goat": 1.351,
+      "delta": -0.1777
+    },
+    "FireRedTTS-2.0": {
+      "mlaad_goat": 1.5975,
+      "mlaad_robust_goat": 1.4018,
+      "delta": -0.1957
+    },
+    "FishTTS": {
+      "mlaad_goat": 1.4998,
+      "mlaad_robust_goat": 1.3132,
+      "delta": -0.1866
+    },
+    "Higgs-Audio-V2": {
+      "mlaad_goat": 1.5012,
+      "mlaad_robust_goat": 1.3342,
+      "delta": -0.167
+    },
+    "Index-TTS-1.5": {
+      "mlaad_goat": 1.4188,
+      "mlaad_robust_goat": 1.2654,
+      "delta": -0.1534
+    },
+    "Index-TTS-2.0": {
+      "mlaad_goat": 1.4198,
+      "mlaad_robust_goat": 1.2837,
+      "delta": -0.1361
+    },
+    "Indri-TTS-0.1": {
+      "mlaad_goat": 1.5209,
+      "mlaad_robust_goat": 1.3646,
+      "delta": -0.1563
+    },
+    "Kani-TTS-370M": {
+      "mlaad_goat": 1.4279,
+      "mlaad_robust_goat": 1.2964,
+      "delta": -0.1316
+    },
+    "Kitten-TTS-Nano-0.1": {
+      "mlaad_goat": 1.3809,
+      "mlaad_robust_goat": 1.2568,
+      "delta": -0.124
+    },
+    "Kitten-TTS-Nano-0.2": {
+      "mlaad_goat": 1.2061,
+      "mlaad_robust_goat": 1.1069,
+      "delta": -0.0991
+    },
+    "Kyutai-TTS": {
+      "mlaad_goat": 1.4827,
+      "mlaad_robust_goat": 1.3305,
+      "delta": -0.1521
+    },
+    "Llasa-1B-Multilingual": {
+      "mlaad_goat": 1.3757,
+      "mlaad_robust_goat": 1.2055,
+      "delta": -0.1701
+    },
+    "Llasa-8B": {
+      "mlaad_goat": 1.4633,
+      "mlaad_robust_goat": 1.2985,
+      "delta": -0.1647
+    },
+    "Mars5": {
+      "mlaad_goat": 1.5649,
+      "mlaad_robust_goat": 1.4253,
+      "delta": -0.1396
+    },
+    "Marvis-TTS": {
+      "mlaad_goat": 1.3782,
+      "mlaad_robust_goat": 1.2657,
+      "delta": -0.1126
+    },
+    "MatchaTTS": {
+      "mlaad_goat": 1.4802,
+      "mlaad_robust_goat": 1.3442,
+      "delta": -0.136
+    },
+    "Maya1 TTS": {
+      "mlaad_goat": 1.3985,
+      "mlaad_robust_goat": 1.2745,
+      "delta": -0.124
+    },
+    "MegaTTS3": {
+      "mlaad_goat": 1.6672,
+      "mlaad_robust_goat": 1.4779,
+      "delta": -0.1893
+    },
+    "MeloTTS": {
+      "mlaad_goat": 1.3367,
+      "mlaad_robust_goat": 1.2481,
+      "delta": -0.0886
+    },
+    "Metavoice-1B": {
+      "mlaad_goat": 1.6817,
+      "mlaad_robust_goat": 1.5135,
+      "delta": -0.1682
+    },
+    "Microsoft VibeVoice 1.5B": {
+      "mlaad_goat": 1.454,
+      "mlaad_robust_goat": 1.3086,
+      "delta": -0.1454
+    },
+    "Microsoft VibeVoice Large": {
+      "mlaad_goat": 1.3965,
+      "mlaad_robust_goat": 1.2684,
+      "delta": -0.1281
+    },
+    "MiniCPM-o-2.6": {
+      "mlaad_goat": 1.4781,
+      "mlaad_robust_goat": 1.343,
+      "delta": -0.1352
+    },
+    "Nari Dia-1.6B": {
+      "mlaad_goat": 1.4304,
+      "mlaad_robust_goat": 1.3535,
+      "delta": -0.0768
+    },
+    "Nari Dia2": {
+      "mlaad_goat": 1.5673,
+      "mlaad_robust_goat": 1.4069,
+      "delta": -0.1604
+    },
+    "NeuTTS-Air": {
+      "mlaad_goat": 1.4454,
+      "mlaad_robust_goat": 1.275,
+      "delta": -0.1704
+    },
+    "OpenVoiceV2": {
+      "mlaad_goat": 1.52,
+      "mlaad_robust_goat": 1.3583,
+      "delta": -0.1616
+    },
+    "Openaudio-S1-Mini": {
+      "mlaad_goat": 1.4119,
+      "mlaad_robust_goat": 1.3028,
+      "delta": -0.1091
+    },
+    "OuteTTS": {
+      "mlaad_goat": 1.5605,
+      "mlaad_robust_goat": 1.4147,
+      "delta": -0.1458
+    },
+    "Qwen2.5-Omni": {
+      "mlaad_goat": 1.3429,
+      "mlaad_robust_goat": 1.2419,
+      "delta": -0.1011
+    },
+    "RVC": {
+      "mlaad_goat": 1.6034,
+      "mlaad_robust_goat": 1.4437,
+      "delta": -0.1598
+    },
+    "Resemble.ai (April 12th, 2025)": {
+      "mlaad_goat": 1.5132,
+      "mlaad_robust_goat": 1.345,
+      "delta": -0.1682
+    },
+    "Ringg Squirrel TTS v1.0": {
+      "mlaad_goat": 1.5319,
+      "mlaad_robust_goat": 1.368,
+      "delta": -0.1639
+    },
+    "SoulX-Podcast": {
+      "mlaad_goat": 1.3961,
+      "mlaad_robust_goat": 1.2764,
+      "delta": -0.1197
+    },
+    "Spark-TTS-0.5B": {
+      "mlaad_goat": 1.3994,
+      "mlaad_robust_goat": 1.2605,
+      "delta": -0.1389
+    },
+    "Step-Audio-EditX": {
+      "mlaad_goat": 1.3695,
+      "mlaad_robust_goat": 1.2484,
+      "delta": -0.1211
+    },
+    "Supertonic": {
+      "mlaad_goat": 1.3363,
+      "mlaad_robust_goat": 1.2084,
+      "delta": -0.128
+    },
+    "Veena": {
+      "mlaad_goat": 1.6024,
+      "mlaad_robust_goat": 1.4062,
+      "delta": -0.1962
+    },
+    "VoxCPM-0.5B": {
+      "mlaad_goat": 1.4429,
+      "mlaad_robust_goat": 1.3028,
+      "delta": -0.14
+    },
+    "VoxCPM-1.5": {
+      "mlaad_goat": 1.465,
+      "mlaad_robust_goat": 1.3197,
+      "delta": -0.1452
+    },
+    "Voxtream": {
+      "mlaad_goat": 1.4628,
+      "mlaad_robust_goat": 1.301,
+      "delta": -0.1618
+    },
+    "WhisperSpeech": {
+      "mlaad_goat": 1.5167,
+      "mlaad_robust_goat": 1.3488,
+      "delta": -0.1679
+    },
+    "ZipVoice": {
+      "mlaad_goat": 1.4258,
+      "mlaad_robust_goat": 1.2571,
+      "delta": -0.1687
+    },
+    "e2-tts": {
+      "mlaad_goat": 1.4565,
+      "mlaad_robust_goat": 1.3245,
+      "delta": -0.132
+    },
+    "f5-tts": {
+      "mlaad_goat": 1.3479,
+      "mlaad_robust_goat": 1.2664,
+      "delta": -0.0815
+    },
+    "facebook_mms-tts-eng": {
+      "mlaad_goat": 1.5102,
+      "mlaad_robust_goat": 1.3525,
+      "delta": -0.1577
+    },
+    "griffin_lim": {
+      "mlaad_goat": 1.6135,
+      "mlaad_robust_goat": 1.4723,
+      "delta": -0.1411
+    },
+    "kokoro": {
+      "mlaad_goat": 1.2489,
+      "mlaad_robust_goat": 1.176,
+      "delta": -0.073
+    },
+    "microsoft_speecht5_tts": {
+      "mlaad_goat": 1.3813,
+      "mlaad_robust_goat": 1.2471,
+      "delta": -0.1342
+    },
+    "minimax_speech-02-turbo": {
+      "mlaad_goat": 1.4811,
+      "mlaad_robust_goat": 1.3403,
+      "delta": -0.1408
+    },
+    "minimax_speech-2.6-hd": {
+      "mlaad_goat": 1.512,
+      "mlaad_robust_goat": 1.361,
+      "delta": -0.151
+    },
+    "optispeech": {
+      "mlaad_goat": 1.4047,
+      "mlaad_robust_goat": 1.3147,
+      "delta": -0.09
+    },
+    "orpheus-tts-0.1-finetune": {
+      "mlaad_goat": 1.4889,
+      "mlaad_robust_goat": 1.3051,
+      "delta": -0.1838
+    },
+    "parler_tts_large_v1": {
+      "mlaad_goat": 1.5672,
+      "mlaad_robust_goat": 1.4354,
+      "delta": -0.1318
+    },
+    "parler_tts_mini_v0.1": {
+      "mlaad_goat": 1.5003,
+      "mlaad_robust_goat": 1.3705,
+      "delta": -0.1298
+    },
+    "parler_tts_mini_v1": {
+      "mlaad_goat": 1.6488,
+      "mlaad_robust_goat": 1.4855,
+      "delta": -0.1634
+    },
+    "sesame_csm": {
+      "mlaad_goat": 1.5191,
+      "mlaad_robust_goat": 1.3946,
+      "delta": -0.1245
+    },
+    "suno_bark": {
+      "mlaad_goat": 1.5118,
+      "mlaad_robust_goat": 1.3437,
+      "delta": -0.1682
+    },
+    "suno_bark-small": {
+      "mlaad_goat": 1.5001,
+      "mlaad_robust_goat": 1.3728,
+      "delta": -0.1274
+    },
+    "vixTTS": {
+      "mlaad_goat": 1.5992,
+      "mlaad_robust_goat": 1.4299,
+      "delta": -0.1694
+    }
+  },
+  "h4": {
+    "-": {
+      "mlaad_goat": 1.6249,
+      "mlaad_robust_goat": 1.4881,
+      "delta": -0.1368
+    },
+    "Cartesia.ai (Sonic-3)": {
+      "mlaad_goat": 1.4837,
+      "mlaad_robust_goat": 1.3505,
+      "delta": -0.1332
+    },
+    "Chatterbox": {
+      "mlaad_goat": 1.4882,
+      "mlaad_robust_goat": 1.371,
+      "delta": -0.1172
+    },
+    "DeepGram": {
+      "mlaad_goat": 1.5521,
+      "mlaad_robust_goat": 1.4236,
+      "delta": -0.1286
+    },
+    "Edge-TTS": {
+      "mlaad_goat": 1.5292,
+      "mlaad_robust_goat": 1.3554,
+      "delta": -0.1738
+    },
+    "FireRedTTS-2.0": {
+      "mlaad_goat": 1.569,
+      "mlaad_robust_goat": 1.4263,
+      "delta": -0.1426
+    },
+    "FishTTS": {
+      "mlaad_goat": 1.5333,
+      "mlaad_robust_goat": 1.395,
+      "delta": -0.1383
+    },
+    "Higgs-Audio-V2": {
+      "mlaad_goat": 1.4965,
+      "mlaad_robust_goat": 1.3614,
+      "delta": -0.135
+    },
+    "Index-TTS-1.5": {
+      "mlaad_goat": 1.5143,
+      "mlaad_robust_goat": 1.3748,
+      "delta": -0.1395
+    },
+    "Index-TTS-2.0": {
+      "mlaad_goat": 1.5362,
+      "mlaad_robust_goat": 1.3827,
+      "delta": -0.1535
+    },
+    "Indri-TTS-0.1": {
+      "mlaad_goat": 1.5694,
+      "mlaad_robust_goat": 1.4055,
+      "delta": -0.164
+    },
+    "Kani-TTS-370M": {
+      "mlaad_goat": 1.5354,
+      "mlaad_robust_goat": 1.3878,
+      "delta": -0.1476
+    },
+    "Kitten-TTS-Nano-0.1": {
+      "mlaad_goat": 1.484,
+      "mlaad_robust_goat": 1.329,
+      "delta": -0.155
+    },
+    "Kitten-TTS-Nano-0.2": {
+      "mlaad_goat": 1.3837,
+      "mlaad_robust_goat": 1.2575,
+      "delta": -0.1261
+    },
+    "Kyutai-TTS": {
+      "mlaad_goat": 1.503,
+      "mlaad_robust_goat": 1.3638,
+      "delta": -0.1391
+    },
+    "Llasa-1B-Multilingual": {
+      "mlaad_goat": 1.4646,
+      "mlaad_robust_goat": 1.3199,
+      "delta": -0.1448
+    },
+    "Llasa-8B": {
+      "mlaad_goat": 1.5139,
+      "mlaad_robust_goat": 1.373,
+      "delta": -0.1409
+    },
+    "Mars5": {
+      "mlaad_goat": 1.604,
+      "mlaad_robust_goat": 1.4907,
+      "delta": -0.1132
+    },
+    "Marvis-TTS": {
+      "mlaad_goat": 1.5467,
+      "mlaad_robust_goat": 1.4036,
+      "delta": -0.143
+    },
+    "MatchaTTS": {
+      "mlaad_goat": 1.528,
+      "mlaad_robust_goat": 1.3745,
+      "delta": -0.1535
+    },
+    "Maya1 TTS": {
+      "mlaad_goat": 1.4953,
+      "mlaad_robust_goat": 1.3684,
+      "delta": -0.1269
+    },
+    "MegaTTS3": {
+      "mlaad_goat": 1.6047,
+      "mlaad_robust_goat": 1.4592,
+      "delta": -0.1455
+    },
+    "MeloTTS": {
+      "mlaad_goat": 1.4611,
+      "mlaad_robust_goat": 1.3294,
+      "delta": -0.1317
+    },
+    "Metavoice-1B": {
+      "mlaad_goat": 1.6709,
+      "mlaad_robust_goat": 1.5305,
+      "delta": -0.1404
+    },
+    "Microsoft VibeVoice 1.5B": {
+      "mlaad_goat": 1.5686,
+      "mlaad_robust_goat": 1.4106,
+      "delta": -0.158
+    },
+    "Microsoft VibeVoice Large": {
+      "mlaad_goat": 1.5211,
+      "mlaad_robust_goat": 1.3657,
+      "delta": -0.1554
+    },
+    "MiniCPM-o-2.6": {
+      "mlaad_goat": 1.5298,
+      "mlaad_robust_goat": 1.3972,
+      "delta": -0.1326
+    },
+    "Nari Dia-1.6B": {
+      "mlaad_goat": 1.5328,
+      "mlaad_robust_goat": 1.3969,
+      "delta": -0.1359
+    },
+    "Nari Dia2": {
+      "mlaad_goat": 1.548,
+      "mlaad_robust_goat": 1.3899,
+      "delta": -0.1581
+    },
+    "NeuTTS-Air": {
+      "mlaad_goat": 1.5138,
+      "mlaad_robust_goat": 1.3767,
+      "delta": -0.1371
+    },
+    "OpenVoiceV2": {
+      "mlaad_goat": 1.5894,
+      "mlaad_robust_goat": 1.431,
+      "delta": -0.1584
+    },
+    "Openaudio-S1-Mini": {
+      "mlaad_goat": 1.5191,
+      "mlaad_robust_goat": 1.39,
+      "delta": -0.1292
+    },
+    "OuteTTS": {
+      "mlaad_goat": 1.5679,
+      "mlaad_robust_goat": 1.4288,
+      "delta": -0.1392
+    },
+    "Qwen2.5-Omni": {
+      "mlaad_goat": 1.4604,
+      "mlaad_robust_goat": 1.3353,
+      "delta": -0.1251
+    },
+    "RVC": {
+      "mlaad_goat": 1.5893,
+      "mlaad_robust_goat": 1.4673,
+      "delta": -0.1219
+    },
+    "Resemble.ai (April 12th, 2025)": {
+      "mlaad_goat": 1.5667,
+      "mlaad_robust_goat": 1.4181,
+      "delta": -0.1486
+    },
+    "Ringg Squirrel TTS v1.0": {
+      "mlaad_goat": 1.5973,
+      "mlaad_robust_goat": 1.4508,
+      "delta": -0.1465
+    },
+    "SoulX-Podcast": {
+      "mlaad_goat": 1.4861,
+      "mlaad_robust_goat": 1.3567,
+      "delta": -0.1294
+    },
+    "Spark-TTS-0.5B": {
+      "mlaad_goat": 1.4792,
+      "mlaad_robust_goat": 1.3437,
+      "delta": -0.1355
+    },
+    "Step-Audio-EditX": {
+      "mlaad_goat": 1.4788,
+      "mlaad_robust_goat": 1.3357,
+      "delta": -0.1431
+    },
+    "Supertonic": {
+      "mlaad_goat": 1.4731,
+      "mlaad_robust_goat": 1.3265,
+      "delta": -0.1467
+    },
+    "Veena": {
+      "mlaad_goat": 1.6236,
+      "mlaad_robust_goat": 1.4775,
+      "delta": -0.1461
+    },
+    "VoxCPM-0.5B": {
+      "mlaad_goat": 1.5265,
+      "mlaad_robust_goat": 1.4032,
+      "delta": -0.1233
+    },
+    "VoxCPM-1.5": {
+      "mlaad_goat": 1.5264,
+      "mlaad_robust_goat": 1.379,
+      "delta": -0.1474
+    },
+    "Voxtream": {
+      "mlaad_goat": 1.5094,
+      "mlaad_robust_goat": 1.3661,
+      "delta": -0.1433
+    },
+    "WhisperSpeech": {
+      "mlaad_goat": 1.5736,
+      "mlaad_robust_goat": 1.4391,
+      "delta": -0.1345
+    },
+    "ZipVoice": {
+      "mlaad_goat": 1.4655,
+      "mlaad_robust_goat": 1.3288,
+      "delta": -0.1368
+    },
+    "e2-tts": {
+      "mlaad_goat": 1.5653,
+      "mlaad_robust_goat": 1.4213,
+      "delta": -0.144
+    },
+    "f5-tts": {
+      "mlaad_goat": 1.4758,
+      "mlaad_robust_goat": 1.3258,
+      "delta": -0.15
+    },
+    "facebook_mms-tts-eng": {
+      "mlaad_goat": 1.5494,
+      "mlaad_robust_goat": 1.389,
+      "delta": -0.1604
+    },
+    "griffin_lim": {
+      "mlaad_goat": 1.6446,
+      "mlaad_robust_goat": 1.5105,
+      "delta": -0.134
+    },
+    "kokoro": {
+      "mlaad_goat": 1.3896,
+      "mlaad_robust_goat": 1.2661,
+      "delta": -0.1235
+    },
+    "microsoft_speecht5_tts": {
+      "mlaad_goat": 1.5036,
+      "mlaad_robust_goat": 1.3729,
+      "delta": -0.1307
+    },
+    "minimax_speech-02-turbo": {
+      "mlaad_goat": 1.5149,
+      "mlaad_robust_goat": 1.4001,
+      "delta": -0.1148
+    },
+    "minimax_speech-2.6-hd": {
+      "mlaad_goat": 1.574,
+      "mlaad_robust_goat": 1.4093,
+      "delta": -0.1647
+    },
+    "optispeech": {
+      "mlaad_goat": 1.457,
+      "mlaad_robust_goat": 1.2944,
+      "delta": -0.1626
+    },
+    "orpheus-tts-0.1-finetune": {
+      "mlaad_goat": 1.5327,
+      "mlaad_robust_goat": 1.356,
+      "delta": -0.1767
+    },
+    "parler_tts_large_v1": {
+      "mlaad_goat": 1.6125,
+      "mlaad_robust_goat": 1.4612,
+      "delta": -0.1513
+    },
+    "parler_tts_mini_v0.1": {
+      "mlaad_goat": 1.5526,
+      "mlaad_robust_goat": 1.4014,
+      "delta": -0.1511
+    },
+    "parler_tts_mini_v1": {
+      "mlaad_goat": 1.6617,
+      "mlaad_robust_goat": 1.5362,
+      "delta": -0.1255
+    },
+    "sesame_csm": {
+      "mlaad_goat": 1.5692,
+      "mlaad_robust_goat": 1.4603,
+      "delta": -0.109
+    },
+    "suno_bark": {
+      "mlaad_goat": 1.496,
+      "mlaad_robust_goat": 1.3715,
+      "delta": -0.1245
+    },
+    "suno_bark-small": {
+      "mlaad_goat": 1.5618,
+      "mlaad_robust_goat": 1.4386,
+      "delta": -0.1232
+    },
+    "vixTTS": {
+      "mlaad_goat": 1.6109,
+      "mlaad_robust_goat": 1.4729,
+      "delta": -0.138
+    }
+  }
+}

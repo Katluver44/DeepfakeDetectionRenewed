@@ -1,0 +1,58 @@
+{
+  "source_file": "/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/results/gat_l0_attention_followups/e4_goat_baseline/e4_goat_baseline_per_system_eer.csv",
+  "reference_baseline_eer": 0.14,
+  "this_run_baseline_eer": 0.14,
+  "pipeline_parity_ok": true,
+  "ablate_direction": {
+    "label": "ablate {h0,h4}",
+    "observed": 0.0,
+    "n_null": 14,
+    "null_values": [
+      -0.020000000000000018,
+      0.018333333333333313,
+      0.0050000000000000044,
+      -0.020000000000000018,
+      0.0,
+      0.0,
+      -0.020000000000000018,
+      -0.020000000000000018,
+      0.03999999999999998,
+      -0.0016666666666666774,
+      0.0,
+      -0.003333333333333355,
+      -0.020000000000000018,
+      -0.020000000000000018
+    ],
+    "rank_from_bottom": 8,
+    "empirical_percentile": 57.1,
+    "p_one_sided_above": 0.4286,
+    "p_one_sided_below": 0.7857,
+    "interpretation": "8/14 null pairs have \u0394EER < 0.0000; 3/14 have \u0394EER > 0.0000"
+  },
+  "keep_direction": {
+    "label": "keep-only {h0,h4}",
+    "observed": -0.0050000000000000044,
+    "n_null": 14,
+    "null_values": [
+      0.0,
+      -0.003333333333333355,
+      -0.0016666666666666774,
+      -0.020000000000000018,
+      -0.020000000000000018,
+      -0.020000000000000018,
+      0.0050000000000000044,
+      0.0,
+      0.0,
+      -0.020000000000000018,
+      -0.020000000000000018,
+      -0.020000000000000018,
+      -0.016666666666666677,
+      0.003333333333333327
+    ],
+    "rank_from_bottom": 7,
+    "empirical_percentile": 50.0,
+    "p_one_sided_above": 0.5,
+    "p_one_sided_below": 0.5,
+    "interpretation": "7/14 null pairs have \u0394EER < -0.0050; 7/14 have \u0394EER > -0.0050"
+  }
+}

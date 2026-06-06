@@ -1,0 +1,38 @@
+{
+  "post_wavlm": {
+    "mlaad_goat": {
+      "in_dist_eer": 0.1522,
+      "cross_lang_eer": 0.1953,
+      "gap": 0.0431
+    },
+    "mlaad_robust_goat": {
+      "in_dist_eer": 0.1522,
+      "cross_lang_eer": 0.1953,
+      "gap": 0.0431
+    }
+  },
+  "pre_gat": {
+    "mlaad_goat": {
+      "in_dist_eer": 0.3976,
+      "cross_lang_eer": 0.4282,
+      "gap": 0.0306
+    },
+    "mlaad_robust_goat": {
+      "in_dist_eer": 0.3976,
+      "cross_lang_eer": 0.4282,
+      "gap": 0.0306
+    }
+  },
+  "post_gat": {
+    "mlaad_goat": {
+      "in_dist_eer": 0.403,
+      "cross_lang_eer": 0.4726,
+      "gap": 0.0696
+    },
+    "mlaad_robust_goat": {
+      "in_dist_eer": 0.402,
+      "cross_lang_eer": 0.4635,
+      "gap": 0.0615
+    }
+  }
+}

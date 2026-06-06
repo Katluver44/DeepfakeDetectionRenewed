@@ -1,0 +1,28 @@
+{
+  "checkpoint": "/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/models/goat.ckpt",
+  "checkpoint_name": "goat.ckpt",
+  "checkpoint_hash_prefix": "e282418921599c81",
+  "eval_set": {
+    "hf_dataset": "Bisher/ASVspoof_2019_LA",
+    "split": "validation",
+    "n_per_class": 50,
+    "attack_systems": [
+      "A01",
+      "A02",
+      "A03",
+      "A04",
+      "A05",
+      "A06"
+    ],
+    "dataset_hash": "edc0ab6c06285ff9"
+  },
+  "seed": 42,
+  "nh": 6,
+  "top_k": 2,
+  "top2_heads": [
+    0,
+    1
+  ],
+  "sanity_a_pass": true,
+  "sanity_c_flag": false
+}

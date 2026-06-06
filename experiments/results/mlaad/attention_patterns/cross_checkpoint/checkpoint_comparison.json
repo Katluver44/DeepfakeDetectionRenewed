@@ -1,0 +1,20 @@
+{
+  "checkpoints": {
+    "mlaad_goat": null,
+    "mlaad_robust_goat": null
+  },
+  "target_heads": [
+    2,
+    4
+  ],
+  "n_systems": 64,
+  "per_head_mean_l2": {
+    "h2": 0.0473,
+    "h4": 0.0343
+  },
+  "per_head_mean_cosine_sim": {
+    "h2": 0.997,
+    "h4": 0.9985
+  },
+  "note": "L2 and cosine similarity of 9x9 phoneme-class attention matrices between the two checkpoints. High cosine_sim = similar routing pattern."
+}

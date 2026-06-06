@@ -1,0 +1,33 @@
+{
+  "tts_aggregate": {
+    "systems": [
+      "A01",
+      "A02",
+      "A03",
+      "A04"
+    ],
+    "dissociation_score": 0.019999999999999997,
+    "ci_low": -0.005089666876365932,
+    "ci_high": 0.05707997014188086
+  },
+  "vc_aggregate": {
+    "systems": [
+      "A05",
+      "A06"
+    ],
+    "dissociation_score": -6.938893903907228e-18,
+    "ci_low": -0.041100226709045826,
+    "ci_high": 0.07061173483882394
+  },
+  "difference": {
+    "score": 0.020000000000000004,
+    "interpretation": "TTS h0-dominant",
+    "permutation_p_value": 0.641,
+    "n_permutations": 1000,
+    "D_observed": 0.020000000000000004,
+    "null_mean": -0.0002949999999999999,
+    "null_std": 0.04114775783684938,
+    "null_p5": -0.06999999999999998,
+    "null_p95": 0.065
+  }
+}

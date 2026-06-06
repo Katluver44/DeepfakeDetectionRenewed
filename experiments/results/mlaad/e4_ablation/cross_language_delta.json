@@ -1,0 +1,84 @@
+{
+  "critical_heads": [
+    2,
+    4
+  ],
+  "checkpoints": {
+    "mlaad_robust_goat": {
+      "baseline": {
+        "in_dist_eer": 0.3602,
+        "cross_lang_eer": 0.6774,
+        "cross_lang_gap": 0.3172,
+        "gap_vs_baseline": 0.0
+      },
+      "ablate_top1": {
+        "in_dist_eer": 0.3765,
+        "cross_lang_eer": 0.618,
+        "cross_lang_gap": 0.2415,
+        "gap_vs_baseline": -0.0756
+      },
+      "ablate_top2": {
+        "in_dist_eer": 0.37,
+        "cross_lang_eer": 0.6783,
+        "cross_lang_gap": 0.3083,
+        "gap_vs_baseline": -0.0089
+      },
+      "ablate_h2_h4": {
+        "in_dist_eer": 0.4177,
+        "cross_lang_eer": 0.5184,
+        "cross_lang_gap": 0.1007,
+        "gap_vs_baseline": -0.2165
+      },
+      "random_single_ctrl": {
+        "in_dist_eer": 0.35,
+        "cross_lang_eer": 0.6371,
+        "cross_lang_gap": 0.2871,
+        "gap_vs_baseline": -0.03
+      },
+      "random_pair_ctrl": {
+        "in_dist_eer": 0.3456,
+        "cross_lang_eer": 0.6226,
+        "cross_lang_gap": 0.2769,
+        "gap_vs_baseline": -0.0402
+      }
+    },
+    "mlaad_goat": {
+      "baseline": {
+        "in_dist_eer": 0.3478,
+        "cross_lang_eer": 0.6275,
+        "cross_lang_gap": 0.2798,
+        "gap_vs_baseline": 0.0
+      },
+      "ablate_top1": {
+        "in_dist_eer": 0.4177,
+        "cross_lang_eer": 0.6371,
+        "cross_lang_gap": 0.2194,
+        "gap_vs_baseline": -0.0604
+      },
+      "ablate_top2": {
+        "in_dist_eer": 0.3635,
+        "cross_lang_eer": 0.6448,
+        "cross_lang_gap": 0.2813,
+        "gap_vs_baseline": 0.0015
+      },
+      "ablate_h2_h4": {
+        "in_dist_eer": 0.4382,
+        "cross_lang_eer": 0.6683,
+        "cross_lang_gap": 0.2301,
+        "gap_vs_baseline": -0.0497
+      },
+      "random_single_ctrl": {
+        "in_dist_eer": 0.3413,
+        "cross_lang_eer": 0.5138,
+        "cross_lang_gap": 0.1725,
+        "gap_vs_baseline": -0.1072
+      },
+      "random_pair_ctrl": {
+        "in_dist_eer": 0.3413,
+        "cross_lang_eer": 0.6316,
+        "cross_lang_gap": 0.2903,
+        "gap_vs_baseline": 0.0106
+      }
+    }
+  }
+}
