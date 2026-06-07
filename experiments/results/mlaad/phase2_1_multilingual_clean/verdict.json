@@ -1,0 +1,9 @@
+{
+  "verdict": "KILL",
+  "n_languages_tested": 3,
+  "n_positive_xl_red": 0,
+  "n_confirmed_xl_red": 0,
+  "confirm_threshold": 2,
+  "kill_threshold": 1,
+  "explanation": "xl_red > 0 on only 0/3 languages (<\u2308N/3\u2309=1). Cross-language paradox claim killed; pivot to surefire-only."
+}

@@ -1,0 +1,7 @@
+{
+  "check_0.1": "PASS \u2014 multilingual recognizer confirmed (9 languages including de)",
+  "check_0.2": "PASS \u2014 improvement 0.159 robust; 5th pctile=0.118 > 0.05, CI does not cross zero",
+  "check_0.3": "PASS \u2014 pre-GAT identical, GAT+BiLSTM differ",
+  "any_kill": false,
+  "conclusion": "Cross-language claim is statistically and architecturally sound."
+}

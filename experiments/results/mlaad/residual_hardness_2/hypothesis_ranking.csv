@@ -1,0 +1,5 @@
+hypothesis,standalone_r2_ridge,standalone_r2_rf,incremental_delta_ridge,incremental_delta_rf,mean_delta
+H2 Graph sensitivity,0.14997,0.03211,0.20133,0.15356,0.17744
+H3 Anisotropy collapse,-0.07468,0.06382,-0.05337,0.22795,0.08729
+H1 Neighbourhood instability,-0.03438,0.01626,-0.00881,0.15124,0.07121
+H4 WavLM–GAT alignment,-0.07745,0.01074,-0.09528,0.16658,0.03565

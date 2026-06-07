@@ -1,0 +1,32 @@
+{
+  "checkpoint": "mlaad_robust_goat-best-epoch=05-val-eer=0.2858.ckpt",
+  "checkpoint_md5": "7d5e8ec00503",
+  "target_heads": [
+    2,
+    4
+  ],
+  "ablation_mode": "zero",
+  "n_bootstrap": 1000,
+  "n_target": 375,
+  "n_real_min": 300,
+  "n_fake_min": 300,
+  "seed": 42,
+  "languages_attempted": [
+    "fr",
+    "ru",
+    "pl"
+  ],
+  "real_source": "M-AILABS",
+  "fake_source": "mueller91/MLAAD",
+  "pre_registered_criteria": {
+    "confirm": "xl_red > 0 AND CI_lo > 0 on >= ceil(2N/3) languages",
+    "scope_down": "xl_red > 0 (point) on 1/3 to 2/3 of languages",
+    "kill": "xl_red > 0 AND CI_lo > 0 on < ceil(N/3) languages"
+  },
+  "languages_tested": [
+    "fr",
+    "ru",
+    "pl"
+  ],
+  "languages_excluded": {}
+}

@@ -1,0 +1,35 @@
+{
+  "n_systems": 63,
+  "wavlm_vs_eer": {
+    "predictor": "wavlm_cosine",
+    "n": 63,
+    "spearman_rho": -0.2221,
+    "spearman_p": 0.0803,
+    "pearson_r": -0.2677,
+    "pearson_p": 0.0339
+  },
+  "kl_vs_eer": {
+    "predictor": "phoneme_kl",
+    "n": 63,
+    "spearman_rho": -0.1848,
+    "spearman_p": 0.147,
+    "pearson_r": -0.2017,
+    "pearson_p": 0.1129
+  },
+  "group_test_wavlm": {
+    "hard_mean": 0.03497,
+    "easy_mean": 0.05043,
+    "difference": -0.01546,
+    "cohen_d": -0.7224,
+    "perm_p": 0.1472,
+    "n_perm": 5000
+  },
+  "group_test_kl": {
+    "hard_mean": 0.07533,
+    "easy_mean": 0.07802,
+    "difference": -0.00269,
+    "cohen_d": -0.0936,
+    "perm_p": 0.8534,
+    "n_perm": 5000
+  }
+}

@@ -1,0 +1,2 @@
+language,n_real,n_fake,baseline_eer,base_eer_ci_lo,base_eer_ci_hi,ablated_eer,abl_eer_ci_lo,abl_eer_ci_hi,xl_red,xl_red_ci_lo,xl_red_ci_hi,criterion_met
+German,375,375,0.52,0.4787,0.5547,0.5067,0.4666,0.5413,0.0133,-0.0213,0.044,False

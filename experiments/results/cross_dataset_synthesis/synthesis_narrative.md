@@ -130,9 +130,43 @@ This is paradoxical: the same heads that are *critical* for in-distribution perf
 (ΔEER = +0.057 when ablated) are *harmful* for cross-language transfer. The attention patterns
 themselves are stable across languages (cosine similarity h2=0.953, h4=0.948),
 suggesting the language overfitting originates in how the BiLSTM *uses* the routed features,
-not in the attention selection itself.
+not in the attention selection itself. Section 3.3 decomposes this improvement into its
+language-specific sources.
 
-### 3.3 Implication for the Abstraction-as-Generalization Hypothesis
+### 3.3 Mechanistic Decomposition: Improvement Is Entirely from Language-Mismatch Errors
+
+To identify *which error type* the ablation corrects, the cross-language EER was re-computed
+on two non-overlapping slices of the test set:
+
+| Slice | Baseline EER | Ablated EER | ΔEER | Fraction of pooled Δ |
+|-------|-------------|-------------|------|----------------------|
+| Pooled (all bonafide vs DE spoof) | 0.677 | 0.518 | −0.159 | — |
+| EN bonafide vs DE spoof (language mismatch) | 0.718 | 0.555 | −0.163 | **103%** |
+| DE bonafide vs DE spoof (same language) | 0.351 | 0.372 | +0.021 | −13% |
+
+The improvement is almost entirely concentrated in the *cross-language bonafide* slice: the
+model's ability to distinguish English bonafide speech from German TTS improves by 0.163
+when h2+h4 are ablated. The within-language slice (German bonafide vs German spoof)
+*degrades* marginally (+0.021), confirming that h2+h4 do encode some genuine German
+spoof-detection signal that is sacrificed.
+
+The mechanism is made explicit by the raw score distributions (higher score = more
+spoof-like):
+
+| Sample group | Baseline mean | Ablated mean | Δ |
+|---|---|---|---|
+| Bonafide EN | 0.992 | 0.647 | −0.345 |
+| Bonafide DE | 0.923 | 0.558 | −0.365 |
+| Spoof DE | 0.969 | 0.646 | −0.323 |
+
+In the baseline, English bonafide speech is assigned a higher spoof score (0.992) than
+German TTS itself (0.969). The model trained on German in-distribution data treats English
+phoneme patterns as *more deviant from learned bonafide* than actual German TTS artifacts.
+After ablating h2+h4, English bonafide and German spoof both receive ≈0.65, confirming
+that these heads are the direct source of the language-identity signal that was suppressing
+cross-language generalization.
+
+### 3.4 Implication for the Abstraction-as-Generalization Hypothesis
 
 The initial hypothesis was that phoneme-level graph attention learns language-invariant
 representations by abstracting over surface acoustic features. The MLAAD results offer a
@@ -148,7 +182,7 @@ heads for the English TTS attack space.
 
 ---
 
-## 4. Reframed Central Claim
+## 5. Reframed Central Claim
 
 The strongest claim supportable by both datasets together:
 

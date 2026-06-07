@@ -1,0 +1,24 @@
+{
+  "pre_registered_criteria": {
+    "strong": "mean system rho >= 0.75 OR family rho >= 0.85, AND flips <= 2",
+    "moderate": "mean system rho in [0.55,0.75) OR family rho in [0.65,0.85), AND flips <= 4",
+    "weak": "mean system rho < 0.55 OR flips > 4"
+  },
+  "robust_goat": {
+    "mean_system_rho": 0.7936,
+    "mean_family_rho": 0.8061,
+    "n_category_flips": 21,
+    "criterion": "weak",
+    "explanation": "rho=0.794 meets STRONG rho threshold (>=0.75) but 21 category flips >> 2-flip limit. High rank correlation but ranking category boundaries are unstable. Per-attack ranking partially reproducible on MLAAD (strong correlation but top-quartile membership unstable); ASVspoof E6 stability (ρ=0.943, 0 flips on 6 systems) does not fully transfer to 63-system setting."
+  },
+  "asvspoof_e6_reference": {
+    "rho_seed3_vs_seed1": 0.9429,
+    "rho_seed3_vs_seed2": 0.9429,
+    "rho_seed1_vs_seed2": 1.0,
+    "n_category_flips": 0,
+    "n_systems": 6,
+    "method": "permutation_test_p_values",
+    "note": "6 systems A01-A06; \u03c1 on family-permutation p-values, not EER"
+  },
+  "note_min_samples": "Pre-registered MIN_SAMPLES=30; max in test split is 25. Effective threshold used: 5. EERs with small N should be interpreted cautiously."
+}

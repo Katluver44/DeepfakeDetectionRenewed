@@ -1,0 +1,38 @@
+{
+  "seeds": [
+    42,
+    123,
+    456,
+    789,
+    1024
+  ],
+  "n_seeds": 5,
+  "conditions": [
+    "goat",
+    "robust_goat"
+  ],
+  "epochs": 7,
+  "skip_training": false,
+  "reuse_seed42": false,
+  "top_k": 2,
+  "batch_size": 32,
+  "checkpoints": {
+    "goat_42": "/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/checkpoints/mlaad_goat_seed42-best-epoch=05-val-eer=0.2913.ckpt",
+    "robust_goat_42": "/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/checkpoints/mlaad_robust_goat_seed42-best-epoch=05-val-eer=0.3030.ckpt",
+    "goat_123": "/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/checkpoints/mlaad_goat_seed123-best-epoch=05-val-eer=0.3165.ckpt",
+    "robust_goat_123": "/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/checkpoints/mlaad_robust_goat_seed123-best-epoch=05-val-eer=0.3192.ckpt",
+    "goat_456": "/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/checkpoints/mlaad_goat_seed456-best-epoch=05-val-eer=0.3030.ckpt",
+    "robust_goat_456": "/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/checkpoints/mlaad_robust_goat_seed456-best-epoch=00-val-eer=0.3877.ckpt",
+    "goat_789": "/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/checkpoints/mlaad_goat_seed789-best-epoch=01-val-eer=0.3174.ckpt",
+    "robust_goat_789": "/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/checkpoints/mlaad_robust_goat_seed789-best-epoch=01-val-eer=0.3354.ckpt",
+    "goat_1024": "/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/checkpoints/mlaad_goat_seed1024-best-epoch=06-val-eer=0.2840.ckpt",
+    "robust_goat_1024": "/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/checkpoints/mlaad_robust_goat_seed1024-best-epoch=03-val-eer=0.2976.ckpt"
+  },
+  "total_training_min": NaN,
+  "pre_registered_criteria": {
+    "strong": "same pair in >=4/5 robust seeds",
+    "moderate": "same pair in >=3/5, or one head in >=4/5",
+    "weak": "effect consistent in direction and within +-50% CV",
+    "failed": "none of the above"
+  }
+}

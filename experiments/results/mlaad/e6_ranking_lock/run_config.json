@@ -1,0 +1,43 @@
+{
+  "robust_seeds": [
+    42,
+    123,
+    789,
+    1024
+  ],
+  "goat_seeds": [
+    42,
+    123,
+    456,
+    789,
+    1024
+  ],
+  "min_samples_preregistered": 30,
+  "min_samples_effective": 5,
+  "batch_size": 32,
+  "n_bootstrap": 2000,
+  "bootstrap_seed": 42,
+  "top_quartile_frac": 0.25,
+  "test_split_hash": "ffb84de4c159d7382a824f84471a6966",
+  "n_test_records": 1846,
+  "n_bonafide": 908,
+  "n_spoof_systems": 63,
+  "n_valid_robust": 63,
+  "n_valid_goat": 63,
+  "checkpoints": {
+    "robust_goat": {
+      "42": "mlaad_robust_goat_seed42-best-epoch=05-val-eer=0.3030.ckpt",
+      "123": "mlaad_robust_goat_seed123-best-epoch=05-val-eer=0.3192.ckpt",
+      "789": "mlaad_robust_goat_seed789-best-epoch=01-val-eer=0.3354.ckpt",
+      "1024": "mlaad_robust_goat_seed1024-best-epoch=03-val-eer=0.2976.ckpt"
+    },
+    "goat": {
+      "42": "mlaad_goat_seed42-best-epoch=05-val-eer=0.2913.ckpt",
+      "123": "mlaad_goat_seed123-best-epoch=05-val-eer=0.3165.ckpt",
+      "456": "mlaad_goat_seed456-best-epoch=05-val-eer=0.3030.ckpt",
+      "789": "mlaad_goat_seed789-best-epoch=01-val-eer=0.3174.ckpt",
+      "1024": "mlaad_goat_seed1024-best-epoch=06-val-eer=0.2840.ckpt"
+    }
+  },
+  "elapsed_sec": 185.9
+}

@@ -1,0 +1,11 @@
+spec,ridge_r2,rf_r2,delta_ridge,delta_rf
+Base (temporal only),-0.08577,-0.13938,,
+  H1 Neighbourhood instability standalone,-0.03438,0.01626,,
+  Base + H1 Neighbourhood instability,-0.09458,0.01186,-0.00881,0.15124
+  H2 Graph sensitivity standalone,0.14997,0.03211,,
+  Base + H2 Graph sensitivity,0.11556,0.01418,0.20133,0.15356
+  H3 Anisotropy collapse standalone,-0.07468,0.06382,,
+  Base + H3 Anisotropy collapse,-0.13914,0.08856,-0.05337,0.22795
+  H4 WavLM–GAT alignment standalone,-0.07745,0.01074,,
+  Base + H4 WavLM–GAT alignment,-0.18105,0.02720,-0.09528,0.16658
+All four hypotheses + base,-0.07998,0.07558,0.00579,0.21496

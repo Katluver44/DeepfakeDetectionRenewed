@@ -1,0 +1,34 @@
+{
+  "check": "0.3_checkpoint_weight_diff",
+  "categories": {
+    "pre_gat_encoder": {
+      "identical": 731,
+      "differ": 0,
+      "max_l2": 0.0,
+      "max_l2_key": ""
+    },
+    "bilstm_attn": {
+      "identical": 3,
+      "differ": 16,
+      "max_l2": 6.215745449066162,
+      "max_l2_key": "model.rnn.0.weight_ih_l1"
+    },
+    "gat": {
+      "identical": 0,
+      "differ": 15,
+      "max_l2": 3.5012314319610596,
+      "max_l2_key": "model.GAT.gat_net.0.linear_proj.weight"
+    },
+    "cls_head_other": {
+      "identical": 4,
+      "differ": 14,
+      "max_l2": 18.0,
+      "max_l2_key": "model.cls_head.1.num_batches_tracked"
+    }
+  },
+  "encoder_frozen": true,
+  "gat_differs": true,
+  "bilstm_differs": true,
+  "kill_criterion_triggered": false,
+  "verdict": "PASS \u2014 pre-GAT identical, GAT+BiLSTM differ"
+}

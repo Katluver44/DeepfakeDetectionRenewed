@@ -1,0 +1,102 @@
+{
+  "n_systems": 63,
+  "n_features": 16,
+  "features": [
+    "phoneme_var_mean",
+    "phoneme_var_median",
+    "frame_mean_dist_mean",
+    "frame_var_dist_mean",
+    "n_segs_mean",
+    "mean_entropy_mean",
+    "median_entropy_mean",
+    "max_entropy_mean",
+    "var_entropy_mean",
+    "mean_gini_mean",
+    "mean_top1_mass_mean",
+    "mean_top3_mass_mean",
+    "n_nodes_mean",
+    "n_edges_mean",
+    "edge_density_mean",
+    "avg_degree_mean"
+  ],
+  "linear_regression": {
+    "loo_r2": 0.24144159986318336
+  },
+  "lasso": {
+    "loo_r2": 0.2777552029670366,
+    "best_alpha": 0.0013027852584806513,
+    "coef": {
+      "phoneme_var_mean": -0.0,
+      "phoneme_var_median": -0.027746870652303628,
+      "frame_mean_dist_mean": -0.02677673385361726,
+      "frame_var_dist_mean": -0.006437196335711694,
+      "n_segs_mean": -0.0,
+      "mean_entropy_mean": 0.05240446698326649,
+      "median_entropy_mean": -0.023584734282630825,
+      "max_entropy_mean": -0.0,
+      "var_entropy_mean": -0.0827884612137477,
+      "mean_gini_mean": 0.07861343542416065,
+      "mean_top1_mass_mean": 0.01635573325482462,
+      "mean_top3_mass_mean": -0.0,
+      "n_nodes_mean": -0.019797380884438106,
+      "n_edges_mean": -0.021983565204932592,
+      "edge_density_mean": 0.0,
+      "avg_degree_mean": 0.0
+    },
+    "selected_features": [
+      "phoneme_var_median",
+      "frame_mean_dist_mean",
+      "frame_var_dist_mean",
+      "mean_entropy_mean",
+      "median_entropy_mean",
+      "var_entropy_mean",
+      "mean_gini_mean",
+      "mean_top1_mass_mean",
+      "n_nodes_mean",
+      "n_edges_mean"
+    ]
+  },
+  "random_forest": {
+    "loo_r2": 0.1841065129039159,
+    "feature_importance": {
+      "phoneme_var_mean": 0.1685872464146906,
+      "phoneme_var_median": 0.2726637611623979,
+      "frame_mean_dist_mean": 0.05950195839161043,
+      "frame_var_dist_mean": 0.09282694095196267,
+      "n_segs_mean": 0.028679111765873448,
+      "mean_entropy_mean": 0.02060771339812128,
+      "median_entropy_mean": 0.01831462606994217,
+      "max_entropy_mean": 0.05527208919259476,
+      "var_entropy_mean": 0.08653793906719251,
+      "mean_gini_mean": 0.06501386858913864,
+      "mean_top1_mass_mean": 0.03472902388270581,
+      "mean_top3_mass_mean": 0.01979531933428801,
+      "n_nodes_mean": 0.01625445371497895,
+      "n_edges_mean": 0.014703473253999061,
+      "edge_density_mean": 0.02539603399085346,
+      "avg_degree_mean": 0.021116440819650365
+    },
+    "top5": [
+      {
+        "feature": "phoneme_var_median",
+        "importance": 0.2726637611623979
+      },
+      {
+        "feature": "phoneme_var_mean",
+        "importance": 0.1685872464146906
+      },
+      {
+        "feature": "frame_var_dist_mean",
+        "importance": 0.09282694095196267
+      },
+      {
+        "feature": "var_entropy_mean",
+        "importance": 0.08653793906719251
+      },
+      {
+        "feature": "mean_gini_mean",
+        "importance": 0.06501386858913864
+      }
+    ]
+  }
+}

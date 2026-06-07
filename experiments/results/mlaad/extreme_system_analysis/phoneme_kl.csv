@@ -1,0 +1,64 @@
+attack_system,group,mean_eer,mean_kl
+Cartesia.ai (Sonic-3),mid,0.1397,0.108948
+Chatterbox,mid,0.3403,0.084028
+DeepGram,easy,0.1154,0.120936
+Edge-TTS,mid,0.2264,0.17903
+FireRedTTS-2.0,hard,0.5399,0.090607
+FishTTS,mid,0.3472,0.092549
+Higgs-Audio-V2,hard,0.442,0.049749
+Index-TTS-1.5,hard,0.5367,0.084929
+Index-TTS-2.0,mid,0.3831,0.05363
+Indri-TTS-0.1,easy,0.1349,0.065232
+Kani-TTS-370M,mid,0.3007,0.104806
+Kitten-TTS-Nano-0.1,easy,0.0724,0.069838
+Kitten-TTS-Nano-0.2,easy,0.1133,0.092621
+Kyutai-TTS,mid,0.1716,0.054377
+Llasa-1B-Multilingual,mid,0.2177,0.08506
+Llasa-8B,mid,0.3202,0.073893
+Mars5,mid,0.3413,0.078218
+Marvis-TTS,mid,0.2054,0.236135
+MatchaTTS,mid,0.1932,0.107019
+Maya1 TTS,mid,0.1618,0.06336
+MegaTTS3,mid,0.2243,0.087322
+MeloTTS,mid,0.2217,0.073124
+Metavoice-1B,mid,0.2844,0.092469
+Microsoft VibeVoice 1.5B,mid,0.3586,0.090553
+Microsoft VibeVoice Large,mid,0.2038,0.065649
+MiniCPM-o-2.6,mid,0.3138,0.04952
+Nari Dia-1.6B,mid,0.207,0.090677
+Nari Dia2,mid,0.3119,0.088175
+NeuTTS-Air,mid,0.2834,0.073436
+OpenVoiceV2,mid,0.2407,0.070081
+Openaudio-S1-Mini,mid,0.3471,0.027708
+OuteTTS,hard,0.4045,0.041148
+Qwen2.5-Omni,mid,0.2451,0.074363
+RVC,mid,0.2855,0.082677
+"Resemble.ai (April 12th, 2025)",mid,0.2011,0.07065
+Ringg Squirrel TTS v1.0,easy,0.1152,0.056041
+SoulX-Podcast,mid,0.319,0.0975
+Spark-TTS-0.5B,hard,0.5112,0.064802
+Step-Audio-EditX,mid,0.2391,0.103259
+Supertonic,easy,0.1038,0.072604
+Veena,easy,0.0975,0.065568
+VoxCPM-0.5B,mid,0.3865,0.037798
+VoxCPM-1.5,hard,0.4712,0.074403
+Voxtream,mid,0.3366,0.063355
+WhisperSpeech,mid,0.3495,0.05586
+ZipVoice,hard,0.4181,0.136782
+e2-tts,mid,0.3698,0.052708
+f5-tts,mid,0.382,0.044649
+facebook_mms-tts-eng,easy,0.13,0.041596
+griffin_lim,hard,0.4007,0.06021
+kokoro,easy,0.1132,0.055867
+microsoft_speecht5_tts,mid,0.2994,0.098321
+minimax_speech-02-turbo,mid,0.1423,0.119114
+minimax_speech-2.6-hd,mid,0.1922,0.112431
+optispeech,mid,0.1534,0.07688
+orpheus-tts-0.1-finetune,easy,0.0678,0.1399
+parler_tts_large_v1,mid,0.143,0.061216
+parler_tts_mini_v0.1,mid,0.1544,0.049755
+parler_tts_mini_v1,mid,0.1566,0.213848
+sesame_csm,mid,0.2577,0.089662
+suno_bark,mid,0.2465,0.14655
+suno_bark-small,mid,0.2358,0.100878
+vixTTS,mid,0.2615,0.079595

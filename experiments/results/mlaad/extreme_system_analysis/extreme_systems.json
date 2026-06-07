@@ -1,0 +1,99 @@
+{
+  "hard_threshold_slots": 7,
+  "easy_threshold_slots": 7,
+  "total_seed_condition_slots": 9,
+  "hard_systems": [
+    {
+      "system": "FireRedTTS-2.0",
+      "slots": 9,
+      "mean_eer": 0.5399
+    },
+    {
+      "system": "Index-TTS-1.5",
+      "slots": 8,
+      "mean_eer": 0.5367
+    },
+    {
+      "system": "Spark-TTS-0.5B",
+      "slots": 9,
+      "mean_eer": 0.5112
+    },
+    {
+      "system": "VoxCPM-1.5",
+      "slots": 9,
+      "mean_eer": 0.4712
+    },
+    {
+      "system": "Higgs-Audio-V2",
+      "slots": 8,
+      "mean_eer": 0.442
+    },
+    {
+      "system": "ZipVoice",
+      "slots": 7,
+      "mean_eer": 0.4181
+    },
+    {
+      "system": "OuteTTS",
+      "slots": 7,
+      "mean_eer": 0.4045
+    },
+    {
+      "system": "griffin_lim",
+      "slots": 8,
+      "mean_eer": 0.4007
+    }
+  ],
+  "easy_systems": [
+    {
+      "system": "orpheus-tts-0.1-finetune",
+      "slots": 9,
+      "mean_eer": 0.0678
+    },
+    {
+      "system": "Kitten-TTS-Nano-0.1",
+      "slots": 9,
+      "mean_eer": 0.0724
+    },
+    {
+      "system": "Veena",
+      "slots": 8,
+      "mean_eer": 0.0975
+    },
+    {
+      "system": "Supertonic",
+      "slots": 8,
+      "mean_eer": 0.1038
+    },
+    {
+      "system": "kokoro",
+      "slots": 9,
+      "mean_eer": 0.1132
+    },
+    {
+      "system": "Kitten-TTS-Nano-0.2",
+      "slots": 8,
+      "mean_eer": 0.1133
+    },
+    {
+      "system": "Ringg Squirrel TTS v1.0",
+      "slots": 8,
+      "mean_eer": 0.1152
+    },
+    {
+      "system": "DeepGram",
+      "slots": 8,
+      "mean_eer": 0.1154
+    },
+    {
+      "system": "facebook_mms-tts-eng",
+      "slots": 7,
+      "mean_eer": 0.13
+    },
+    {
+      "system": "Indri-TTS-0.1",
+      "slots": 7,
+      "mean_eer": 0.1349
+    }
+  ]
+}

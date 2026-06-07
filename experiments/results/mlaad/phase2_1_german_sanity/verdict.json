@@ -1,0 +1,9 @@
+{
+  "verdict": "SCOPE_DOWN",
+  "n_languages_tested": 1,
+  "n_positive_xl_red": 1,
+  "n_confirmed_xl_red": 0,
+  "confirm_threshold": 1,
+  "kill_threshold": 1,
+  "explanation": "xl_red > 0 (point est.) on 1/1 languages (\u2265\u2308N/3\u2309=1), CI confirmed on 0/1. Effect real but irregular; paper narrows claim."
+}

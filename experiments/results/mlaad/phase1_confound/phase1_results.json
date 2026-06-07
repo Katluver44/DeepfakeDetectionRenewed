@@ -1,0 +1,269 @@
+{
+  "checkpoint": "mlaad_robust_goat",
+  "target_heads": [
+    2,
+    4
+  ],
+  "baseline_in_dist_eer": 0.360237,
+  "baseline_xl_eer": 0.67739,
+  "pipeline_parity_ok": true,
+  "target_pair": {
+    "pair_id": "h2_h4",
+    "ablated_heads": [
+      2,
+      4
+    ],
+    "in_dist_eer": 0.417656,
+    "cross_lang_eer": 0.51835,
+    "in_dist_delta": 0.057419,
+    "cross_lang_delta": -0.15904,
+    "xl_reduction": 0.15904,
+    "elapsed_s": 50.8
+  },
+  "null_distribution": {
+    "n_pairs": 14,
+    "xl_reduction_stats": {
+      "n": 14,
+      "mean": 0.09712592857142856,
+      "std": 0.04468955993804419,
+      "median": 0.0890335,
+      "min": 0.021752,
+      "max": 0.168102,
+      "p10": 0.03865010000000001,
+      "p90": 0.1529686
+    },
+    "pairs": [
+      {
+        "pair_id": "h0_h1",
+        "ablated_heads": [
+          0,
+          1
+        ],
+        "in_dist_eer": 0.342364,
+        "cross_lang_eer": 0.541006,
+        "in_dist_delta": -0.017872,
+        "cross_lang_delta": -0.136384,
+        "xl_reduction": 0.136384
+      },
+      {
+        "pair_id": "h0_h2",
+        "ablated_heads": [
+          0,
+          2
+        ],
+        "in_dist_eer": 0.381911,
+        "cross_lang_eer": 0.509288,
+        "in_dist_delta": 0.021674,
+        "cross_lang_delta": -0.168102,
+        "xl_reduction": 0.168102
+      },
+      {
+        "pair_id": "h0_h3",
+        "ablated_heads": [
+          0,
+          3
+        ],
+        "in_dist_eer": 0.348867,
+        "cross_lang_eer": 0.55913,
+        "in_dist_delta": -0.01137,
+        "cross_lang_delta": -0.11826,
+        "xl_reduction": 0.11826
+      },
+      {
+        "pair_id": "h0_h4",
+        "ablated_heads": [
+          0,
+          4
+        ],
+        "in_dist_eer": 0.379743,
+        "cross_lang_eer": 0.572723,
+        "in_dist_delta": 0.019507,
+        "cross_lang_delta": -0.104667,
+        "xl_reduction": 0.104667
+      },
+      {
+        "pair_id": "h0_h5",
+        "ablated_heads": [
+          0,
+          5
+        ],
+        "in_dist_eer": 0.350483,
+        "cross_lang_eer": 0.603537,
+        "in_dist_delta": -0.009753,
+        "cross_lang_delta": -0.073852,
+        "xl_reduction": 0.073852
+      },
+      {
+        "pair_id": "h1_h2",
+        "ablated_heads": [
+          1,
+          2
+        ],
+        "in_dist_eer": 0.366739,
+        "cross_lang_eer": 0.526961,
+        "in_dist_delta": 0.006502,
+        "cross_lang_delta": -0.150429,
+        "xl_reduction": 0.150429
+      },
+      {
+        "pair_id": "h1_h3",
+        "ablated_heads": [
+          1,
+          3
+        ],
+        "in_dist_eer": 0.342364,
+        "cross_lang_eer": 0.590396,
+        "in_dist_delta": -0.017872,
+        "cross_lang_delta": -0.086994,
+        "xl_reduction": 0.086994
+      },
+      {
+        "pair_id": "h1_h4",
+        "ablated_heads": [
+          1,
+          4
+        ],
+        "in_dist_eer": 0.358069,
+        "cross_lang_eer": 0.590847,
+        "in_dist_delta": -0.002167,
+        "cross_lang_delta": -0.086542,
+        "xl_reduction": 0.086542
+      },
+      {
+        "pair_id": "h1_h5",
+        "ablated_heads": [
+          1,
+          5
+        ],
+        "in_dist_eer": 0.345615,
+        "cross_lang_eer": 0.622565,
+        "in_dist_delta": -0.014621,
+        "cross_lang_delta": -0.054825,
+        "xl_reduction": 0.054825
+      },
+      {
+        "pair_id": "h2_h3",
+        "ablated_heads": [
+          2,
+          3
+        ],
+        "in_dist_eer": 0.36999,
+        "cross_lang_eer": 0.523333,
+        "in_dist_delta": 0.009753,
+        "cross_lang_delta": -0.154057,
+        "xl_reduction": 0.154057
+      },
+      {
+        "pair_id": "h2_h5",
+        "ablated_heads": [
+          2,
+          5
+        ],
+        "in_dist_eer": 0.367823,
+        "cross_lang_eer": 0.586316,
+        "in_dist_delta": 0.007586,
+        "cross_lang_delta": -0.091073,
+        "xl_reduction": 0.091073
+      },
+      {
+        "pair_id": "h3_h4",
+        "ablated_heads": [
+          3,
+          4
+        ],
+        "in_dist_eer": 0.36132,
+        "cross_lang_eer": 0.596282,
+        "in_dist_delta": 0.001084,
+        "cross_lang_delta": -0.081108,
+        "xl_reduction": 0.081108
+      },
+      {
+        "pair_id": "h3_h5",
+        "ablated_heads": [
+          3,
+          5
+        ],
+        "in_dist_eer": 0.34995,
+        "cross_lang_eer": 0.645672,
+        "in_dist_delta": -0.010286,
+        "cross_lang_delta": -0.031718,
+        "xl_reduction": 0.031718
+      },
+      {
+        "pair_id": "h4_h5",
+        "ablated_heads": [
+          4,
+          5
+        ],
+        "in_dist_eer": 0.372157,
+        "cross_lang_eer": 0.655638,
+        "in_dist_delta": 0.011921,
+        "cross_lang_delta": -0.021752,
+        "xl_reduction": 0.021752
+      }
+    ]
+  },
+  "statistical_test": {
+    "metric": "xl_reduction = baseline_xl_eer - ablated_xl_eer",
+    "target_xl_reduction": 0.15904,
+    "null_mean": 0.097126,
+    "null_std": 0.04469,
+    "z_score": 1.3854,
+    "empirical_percentile": 92.9,
+    "count_at_or_above": 1,
+    "n_null": 14
+  },
+  "decision_gate": {
+    "verdict": "PASS",
+    "explanation": "empirical_percentile=92.9% (\u226590%), z=+1.39. 1/14 null pairs match or beat the target. Cross-language gain is specific to {top-1, top-2}; capacity confound rejected.",
+    "gate_rules": {
+      "PASS": "empirical_percentile >= 90",
+      "FAIL": "empirical_percentile < 80 OR target within \u00b11 SD of null mean",
+      "MARGINAL": "80 <= empirical_percentile < 90"
+    }
+  },
+  "single_head_ablations": [
+    {
+      "condition": "top1_only",
+      "ablated_heads": [
+        2
+      ],
+      "in_dist_eer": 0.376492,
+      "cross_lang_eer": 0.618034,
+      "in_dist_delta": 0.016256,
+      "cross_lang_delta": -0.059356,
+      "xl_reduction": 0.059356
+    },
+    {
+      "condition": "top2_only",
+      "ablated_heads": [
+        4
+      ],
+      "in_dist_eer": 0.36999,
+      "cross_lang_eer": 0.678293,
+      "in_dist_delta": 0.009753,
+      "cross_lang_delta": 0.000903,
+      "xl_reduction": -0.000903
+    },
+    {
+      "condition": "top1_top2",
+      "ablated_heads": [
+        2,
+        4
+      ],
+      "in_dist_eer": 0.417656,
+      "cross_lang_eer": 0.51835,
+      "in_dist_delta": 0.057419,
+      "cross_lang_delta": -0.15904,
+      "xl_reduction": 0.15904
+    }
+  ],
+  "asymmetry_analysis": {
+    "top1_xl_reduction": 0.059356,
+    "top2_xl_reduction": -0.000903,
+    "pair_xl_reduction": 0.15904,
+    "sum_of_singles": 0.058453,
+    "synergy": 0.100587,
+    "dominant_head": "top1"
+  }
+}

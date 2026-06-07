@@ -1,0 +1,6 @@
+seed,kl_range_wider,delta_eer_larger,entropy_lower,robust_kl_range,goat_kl_range,robust_delta_eer,goat_delta_eer,robust_entropy,goat_entropy
+42,True,True,True,1.6035,1.4452,-0.02871,-0.061754,1.35182,1.56784
+123,False,True,False,1.9678,2.2567,-0.007586,-0.016789,1.373965,1.250378
+456,False,True,False,1.0732,1.4717,-0.002167,-0.117005,2.044941,1.434408
+789,False,False,False,1.0893,1.1686,-0.023291,-0.001084,1.891422,1.821944
+1024,False,True,False,1.3662,1.3881,0.0,-0.042798,1.591655,1.451227

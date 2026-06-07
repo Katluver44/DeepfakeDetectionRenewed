@@ -1,0 +1,27 @@
+{
+  "check": "0.2_bootstrap_ci_cross_language_ablation",
+  "n_bootstrap": 1000,
+  "n_samples": 1327,
+  "checkpoint": "mlaad_robust_goat",
+  "ablation": "h2+h4 zero",
+  "point_estimates": {
+    "baseline_eer": 0.6773897511702389,
+    "ablated_eer": 0.5183501683501683,
+    "delta_eer": -0.15903958282007058,
+    "improvement": 0.15903958282007058
+  },
+  "bootstrap": {
+    "delta_eer_ci_2.5": -0.18555675105656935,
+    "delta_eer_ci_97.5": -0.11202295663362748,
+    "improvement_ci_5th": 0.11779126224747195,
+    "improvement_ci_95th": 0.17943277447096453,
+    "improvement_median": 0.1516079710272859,
+    "fraction_resamples_positive": 1.0
+  },
+  "kill_criteria": {
+    "ci_crosses_zero": false,
+    "fifth_pctile_improvement_lt_0.05": false
+  },
+  "kill_criterion_triggered": false,
+  "verdict": "PASS \u2014 improvement 0.159 robust; 5th pctile=0.118 > 0.05, CI does not cross zero"
+}

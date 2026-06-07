@@ -1,0 +1,11 @@
+{
+  "robust_mean_rho": 0.7936,
+  "goat_mean_rho": 0.8,
+  "observed_delta": -0.0064,
+  "ci_95_lo": -0.0583,
+  "ci_95_hi": 0.0469,
+  "n_bootstrap": 2000,
+  "significant": false,
+  "robust_more_stable": false,
+  "interpretation": "stability is similar \u2014 not specific to augmentation"
+}

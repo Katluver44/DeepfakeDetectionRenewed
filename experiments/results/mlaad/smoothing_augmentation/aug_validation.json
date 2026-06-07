@@ -1,0 +1,26 @@
+{
+  "123": {
+    "p_smooth_target": 0.5,
+    "overall_application_rate": 0.4954545454545455,
+    "bonafide_application_rate": 0.4981761910025423,
+    "fake_application_rate": 0.4927332007073386,
+    "symmetry_within_5pct": true,
+    "pre_norm_mean": 289.58013916015625,
+    "post_norm_mean": 254.29562377929688,
+    "norms_differ": true,
+    "sanity_a_pass": true,
+    "sanity_b_pass": true
+  },
+  "1024": {
+    "p_smooth_target": 0.5,
+    "overall_application_rate": 0.49588284056369164,
+    "bonafide_application_rate": 0.49582803779631984,
+    "fake_application_rate": 0.4959376554468579,
+    "symmetry_within_5pct": true,
+    "pre_norm_mean": 285.0736389160156,
+    "post_norm_mean": 263.79229736328125,
+    "norms_differ": true,
+    "sanity_a_pass": true,
+    "sanity_b_pass": true
+  }
+}

@@ -619,11 +619,12 @@ def main():
     if EMBED_CSV.exists():
         emb_rows = list(csv.DictReader(EMBED_CSV.open()))
         for r in emb_rows:
-            r["overall_eer"]  = float(r["overall_eer"])
-            r["phoneme_var"]  = float(r["phoneme_var"])
-            r["frame_dist"]   = float(r["frame_dist"])
-            emb_base = next((x for x in emb_rows if x["group"] == "baseline"), None)
-            r["delta_eer"] = r["overall_eer"] - (emb_base["overall_eer"] if emb_base else 0.0)
+            for k in ("overall_eer", "hard_eer", "easy_eer", "phoneme_var", "frame_dist"):
+                if k in r:
+                    r[k] = float(r[k])
+        emb_base = next((x for x in emb_rows if x["group"] == "baseline"), None)
+        for r in emb_rows:
+            r["delta_eer"] = r["overall_eer"] - (float(emb_base["overall_eer"]) if emb_base else 0.0)
         print(f"\n  Loaded {len(emb_rows)} embedding-level rows for overlay")
 
     # ── Write outputs ─────────────────────────────────────────────────────────

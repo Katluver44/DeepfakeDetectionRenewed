@@ -1,0 +1,58 @@
+{
+  "test_set_composition": {
+    "bonafide_en": 908,
+    "bonafide_de": 199,
+    "spoof_de": 220
+  },
+  "eer_by_slice": {
+    "pooled (all bonafide vs DE spoof)": {
+      "baseline": 0.6773897511702389,
+      "ablated": 0.5183501683501683,
+      "delta": -0.15903958282007058,
+      "improvement": 0.15903958282007058
+    },
+    "EN bonafide vs DE spoof (lang mismatch)": {
+      "baseline": 0.7181217460953144,
+      "ablated": 0.5548057669203044,
+      "delta": -0.16331597917501006,
+      "improvement": 0.16331597917501006
+    },
+    "DE bonafide vs DE spoof (same lang)": {
+      "baseline": 0.35087939698492465,
+      "ablated": 0.3722932846048424,
+      "delta": 0.02141388761991775,
+      "improvement": -0.02141388761991775
+    }
+  },
+  "score_distributions": {
+    "baseline": {
+      "bonafide_en": {
+        "mean": 0.9924400487144001,
+        "std": 0.016430460752779916
+      },
+      "bonafide_de": {
+        "mean": 0.9229317252097892,
+        "std": 0.08424105860528343
+      },
+      "spoof_de": {
+        "mean": 0.9689741424837724,
+        "std": 0.04075244626328941
+      }
+    },
+    "ablated": {
+      "bonafide_en": {
+        "mean": 0.6473020963059006,
+        "std": 0.1922003295086809
+      },
+      "bonafide_de": {
+        "mean": 0.5584438401823646,
+        "std": 0.13805591549258447
+      },
+      "spoof_de": {
+        "mean": 0.6456359002521807,
+        "std": 0.1355968923006602
+      }
+    }
+  },
+  "interpretation": "If EN-bonafide-vs-DE-spoof EER < DE-bonafide-vs-DE-spoof EER: German bonafide confusion drives cross-language degradation. If improvement is concentrated in the EN-vs-DE slice: ablation helps spoof-language mismatch but not bonafide-language recognition."
+}

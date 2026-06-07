@@ -1,0 +1,21 @@
+{
+  "check": "0.1_phoneme_recognizer_language_coverage",
+  "vocab_size": 687,
+  "expected_vocab_size": 687,
+  "languages_in_tokenizer": 9,
+  "german_in_tokenizer": true,
+  "common_voice_training_data": true,
+  "per_language_token_counts": {
+    "en": 80,
+    "de": 96,
+    "es": 71,
+    "fr": 82,
+    "it": 97,
+    "pl": 56,
+    "ru": 71,
+    "uk": 59,
+    "zh-CN": 115
+  },
+  "kill_criterion_triggered": false,
+  "verdict": "PASS \u2014 multilingual recognizer confirmed (9 languages including de)"
+}

@@ -31,12 +31,12 @@ class BinaryFNR(Metric):
 class TPR_Callback(BinaryACC_Callback):
     @property
     def metric_name(self): return "tpr"
-    def build_metric_funcs(self, *args, **kwargs): return BinaryRecall(threshold=0.0)
+    def build_metric_funcs(self, *args, **kwargs): return BinaryRecall(threshold=0.5)
 
 class TNR_Callback(BinaryACC_Callback):
     @property
     def metric_name(self): return "tnr"
-    def build_metric_funcs(self, *args, **kwargs): return BinarySpecificity(threshold=0.0)
+    def build_metric_funcs(self, *args, **kwargs): return BinarySpecificity(threshold=0.5)
 
 class FPR_Callback(BinaryACC_Callback):
     @property

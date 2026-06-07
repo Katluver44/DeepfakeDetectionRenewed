@@ -1,0 +1,23 @@
+{
+  "verdict": "failed",
+  "criteria": {
+    "strong": "\u0394EER(hard)\u2264-0.05 AND |\u0394EER(overall)|\u22640.02 AND \u0394EER(crosslang)\u22640",
+    "partial": "\u0394EER(hard)\u2264-0.02 AND \u0394EER(overall)\u2264+0.02",
+    "tradeoff": "\u0394EER(hard)\u2264-0.05 BUT \u0394EER(overall)>+0.02",
+    "failed": "\u0394EER(hard)>-0.02 OR \u0394EER(overall)>+0.05"
+  },
+  "mean_delta_hard_eer": 0.02048761772272088,
+  "mean_delta_overall_eer": 0.0270868752524351,
+  "mean_delta_easy_eer": -0.015515285008677068,
+  "mean_delta_crosslang_eer": -0.17882483370288246,
+  "per_seed_delta_hard": {
+    "42": 0.028253453015799512,
+    "123": -0.009816667218707609,
+    "1024": 0.04302606737107073
+  },
+  "per_seed_delta_overall": {
+    "42": 0.023841616336191862,
+    "123": 0.022207245709777113,
+    "1024": 0.03521176371133633
+  }
+}
