@@ -1,4 +1,4 @@
-# P7 CLIP C-ranking — Summary
+# P7 CLIP C-ranking (lambda=0.1) — mlaad_robust_goat — Summary
 
 seeds aggregated: ['1024', '123', '42']
 

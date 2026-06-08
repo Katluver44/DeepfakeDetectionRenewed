@@ -1,4 +1,4 @@
-# P6 representation diversity regularization — Summary
+# P6 representation diversity regularization (lambda=0.01) — mlaad_robust_goat — Summary
 
 seeds aggregated: ['1024', '123', '42']
 
