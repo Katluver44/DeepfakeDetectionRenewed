@@ -43,6 +43,7 @@ def _rog_batch(frames_batch: torch.Tensor) -> torch.Tensor:
     frames_batch: (B, T, D)
     Returns: (B,) float32
     """
+    frames_batch = frames_batch.float()  # bf16-safe (autocast may hand us bf16)
     c = frames_batch.mean(dim=1, keepdim=True)              # (B, 1, D)
     sq_dist = ((frames_batch - c) ** 2).sum(dim=-1).mean(dim=-1)  # (B,)
     return torch.sqrt(sq_dist)
@@ -54,6 +55,7 @@ def _vel_entropy_batch(frames_batch: torch.Tensor, n_bins: int = 20) -> torch.Te
     frames_batch: (B, T, D)
     Returns: (B,) float32
     """
+    frames_batch = frames_batch.float()  # bf16-safe: torch.histc needs fp32
     B, T, D = frames_batch.shape
     vels = (frames_batch[:, 1:, :] - frames_batch[:, :-1, :]).norm(dim=-1)  # (B, T-1)
     entropies = torch.zeros(B, device=frames_batch.device, dtype=torch.float32)
@@ -107,37 +109,57 @@ class Phoneme_GAT_CT(Phoneme_GAT):
         Load weights from a base robust_goat checkpoint (which has cls_head[0] 768×768).
         The new n_ct columns in cls_head[0].weight default to zero.
         """
-        # Filter out cls_head[0].weight and bias if shapes mismatch
+        # For shape-mismatched tensors (only cls_head[0].weight: 768×768 → 768×770),
+        # warm-start by copying the overlapping sub-block in-place and leaving the
+        # extra n_ct columns at their zero init. This preserves the baseline at
+        # epoch 0 (extra dims contribute nothing). Naively skipping the whole tensor
+        # would random-init the 768 baseline columns and break that invariant.
         own_sd = self.state_dict()
         filtered = {}
+        partial = []
         for k, v in state_dict.items():
             if k in own_sd and own_sd[k].shape != v.shape:
-                print(f"  [CT] Skipping {k}: checkpoint {v.shape} vs model {own_sd[k].shape}")
+                tgt = own_sd[k]
+                if v.dim() == tgt.dim() and all(s <= t for s, t in zip(v.shape, tgt.shape)):
+                    slices = tuple(slice(0, s) for s in v.shape)
+                    with torch.no_grad():
+                        tgt[slices].copy_(v)
+                    partial.append((k, tuple(v.shape), tuple(tgt.shape)))
+                else:
+                    print(f"  [CT] Skipping {k}: checkpoint {v.shape} vs model {tgt.shape} (not a sub-block)")
                 continue
             filtered[k] = v
         missing, unexpected = self.load_state_dict(filtered, strict=strict)
-        if missing:
-            print(f"  [CT] Missing keys (will use random init): {missing[:5]}")
+        partial_keys = {p[0] for p in partial}
+        for k, src_shape, tgt_shape in partial:
+            print(f"  [CT] Partial warm-start {k}: copied {src_shape} into {tgt_shape}, extra dims kept zero")
+        # cls_head.0.weight appears in `missing` because we wrote it directly above.
+        real_missing = [m for m in missing if m not in partial_keys]
+        if real_missing:
+            print(f"  [CT] Missing keys (will use random init): {real_missing[:5]}")
         return missing, unexpected
 
     def _extract_wavlm_hidden(self, x: torch.Tensor):
         """
-        Run the frozen WavLM with output_hidden_states=True.
-        x: (B, L) raw audio waveform
-        Returns: (hidden_L0, frames_L9, frames_L12, phoneme_feat)
-          hidden_L0:    (B, T', 768) — pre-transformer features (for encoder input)
-          frames_L9:    (B, T', 768) — layer 9 output
-          frames_L12:   (B, T', 768) — layer 12 output (= phoneme_feat)
-          phoneme_feat: (B, T', 768) — alias for frames_L12
+        Returns: (hidden_proj, frames_L9, frames_L12, phoneme_feat)
+          hidden_proj:  (B, T', 768) — feature_projection output = the encoder
+                        input the BASE Phoneme_GAT.__call__ feeds to the trainable
+                        encoder. MUST match base or warm-start ≠ baseline.
+          frames_L9:    (B, T', 768) — encoder layer-9 output (for T)
+          frames_L12:   (B, T', 768) — encoder layer-12 output = last (for C)
+          phoneme_feat: (B, T', 768) — last_hidden_state (= frames_L12)
+
+        Critically, we replicate the base extraction (modules.py:574-578) exactly:
+        feature_extractor → feature_projection → encoder. Using the top-level
+        WavLM forward's hidden_states[0] instead would hand the encoder the
+        POST-pos-conv/layernorm tensor (a different input), breaking warm-start.
         """
-        # The full WavLM model returns hidden_states tuple with 13 elements:
-        #   index 0 = L0 (feature_projection output, before encoder)
-        #   index k = output of transformer layer k (k=1..12)
-        wavlm_out = self.transformer_in_phoneme_model(
-            input_values=x, output_hidden_states=True
-        )
-        hs = wavlm_out.hidden_states  # tuple of 13 tensors
-        return hs[0], hs[9], hs[12], wavlm_out.last_hidden_state
+        wavlm = self.transformer_in_phoneme_model
+        feat1 = wavlm.feature_extractor(x).transpose(1, 2)
+        hidden_proj, _ = wavlm.feature_projection(feat1)
+        enc_out = wavlm.encoder(hidden_proj, output_hidden_states=True, return_dict=True)
+        hs = enc_out.hidden_states  # (post-posconv input, L1..L12); hs[-1] == last
+        return hidden_proj, hs[9], hs[12], enc_out.last_hidden_state
 
     def encoder_and_GAT_ct(
         self, hidden_states, num_frames, phoneme_ids,
@@ -299,7 +321,9 @@ class Phoneme_GAT_CT(Phoneme_GAT):
                     )
 
         return {
-            "logit":              logit,
+            # float() so EER/AUC/ACC callbacks (preds.numpy()) work under
+            # bf16-mixed; a no-op in fp32. Loss reads the same fp32 logit fine.
+            "logit":              logit.float(),
             "hidden_states":      hidden_states,
             "phoneme_feat":       phoneme_feat,
             "encoder_feat":       encoder_feat,
@@ -318,6 +342,7 @@ def _vel_entropy_window11_batch(frames_batch: torch.Tensor) -> torch.Tensor:
     Window-11 velocity entropy: entropy of ||frames[t+11] - frames[t]|| distribution.
     P3 extension. frames_batch: (B, T, D). Returns (B,).
     """
+    frames_batch = frames_batch.float()  # bf16-safe: torch.histc needs fp32
     B, T, D = frames_batch.shape
     stride = 11
     if T <= stride:
@@ -355,6 +380,17 @@ class Phoneme_GAT_CT_lit(Phoneme_GAT_lit):
             n_edges=cfg.PhonemeGAT.n_edges,
             n_ct=n_ct,
         )
+
+    def configure_optimizers(self):
+        """Honor self.lr for warm-start fine-tuning. The base Phoneme_GAT_lit
+        hardcodes 5e-5 encoder / 1e-4 rest and IGNORES self.lr, which silently
+        fine-tunes the warm-started CT model at 1e-4 and degrades it away from
+        the baseline. The roadmap specifies LR_ENCODER == LR_HEAD == 5e-5, so a
+        single AdamW group at self.lr is the faithful choice."""
+        lr = float(getattr(self, "lr", 5e-5))
+        opt = torch.optim.AdamW(self.parameters(), lr=lr, weight_decay=1e-4)
+        self.num_training_batches = self.trainer.num_training_batches
+        return [opt]
 
     @classmethod
     def load_from_base_checkpoint(cls, base_ckpt_path: str, cfg, n_ct: int = 2):

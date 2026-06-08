@@ -197,79 +197,14 @@ def extract_val_c_stats(model, device) -> dict:
     }
 
 
-# ─── EER computation ─────────────────────────────────────────────────────────
+# ─── Evaluation (shared multi-metric: EER + AUC + accuracy) ──────────────────
 
-from scipy.interpolate import interp1d
-from scipy.optimize import brentq
-from sklearn.metrics import roc_curve
-from collections import defaultdict
 import pandas as pd
-
-
-def compute_eer(labels, scores):
-    if len(np.unique(labels)) < 2:
-        return None
-    try:
-        fpr, tpr, _ = roc_curve(labels, scores, pos_label=1)
-        eer = brentq(lambda x: 1.0 - x - interp1d(fpr, tpr)(x), 0.0, 1.0)
-        return float(eer)
-    except Exception:
-        return None
-
-
-@torch.no_grad()
-def evaluate_on_test(model, device, out_csv=None):
-    class TestDS(torch.utils.data.Dataset):
-        def __init__(self, records):
-            self.records = records
-        def __len__(self): return len(self.records)
-        def __getitem__(self, i):
-            r = self.records[i]
-            wav = torch.load(PROC_DIR / r["audio_path"]).unsqueeze(0)
-            return {"audio": wav, "label": 0 if r["label"]=="bonafide" else 1,
-                    "system": r["attack_system"]}
-
-    records = json.loads(TEST_JSON.read_text())
-    dl = DataLoader(TestDS(records), batch_size=16, shuffle=False,
-                    num_workers=4,
-                    collate_fn=lambda b: {
-                        "audio": torch.stack([x["audio"] for x in b]),
-                        "label": [x["label"] for x in b],
-                        "system": [x["system"] for x in b],
-                    }, pin_memory=True)
-
-    NF = 48000 // 320 - 1
-    model.eval()
-    all_labels, all_logits, all_systems = [], [], []
-    for batch in dl:
-        audio = batch["audio"].to(device)
-        nf = torch.full((audio.shape[0],), NF, device=device)
-        out = model.model(audio, nf, use_aug=False, stage="val")
-        all_logits.extend(out["logit"].cpu().tolist())
-        all_labels.extend(batch["label"])
-        all_systems.extend(batch["system"])
-
-    bf_labels, bf_logits = [], []
-    sp_groups = defaultdict(lambda: ([], []))
-    for y, s, sys in zip(all_labels, all_logits, all_systems):
-        if y == 0:
-            bf_labels.append(y); bf_logits.append(s)
-        else:
-            sp_groups[sys][0].append(y); sp_groups[sys][1].append(s)
-
-    results = {}
-    for sys, (sp_lab, sp_log) in sorted(sp_groups.items()):
-        if len(sp_lab) < 5:
-            results[sys] = None; continue
-        results[sys] = compute_eer(
-            np.array(sp_lab + bf_labels),
-            np.array(sp_log + bf_logits)
-        )
-
-    if out_csv is not None:
-        rows = [{"system": s, "eer": v} for s, v in results.items() if v is not None]
-        pd.DataFrame(rows).sort_values("eer", ascending=False).to_csv(out_csv, index=False)
-    return results
+from _ablation_common import (
+    evaluate_on_test as eval_test_multimetric,
+    load_baseline_metrics, load_system_ct, stratify_by_ct, stratified_markdown,
+    METRIC_KEYS,
+)
 
 
 # ─── Per-seed training ────────────────────────────────────────────────────────
@@ -346,7 +281,7 @@ def train_seed(seed: int, device: torch.device) -> dict:
         ModelCheckpoint(
             dirpath=str(CKPT_DIR),
             filename=ckpt_stem + "-best-{epoch:02d}-{val-eer:.4f}",
-            monitor="val-eer", mode="min", save_last=True, verbose=True,
+            monitor="val-eer", mode="min", save_last=False, verbose=True,
         ),
     ]
     logger = PLCSVLogger(save_dir=str(log_dir), name="", version="")
@@ -354,6 +289,7 @@ def train_seed(seed: int, device: torch.device) -> dict:
     trainer = pl.Trainer(
         accelerator="gpu", devices=1,
         max_epochs=MAX_EPOCHS,
+        precision="bf16-mixed",        # A100 fast path; save_last off for concurrency
         logger=logger, callbacks=callbacks,
         log_every_n_steps=10, deterministic=False,
     )
@@ -371,73 +307,70 @@ def train_seed(seed: int, device: torch.device) -> dict:
         json.dumps(c_epoch_stats, indent=2)
     )
 
-    # ── Evaluate on test split ─────────────────────────────────────────────────
+    # ── Evaluate on test split (EER + AUC + accuracy + balanced accuracy) ──────
     model.eval().to(device)
-    eer_dict = evaluate_on_test(
+    metrics = eval_test_multimetric(
         model, device,
-        out_csv=OUT_DIR / f"per_system_eer_seed{seed}.csv"
+        out_csv=OUT_DIR / f"per_system_metrics_seed{seed}.csv"
     )
-    valid = [v for v in eer_dict.values() if v is not None]
-    print(f"  Test mean EER: {np.mean(valid):.4f} ({len(valid)} systems)")
-    return eer_dict
+    valid = [m for m in metrics.values() if m is not None]
+    print(f"  Test mean EER: {np.mean([m['eer'] for m in valid]):.4f}  "
+          f"AUC: {np.mean([m['auc'] for m in valid]):.4f}  "
+          f"bal_acc: {np.mean([m['bal_acc'] for m in valid]):.4f} ({len(valid)} systems)")
+    return metrics
 
 
 # ─── Summary ─────────────────────────────────────────────────────────────────
 
-def write_summary(all_seed_eers: dict, baseline_csv=None):
+def write_summary(all_seed_metrics: dict, baseline_csv=None):
+    """Multi-metric (EER + AUC + accuracy) summary, stratified by C/T quartile so
+    the smoothing effect on the hard-C systems is cross-checked across metrics."""
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    systems = sorted(set(s for d in all_seed_eers.values() for s in d))
-    mean_eer = {}
-    for sys in systems:
-        vals = [d[sys] for d in all_seed_eers.values() if d.get(sys) is not None]
-        mean_eer[sys] = float(np.mean(vals)) if vals else None
+    systems = sorted(set(s for d in all_seed_metrics.values() for s in d))
+    mean_metrics = {}
+    for sysn in systems:
+        ms = [d[sysn] for d in all_seed_metrics.values() if d.get(sysn) is not None]
+        if not ms:
+            mean_metrics[sysn] = None; continue
+        mean_metrics[sysn] = {k: float(np.mean([m[k] for m in ms if m.get(k) is not None]))
+                              for k in METRIC_KEYS if any(m.get(k) is not None for m in ms)}
 
-    ct_eers = [v for v in mean_eer.values() if v is not None]
-    hard_thresh = np.percentile(ct_eers, 75)
-    hard_eers   = [v for v in ct_eers if v >= hard_thresh]
-
-    baseline = {}
-    if baseline_csv and Path(baseline_csv).exists():
-        bdf = pd.read_csv(baseline_csv)
-        baseline = dict(zip(bdf["system"], bdf.get("eer", bdf.get("eer_before", []))))
+    baseline = load_baseline_metrics(baseline_csv) if baseline_csv else load_baseline_metrics()
+    ct = load_system_ct()
+    report = stratify_by_ct(mean_metrics, baseline, ct)
 
     lines = [
         "# P4: Smoothing Augmentation Fine-tuning",
         "",
-        f"**p_smooth={P_SMOOTH}  |  kernels={MA_KERNELS}  |  seeds={sorted(all_seed_eers.keys())}  |  epochs={MAX_EPOCHS}**",
+        f"**p_smooth={P_SMOOTH}  |  kernels={MA_KERNELS}  |  "
+        f"seeds={sorted(all_seed_metrics.keys())}  |  epochs={MAX_EPOCHS}**",
         "",
         "## Motivation",
         "E3 shows temporal smoothing (MA window≥3) directly reduces C (rog) by averaging frames.",
         "Training on smoothed bonafide speech forces the model to distinguish compact-but-real from",
         "compact-and-synthetic. Kernels ≥11 EXCLUDED because E3 shows they reverse the C correlation.",
         "",
-        "## Results (mean across seeds)",
-        "",
-        f"| Metric | Smooth-aug model |",
-        f"|--------|-----------------|",
-        f"| Mean EER (all systems) | {np.mean(ct_eers):.4f} |",
-        f"| Median EER | {np.median(ct_eers):.4f} |",
-        f"| Hard-C-quartile EER (≥75th pct) | {np.mean(hard_eers):.4f} |",
-        "",
-        "## Per-system delta vs baseline",
-        "",
-        "| System | Smooth EER | Baseline EER | ΔEER |",
-        "|--------|-----------|-------------|------|",
+        stratified_markdown(report, "Per-system metrics vs mlaad_robust_goat baseline"),
     ]
-    for s, v in sorted(mean_eer.items(), key=lambda x: -(x[1] or 0)):
-        if v is None:
-            continue
-        bl = baseline.get(s)
-        delta = f"{v - bl:+.4f}" if bl else "N/A"
-        lines.append(f"| {s[:40]:40s} | {v:.4f} | {bl:.4f if bl else 'N/A':>9} | {delta} |")
-
     (OUT_DIR / "summary.md").write_text("\n".join(lines))
+
+    rows = []
+    for s in systems:
+        if mean_metrics[s] is None:
+            continue
+        row = {"system": s, "C": ct.get(s, {}).get("C"), "T": ct.get(s, {}).get("T")}
+        for k in METRIC_KEYS:
+            row[f"smooth_{k}"] = mean_metrics[s].get(k)
+            row[f"baseline_{k}"] = baseline.get(s, {}).get(k)
+        rows.append(row)
+    pd.DataFrame(rows).to_csv(OUT_DIR / "per_system_metrics_mean.csv", index=False)
     print(f"Summary written to {OUT_DIR / 'summary.md'}")
 
 
 # ─── Main ─────────────────────────────────────────────────────────────────────
 
 def main():
+    global MAX_EPOCHS, P_SMOOTH
     import argparse
     p = argparse.ArgumentParser()
     p.add_argument("--seeds", type=int, nargs="+", default=SEEDS)
@@ -446,7 +379,6 @@ def main():
     p.add_argument("--baseline-csv", type=Path, default=None)
     args = p.parse_args()
 
-    global MAX_EPOCHS, P_SMOOTH
     MAX_EPOCHS = args.epochs
     P_SMOOTH   = args.p_smooth
 
@@ -460,7 +392,8 @@ def main():
         all_seed_eers[seed] = train_seed(seed, device)
 
     write_summary(all_seed_eers, baseline_csv=args.baseline_csv)
-    all_eers = [v for d in all_seed_eers.values() for v in d.values() if v is not None]
+    all_eers = [m["eer"] for d in all_seed_eers.values() for m in d.values()
+                if m is not None and m.get("eer") is not None]
     print(f"\nP4 done. Mean test EER: {np.mean(all_eers):.4f}")
 
 

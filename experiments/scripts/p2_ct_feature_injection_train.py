@@ -89,91 +89,18 @@ LR_ENCODER = 5e-5       # lower than baseline 5e-5 (encoder already tuned)
 LR_HEAD    = 5e-5       # new dimensions start at zero; small LR is safe
 BATCH_SIZE = HP["batch_size"]  # 20
 
-# ─── Evaluation imports ───────────────────────────────────────────────────────
-from scipy.interpolate import interp1d
-from scipy.optimize import brentq
-from sklearn.metrics import roc_curve
-from collections import defaultdict
+# ─── Evaluation ───────────────────────────────────────────────────────────────
+# Multi-metric eval + C/T-quartile stratification (EER cross-checked vs AUC/acc).
+from _ablation_common import (
+    evaluate_on_test as eval_test_multimetric,
+    load_baseline_metrics, load_system_ct, stratify_by_ct, stratified_markdown,
+    consistency_note, METRIC_KEYS,
+)
 
 
-def compute_eer(labels: np.ndarray, scores: np.ndarray) -> float | None:
-    if len(np.unique(labels)) < 2:
-        return None
-    try:
-        fpr, tpr, _ = roc_curve(labels, scores, pos_label=1)
-        eer = brentq(lambda x: 1.0 - x - interp1d(fpr, tpr)(x), 0.0, 1.0)
-        return float(eer)
-    except Exception:
-        return None
-
-
-def per_system_eer_from_dict(all_labels, all_logits, all_systems, min_n=5):
-    bf_labels, bf_logits = [], []
-    sp_groups = defaultdict(lambda: ([], []))
-    for y, s, sys in zip(all_labels, all_logits, all_systems):
-        if y == 0:
-            bf_labels.append(y); bf_logits.append(s)
-        else:
-            sp_groups[sys][0].append(y); sp_groups[sys][1].append(s)
-    results = {}
-    for sys, (sp_lab, sp_log) in sorted(sp_groups.items()):
-        if len(sp_lab) < min_n:
-            results[sys] = None; continue
-        comb_labels = np.array(sp_lab + bf_labels)
-        comb_scores = np.array(sp_log + bf_logits)
-        results[sys] = compute_eer(comb_labels, comb_scores)
-    return results
-
-
-# ─── Evaluation loop ─────────────────────────────────────────────────────────
-
-@torch.no_grad()
-def evaluate_on_test(model, device, out_csv: Path | None = None):
-    """Run inference on the full test split, return per-system EER dict."""
-    from torch.utils.data import Dataset
-    import json
-
-    class TestDS(torch.utils.data.Dataset):
-        def __init__(self, records):
-            self.records = records
-        def __len__(self): return len(self.records)
-        def __getitem__(self, i):
-            r = self.records[i]
-            wav = torch.load(PROC_DIR / r["audio_path"]).unsqueeze(0)
-            return {"audio": wav, "label": 0 if r["label"]=="bonafide" else 1,
-                    "system": r["attack_system"]}
-
-    def collate(batch):
-        return {
-            "audio":  torch.stack([b["audio"] for b in batch]),
-            "label":  [b["label"] for b in batch],
-            "system": [b["system"] for b in batch],
-        }
-
-    records = json.loads(TEST_JSON.read_text())
-    dl = DataLoader(TestDS(records), batch_size=16, shuffle=False,
-                    num_workers=4, collate_fn=collate, pin_memory=True)
-
-    model.eval()
-    all_labels, all_logits, all_systems = [], [], []
-    NF = 48000 // 320 - 1
-
-    for batch in dl:
-        audio = batch["audio"].to(device)
-        num_frames = torch.full((audio.shape[0],), NF, device=device)
-        out = model.model(audio, num_frames, use_aug=False, stage="val")
-        all_logits.extend(out["logit"].cpu().tolist())
-        all_labels.extend(batch["label"])
-        all_systems.extend(batch["system"])
-
-    sys_eer = per_system_eer_from_dict(all_labels, all_logits, all_systems)
-
-    if out_csv is not None:
-        import pandas as pd
-        rows = [{"system": s, "eer": v} for s, v in sys_eer.items() if v is not None]
-        pd.DataFrame(rows).sort_values("eer", ascending=False).to_csv(out_csv, index=False)
-
-    return sys_eer
+# Per-system EER/AUC/accuracy on the locked test split is provided by
+# _ablation_common.evaluate_on_test (imported above as eval_test_multimetric);
+# the previous EER-only inline copy was removed to avoid divergence.
 
 
 # ─── Per-seed training ────────────────────────────────────────────────────────
@@ -181,7 +108,8 @@ def evaluate_on_test(model, device, out_csv: Path | None = None):
 def train_seed(seed: int, device: torch.device) -> dict:
     """Fine-tune CT model for one seed. Returns per-system EER dict."""
     set_seed(seed)
-    ckpt_stem  = f"mlaad_ct_feat_seed{seed}"
+    ckpt_stem  = (f"mlaad_ct_feat_seed{seed}" if N_CT == 2
+                  else f"mlaad_ct{N_CT}_feat_seed{seed}")
     ckpt_path  = CKPT_DIR / f"{ckpt_stem}.ckpt"
     log_dir    = OUT_DIR / f"logs_seed{seed}"
     log_dir.mkdir(parents=True, exist_ok=True)
@@ -234,7 +162,7 @@ def train_seed(seed: int, device: torch.device) -> dict:
         ModelCheckpoint(
             dirpath=str(CKPT_DIR),
             filename=ckpt_stem + "-best-{epoch:02d}-{val-eer:.4f}",
-            monitor="val-eer", mode="min", save_last=True, verbose=True,
+            monitor="val-eer", mode="min", save_last=False, verbose=True,
         ),
     ]
     logger = PLCSVLogger(save_dir=str(log_dir), name="", version="",
@@ -243,6 +171,7 @@ def train_seed(seed: int, device: torch.device) -> dict:
     trainer = pl.Trainer(
         accelerator="gpu", devices=1,
         max_epochs=MAX_EPOCHS,
+        precision="bf16-mixed",        # A100 fast path; save_last off for concurrency
         logger=logger, callbacks=callbacks,
         log_every_n_steps=10, deterministic=False,
     )
@@ -254,79 +183,68 @@ def train_seed(seed: int, device: torch.device) -> dict:
 
     trainer.save_checkpoint(str(ckpt_path))
 
-    # ── Evaluate on test split ─────────────────────────────────────────────────
+    # ── Evaluate on test split (EER + AUC + accuracy + balanced accuracy) ──────
     model.eval().to(device)
-    eer_dict = evaluate_on_test(
+    metrics = eval_test_multimetric(
         model, device,
-        out_csv=OUT_DIR / f"per_system_eer_seed{seed}.csv"
+        out_csv=OUT_DIR / f"per_system_metrics_seed{seed}.csv"
     )
-    valid = [v for v in eer_dict.values() if v is not None]
-    print(f"  Test mean EER: {np.mean(valid):.4f} ({len(valid)} systems)")
-    return eer_dict
+    valid = [m for m in metrics.values() if m is not None]
+    print(f"  Test mean EER: {np.mean([m['eer'] for m in valid]):.4f}  "
+          f"AUC: {np.mean([m['auc'] for m in valid]):.4f}  "
+          f"bal_acc: {np.mean([m['bal_acc'] for m in valid]):.4f} ({len(valid)} systems)")
+    return metrics
 
 
 # ─── Comparison with baseline ─────────────────────────────────────────────────
 
-def write_summary(all_seed_eers: dict[int, dict], baseline_csv: Path | None = None):
-    """Write summary.md comparing CT model vs baseline across seeds."""
+def write_summary(all_seed_metrics: dict[int, dict], baseline_csv: Path | None = None):
+    """Write summary.md comparing the CT model vs baseline across seeds, with
+    EER cross-checked against AUC and accuracy and stratified by C/T quartile."""
     import pandas as pd
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    # Average EER across seeds per system
-    systems = sorted(set(s for d in all_seed_eers.values() for s in d))
-    mean_eer_ct = {}
-    for sys in systems:
-        vals = [d[sys] for d in all_seed_eers.values() if d.get(sys) is not None]
-        mean_eer_ct[sys] = np.mean(vals) if vals else None
+    # Mean of each metric per system across seeds.
+    systems = sorted(set(s for d in all_seed_metrics.values() for s in d))
+    mean_metrics = {}
+    for sysn in systems:
+        ms = [d[sysn] for d in all_seed_metrics.values() if d.get(sysn) is not None]
+        if not ms:
+            mean_metrics[sysn] = None; continue
+        mean_metrics[sysn] = {k: float(np.mean([m[k] for m in ms if m.get(k) is not None]))
+                              for k in METRIC_KEYS if any(m.get(k) is not None for m in ms)}
+
+    baseline = load_baseline_metrics(baseline_csv) if baseline_csv else load_baseline_metrics()
+    ct = load_system_ct()
+    report = stratify_by_ct(mean_metrics, baseline, ct)
 
     lines = [
         "# P2: CT Feature Injection — Training Summary",
         "",
-        f"**n_ct={N_CT}  |  seeds={sorted(all_seed_eers.keys())}  |  epochs={MAX_EPOCHS}**",
+        f"**n_ct={N_CT}  |  seeds={sorted(all_seed_metrics.keys())}  |  epochs={MAX_EPOCHS}**",
         "",
-        "## Per-system EER (mean across seeds)",
-        "",
-        "| System | CT model EER | Baseline EER | ΔEER |",
-        "|--------|-------------|-------------|------|",
-    ]
-
-    baseline = {}
-    if baseline_csv and Path(baseline_csv).exists():
-        bdf = pd.read_csv(baseline_csv)
-        baseline = dict(zip(bdf["system"], bdf.get("eer", bdf.get("eer_before", []))))
-
-    valid_ct = [(s, v) for s, v in sorted(mean_eer_ct.items()) if v is not None]
-    ct_eers  = [v for _, v in valid_ct]
-
-    for s, ct_e in sorted(valid_ct, key=lambda x: -x[1]):
-        bl = baseline.get(s, None)
-        delta = f"{ct_e - bl:+.4f}" if bl is not None else "N/A"
-        bl_str = f"{bl:.4f}" if bl is not None else "N/A"
-        lines.append(f"| {s[:40]:40s} | {ct_e:.4f} | {bl_str} | {delta} |")
-
-    hard_thresh = np.percentile(ct_eers, 75)
-    hard_eers   = [v for _, v in valid_ct if v >= hard_thresh]
-
-    lines += [
-        "",
-        "## Summary Statistics",
-        "",
-        f"| Metric | CT model |",
-        f"|--------|---------|",
-        f"| Mean EER (all systems) | {np.mean(ct_eers):.4f} |",
-        f"| Median EER | {np.median(ct_eers):.4f} |",
-        f"| Hard-quartile EER (≥75th pct) | {np.mean(hard_eers):.4f} |",
+        stratified_markdown(report, "Per-system metrics vs mlaad_robust_goat baseline"),
         "",
         "## Config",
         f"- Base checkpoint: {BASE_CKPT}",
-        f"- n_ct: {N_CT} (C=rog@L12, T=vel_entropy@L9)",
+        f"- n_ct: {N_CT} (C=−rog@L12, T=vel_entropy@L9)",
         f"- cls_head input: 768+{N_CT}={768+N_CT}",
-        f"- Fine-tune epochs: {MAX_EPOCHS}",
-        f"- LR encoder/head: {LR_ENCODER}/{LR_HEAD}",
+        f"- Fine-tune epochs: {MAX_EPOCHS}  |  LR encoder/head: {LR_ENCODER}/{LR_HEAD}",
     ]
-
     (OUT_DIR / "summary.md").write_text("\n".join(lines))
+
+    # Machine-readable per-system table with all metrics.
+    rows = []
+    for s in systems:
+        if mean_metrics[s] is None:
+            continue
+        row = {"system": s, "C": ct.get(s, {}).get("C"), "T": ct.get(s, {}).get("T")}
+        for k in METRIC_KEYS:
+            row[f"ct_{k}"] = mean_metrics[s].get(k)
+            row[f"baseline_{k}"] = baseline.get(s, {}).get(k)
+        rows.append(row)
+    pd.DataFrame(rows).to_csv(OUT_DIR / "per_system_metrics_mean.csv", index=False)
     print(f"Summary written to {OUT_DIR / 'summary.md'}")
 
 
@@ -345,16 +263,21 @@ def parse_args():
 
 def main():
     args = parse_args()
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-    CKPT_DIR.mkdir(parents=True, exist_ok=True)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Device: {device}  |  Seeds: {args.seeds}  |  n_ct={args.n_ct}  |  epochs={args.epochs}")
 
-    # Update global for dynamic args
-    global N_CT, MAX_EPOCHS
+    # Update globals for dynamic args. n_ct=2 keeps the legacy P2 dir; n_ct=3 is
+    # the P3 (T_window11) variant and writes to its own dir so summaries don't
+    # collide.
+    global N_CT, MAX_EPOCHS, OUT_DIR
     N_CT        = args.n_ct
     MAX_EPOCHS  = args.epochs
+    if N_CT != 2:
+        label = {1: "p2b_c_only", 3: "p3_ct_window11"}.get(N_CT, f"ct_n{N_CT}")
+        OUT_DIR = EXP_DIR / "results" / "mlaad" / label
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    CKPT_DIR.mkdir(parents=True, exist_ok=True)
 
     all_seed_eers = {}
     for seed in args.seeds:
@@ -362,8 +285,9 @@ def main():
 
     write_summary(all_seed_eers, baseline_csv=args.baseline_csv)
 
-    # Overall stats
-    all_eers = [v for d in all_seed_eers.values() for v in d.values() if v is not None]
+    # Overall stats (values are per-system metric dicts now)
+    all_eers = [m["eer"] for d in all_seed_eers.values() for m in d.values()
+                if m is not None and m.get("eer") is not None]
     print(f"\n{'='*60}")
     print(f"P2 done. Mean test EER: {np.mean(all_eers):.4f}")
     print(f"Results: {OUT_DIR}")

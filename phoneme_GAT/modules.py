@@ -623,7 +623,9 @@ class Phoneme_GAT(nn.Module):
                     )
 
         return {
-            "logit": logit,
+            # float() so EER/AUC/ACC callbacks (preds.numpy()) work under
+            # bf16-mixed; a no-op in fp32. Loss reads the same fp32 logit fine.
+            "logit": logit.float(),
             "hidden_states": hidden_states,
             "phoneme_feat": phoneme_feat,
             "encoder_feat": encoder_feat,
