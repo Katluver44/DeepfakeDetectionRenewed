@@ -1,39 +1,33 @@
-# P2: CT Feature Injection — Training Summary
+# P3 CT injection + T_window11 (n_ct=3) — mlaad_robust_goat — Summary
 
-**n_ct=3  |  seeds=[123]  |  epochs=5**
+seeds aggregated: ['1024', '123', '42']
 
-## Per-system metrics vs robust_goat baseline
+## Per-system metrics vs mlaad_robust_goat baseline
 
 Systems with C/T + metrics: 63
 
 ### Overall (model | Δ vs baseline)
-- eer (↓ better): 0.2702   Δ=+0.0087
-- auc (↑ better): 0.7983   Δ=+0.0036
-- bal_acc (↑ better): 0.7788   Δ=-0.0061
-- acc (↑ better): 0.7535   Δ=-0.0217
+- eer (↓ better): 0.2778   Δ=+0.0162
+- auc (↑ better): 0.7790   Δ=-0.0157
+- bal_acc (↑ better): 0.7711   Δ=-0.0138
+- acc (↑ better): 0.7652   Δ=-0.0100
 
 ### Stratified by C = −rog@L12 (Q4 = most compact = hardest)
 | Quartile | n | eer (Δ) | auc (Δ) | bal_acc (Δ) | acc (Δ) |
 |---|---|---|---|---|---|
-| Q1 | 16 | 0.239 (+0.016) | 0.838 (-0.004) | 0.802 (-0.017) | 0.704 (-0.075) |
-| Q2 | 16 | 0.260 (+0.044) | 0.823 (-0.005) | 0.800 (-0.018) | 0.856 (+0.049) |
-| Q3 | 15 | 0.242 (-0.030) | 0.816 (+0.021) | 0.801 (+0.019) | 0.792 (+0.004) |
-| Q4 | 16 | 0.339 (+0.002) | 0.718 (+0.004) | 0.714 (-0.007) | 0.664 (-0.063) |
+| Q1 | 16 | 0.240 (+0.017) | 0.827 (-0.015) | 0.804 (-0.015) | 0.727 (-0.052) |
+| Q2 | 16 | 0.254 (+0.038) | 0.806 (-0.022) | 0.798 (-0.020) | 0.840 (+0.033) |
+| Q3 | 15 | 0.270 (-0.002) | 0.787 (-0.008) | 0.778 (-0.004) | 0.779 (-0.010) |
+| Q4 | 16 | 0.347 (+0.010) | 0.696 (-0.018) | 0.705 (-0.016) | 0.716 (-0.011) |
 
-_C-Q4 cross-metric: MIXED (1/4 metrics agree) — eer↓=worse/flat, auc↑=better, bal_acc↑=worse/flat, acc↑=worse/flat_
+_C-Q4 cross-metric: CONSISTENT no-improvement/regression — eer↓=worse/flat, auc↑=worse/flat, bal_acc↑=worse/flat, acc↑=worse/flat_
 
 ### Stratified by T = vel_entropy@L9 (Q4 = burstiest = hardest)
 | Quartile | n | eer (Δ) | auc (Δ) | bal_acc (Δ) | acc (Δ) |
 |---|---|---|---|---|---|
-| Q1 | 16 | 0.202 (+0.002) | 0.869 (+0.013) | 0.835 (-0.003) | 0.823 (-0.050) |
-| Q2 | 16 | 0.267 (+0.001) | 0.799 (+0.017) | 0.779 (-0.006) | 0.750 (+0.036) |
-| Q3 | 15 | 0.249 (+0.017) | 0.834 (-0.005) | 0.796 (-0.019) | 0.767 (-0.029) |
-| Q4 | 16 | 0.362 (+0.015) | 0.694 (-0.011) | 0.706 (+0.003) | 0.675 (-0.045) |
+| Q1 | 16 | 0.214 (+0.015) | 0.853 (-0.004) | 0.827 (-0.012) | 0.841 (-0.032) |
+| Q2 | 16 | 0.282 (+0.016) | 0.776 (-0.005) | 0.770 (-0.015) | 0.762 (+0.048) |
+| Q3 | 15 | 0.251 (+0.019) | 0.812 (-0.028) | 0.792 (-0.023) | 0.755 (-0.041) |
+| Q4 | 16 | 0.362 (+0.015) | 0.678 (-0.027) | 0.697 (-0.006) | 0.702 (-0.017) |
 
-_T-Q4 cross-metric: MIXED (1/4 metrics agree) — eer↓=worse/flat, auc↑=worse/flat, bal_acc↑=better, acc↑=worse/flat_
-
-## Config
-- Base checkpoint: /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/checkpoints/mlaad_robust_goat.ckpt
-- n_ct: 3 (C=−rog@L12, T=vel_entropy@L9)
-- cls_head input: 768+3=771
-- Fine-tune epochs: 5  |  LR encoder/head: 5e-05/5e-05
+_T-Q4 cross-metric: CONSISTENT no-improvement/regression — eer↓=worse/flat, auc↑=worse/flat, bal_acc↑=worse/flat, acc↑=worse/flat_

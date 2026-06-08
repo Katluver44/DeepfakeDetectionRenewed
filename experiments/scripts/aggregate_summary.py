@@ -68,9 +68,27 @@ def main():
             row[f"model_{k}"] = m.get(k)
             row[f"baseline_{k}"] = baseline.get(s, {}).get(k)
         rows.append(row)
-    pd.DataFrame(rows).to_csv(args.dir / "per_system_metrics_mean.csv", index=False)
+    mean_df = pd.DataFrame(rows)
+    mean_df.to_csv(args.dir / "per_system_metrics_mean.csv", index=False)
+
+    # Per-system deltas + improvement flags (durable view of which systems the
+    # ablation helped). eer_improved = ΔEER<0; auc_corroborated additionally
+    # requires ΔAUC>0 so threshold/noise-only "wins" are flagged out.
+    dd = mean_df.copy()
+    for k in METRIC_KEYS:
+        dd[f"d_{k}"] = dd[f"model_{k}"] - dd[f"baseline_{k}"]
+    dd["eer_improved"] = dd["d_eer"] < 0
+    dd["auc_corroborated"] = dd["eer_improved"] & (dd["d_auc"] > 0)
+    dcols = (["system", "C", "T", "baseline_eer", "model_eer", "d_eer",
+              "baseline_auc", "model_auc", "d_auc", "d_bal_acc", "d_acc",
+              "eer_improved", "auc_corroborated"])
+    dd.sort_values("d_eer")[dcols].to_csv(args.dir / "per_system_delta.csv", index=False)
+
+    n_imp = int(dd["eer_improved"].sum()); n_corr = int(dd["auc_corroborated"].sum())
     print(f"[aggregate] {args.name}: {len(seed_csvs)} seeds → {args.dir/'summary.md'}")
-    print("  " + consistency_note(report, "C"))
+    print(f"  {consistency_note(report, 'C')}")
+    print(f"  per-system: {n_imp}/{len(dd)} EER-improved, {n_corr} AUC-corroborated "
+          f"→ {args.dir/'per_system_delta.csv'}")
 
 
 if __name__ == "__main__":

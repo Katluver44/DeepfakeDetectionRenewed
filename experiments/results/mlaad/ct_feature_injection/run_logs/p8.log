@@ -7,10 +7,8 @@
 /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/venv/lib/python3.10/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
   _torch_pytree._register_pytree_node(
 Loading facebook/wav2vec2-base ...
-config.json: 0.00B [00:00, ?B/s]config.json: 1.84kB [00:00, 7.92MB/s]
 /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/venv/lib/python3.10/site-packages/transformers/configuration_utils.py:387: UserWarning: Passing `gradient_checkpointing` to a config initialization is deprecated and will be removed in v5 Transformers. Using `model.gradient_checkpointing_enable()` instead, or if you are using the `Trainer` API, pass `gradient_checkpointing=True` in your `TrainingArguments`.
   warnings.warn(
-pytorch_model.bin:   0%|          | 0.00/380M [00:00<?, ?B/s]pytorch_model.bin:   8%|▊         | 31.5M/380M [00:00<00:01, 282MB/s]pytorch_model.bin:  19%|█▉        | 73.4M/380M [00:00<00:01, 300MB/s]pytorch_model.bin:  28%|██▊       | 105M/380M [00:00<00:00, 304MB/s] pytorch_model.bin:  39%|███▊      | 147M/380M [00:00<00:00, 308MB/s]pytorch_model.bin:  50%|████▉     | 189M/380M [00:00<00:00, 309MB/s]pytorch_model.bin:  61%|██████    | 231M/380M [00:00<00:00, 319MB/s]pytorch_model.bin:  72%|███████▏  | 273M/380M [00:00<00:00, 320MB/s]pytorch_model.bin:  83%|████████▎ | 315M/380M [00:01<00:00, 317MB/s]pytorch_model.bin:  94%|█████████▍| 357M/380M [00:01<00:00, 314MB/s]pytorch_model.bin: 100%|██████████| 380M/380M [00:01<00:00, 309MB/s]
 Some weights of Wav2Vec2Model were not initialized from the model checkpoint at facebook/wav2vec2-base and are newly initialized: ['wav2vec2.encoder.pos_conv_embed.conv.parametrizations.weight.original1', 'wav2vec2.encoder.pos_conv_embed.conv.parametrizations.weight.original0']
 You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
   wav2vec2 200/1846
