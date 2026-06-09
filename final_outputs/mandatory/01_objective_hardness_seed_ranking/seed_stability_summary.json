@@ -1,0 +1,76 @@
+{
+  "criterion_met": "moderate",
+  "explanation": "Pair [0, 2] in 2/5 seeds; head h2 appears in 4/5 seeds. Moderate head-identity stability.",
+  "n_seeds": 5,
+  "seeds": [
+    42,
+    123,
+    456,
+    789,
+    1024
+  ],
+  "robust_goat_analysis": {
+    "criterion": "moderate",
+    "explanation": "Pair [0, 2] in 2/5 seeds; head h2 appears in 4/5 seeds. Moderate head-identity stability.",
+    "n_seeds": 5,
+    "most_common_pair": [
+      0,
+      2
+    ],
+    "pair_frequency": 2,
+    "most_common_head": 2,
+    "head_frequency": 4,
+    "pair_counts": {
+      "[2, 4]": 1,
+      "[0, 4]": 1,
+      "[0, 2]": 2,
+      "[2, 3]": 1
+    },
+    "head_counts": {
+      "2": 4,
+      "4": 2,
+      "0": 3,
+      "3": 1
+    },
+    "kl_range_stats": {
+      "mean": 1.42,
+      "std": 0.3763,
+      "min": 1.0732,
+      "max": 1.9678,
+      "cv": 0.265
+    },
+    "delta_eer_stats": {
+      "mean": -0.0124,
+      "std": 0.0129,
+      "min": -0.0287,
+      "max": 0.0,
+      "cv": 1.045
+    },
+    "entropy_stats": {
+      "mean": 1.6508,
+      "std": 0.3093,
+      "min": 1.3518,
+      "max": 2.0449,
+      "cv": 0.1874
+    }
+  },
+  "paired_wins": {
+    "n_seeds": 5,
+    "n_kl_wider": 1,
+    "n_eer_larger": 4,
+    "n_entropy_lower": 1
+  },
+  "sanity_b_flagged": [
+    "seed=42/goat: EER=0.3646",
+    "seed=42/robust_goat: EER=0.3776",
+    "seed=123/goat: EER=0.4095",
+    "seed=123/robust_goat: EER=0.3933",
+    "seed=456/goat: EER=0.4020",
+    "seed=456/robust_goat: EER=0.4637",
+    "seed=789/goat: EER=0.3987",
+    "seed=789/robust_goat: EER=0.4296",
+    "seed=1024/goat: EER=0.3868",
+    "seed=1024/robust_goat: EER=0.3754"
+  ],
+  "sanity_a_dups": []
+}

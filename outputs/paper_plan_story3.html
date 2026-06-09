@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paper Plan — Objective Hardness Geometry in Deepfake Speech Detectors</title>
+<style>
+  :root{
+    --ink:#1a1d24; --muted:#5b6472; --line:#e3e7ee; --bg:#ffffff; --soft:#f6f8fb;
+    --blue:#1f5fbf; --green:#1a7f4b; --amber:#b9770a; --gray:#71757c; --red:#b3261e; --purple:#6b3fa0;
+    --accent:#0d3b66;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink); background:var(--bg); margin:0; line-height:1.55; font-size:15.5px;}
+  .wrap{max-width:940px; margin:0 auto; padding:0 22px 90px;}
+  header.hero{background:linear-gradient(160deg,#0d3b66,#1f5fbf); color:#fff; padding:34px 22px 28px; margin-bottom:8px;}
+  header.hero .wrap{padding-bottom:0}
+  header.hero h1{margin:0 0 6px; font-size:25px; letter-spacing:.2px;}
+  header.hero p{margin:4px 0; color:#dce7f6; font-size:14px;}
+  .pill{display:inline-block; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.3);
+    padding:2px 9px; border-radius:999px; font-size:12px; margin:4px 6px 0 0;}
+  nav.toc{position:sticky; top:0; z-index:5; background:rgba(255,255,255,.96); backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line); padding:9px 0; margin-bottom:26px;}
+  nav.toc .wrap{padding-top:0;padding-bottom:0}
+  nav.toc a{font-size:12.5px; color:var(--accent); text-decoration:none; margin-right:13px; white-space:nowrap; display:inline-block; padding:2px 0;}
+  nav.toc a:hover{text-decoration:underline}
+  h2{font-size:20px; margin:38px 0 6px; padding-top:10px; border-top:2px solid var(--line); color:var(--accent);}
+  h2 .num{color:var(--muted); font-weight:600; font-size:15px; margin-right:8px;}
+  h3{font-size:16px; margin:22px 0 6px; color:#26303d;}
+  h4{font-size:14px; margin:16px 0 4px; color:#39414d; text-transform:uppercase; letter-spacing:.4px;}
+  p{margin:8px 0}
+  ul,ol{margin:8px 0 8px 4px; padding-left:20px}
+  li{margin:4px 0}
+  code{background:var(--soft); border:1px solid var(--line); border-radius:4px; padding:1px 5px; font-size:12.5px;
+    font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace; color:#1a3a5e; word-break:break-word;}
+  table{border-collapse:collapse; width:100%; margin:12px 0 18px; font-size:13.5px;}
+  th,td{border:1px solid var(--line); padding:7px 9px; text-align:left; vertical-align:top;}
+  th{background:var(--soft); font-weight:650; color:#2a3340}
+  tbody tr:nth-child(even){background:#fafbfd}
+  .badge{display:inline-block; font-size:11px; font-weight:700; padding:1px 7px; border-radius:4px; color:#fff; white-space:nowrap}
+  .b-high{background:var(--green)} .b-med{background:var(--amber)} .b-low{background:var(--gray)}
+  .b-main{background:var(--blue)} .b-supp{background:var(--purple)} .b-discard{background:var(--red)}
+  .b-strong{background:var(--green)} .b-support{background:var(--amber)} .b-avoid{background:var(--red)}
+  .callout{border-left:4px solid var(--blue); background:var(--soft); padding:10px 14px; margin:14px 0; border-radius:0 6px 6px 0;}
+  .callout.warn{border-left-color:var(--red)}
+  .callout.ok{border-left-color:var(--green)}
+  .callout h4{margin-top:0}
+  .lede{font-size:16px; color:#2a3340}
+  .small{font-size:12.5px; color:var(--muted)}
+  .verdict{font-size:15px; font-weight:700; color:var(--accent); background:#eef4fc; border:1px solid #cfe0f5; padding:10px 14px; border-radius:6px; margin:14px 0}
+  .danger-list span{display:inline-block; background:#fdeceb; color:var(--red); border:1px solid #f3c9c6; border-radius:4px; padding:1px 8px; margin:3px 4px 0 0; font-size:12px; font-weight:600}
+  footer{margin-top:40px; padding-top:14px; border-top:1px solid var(--line); color:var(--muted); font-size:12.5px}
+  .two{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+  @media(max-width:680px){.two{grid-template-columns:1fr}}
+  .tag{font-size:11px;color:var(--muted);font-weight:600}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <h1>Objective Hardness Geometry in Deepfake Speech Detectors</h1>
+    <p><strong>Paper Plan &amp; Evidence Map</strong> — a planning document for deciding what the paper is. Not a draft.</p>
+    <p class="small" style="color:#cfe0f5">Primary narrative: <strong>Story 3</strong>. Dual venue framing (Speech + ML/interp). Prepared for mentor review.</p>
+    <div>
+      <span class="pill">Story 3 = primary</span>
+      <span class="pill">C : T = 70 : 30</span>
+      <span class="pill">ASVspoof = E9 causal only</span>
+      <span class="pill">E8 excluded</span>
+      <span class="pill">Story 1 = supporting</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc"><div class="wrap">
+  <a href="#exec">1·Exec Summary</a>
+  <a href="#narr">2·Narrative Rec</a>
+  <a href="#story3">3·Story 3 Framing</a>
+  <a href="#story1">4·Story 1 Honest Review</a>
+  <a href="#assets">5·Assets Inventory</a>
+  <a href="#missing">6·Missing Figures</a>
+  <a href="#outline">7·Outline</a>
+  <a href="#figs">8·Figures &amp; Tables</a>
+  <a href="#map">9·Results→Story</a>
+  <a href="#claims">10·Claims Strength</a>
+  <a href="#cite">11·Citations</a>
+  <a href="#mainsupp">12·Main vs Supp</a>
+  <a href="#final">13·Final Rec</a>
+</div></nav>
+
+<div class="wrap">
+
+<!-- ============ EXEC SUMMARY ============ -->
+<h2 id="exec"><span class="num">1</span>Executive Summary</h2>
+<p class="lede">Some text-to-speech / voice-conversion systems are <em>systematically</em> hard for detectors — and that hardness is not random. We argue it has an <strong>objective geometric origin</strong>: the compactness of a system's speech trajectory in deep self-supervised (WavLM) space. We name this factor <strong>C</strong> and show it (i) predicts per-system hardness, (ii) is <strong>causal</strong> under direct intervention, and (iii) is <strong>actionable</strong> — targeting it lowers EER on the hardest systems.</p>
+
+<div class="two">
+<div>
+<h4>Factor definitions</h4>
+<ul>
+<li><strong>C</strong> (compactness) <code>= −rog@L12</code> — negative radius of gyration of the WavLM layer-12 frame cloud. Higher C = more compact. <em>Primary factor.</em></li>
+<li><strong>T</strong> (trajectory irregularity) <code>= vel_entropy@L9</code> — entropy of frame-to-frame velocity at layer 9. <em>Secondary (70/30), fragile.</em></li>
+</ul>
+</div>
+<div>
+<h4>One-line verdict on Story 1</h4>
+<p class="small">The GAT-hierarchy interpretability story is mechanistically rich but narrow (ASVspoof-only, language-invariance untested). It belongs as a <strong>compressed supporting mechanism</strong> for Story 3 plus supplement — not a co-pillar, not a standalone paper.</p>
+</div>
+</div>
+
+<h4>What's strong (lead with these)</h4>
+<ul>
+<li><strong>Hardness is system-intrinsic</strong> — systems agree on what's hard across seeds (reproducible ranking), so we are explaining signal, not noise.</li>
+<li><strong>C ↔ hardness on MLAAD</strong> (63 systems): r ≈ +0.35, LOO R² ≈ 0.069 for C; more compact → harder.</li>
+<li><strong>C is causal</strong> (E9): scaling compactness inside the frozen detector moves EER through baseline and <em>beats a matched-energy shift control</em> in both directions.</li>
+<li><strong>C transfers to in-the-wild</strong> at the speaker level (ρ(C, EER) = +0.44, n=45 speakers).</li>
+<li><strong>C is actionable</strong>: C/T-guided calibration (P1) and hardness reweighting (P5) reduce EER on the hardest (C-Q4) systems by ≈ 0.023 with AUC +0.026.</li>
+</ul>
+
+<h4>What's fragile (handle carefully)</h4>
+<ul>
+<li><strong>T is fragile</strong> — scale-dependent, not independently manipulable in E9, and likely distorted in in-the-wild audio. Keep at 70/30; caveat, don't denounce.</li>
+<li><strong>Encoder scope</strong> — C validates on WavLM &amp; wav2vec2 but <strong>fails on HuBERT</strong>. Never claim "all SSL."</li>
+<li><strong>Coverage</strong> — C+T explain ≈ 9% of residual-hardness variance (LOO). Frame as "actionable factors," not "we explain hardness."</li>
+</ul>
+
+<!-- ============ NARRATIVE REC ============ -->
+<h2 id="narr"><span class="num">2</span>Narrative Recommendation</h2>
+<p>Keep <strong>Story 3 as the spine</strong>. Below is the call on every candidate sub-story, with how strongly it supports Story 3 and whether it completes the paper or distracts.</p>
+
+<table>
+<thead><tr><th>Sub-story</th><th>Placement</th><th>Support for Story 3</th><th>Completes vs distracts</th></tr></thead>
+<tbody>
+<tr><td>Objective hardness agreement (seeds &amp; datasets)</td><td><span class="badge b-main">MAIN</span></td><td><span class="badge b-strong">STRONG</span></td><td>Completes — establishes the phenomenon is real before explaining it</td></tr>
+<tr><td>C &amp; T as geometric factors (MLAAD)</td><td><span class="badge b-main">MAIN</span></td><td><span class="badge b-strong">STRONG</span> (C) / <span class="badge b-support">SUPPORT</span> (T)</td><td>Completes — the core contribution</td></tr>
+<tr><td>C causality via intervention (E9)</td><td><span class="badge b-main">MAIN</span></td><td><span class="badge b-strong">STRONG</span></td><td>Completes — the keystone that lifts the paper above correlation</td></tr>
+<tr><td>Actionability (P1 calibration, P5 reweight)</td><td><span class="badge b-main">MAIN</span></td><td><span class="badge b-strong">STRONG</span></td><td>Completes — "so what?" answer reviewers demand</td></tr>
+<tr><td>In-the-wild support for C</td><td><span class="badge b-main">MAIN</span></td><td><span class="badge b-support">SUPPORTING</span></td><td>Completes — external validity beyond curated benchmarks</td></tr>
+<tr><td>Temporal invariance / smoothing</td><td><span class="badge b-supp">APPENDIX</span> (+1 main fig)</td><td><span class="badge b-support">MEDIUM</span></td><td>Completes — motivates T &amp; shows hardness is targetable (see reframe)</td></tr>
+<tr><td>Story 1 — GAT hierarchy / mechanism</td><td><span class="badge b-supp">APPENDIX</span> (+1 composite fig)</td><td><span class="badge b-support">MEDIUM</span></td><td>Completes — a "why" mechanism, if compressed</td></tr>
+<tr><td>Story 2 — language-overfitting bottleneck</td><td><span class="badge b-discard">OMIT</span></td><td><span class="badge b-avoid">WEAK</span></td><td>Distracts — one language pair; different paper</td></tr>
+<tr><td>Story 4 — taxonomy fragility (Gini)</td><td><span class="badge b-discard">OMIT</span></td><td><span class="badge b-avoid">WEAK</span></td><td>Distracts — negative replication; different paper</td></tr>
+</tbody>
+</table>
+
+<div class="callout warn">
+<h4>⚠ Reframe required: the smoothing sub-story</h4>
+<p>The earlier narrative ("smoothing improved detection on hard systems") is <strong>not</strong> what the data shows, but it is also <strong>not</strong> a failure. Two distinct results:</p>
+<ul>
+<li><strong>Smoothing as training augmentation (P4)</strong> is a <strong>dose-dependent per-system lever</strong>. Applied uniformly the mean regresses (overall EER Δ=+0.037), but it <strong>genuinely helps a subset: 8 systems improve on both EER and AUC</strong> (15 on EER) — e.g. <strong>MegaTTS3 −0.134 EER / +0.078 AUC</strong>, Resemble.ai −0.078, FireRedTTS-2.0 −0.072 / +0.113. Reading: it overcorrects systems that don't need it and helps those that do ⇒ <em>hardness is targetable</em> (same logic as P5).</li>
+<li><strong>Smoothing as inference intervention</strong> establishes causality: removing temporal variance monotonically <em>hurts</em> detection (MA k=3→k=10: EER 0.421→0.571) ⇒ temporal smoothness is a hardness factor ⇒ this is what <em>motivated T</em>.</li>
+</ul>
+<p class="small">Do not write "smoothing uniformly improved detection," and do not write "smoothing augmentation failed."</p>
+</div>
+
+<!-- ============ STORY 3 FRAMING ============ -->
+<h2 id="story3"><span class="num">3</span>Story 3 as the Primary Framing</h2>
+<p><strong>Thesis.</strong> Deepfake-detection hardness has an objective, measurable geometric origin in deep SSL space: synthetic-speech systems whose layer-12 WavLM trajectories are more <em>compact</em> (factor C) are systematically harder to detect; this factor is causal and can be acted on. A secondary dynamic factor (T, velocity-entropy) correlates with hardness but is fragile.</p>
+<h4>The evidence arc (paper spine)</h4>
+<ol>
+<li><strong>Objective</strong> — hardness rankings agree across seeds → not model noise.</li>
+<li><strong>Geometric correlate</strong> — C predicts per-system hardness on MLAAD (63 systems); T adds a weaker, correlated signal.</li>
+<li><strong>Independent</strong> — C ⟂ T (low correlation r≈+0.11; separate PCA components; positive unique partials).</li>
+<li><strong>Causal</strong> — intervening on C inside the frozen detector moves EER beyond a matched-energy shift control (E9).</li>
+<li><strong>Actionable</strong> — C/T-guided calibration (P1) and reweighting (P5) lower hardest-system EER.</li>
+<li><strong>External validity</strong> — C transfers to in-the-wild at the speaker level; T treated cautiously there.</li>
+</ol>
+<div class="callout">
+<h4>Dual-venue framing note</h4>
+<p><strong>Speech (Interspeech / ICASSP):</strong> foreground the EER tables, the MLAAD / ITW benchmarks, and actionability (§8); position C/T as a diagnostic that improves anti-spoofing. <strong>ML / interp (NeurIPS / ICLR):</strong> foreground the causal-intervention design (E9) and the representation-geometry framing (§§6–7); position the detector as a probe into why synthetic-speech manifolds resist linear separation.</p>
+</div>
+
+<!-- ============ STORY 1 HONEST REVIEW ============ -->
+<h2 id="story1"><span class="num">4</span>Story 1 Honest Review</h2>
+<p class="small">Evaluating the mechanistic-interpretability / GAT-hierarchy storyline on its own merits.</p>
+
+<h4>If Story 1 were the primary paper, what is its core contribution?</h4>
+<p>A <strong>hierarchical functional dissociation</strong> in a phoneme graph-attention detector: early message-passing layers linearly encode <em>vocoder / system identity</em> (multiclass probe 91.8% @ <code>gat_l0</code> → 89.3% <code>gat_l1</code> → 85.3% <code>gat_l2</code> → 75.0% <code>bilstm</code>), while binary spoof detection <em>strengthens</em> with depth (AUC 0.95→0.98). Causally, activation patching shows a <strong>dual-subspace split</strong>: vowels/diphthongs drive the binary decision (Δ≈+1.95) whereas sibilants/nasals drive system-identity (probe shift Δ≈+0.004) — resolving a representational-vs-causal paradox (sibilants have the largest PC1 delta yet are causally weak for the binary task because the model already discounts them).</p>
+
+<h4>Is it strong enough for an entire publication by itself?</h4>
+<p><strong>No (not yet).</strong> It is evaluated on the 6 ASVspoof 2019 LA systems (A01–A06), the multiclass causal shifts are tiny (±0.004) and boundary-sensitive, and the central assumption of <em>language-invariant</em> phoneme abstraction is untested and is in tension with the (separate) language-overfitting evidence.</p>
+
+<h4>Where is it strongest — standalone / secondary / mechanism-for-Story-3 / supplement?</h4>
+<div class="verdict">Strongest as a <u>mechanistic explanation supporting Story 3</u>: it explains <em>why</em> compact, hard systems resist the linear separability the GAT exploits. Compress to one section + supplement.</div>
+
+<table>
+<thead><tr><th>Question</th><th>Answer</th></tr></thead>
+<tbody>
+<tr><td>Genuinely novel results</td><td>(1) the fingerprint-<em>destruction</em> ↔ detection-<em>creation</em> layer trade-off; (2) the dual-subspace phoneme-class causal dissociation via activation patching.</td></tr>
+<tr><td>Currently speculative</td><td>language-invariance of the hierarchy; cross-system / cross-dataset generality; that destruction is "purposeful" rather than incidental.</td></tr>
+<tr><td>Experiments that would most raise confidence</td><td>multiclass + binary probe hierarchy re-run on MLAAD (multilingual); activation patching on MLAAD stratified by language; intermediate-layer (L1) patching trajectory to show the shift is gradual.</td></tr>
+<tr><td>Strongest figures</td><td><code>multiclass_probe/multiclass_ranking.png</code>, <code>act_patching/act_patching_violin.png</code>, <code>linear_probe/probe_ranking.png</code></td></tr>
+<tr><td>Into main paper (if Story 3 primary)</td><td>At most <strong>one composite</strong> figure (probe hierarchy + phoneme-class causal bars) → <code>fig_story1_mechanism.png</code></td></tr>
+<tr><td>Move to supplement</td><td>all <code>multiclass_probe/confusion_*</code> (24 files), <code>gat_l0_attention*</code>, <code>act_patching_probe/*</code>, <code>phoneme_pc1_*</code>, the three PCA panels</td></tr>
+</tbody>
+</table>
+<div class="verdict">Final verdict: <strong>Keep as supporting evidence</strong> (a compressed mechanism section for Story 3); the bulk goes to supplementary material.</div>
+
+<!-- ============ ASSETS INVENTORY ============ -->
+<h2 id="assets"><span class="num">5</span>Existing Assets Inventory</h2>
+<p class="small">Real files discovered in the repo, rated for usefulness to Story 3. Legend:
+<span class="badge b-high">HIGH</span><span class="badge b-med">MED</span><span class="badge b-low">LOW</span> usefulness &nbsp;·&nbsp;
+<span class="badge b-main">MAIN</span><span class="badge b-supp">SUPP</span><span class="badge b-discard">DISCARD</span> recommendation.</p>
+
+<h3>C / T geometry &amp; independence</h3>
+<table>
+<thead><tr><th>File</th><th>Shows</th><th>Use</th><th>Rec</th></tr></thead>
+<tbody>
+<tr><td><code>outputs/figures/orthog_partial_correlations.png</code></td><td>C vs T partial correlations — the <strong>orthogonality plot</strong> (independent factors)</td><td><span class="badge b-high">HIGH</span></td><td><span class="badge b-main">MAIN</span></td></tr>
+<tr><td><code>outputs/figures/layerwise_r2_comparison.png</code></td><td>R² of hardness vs layer — justifies choosing L12 (C) and L9 (T)</td><td><span class="badge b-high">HIGH</span></td><td><span class="badge b-main">MAIN</span></td></tr>
+<tr><td><code>outputs/figures/e1_representation_invariance.png</code></td><td>C/T across WavLM &amp; wav2vec2; HuBERT fails — cross-encoder scope</td><td><span class="badge b-high">HIGH</span></td><td><span class="badge b-main">MAIN</span></td></tr>
+<tr><td><code>outputs/figures/orthog_pca.png</code></td><td>C and T load on separate PCA components</td><td><span class="badge b-med">MED</span></td><td><span class="badge b-supp">SUPP</span></td></tr>
+<tr><td><code>outputs/figures/orthog_variance_partition.png</code>, <code>orthog_factor_correlations.png</code>, <code>orthog_loo_shapley.png</code></td><td>variance partition / factor-corr matrix / LOO-Shapley contributions</td><td><span class="badge b-med">MED</span></td><td><span class="badge b-supp">SUPP</span></td></tr>
+<tr><td><code>outputs/figures/layerwise_spearman_profiles.png</code>, <code>interaction_panels.png</code>, <code>e2_graph_independence.png</code>, <code>e3_intervention_lite.png</code></td><td>layerwise profiles; interaction terms hurt; shuffle/PCA/noise robustness</td><td><span class="badge b-med">MED</span></td><td><span class="badge b-supp">SUPP</span></td></tr>
+<tr><td><code>outputs/figures/e4_asvspoof_generalization.png</code></td><td>E4 A01–A06 (inconclusive; ASVspoof now E9-only)</td><td><span class="badge b-low">LOW</span></td><td><span class="badge b-supp">SUPP</span></td></tr>
+</tbody>
+</table>
+
+<h3>Causality — E9 (ASVspoof substrate)</h3>
+<table>
+<thead><tr><th>File</th><th>Shows</th><th>Use</th><th>Rec</th></tr></thead>
+<tbody>
+<tr><td><code>outputs/ct_causal_intervention/e9_causal_C_robust_GOAT.png</code></td><td>C-scale vs matched-energy shift control — the causal headline</td><td><span class="badge b-high">HIGH</span></td><td><span class="badge b-main">MAIN</span></td></tr>
+<tr><td><code>outputs/ct_causal_intervention/e9_causal_C_GOAT.png</code></td><td>same on second detector (replication)</td><td><span class="badge b-med">MED</span></td><td><span class="badge b-supp">SUPP</span></td></tr>
+<tr><td><code>outputs/ct_causal_intervention/e9_causal_T_robust_GOAT.png</code></td><td>T not independently isolable (velocity knobs move compactness)</td><td><span class="badge b-med">MED</span></td><td><span class="badge b-supp">SUPP</span></td></tr>
+<tr><td><code>outputs/ct_causal_intervention/e9_causal_T_GOAT.png</code></td><td>T intervention, second detector</td><td><span class="badge b-low">LOW</span></td><td><span class="badge b-supp">SUPP</span></td></tr>
+</tbody>
+</table>
+
+<h3>In-the-wild — external validity for C</h3>
+<table>
+<thead><tr><th>File</th><th>Shows</th><th>Use</th><th>Rec</th></tr></thead>
+<tbody>
+<tr><td><code>outputs/figures/e6_itw_speaker_ct_eer.png</code></td><td>per-speaker C → EER (ρ=+0.44, n=45) — C transfers to ITW</td><td><span class="badge b-high">HIGH</span></td><td><span class="badge b-main">MAIN</span></td></tr>
+<tr><td><code>outputs/figures/e6_itw_speaker_quartile_eer.png</code></td><td>EER by C/T quartile, ITW speakers vs MLAAD systems</td><td><span class="badge b-med">MED</span></td><td><span class="badge b-main">MAIN</span>/<span class="badge b-supp">SUPP</span></td></tr>
+<tr><td><code>outputs/figures/e6_itw_within_between.png</code></td><td>between- vs within-speaker decomposition of the C effect</td><td><span class="badge b-med">MED</span></td><td><span class="badge b-supp">SUPP</span></td></tr>
+<tr><td><code>outputs/figures/e5_itw_ct_manifold.png</code>, <code>e5_itw_ct_distributions.png</code>, <code>e5_itw_score_vs_ct.png</code></td><td>ITW C/T manifold, distributions, score-vs-CT</td><td><span class="badge b-med">MED</span></td><td><span class="badge b-supp">SUPP</span></td></tr>
+<tr><td><code>outputs/figures/e5_itw_manifold_{pca,umap}_{2d,3d}.png</code> (4 files)</td><td>exploratory ITW embedding projections</td><td><span class="badge b-low">LOW</span></td><td><span class="badge b-supp">SUPP</span> (some <span class="badge b-discard">DISCARD</span>)</td></tr>
+</tbody>
+</table>
+
+<h3>Actionability — P1 / P5</h3>
+<table>
+<thead><tr><th>File</th><th>Shows</th><th>Use</th><th>Rec</th></tr></thead>
+<tbody>
+<tr><td><code>experiments/results/mlaad/p1_ct_calibration/figures/eer_before_after.png</code></td><td>per-system EER before/after C/T calibration</td><td><span class="badge b-high">HIGH</span></td><td><span class="badge b-main">MAIN</span></td></tr>
+<tr><td><code>.../p1_ct_calibration/figures/calibration_gain_vs_eer.png</code>, <code>ct_bonafide_vs_spoof.png</code>, <code>auc_before_after.png</code>, <code>bal_acc_before_after.png</code></td><td>gain vs baseline EER; C/T bona-vs-spoof; AUC / bal-acc deltas</td><td><span class="badge b-med">MED</span></td><td><span class="badge b-supp">SUPP</span></td></tr>
+<tr><td><span class="tag">(P5 has only CSVs)</span> <code>p5_hardness_reweight/per_system_metrics_seed*.csv</code></td><td>hardness-reweight per-system metrics → needs a figure (see §6)</td><td><span class="badge b-high">HIGH</span></td><td><span class="badge b-main">MAIN</span> (generate)</td></tr>
+</tbody>
+</table>
+
+<h3>Temporal / smoothing (dose-dependent lever)</h3>
+<table>
+<thead><tr><th>File</th><th>Shows</th><th>Use</th><th>Rec</th></tr></thead>
+<tbody>
+<tr><td><code>experiments/results/mlaad/temporal_intervention/hard_vs_easy_sensitivity.png</code></td><td>smoothing-intervention sensitivity, hard vs easy systems (causality)</td><td><span class="badge b-med">MED</span></td><td><span class="badge b-main">MAIN</span>/<span class="badge b-supp">SUPP</span></td></tr>
+<tr><td><code>.../temporal_intervention/variance_vs_eer.png</code></td><td>temporal variance vs EER</td><td><span class="badge b-med">MED</span></td><td><span class="badge b-supp">SUPP</span></td></tr>
+<tr><td><code>.../smoothing_augmentation/smoothing_aug_scatter.png</code></td><td>per-system smoothing-aug effect — caption: <strong>8 systems improve</strong> (MegaTTS3 −0.134), rest overcorrected. <em>Do not caption "failed."</em></td><td><span class="badge b-med">MED</span></td><td><span class="badge b-supp">SUPP</span></td></tr>
+<tr><td><code>.../waveform_intervention/*.png</code> (2 files)</td><td>waveform-domain intervention controls</td><td><span class="badge b-low">LOW</span></td><td><span class="badge b-supp">SUPP</span></td></tr>
+</tbody>
+</table>
+
+<h3>Hardness landscape &amp; adversarial-training mechanism (E7)</h3>
+<table>
+<thead><tr><th>File</th><th>Shows</th><th>Use</th><th>Rec</th></tr></thead>
+<tbody>
+<tr><td><code>experiments/results/mlaad/manifold_geometry/manifold_geometry_panels.png</code></td><td>geometry panels of the hardness manifold</td><td><span class="badge b-med">MED</span></td><td><span class="badge b-supp">SUPP</span></td></tr>
+<tr><td><code>.../extreme_system_analysis/{wavlm_vs_eer,hard_vs_easy_boxplots,phoneme_kl_vs_eer}.png</code></td><td>hardest vs easiest systems: WavLM-vs-EER, boxplots, phoneme-KL</td><td><span class="badge b-med">MED</span></td><td><span class="badge b-supp">SUPP</span></td></tr>
+<tr><td><code>.../residual_hardness/residual_hardness_panels.png</code>, <code>residual_hardness_2/hypothesis_panels.png</code></td><td>residual-hardness regressions &amp; hypothesis panels</td><td><span class="badge b-med">MED</span></td><td><span class="badge b-supp">SUPP</span></td></tr>
+<tr><td><code>outputs/robustness_mechanism_analysis/{deltaeer_vs_c,eer_vs_c,quartile_c}.png</code></td><td>adversarial training exploits C (ΔEER vs C, quartiles)</td><td><span class="badge b-med">MED</span></td><td><span class="badge b-supp">SUPP</span></td></tr>
+<tr><td><code>outputs/robustness_mechanism_analysis/*_vs_t.png</code> (5 files)</td><td>same vs T (weaker)</td><td><span class="badge b-low">LOW</span></td><td><span class="badge b-supp">SUPP</span></td></tr>
+</tbody>
+</table>
+
+<h3>Story 1 (supporting mechanism)</h3>
+<table>
+<thead><tr><th>File</th><th>Shows</th><th>Use</th><th>Rec</th></tr></thead>
+<tbody>
+<tr><td><code>experiments/results/multiclass_probe/multiclass_ranking.png</code></td><td>system-ID probe accuracy degrades L0→BiLSTM (fingerprint destruction)</td><td><span class="badge b-high">HIGH</span><span class="tag"> (S1)</span></td><td><span class="badge b-supp">SUPP</span> (→1 composite MAIN)</td></tr>
+<tr><td><code>experiments/results/act_patching/act_patching_violin.png</code></td><td>phoneme-class causal Δ on binary decision (vowels/diphthongs dominate)</td><td><span class="badge b-high">HIGH</span><span class="tag"> (S1)</span></td><td><span class="badge b-supp">SUPP</span> (→1 composite MAIN)</td></tr>
+<tr><td><code>experiments/results/linear_probe/probe_ranking.png</code></td><td>binary detection accuracy increases with depth</td><td><span class="badge b-high">HIGH</span><span class="tag"> (S1)</span></td><td><span class="badge b-supp">SUPP</span></td></tr>
+<tr><td><code>act_patching/act_patching_by_system.png</code>, <code>act_patching_probe/act_probe_shift_matrix.png</code>, <code>gat_l0_attention/{kl_divergence,top_kl_delta_heatmap}.png</code>, <code>gat_l0_attention_followups/ablation_bar.png</code>, <code>phoneme_pc1_{violin,mean_delta}.png</code>, <code>experiments/pca_{pre_gat,post_gat,frozen_encoder}.png</code></td><td>per-system patching; probe-shift matrix; attention KL; head ablation; PC1 deltas; PCA stages</td><td><span class="badge b-med">MED</span></td><td><span class="badge b-supp">SUPP</span></td></tr>
+<tr><td><code>multiclass_probe/confusion_*.png</code> (24), <code>vocoder_clusters*/*</code>, <code>unseen_*/*</code></td><td>confusion matrices &amp; clustering exploratory grids</td><td><span class="badge b-low">LOW</span></td><td><span class="badge b-discard">DISCARD</span>/<span class="badge b-supp">SUPP</span></td></tr>
+</tbody>
+</table>
+
+<h3>Other stories — omit from this paper</h3>
+<table>
+<thead><tr><th>File</th><th>Shows</th><th>Use</th><th>Rec</th></tr></thead>
+<tbody>
+<tr><td><code>experiments/results/cross_dataset_synthesis/*</code>, <code>e8_combined_generalization*/*</code>, <code>e9_mixed_training/gini_comparison.png</code>, <code>gat_quasi_adj/quasi_adj_f1_boxplot.png</code></td><td>Story 2 (language overfitting) &amp; Story 4 (Gini taxonomy fragility)</td><td><span class="badge b-low">LOW</span></td><td><span class="badge b-discard">DISCARD</span> (other paper)</td></tr>
+</tbody>
+</table>
+
+<h4>Non-figure evidence files to cite</h4>
+<p class="small"><code>outputs/final_report.md</code> · <code>outputs/final_validation_report.md</code> · <code>outputs/final_orthogonalization_report.md</code> · <code>outputs/interaction_modeling_summary.md</code> · <code>outputs/e5_itw_summary.md</code> · <code>outputs/e6_itw_speaker_summary.md</code> · <code>outputs/ct_causal_intervention/e9_summary.md</code> · <code>outputs/robustness_mechanism_analysis/robustness_summary.md</code> · <code>experiments/results/mlaad/p1_ct_calibration/summary.md</code> · <code>experiments/results/mlaad/p5_hardness_reweight/summary.md</code> · <code>experiments/results/mlaad/seed_locked_reproducibility/seed_stability_summary.json</code></p>
+
+<!-- ============ MISSING FIGURES ============ -->
+<h2 id="missing"><span class="num">6</span>Missing Figures To Generate</h2>
+<div class="callout ok">
+<h4>✓ All generated (2026-06-09) → <code>outputs/figures/</code></h4>
+<p>Produced by <code>outputs/make_missing_figures.py</code> (reproducible; reads only existing result files):
+<code>fig1_architecture_ct_pipeline.svg</code> (+<code>.png</code>) · <code>fig_hardness_seed_agreement.png</code> · <code>fig_C_hardness_crosscorpus.png</code> · <code>fig_e9_causal_C_main.png</code> · <code>fig_actionability_hardsystems.png</code> · <code>fig_story1_mechanism.png</code> · <code>fig_smoothing_dose_dependent.png</code>.
+Key values reproduced live: MLAAD ρ(C,resid)=+0.29, ITW ρ(C,EER)=+0.44, seed-pair ρ≈0.79–0.84, P5 C-Q4 ΔEER −0.023, smoothing 8 EER+AUC improvers (MegaTTS3 −0.134).</p>
+</div>
+<table>
+<thead><tr><th>Proposed title</th><th>Purpose</th><th>Data source / generating script</th><th>Target filename</th></tr></thead>
+<tbody>
+<tr><td><strong>Fig 1 — Architecture &amp; C/T extraction pipeline</strong></td><td>Schematic: frozen WavLM → phoneme-CTC → adaptive phoneme pooling → GAT(3L,6H) → BiLSTM, annotating where C(=−rog@L12) and T(=vel-entropy@L9) are read off</td><td><code>experiments/research.md</code> (ASCII arch), <code>illustration.excalidraw</code></td><td><code>outputs/figures/fig1_architecture_ct_pipeline.svg</code></td></tr>
+<tr><td><strong>Fig — Objective hardness agreement across seeds</strong></td><td>Per-system/attack EER correlates across 3–5 seeds ⇒ hardness is intrinsic, not seed noise</td><td><code>mlaad/e6_ranking_lock/per_seed_per_attack_eer.csv</code>, <code>mlaad/seed_locked_reproducibility/per_seed_results.json</code>; <code>scripts/mlaad_e6_ranking_lock.py</code></td><td><code>outputs/figures/fig_hardness_seed_agreement.png</code></td></tr>
+<tr><td><strong>Fig — Unified C→hardness across corpora</strong></td><td>One panel: MLAAD ρ(C,resid)=+0.29 and ITW ρ(C,EER)=+0.44, same direction</td><td><code>outputs/sig_layer_features.csv</code> (MLAAD), <code>outputs/e6_itw_speaker_ct.csv</code> (ITW)</td><td><code>outputs/figures/fig_C_hardness_crosscorpus.png</code></td></tr>
+<tr><td><strong>Fig — C is causal (E9)</strong></td><td>Clean main-paper version: C-scale vs matched-energy shift control, both detectors, regimes annotated</td><td><code>outputs/ct_causal_intervention/e9_causal_C.csv</code> (existing draft <code>e9_causal_C_robust_GOAT.png</code>)</td><td><code>outputs/figures/fig_e9_causal_C_main.png</code></td></tr>
+<tr><td><strong>Fig — Actionability on hardest systems</strong></td><td>Per-system EER before/after calibration (P1) + reweighting (P5), highlighting C-Q4</td><td><code>mlaad/p5_hardness_reweight/per_system_metrics_seed*.csv</code>, <code>mlaad/p1_ct_calibration/figures/eer_before_after.png</code></td><td><code>outputs/figures/fig_actionability_hardsystems.png</code></td></tr>
+<tr><td>(opt) <strong>Fig — Story 1 mechanism composite</strong></td><td>Probe hierarchy + phoneme-class causal bars in one panel</td><td><code>multiclass_probe/multiclass_ranking.png</code> + <code>act_patching/act_patching_violin.png</code></td><td><code>outputs/figures/fig_story1_mechanism.png</code></td></tr>
+<tr><td>(opt) <strong>Fig — Smoothing is a dose-dependent lever</strong></td><td>Sorted per-system ΔEER from smoothing aug; highlight the 8 improved systems vs overcorrected majority</td><td><code>mlaad/p4_smoothing_aug/per_system_metrics_seed*.csv</code> + <code>scripts/_ablation_common.load_baseline_metrics</code></td><td><code>outputs/figures/fig_smoothing_dose_dependent.png</code></td></tr>
+</tbody>
+</table>
+
+<!-- ============ OUTLINE ============ -->
+<h2 id="outline"><span class="num">7</span>Proposed Outline</h2>
+<table>
+<thead><tr><th>§</th><th>Section</th><th>Core content / evidence</th><th>Venue emphasis</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Introduction</td><td>Objective-hardness problem; why per-system difficulty matters for anti-spoofing</td><td></td></tr>
+<tr><td>2</td><td>Related work</td><td>SSL probing, anti-spoofing benchmarks, geometry, instance hardness (§11)</td><td></td></tr>
+<tr><td>3</td><td>Setup</td><td>Detector (WavLM→phoneme-GAT→BiLSTM); corpora MLAAD / ITW / ASVspoof-for-E9; C &amp; T definitions</td><td></td></tr>
+<tr><td>4</td><td>Hardness is objective</td><td>Seed / dataset agreement on hardness ranking</td><td>both</td></tr>
+<tr><td>5</td><td>Geometric correlate C (+T 70/30)</td><td>C ↔ hardness on MLAAD; T as weaker companion</td><td>ML: lead</td></tr>
+<tr><td>6</td><td>C and T are independent</td><td>Orthogonality (partial corr, PCA)</td><td>ML: lead</td></tr>
+<tr><td>7</td><td><strong>C is causal</strong></td><td>E9 intervention + matched-energy shift control</td><td>ML: lead</td></tr>
+<tr><td>8</td><td>C is actionable</td><td>P1 calibration, P5 reweighting; smoothing as dose-dependent lever</td><td>Speech: lead</td></tr>
+<tr><td>9</td><td>External validity: in-the-wild</td><td>C at speaker level; T cautious (YouTube/IG artifacts)</td><td>Speech: lead</td></tr>
+<tr><td>10</td><td>Mechanism (compressed Story 1)</td><td>One composite figure; why compact systems resist separation</td><td></td></tr>
+<tr><td>11</td><td>Limitations</td><td>HuBERT non-validation; ~65% residual variance; T fragility; E9 in-detector caveat</td><td></td></tr>
+<tr><td>12</td><td>Conclusion</td><td>Objective, causal, actionable hardness geometry</td><td></td></tr>
+</tbody>
+</table>
+
+<!-- ============ FIGURES & TABLES RANKED ============ -->
+<h2 id="figs"><span class="num">8</span>Figures &amp; Tables (ranked)</h2>
+<p class="small">Ranked by importance to the main paper. "gen" = to be generated (§6); otherwise the existing filename is given.</p>
+<table>
+<thead><tr><th>#</th><th>Figure title</th><th>What it shows / why it matters</th><th>Datasets</th><th>Source file(s)</th><th>Main?</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Architecture &amp; C/T pipeline</td><td>Orients the reader; defines where C/T are measured</td><td>—</td><td><code>fig1_architecture_ct_pipeline.svg</code> (gen)</td><td><span class="badge b-main">YES</span></td></tr>
+<tr><td>2</td><td>C is causal (E9)</td><td>The keystone: intervention beats matched-energy shift control</td><td>ASVspoof</td><td><code>fig_e9_causal_C_main.png</code> (gen) ← <code>e9_causal_C.csv</code></td><td><span class="badge b-main">YES</span></td></tr>
+<tr><td>3</td><td>C → hardness across corpora</td><td>Same direction on MLAAD &amp; ITW — generality of the correlate</td><td>MLAAD, ITW</td><td><code>fig_C_hardness_crosscorpus.png</code> (gen)</td><td><span class="badge b-main">YES</span></td></tr>
+<tr><td>4</td><td>Actionability on hardest systems</td><td>P1+P5 lower C-Q4 EER — the "so what"</td><td>MLAAD</td><td><code>fig_actionability_hardsystems.png</code> (gen)</td><td><span class="badge b-main">YES</span></td></tr>
+<tr><td>5</td><td>Hardness agreement across seeds</td><td>Establishes hardness is objective</td><td>MLAAD</td><td><code>fig_hardness_seed_agreement.png</code> (gen)</td><td><span class="badge b-main">YES</span></td></tr>
+<tr><td>6</td><td>C ⟂ T orthogonality</td><td>Two independent factors, not one</td><td>MLAAD</td><td><code>orthog_partial_correlations.png</code></td><td><span class="badge b-main">YES</span></td></tr>
+<tr><td>7</td><td>ITW per-speaker C → EER</td><td>External validity for C</td><td>ITW</td><td><code>e6_itw_speaker_ct_eer.png</code></td><td><span class="badge b-main">YES</span></td></tr>
+<tr><td>8</td><td>Cross-encoder C (E1)</td><td>WavLM &amp; wav2vec2 (HuBERT caveat)</td><td>MLAAD</td><td><code>e1_representation_invariance.png</code></td><td><span class="badge b-main">YES</span></td></tr>
+<tr><td>9</td><td>Layerwise R² (why L12/L9)</td><td>Justifies the layer choices</td><td>MLAAD</td><td><code>layerwise_r2_comparison.png</code></td><td><span class="badge b-main">YES</span>/<span class="badge b-supp">SUPP</span></td></tr>
+<tr><td>10</td><td>Story 1 mechanism composite</td><td>Why compact = hard, mechanistically</td><td>ASVspoof</td><td><code>fig_story1_mechanism.png</code> (gen)</td><td><span class="badge b-main">≤1</span></td></tr>
+</tbody>
+</table>
+<p class="small"><strong>Explicitly NOT main paper:</strong> all confusion matrices, ITW UMAP/PCA exploratory projections, waveform-intervention controls, robustness <code>*_vs_t</code> grid, E4 ASVspoof generalization, and every Story 2/4 asset. → supplement or discard.</p>
+
+<h4>Core tables</h4>
+<ul>
+<li><strong>T1 — Per-corpus C↔hardness</strong> (MLAAD r≈+0.35 / LOO R²≈0.069; ITW speaker ρ=+0.44). Source: <code>final_report.md</code>, <code>e6_itw_speaker_summary.md</code>.</li>
+<li><strong>T2 — E9 causal grid</strong> (α, measured C, EER scale vs shift). Source: <code>e9_causal_C.csv</code>.</li>
+<li><strong>T3 — Actionability</strong> (P1/P5 overall + C-Q4 / T-Q4 deltas). Source: <code>p1/p5 summary.md</code>.</li>
+</ul>
+
+<!-- ============ RESULTS → STORY MAP ============ -->
+<h2 id="map"><span class="num">9</span>Results-to-Story Mapping</h2>
+<table>
+<thead><tr><th>Claim</th><th>Evidence file(s)</th><th>Figure</th><th>Strength</th></tr></thead>
+<tbody>
+<tr><td>Hardness is objective (seed agreement)</td><td><code>seed_locked_reproducibility/seed_stability_summary.json</code>, <code>mlaad/e6_ranking_lock/</code></td><td>fig_hardness_seed_agreement (gen)</td><td><span class="badge b-strong">STRONG</span></td></tr>
+<tr><td>C predicts hardness (MLAAD)</td><td><code>final_report.md</code>, <code>sig_layer_features.csv</code></td><td>fig_C_hardness_crosscorpus (gen)</td><td><span class="badge b-strong">STRONG</span></td></tr>
+<tr><td>C ⟂ T (independent)</td><td><code>final_orthogonalization_report.md</code></td><td>orthog_partial_correlations.png</td><td><span class="badge b-strong">STRONG</span></td></tr>
+<tr><td>C is causal</td><td><code>ct_causal_intervention/e9_summary.md</code>, <code>e9_causal_C.csv</code></td><td>fig_e9_causal_C_main (gen)</td><td><span class="badge b-strong">STRONG</span> <span class="small">(in-detector caveat)</span></td></tr>
+<tr><td>C is actionable</td><td><code>p1_ct_calibration/summary.md</code>, <code>p5_hardness_reweight/summary.md</code></td><td>fig_actionability_hardsystems (gen)</td><td><span class="badge b-strong">STRONG</span> <span class="small">(MLAAD)</span></td></tr>
+<tr><td>C transfers to ITW</td><td><code>e6_itw_speaker_summary.md</code></td><td>e6_itw_speaker_ct_eer.png</td><td><span class="badge b-support">SUPPORTING</span></td></tr>
+<tr><td>Temporal variance is causal (→ motivates T)</td><td><code>temporal_intervention/causal_interpretation.md</code></td><td>hard_vs_easy_sensitivity.png</td><td><span class="badge b-support">MEDIUM</span></td></tr>
+<tr><td>Smoothing = dose-dependent lever</td><td><code>p4_smoothing_aug/summary.md</code> + per-system CSVs</td><td>fig_smoothing_dose_dependent (gen, opt)</td><td><span class="badge b-support">SUPPORTING</span></td></tr>
+<tr><td>Mechanism: hierarchical dissociation</td><td><code>multiclass_probe/</code>, <code>act_patching/</code></td><td>fig_story1_mechanism (gen)</td><td><span class="badge b-support">SUPPORTING</span></td></tr>
+</tbody>
+</table>
+
+<!-- ============ CLAIMS STRENGTH ============ -->
+<h2 id="claims"><span class="num">10</span>Claims Strength</h2>
+
+<h4>Core claims <span class="badge b-strong">STRONG EVIDENCE</span></h4>
+<table>
+<thead><tr><th>Claim</th><th>Number / basis</th></tr></thead>
+<tbody>
+<tr><td>Hardness is system-intrinsic and reproducible across seeds</td><td>seed-locked ranking agreement (5 seeds)</td></tr>
+<tr><td>C correlates with per-system hardness on MLAAD</td><td>r ≈ +0.35, LOO R² ≈ 0.069 (63 systems); more compact → harder</td></tr>
+<tr><td>C is causal within the detector</td><td>E9: moderate regime EER 0.067→0.090 (compact) and →0.056 (expanded), each beating matched-energy shift control</td></tr>
+<tr><td>C is actionable on the hardest systems</td><td>P5 C-Q4: EER −0.023, AUC +0.026; T-Q4: EER −0.020, AUC +0.027; P1 mean EER 0.2615→0.2568</td></tr>
+<tr><td>C and T are independent factors</td><td>r(C,T)≈+0.11; separate PCA components; positive unique partials (+0.28 / +0.27)</td></tr>
+</tbody>
+</table>
+
+<h4>Supporting claims <span class="badge b-support">SUPPORTIVE EVIDENCE</span></h4>
+<table>
+<thead><tr><th>Claim</th><th>Number / basis</th></tr></thead>
+<tbody>
+<tr><td>C transfers to in-the-wild (speaker level)</td><td>ρ(C, EER) = +0.44, n=45 speakers; effect is mostly between-speaker</td></tr>
+<tr><td>Temporal smoothness is a hardness factor (causal)</td><td>smoothing intervention: MA k=3→k=10 EER 0.421→0.571 (monotone)</td></tr>
+<tr><td>Smoothing is a dose-dependent, targetable lever</td><td>P4: 8 systems improve on EER+AUC (MegaTTS3 −0.134), majority overcorrected</td></tr>
+<tr><td>C generalizes across encoders (partial)</td><td>WavLM r=+0.348, wav2vec2 r=+0.346</td></tr>
+<tr><td>Adversarial training exploits C</td><td>robustness_mechanism_analysis (ΔEER vs C, head entropy collapse)</td></tr>
+</tbody>
+</table>
+
+<h4>Claims to avoid overstating <span class="badge b-avoid">SOFTEN</span></h4>
+<table>
+<thead><tr><th>Tempting claim</th><th>Say instead</th></tr></thead>
+<tbody>
+<tr><td>"T is a robust universal hardness factor"</td><td>"T is correlated but fragile — scale-dependent, not independently manipulable in E9, and near-constant across ASVspoof attacks, so there we can neither prove nor refute its importance."</td></tr>
+<tr><td>"C generalizes across all SSL encoders"</td><td>"C validates on WavLM and wav2vec2; it fails on HuBERT — it tracks layer-specific linguistic abstraction, which differs by architecture."</td></tr>
+<tr><td>"C predicts hardness on ASVspoof too" (correlational)</td><td>Omit. ASVspoof enters <em>only</em> as the causal-intervention substrate (E9). The ASVspoof correlational result (E8) is excluded.</td></tr>
+<tr><td>"Smoothing improves detection"</td><td>"Removing temporal variance hurts detection (intervention); smoothing augmentation is a dose-dependent lever that helps a targeted subset."</td></tr>
+<tr><td>"The GAT hierarchy is a universal, purposeful mechanism"</td><td>"Demonstrated on ASVspoof A01–A06; language-invariance and cross-dataset generality untested."</td></tr>
+<tr><td>"We explain deepfake hardness"</td><td>"We identify actionable geometric factors; ≈65% of residual hardness remains unexplained."</td></tr>
+</tbody>
+</table>
+<div class="callout warn">
+<h4>Six reviewer danger zones — keep claims tight here</h4>
+<p class="danger-list">
+<span>cross-dataset</span><span>cross-encoder (HuBERT)</span><span>in-the-wild (codec artifacts → T)</span><span>temporal smoothing</span><span>GAT mechanism generality</span><span>"explained variance"</span>
+</p>
+</div>
+
+<!-- ============ CITATIONS ============ -->
+<h2 id="cite"><span class="num">11</span>Related-Work / Citation Checklist</h2>
+<table>
+<thead><tr><th>Area</th><th>Must-cite (specific)</th></tr></thead>
+<tbody>
+<tr><td>SSL speech encoders</td><td>WavLM (Chen et al. 2022); wav2vec 2.0 (Baevski et al. 2020); HuBERT (Hsu et al. 2021); XLS-R (Babu et al. 2021)</td></tr>
+<tr><td>SSL layerwise / probing</td><td>Pasad et al. (2021/2023) layer-wise analysis of SSL speech; SUPERB (Yang et al. 2021); Alain &amp; Bengio (2017) linear probes; Hewitt &amp; Liang (2019) control tasks</td></tr>
+<tr><td>Anti-spoofing corpora</td><td>ASVspoof 2019/2021 (Wang, Yamagishi, Todisco, Delgado, Evans, Kinnunen et al.); In-the-Wild (Müller et al. 2022); MLAAD (Müller et al. 2024)</td></tr>
+<tr><td>Detector backbones</td><td>AASIST (Jung et al. 2022); RawNet2 (Tak et al. 2021); wav2vec2+AASIST / SSL anti-spoofing (Tak et al. 2022); RawBoost augmentation (Tak et al. 2022)</td></tr>
+<tr><td>Graph attention</td><td>GAT (Veličković et al. 2018)</td></tr>
+<tr><td>Mechanistic interpretability</td><td>Causal mediation (Vig et al. 2020); activation patching / causal tracing — ROME (Meng et al. 2022)</td></tr>
+<tr><td>Representation geometry</td><td>Intrinsic dimension of representations (Ansuini et al. 2019); Neural Collapse (Papyan et al. 2020) — framing for compactness</td></tr>
+<tr><td>Instance hardness / curriculum</td><td>Smith &amp; Martinez (instance hardness); Bengio et al. (2009) curriculum; OHEM (Shrivastava et al. 2016); Dataset Cartography (Swayamdipta et al. 2020)</td></tr>
+</tbody>
+</table>
+<p class="small"><strong>Venue tilt:</strong> Speech ⇒ foreground ASVspoof / AASIST / RawBoost lineage. ML ⇒ foreground probing / causal-tracing / representation-geometry lineage.</p>
+
+<!-- ============ MAIN VS SUPP ============ -->
+<h2 id="mainsupp"><span class="num">12</span>Main Paper vs Supplement</h2>
+<table>
+<thead><tr><th>Result</th><th>Placement</th></tr></thead>
+<tbody>
+<tr><td>Architecture &amp; C/T pipeline schematic</td><td><span class="badge b-main">MAIN</span></td></tr>
+<tr><td>Seed / dataset hardness agreement</td><td><span class="badge b-main">MAIN</span></td></tr>
+<tr><td>C → hardness (MLAAD + ITW unified)</td><td><span class="badge b-main">MAIN</span></td></tr>
+<tr><td>C ⟂ T orthogonality (one panel)</td><td><span class="badge b-main">MAIN</span></td></tr>
+<tr><td>E9 causal C (+ shift control)</td><td><span class="badge b-main">MAIN</span></td></tr>
+<tr><td>Actionability (P1 + P5)</td><td><span class="badge b-main">MAIN</span></td></tr>
+<tr><td>ITW per-speaker C</td><td><span class="badge b-main">MAIN</span></td></tr>
+<tr><td>Cross-encoder C (E1, HuBERT caveat)</td><td><span class="badge b-main">MAIN</span></td></tr>
+<tr><td>Story 1 mechanism (≤1 composite figure)</td><td><span class="badge b-main">MAIN</span> (rest <span class="badge b-supp">SUPP</span>)</td></tr>
+<tr><td>Full orthogonality panels; layerwise profiles; E2/E3 robustness; interaction analysis</td><td><span class="badge b-supp">SUPP</span></td></tr>
+<tr><td>ITW manifold / UMAP / PCA exploratory</td><td><span class="badge b-supp">SUPP</span></td></tr>
+<tr><td>P3 / P6 / P7 ablations; smoothing-aug per-system detail; waveform controls</td><td><span class="badge b-supp">SUPP</span></td></tr>
+<tr><td>Robustness-mechanism full grid (E7)</td><td><span class="badge b-supp">SUPP</span></td></tr>
+<tr><td>Story 1 confusion matrices, attention KL, PC1, PCA</td><td><span class="badge b-supp">SUPP</span></td></tr>
+<tr><td>E4 ASVspoof A01–A06; all Story 2 / Story 4 assets</td><td><span class="badge b-discard">DISCARD</span> (other paper)</td></tr>
+</tbody>
+</table>
+
+<!-- ============ FINAL REC ============ -->
+<h2 id="final"><span class="num">13</span>Final Recommendation</h2>
+<div class="verdict">
+Write <strong>one paper, Story 3</strong>, organized around <strong>C</strong> — a geometric hardness factor that is <em>objective</em> (seed-agreement), <em>causal</em> (E9 intervention beats a matched-energy control), and <em>actionable</em> (P1/P5 lower hardest-system EER) — with <strong>T as a 70/30 fragile companion</strong> that we caveat but do not denounce.
+</div>
+<ul>
+<li><strong>Corpus roles:</strong> MLAAD = correlational + actionability backbone; <strong>ASVspoof = the causal keystone via E9 only</strong> (E8 excluded); ITW = external validity for C.</li>
+<li><strong>Story 1</strong> → one compressed mechanism section + supplement (supporting evidence, not a pillar).</li>
+<li><strong>Drop</strong> Stories 2 &amp; 4 to a future paper — they distract from the hardness-geometry message.</li>
+<li><strong>Generate the 6–7 figures in §6</strong>; every other main-paper figure already exists as a named file.</li>
+<li><strong>Guard the six danger zones</strong> (§10) — cross-dataset, HuBERT, ITW-T, smoothing, GAT generality, explained variance.</li>
+</ul>
+
+<footer>
+<p>Planning document — not a paper draft. All figure filenames and numbers are drawn from the repository; numbers spot-checked against <code>p1/p5 summary.md</code>, <code>e9_causal_C.csv</code>, <code>e6_itw_speaker_summary.md</code>, <code>temporal_intervention/causal_interpretation.md</code>, and <code>p4_smoothing_aug</code> per-system CSVs. Source of truth: <code>scientific_story_analysis.md</code>. E8 excluded by request. Self-contained HTML — open in any browser, print to PDF, or share as-is.</p>
+</footer>
+
+</div>
+</body>
+</html>
