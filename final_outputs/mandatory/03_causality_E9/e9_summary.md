@@ -1,5 +1,11 @@
 # E9 — Are C and T causal for detection, or just correlates?
 
+> **⚠️ Single-seed version.** A 3-seed significance re-run (`e9_seeds_summary.md` in this folder)
+> supersedes the statistical claims below. It **confirms and strengthens** the compaction arm
+> (more compact → harder: ΔAUC=−0.057, 95% CI [−0.063,−0.052], p<0.001, 3/3 seeds agree) but
+> finds the **moderate-expansion** effect claimed below is **not significant / not seed-robust**
+> (p=0.17; seed s3 dissents). Treat the compaction (α<1) result as the rigorous causal evidence.
+
 Direct intervention on the detector's **frozen** WavLM representation, applied equally to
 spoof + bona (no label leakage). C is manipulated at the L12 encoder output (which feeds the
 GAT directly); T at L9 (`encoder.layers[8]`). ASVspoof eval (A07–A19), 800 spoof + 800 bona.
@@ -18,8 +24,8 @@ sensitive to C *specifically*" from "is it fragile to any perturbation of this m
   compact specifically worsens detection; making it less compact specifically improves it.
 - **This causal direction agrees with the MLAAD and In-the-Wild correlational results, and
   resolves the apparent ASVspoof contradiction (E8).** See "Reconciliation with E8" below.
-- **T is NOT an isolable causal lever.** The velocity interventions failed to move vel-entropy
-  (stayed 2.61–2.71 vs ≈2.82 baseline) and instead moved L9 *compactness* (rog 2.5→13). The
+- **T is NOT an isolable causal lever.** The velocity interventions failed to move vel-entropy (stayed 2.61–2.71 vs ≈2.
+  82 baseline) and instead moved L9 *compactness* (rog 2.5→13). The
   degradation they cause tracks compactness, not T. T cannot be moved without moving C —
   consistent with its fragility / non-transfer in the ITW (E5/E6) and ASVspoof (E8) studies.
 

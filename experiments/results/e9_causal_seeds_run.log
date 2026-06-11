@@ -1,0 +1,108 @@
+[E9-seeds] device=cuda  out=/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/results/e9_causal_seeds
+
+[1] Loading ASVspoof eval subset ...
+Using the latest cached version of the dataset since Bisher/as_vspoof_2019_la couldn't be found on the Hugging Face Hub
+Found the latest cached dataset configuration 'default' at /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/data/asvspoof_2019_la/Bisher___as_vspoof_2019_la/default/0.0.0/aea92dd83a9c56e070c0b1e9f02e7c0d96216a4c (last modified on Sat Jan 24 02:26:09 2026).
+  caching waveforms ...
+  1600 utts (spoof=800 bona=800)
+
+[seed] s1  (robust_goat.ckpt)
+Load WavLM model!!!!!!!
+config.json: 0.00B [00:00, ?B/s]config.json: 2.24kB [00:00, 11.6MB/s]
+pytorch_model.bin:   0%|          | 0.00/378M [00:00<?, ?B/s]pytorch_model.bin:  11%|█         | 41.9M/378M [00:00<00:00, 352MB/s]pytorch_model.bin:  22%|██▏       | 83.9M/378M [00:00<00:00, 369MB/s]pytorch_model.bin:  33%|███▎      | 126M/378M [00:00<00:00, 375MB/s] pytorch_model.bin:  44%|████▍     | 168M/378M [00:00<00:00, 383MB/s]pytorch_model.bin:  56%|█████▌    | 210M/378M [00:00<00:00, 364MB/s]pytorch_model.bin:  67%|██████▋   | 252M/378M [00:00<00:00, 349MB/s]pytorch_model.bin:  78%|███████▊  | 294M/378M [00:00<00:00, 360MB/s]pytorch_model.bin:  89%|████████▉ | 336M/378M [00:00<00:00, 345MB/s]pytorch_model.bin: 100%|█████████▉| 377M/378M [00:01<00:00, 354MB/s]pytorch_model.bin: 100%|██████████| 378M/378M [00:01<00:00, 356MB/s]
+Some weights of WavLMForCTC were not initialized from the model checkpoint at microsoft/wavlm-base and are newly initialized: ['encoder.pos_conv_embed.conv.parametrizations.weight.original0', 'lm_head.weight', 'lm_head.bias', 'encoder.pos_conv_embed.conv.parametrizations.weight.original1']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+torch.Size([687, 768])
+  baseline  C(L12 rog)=14.899  T(L9 vel_ent)=2.824
+    a=0.5   C=  7.45 | scale EER=0.284 AUC=0.779 || shift EER=0.084 AUC=0.976  (ΔAUC=-0.197)
+    a=0.625 C=  9.29 | scale EER=0.124 AUC=0.952 || shift EER=0.072 AUC=0.980  (ΔAUC=-0.028)
+    a=0.75  C= 11.21 | scale EER=0.090 AUC=0.973 || shift EER=0.068 AUC=0.981  (ΔAUC=-0.009)
+    a=0.875 C= 13.01 | scale EER=0.072 AUC=0.980 || shift EER=0.069 AUC=0.981  (ΔAUC=-0.001)
+    a=1.0   C= 14.81 | scale EER=0.066 AUC=0.984 || shift EER=0.071 AUC=0.979  (ΔAUC=+0.005)
+    a=1.125 C= 16.77 | scale EER=0.070 AUC=0.982 || shift EER=0.065 AUC=0.982  (ΔAUC=-0.000)
+    a=1.25  C= 18.68 | scale EER=0.070 AUC=0.981 || shift EER=0.074 AUC=0.981  (ΔAUC=-0.000)
+    a=1.375 C= 20.49 | scale EER=0.064 AUC=0.983 || shift EER=0.070 AUC=0.980  (ΔAUC=+0.003)
+    a=1.5   C= 22.32 | scale EER=0.070 AUC=0.979 || shift EER=0.085 AUC=0.975  (ΔAUC=+0.005)
+    a=1.75  C= 26.06 | scale EER=0.070 AUC=0.979 || shift EER=0.090 AUC=0.968  (ΔAUC=+0.011)
+    a=2.0   C= 29.93 | scale EER=0.086 AUC=0.975 || shift EER=0.102 AUC=0.956  (ΔAUC=+0.019)
+    a=2.25  C= 33.34 | scale EER=0.090 AUC=0.976 || shift EER=0.115 AUC=0.948  (ΔAUC=+0.028)
+    a=2.5   C= 37.25 | scale EER=0.087 AUC=0.969 || shift EER=0.140 AUC=0.922  (ΔAUC=+0.047)
+    a=3.0   C= 44.70 | scale EER=0.114 AUC=0.964 || shift EER=0.208 AUC=0.870  (ΔAUC=+0.094)
+    a=3.5   C= 52.18 | scale EER=0.116 AUC=0.958 || shift EER=0.246 AUC=0.824  (ΔAUC=+0.134)
+    a=4.0   C= 59.42 | scale EER=0.119 AUC=0.946 || shift EER=0.265 AUC=0.804  (ΔAUC=+0.142)
+
+[seed] s3  (robust_goat_seed3.ckpt)
+Some weights of WavLMForCTC were not initialized from the model checkpoint at microsoft/wavlm-base and are newly initialized: ['encoder.pos_conv_embed.conv.parametrizations.weight.original0', 'lm_head.weight', 'lm_head.bias', 'encoder.pos_conv_embed.conv.parametrizations.weight.original1']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Load WavLM model!!!!!!!
+torch.Size([687, 768])
+  baseline  C(L12 rog)=14.936  T(L9 vel_ent)=2.811
+    a=0.5   C=  7.46 | scale EER=0.284 AUC=0.796 || shift EER=0.071 AUC=0.978  (ΔAUC=-0.181)
+    a=0.625 C=  9.32 | scale EER=0.113 AUC=0.953 || shift EER=0.070 AUC=0.982  (ΔAUC=-0.029)
+    a=0.75  C= 11.17 | scale EER=0.096 AUC=0.967 || shift EER=0.072 AUC=0.979  (ΔAUC=-0.012)
+    a=0.875 C= 13.02 | scale EER=0.087 AUC=0.972 || shift EER=0.081 AUC=0.977  (ΔAUC=-0.005)
+    a=1.0   C= 14.84 | scale EER=0.090 AUC=0.971 || shift EER=0.089 AUC=0.975  (ΔAUC=-0.003)
+    a=1.125 C= 16.80 | scale EER=0.084 AUC=0.973 || shift EER=0.081 AUC=0.976  (ΔAUC=-0.004)
+    a=1.25  C= 18.64 | scale EER=0.082 AUC=0.975 || shift EER=0.080 AUC=0.979  (ΔAUC=-0.004)
+    a=1.375 C= 20.51 | scale EER=0.078 AUC=0.976 || shift EER=0.074 AUC=0.981  (ΔAUC=-0.005)
+    a=1.5   C= 22.41 | scale EER=0.083 AUC=0.974 || shift EER=0.059 AUC=0.982  (ΔAUC=-0.008)
+    a=1.75  C= 26.19 | scale EER=0.087 AUC=0.972 || shift EER=0.073 AUC=0.980  (ΔAUC=-0.008)
+    a=2.0   C= 29.72 | scale EER=0.085 AUC=0.969 || shift EER=0.080 AUC=0.975  (ΔAUC=-0.006)
+    a=2.25  C= 33.43 | scale EER=0.101 AUC=0.966 || shift EER=0.088 AUC=0.971  (ΔAUC=-0.006)
+    a=2.5   C= 37.39 | scale EER=0.105 AUC=0.960 || shift EER=0.094 AUC=0.966  (ΔAUC=-0.006)
+    a=3.0   C= 44.62 | scale EER=0.123 AUC=0.948 || shift EER=0.108 AUC=0.958  (ΔAUC=-0.010)
+    a=3.5   C= 52.20 | scale EER=0.136 AUC=0.939 || shift EER=0.118 AUC=0.948  (ΔAUC=-0.009)
+    a=4.0   C= 59.32 | scale EER=0.144 AUC=0.935 || shift EER=0.141 AUC=0.935  (ΔAUC=-0.000)
+
+[seed] s7  (robust_goat_seed7.ckpt)
+Some weights of WavLMForCTC were not initialized from the model checkpoint at microsoft/wavlm-base and are newly initialized: ['encoder.pos_conv_embed.conv.parametrizations.weight.original0', 'lm_head.weight', 'lm_head.bias', 'encoder.pos_conv_embed.conv.parametrizations.weight.original1']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Load WavLM model!!!!!!!
+torch.Size([687, 768])
+  baseline  C(L12 rog)=14.903  T(L9 vel_ent)=2.837
+    a=0.5   C=  7.45 | scale EER=0.267 AUC=0.789 || shift EER=0.099 AUC=0.966  (ΔAUC=-0.177)
+    a=0.625 C=  9.31 | scale EER=0.151 AUC=0.935 || shift EER=0.085 AUC=0.973  (ΔAUC=-0.037)
+    a=0.75  C= 11.17 | scale EER=0.096 AUC=0.968 || shift EER=0.076 AUC=0.977  (ΔAUC=-0.010)
+    a=0.875 C= 13.05 | scale EER=0.070 AUC=0.979 || shift EER=0.072 AUC=0.981  (ΔAUC=-0.002)
+    a=1.0   C= 14.91 | scale EER=0.071 AUC=0.980 || shift EER=0.069 AUC=0.983  (ΔAUC=-0.003)
+    a=1.125 C= 16.75 | scale EER=0.069 AUC=0.983 || shift EER=0.070 AUC=0.982  (ΔAUC=+0.001)
+    a=1.25  C= 18.63 | scale EER=0.070 AUC=0.983 || shift EER=0.079 AUC=0.978  (ΔAUC=+0.004)
+    a=1.375 C= 20.54 | scale EER=0.068 AUC=0.983 || shift EER=0.080 AUC=0.974  (ΔAUC=+0.010)
+    a=1.5   C= 22.38 | scale EER=0.069 AUC=0.984 || shift EER=0.100 AUC=0.966  (ΔAUC=+0.017)
+    a=1.75  C= 26.08 | scale EER=0.077 AUC=0.980 || shift EER=0.129 AUC=0.947  (ΔAUC=+0.033)
+    a=2.0   C= 29.79 | scale EER=0.089 AUC=0.975 || shift EER=0.130 AUC=0.933  (ΔAUC=+0.042)
+    a=2.25  C= 33.54 | scale EER=0.090 AUC=0.970 || shift EER=0.145 AUC=0.927  (ΔAUC=+0.042)
+    a=2.5   C= 37.36 | scale EER=0.104 AUC=0.963 || shift EER=0.139 AUC=0.925  (ΔAUC=+0.038)
+    a=3.0   C= 44.66 | scale EER=0.138 AUC=0.942 || shift EER=0.155 AUC=0.912  (ΔAUC=+0.030)
+    a=3.5   C= 52.18 | scale EER=0.161 AUC=0.923 || shift EER=0.154 AUC=0.906  (ΔAUC=+0.018)
+    a=4.0   C= 59.78 | scale EER=0.185 AUC=0.908 || shift EER=0.160 AUC=0.902  (ΔAUC=+0.006)
+
+  saved per-seed CSVs. seeds_run=['s1', 's3', 's7']
+  saved e9_causal_C_aggregate.csv
+
+[6] Paired utterance bootstrap (B=2000) on ΔAUC ...
+    a=0.5   ΔAUC=-0.1851 [-0.2048,-0.1650] p=0.0000***  signs=[-1, -1, -1]
+    a=0.625 ΔAUC=-0.0313 [-0.0382,-0.0247] p=0.0000***  signs=[-1, -1, -1]
+    a=0.75  ΔAUC=-0.0101 [-0.0134,-0.0068] p=0.0000***  signs=[-1, -1, -1]
+    a=0.875 ΔAUC=-0.0026 [-0.0050,-0.0004] p=0.0230*  signs=[-1, -1, -1]
+    a=1.0   ΔAUC=-0.0004 [-0.0024,+0.0018] p=0.7180   signs=[1, -1, -1]
+    a=1.125 ΔAUC=-0.0009 [-0.0030,+0.0011] p=0.3860   signs=[-1, -1, 1]
+    a=1.25  ΔAUC=+0.0001 [-0.0027,+0.0028] p=0.9620   signs=[-1, -1, 1]
+    a=1.375 ΔAUC=+0.0024 [-0.0008,+0.0058] p=0.1450   signs=[1, -1, 1]
+    a=1.5   ΔAUC=+0.0047 [+0.0010,+0.0086] p=0.0150*  signs=[1, -1, 1]
+    a=1.75  ΔAUC=+0.0123 [+0.0068,+0.0179] p=0.0000***  signs=[1, -1, 1]
+    a=2.0   ΔAUC=+0.0184 [+0.0113,+0.0259] p=0.0000***  signs=[1, -1, 1]
+    a=2.25  ΔAUC=+0.0216 [+0.0135,+0.0300] p=0.0000***  signs=[1, -1, 1]
+    a=2.5   ΔAUC=+0.0262 [+0.0171,+0.0354] p=0.0000***  signs=[1, -1, 1]
+    a=3.0   ΔAUC=+0.0378 [+0.0263,+0.0498] p=0.0000***  signs=[1, -1, 1]
+    a=3.5   ΔAUC=+0.0477 [+0.0342,+0.0620] p=0.0000***  signs=[1, -1, 1]
+    a=4.0   ΔAUC=+0.0492 [+0.0352,+0.0640] p=0.0000***  signs=[1, -1, 1]
+
+  [regime] moderate compaction α∈[0.5, 0.625, 0.75, 0.875]: ΔAUC=-0.0573 [-0.0627,-0.0516] p=0.0000
+  [regime] moderate expansion  α∈[1.125, 1.25, 1.375, 1.5]: ΔAUC=+0.0016 [-0.0007,+0.0039] p=0.1660
+
+[7] Figures ...
+  figures saved.
+  summary -> /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/results/e9_causal_seeds/e9_seeds_summary.md
+
+[E9-seeds] done.
