@@ -1,0 +1,35 @@
+  train 2000/10639
+  train 4000/10639
+  train 6000/10639
+  train 8000/10639
+  train 10000/10639
+  val 2000/2276
+[J6] train 10639 (spoof=5465), val 2276
+  epoch 1/8 loss=0.6863 val EER=0.2443 (219s)
+  epoch 2/8 loss=0.2324 val EER=0.2285 (222s)
+  epoch 3/8 loss=0.2012 val EER=0.2008 (222s)
+  epoch 4/8 loss=0.1854 val EER=0.1771 (223s)
+  epoch 5/8 loss=0.1749 val EER=0.1692 (222s)
+  epoch 6/8 loss=0.1640 val EER=0.1757 (222s)
+  epoch 7/8 loss=0.1517 val EER=0.1594 (222s)
+  epoch 8/8 loss=0.1544 val EER=0.1590 (222s)
+  best val EER=0.1590
+
+[J6] fine-tuned AASIST on MLAAD test: EER=0.2005 AUC=0.8854
+
+[law] MLAAD position law under IN-DOMAIN AASIST (non-WavLM):
+           s_along: rho=-0.027 (p=0.8340)
+          sd_along: rho=+0.349 (p=0.0058)
+            s_orth: rho=+0.063 (p=0.6291)
+   vel_entropy_L12: rho=+0.342 (p=0.0070)
+           rog_L12: rho=+0.024 (p=0.8527)
+  LOO(s_along+sd_along)=-0.032 (perm p=0.1289)
+
+[agreement] (Spearman):
+                 aasist_ft  aasist_zeroshot  mlaad_gat  robust_goat
+aasist_ft            1.000            0.308      0.553        0.360
+aasist_zeroshot      0.308            1.000      0.320        0.544
+mlaad_gat            0.553            0.320      1.000        0.301
+robust_goat          0.360            0.544      0.301        1.000
+
+[J6] done -> /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/results/j6_aasist_mlaad

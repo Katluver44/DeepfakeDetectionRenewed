@@ -1,0 +1,10 @@
+{
+  "seeds": [
+    "s1",
+    "s3",
+    "s7"
+  ],
+  "n_boot": 2000,
+  "smooth_star": "smooth_3",
+  "n_utts": 1600
+}

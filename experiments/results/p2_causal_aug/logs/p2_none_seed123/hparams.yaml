@@ -1,0 +1,10 @@
+args: null
+cfg: !!python/object:argparse.Namespace
+  PhonemeGAT: !!python/object:argparse.Namespace
+    backbone: wavlm
+    n_edges: 10
+    use_GAT: true
+    use_aug: true
+    use_clip: true
+    use_pool: true
+    use_raw: false

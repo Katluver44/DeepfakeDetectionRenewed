@@ -1,0 +1,9 @@
+{
+  "itw_baseline": {"EER": 0.3633, "AUC": 0.6833},
+  "mlaad_axis_on_itw": {"EER": 0.5180, "AUC": 0.5269},
+  "fusion_mlaad_axis": {"lam0.5": {"EER": 0.3730}, "lam1.0": {"EER": 0.3873}, "lam1.5": {"EER": 0.4100}, "lam2.0": {"EER": 0.4230}},
+  "itw_internal_axis_speaker_disjoint": {"EER": 0.2917, "AUC": 0.7830},
+  "fusion_internal": {"lam1.5": {"EER": 0.3123, "AUC": 0.7497}},
+  "cos_w_mlaad_w_itw": 0.0525,
+  "interpretation": "Position law holds within every domain (internal axis alone beats the fine-tuned detector on ITW by 7 EER points); the axis direction is domain-specific (cos=0.05), so cross-domain fusion fails exactly as E12/E13 channel-shift law predicts."
+}

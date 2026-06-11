@@ -1,0 +1,58 @@
+Using the latest cached version of the dataset since Bisher/as_vspoof_2019_la couldn't be found on the Hugging Face Hub
+Found the latest cached dataset configuration 'default' at /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/data/asvspoof_2019_la/Bisher___as_vspoof_2019_la/default/0.0.0/aea92dd83a9c56e070c0b1e9f02e7c0d96216a4c (last modified on Sat Jan 24 02:26:09 2026).
+Some weights of the model checkpoint at microsoft/wavlm-base were not used when initializing WavLMModel: ['encoder.pos_conv_embed.conv.weight_v', 'encoder.pos_conv_embed.conv.weight_g']
+- This IS expected if you are initializing WavLMModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing WavLMModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of WavLMModel were not initialized from the model checkpoint at microsoft/wavlm-base and are newly initialized: ['encoder.pos_conv_embed.conv.parametrizations.weight.original0', 'encoder.pos_conv_embed.conv.parametrizations.weight.original1']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+[I4] 1600 utts, attacks: ['-', 'A07', 'A08', 'A09', 'A10', 'A11', 'A12', 'A13', 'A14', 'A15', 'A16', 'A17', 'A18', 'A19']
+[px_common] repaired WavLM pos_conv weight-norm weights from checkpoint
+  feats 0/1600
+  feats 320/1600
+  feats 640/1600
+  feats 960/1600
+  feats 1280/1600
+
+[A] per-attack (N=13) Spearman vs shared hardness:
+    s_along: rho=-0.714 (p=0.0061)
+     s_orth: rho=+0.313 (p=0.2974)
+       ve12: rho=+0.308 (p=0.3064)
+        ve9: rho=-0.093 (p=0.7615)
+      rog12: rho=+0.505 (p=0.0780)
+    vmean12: rho=-0.440 (p=0.1329)
+attack     hard   s_along     ve12     rog12
+   A13 0.000321 18.263090 2.756307 10.664112
+   A09 0.002336 15.628732 2.798879 10.790917
+   A07 0.002614 16.030247 2.741229 10.743631
+   A12 0.003216 17.382618 2.769063 10.812140
+   A08 0.005224 14.725115 2.763655 10.903780
+   A15 0.007283 12.412252 2.806679 10.914080
+   A11 0.010443 16.184170 2.768504 10.735717
+   A17 0.011926  3.192363 2.799112 11.132800
+   A16 0.012000 14.434820 2.729423 10.903183
+   A14 0.014409 13.306730 2.784789 10.837868
+   A10 0.016072 15.960540 2.720551 10.701210
+   A18 0.081882  2.191856 2.815028 10.932776
+   A19 0.126250  1.857993 2.807030 10.967406
+
+[B] factor spread (SD across systems): {
+  "asvspoof": {
+    "s_along": 5.918066861444261,
+    "ve12": 0.03109171646419564,
+    "rog12": 0.12798761256175029
+  },
+  "mlaad": {
+    "s_along": 1.7027084183713361,
+    "ve12": 0.024585623969313325,
+    "rog12": 0.11602824935026285
+  }
+}
+
+[C] within-attack fixed effects (spoof logit, 3-seed mean):
+    s_along: beta=+0.5731 (perm p=0.0000)
+     s_orth: beta=+0.4953 (perm p=0.0000)
+       ve12: beta=-0.1019 (perm p=0.2040)
+      rog12: beta=-0.4440 (perm p=0.0000)
+    vmean12: beta=-0.3047 (perm p=0.0000)
+
+[I4] done -> /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/results/i4_asvspoof_position

@@ -1,0 +1,95 @@
+[I1] loading ASVspoof eval subset ...
+Using the latest cached version of the dataset since Bisher/as_vspoof_2019_la couldn't be found on the Hugging Face Hub
+Found the latest cached dataset configuration 'default' at /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/data/asvspoof_2019_la/Bisher___as_vspoof_2019_la/default/0.0.0/aea92dd83a9c56e070c0b1e9f02e7c0d96216a4c (last modified on Sat Jan 24 02:26:09 2026).
+  1600 utts (spoof=800)
+
+[seed] s1
+Some weights of WavLMForCTC were not initialized from the model checkpoint at microsoft/wavlm-base and are newly initialized: ['lm_head.bias', 'encoder.pos_conv_embed.conv.parametrizations.weight.original0', 'lm_head.weight', 'encoder.pos_conv_embed.conv.parametrizations.weight.original1']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Load WavLM model!!!!!!!
+torch.Size([687, 768])
+  baseline rog=14.86 vel=10.827 effrank=39.0 AUC=0.9822
+    baseline           rog= 1.00x vel= 1.00x er= 38.4 AUC=0.9805 EER=0.071  (48s)
+    iso_0.5            rog= 0.50x vel= 0.50x er= 39.1 AUC=0.9679 EER=0.103  (48s)
+    iso_0.7            rog= 0.70x vel= 0.70x er= 38.9 AUC=0.9775 EER=0.081  (49s)
+    iso_0.875          rog= 0.87x vel= 0.87x er= 38.7 AUC=0.9777 EER=0.083  (36s)
+    iso_1.25           rog= 1.25x vel= 1.24x er= 38.7 AUC=0.9812 EER=0.067  (33s)
+    shift_0.5          rog= 1.00x vel= 1.00x er= 38.9 AUC=0.9701 EER=0.092  (33s)
+    shift_0.7          rog= 1.00x vel= 0.99x er= 38.6 AUC=0.9796 EER=0.083  (29s)
+    shift_0.875        rog= 1.00x vel= 1.00x er= 39.0 AUC=0.9810 EER=0.069  (24s)
+    shift_1.25         rog= 1.00x vel= 1.01x er= 39.4 AUC=0.9782 EER=0.082  (24s)
+    iso_0.7_ungated    rog= 0.65x vel= 0.64x er= 34.7 AUC=0.9673 EER=0.095  (24s)
+    spec_0.6           rog= 1.00x vel= 1.27x er= 74.1 AUC=0.9742 EER=0.087  (38s)
+    spec_0.8           rog= 1.00x vel= 1.11x er= 52.8 AUC=0.9781 EER=0.076  (43s)
+    spec_1.25          rog= 1.00x vel= 0.90x er= 27.1 AUC=0.9833 EER=0.066  (43s)
+    spec_1.6           rog= 1.00x vel= 0.78x er= 16.9 AUC=0.9841 EER=0.068  (34s)
+    smooth_3           rog= 1.00x vel= 0.64x er= 26.1 AUC=0.9833 EER=0.070  (24s)
+    smooth_5           rog= 1.00x vel= 0.48x er= 19.6 AUC=0.9819 EER=0.081  (24s)
+    smooth_9           rog= 1.00x vel= 0.33x er= 13.1 AUC=0.9768 EER=0.085  (24s)
+    jitter_0.5         rog= 1.00x vel= 1.17x er= 51.3 AUC=0.9814 EER=0.071  (24s)
+    jitter_1.0         rog= 1.00x vel= 1.42x er= 76.4 AUC=0.9760 EER=0.081  (24s)
+    shuffle            rog= 1.00x vel= 1.92x er= 39.0 AUC=0.9635 EER=0.101  (25s)
+    sub_top_0.7        rog= 0.72x vel= 0.87x er= 49.3 AUC=0.9396 EER=0.136  (34s)
+    sub_res_0.7        rog= 0.70x vel= 0.47x er=  7.9 AUC=0.9852 EER=0.069  (34s)
+
+[seed] s3
+Some weights of WavLMForCTC were not initialized from the model checkpoint at microsoft/wavlm-base and are newly initialized: ['lm_head.bias', 'encoder.pos_conv_embed.conv.parametrizations.weight.original0', 'lm_head.weight', 'encoder.pos_conv_embed.conv.parametrizations.weight.original1']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Load WavLM model!!!!!!!
+torch.Size([687, 768])
+  baseline rog=14.86 vel=10.799 effrank=38.7 AUC=0.9753
+    baseline           rog= 1.00x vel= 1.00x er= 39.0 AUC=0.9715 EER=0.092  (24s)
+    iso_0.5            rog= 0.50x vel= 0.50x er= 38.7 AUC=0.9718 EER=0.093  (25s)
+    iso_0.7            rog= 0.70x vel= 0.70x er= 39.3 AUC=0.9715 EER=0.082  (24s)
+    iso_0.875          rog= 0.87x vel= 0.86x er= 38.8 AUC=0.9728 EER=0.084  (25s)
+    iso_1.25           rog= 1.25x vel= 1.25x er= 38.9 AUC=0.9745 EER=0.079  (24s)
+    shift_0.5          rog= 1.00x vel= 0.99x er= 38.8 AUC=0.9737 EER=0.084  (24s)
+    shift_0.7          rog= 1.00x vel= 1.01x er= 39.2 AUC=0.9732 EER=0.082  (24s)
+    shift_0.875        rog= 1.00x vel= 0.99x er= 38.5 AUC=0.9727 EER=0.085  (24s)
+    shift_1.25         rog= 1.00x vel= 1.00x er= 38.7 AUC=0.9746 EER=0.085  (24s)
+    iso_0.7_ungated    rog= 0.65x vel= 0.64x er= 34.7 AUC=0.9651 EER=0.099  (25s)
+    spec_0.6           rog= 1.00x vel= 1.27x er= 73.0 AUC=0.9692 EER=0.098  (34s)
+    spec_0.8           rog= 1.00x vel= 1.11x er= 53.0 AUC=0.9720 EER=0.086  (34s)
+    spec_1.25          rog= 1.00x vel= 0.89x er= 26.6 AUC=0.9743 EER=0.086  (34s)
+    spec_1.6           rog= 1.00x vel= 0.77x er= 16.5 AUC=0.9772 EER=0.071  (34s)
+    smooth_3           rog= 1.00x vel= 0.65x er= 26.2 AUC=0.9741 EER=0.081  (25s)
+    smooth_5           rog= 1.00x vel= 0.48x er= 19.6 AUC=0.9745 EER=0.088  (24s)
+    smooth_9           rog= 1.00x vel= 0.33x er= 13.2 AUC=0.9727 EER=0.088  (24s)
+    jitter_0.5         rog= 1.00x vel= 1.17x er= 51.2 AUC=0.9728 EER=0.088  (24s)
+    jitter_1.0         rog= 1.00x vel= 1.43x er= 76.3 AUC=0.9731 EER=0.084  (24s)
+    shuffle            rog= 1.00x vel= 1.92x er= 38.8 AUC=0.9681 EER=0.099  (24s)
+    sub_top_0.7        rog= 0.72x vel= 0.89x er= 50.2 AUC=0.9620 EER=0.100  (34s)
+    sub_res_0.7        rog= 0.70x vel= 0.46x er=  7.9 AUC=0.9777 EER=0.082  (34s)
+
+[seed] s7
+Some weights of WavLMForCTC were not initialized from the model checkpoint at microsoft/wavlm-base and are newly initialized: ['lm_head.bias', 'encoder.pos_conv_embed.conv.parametrizations.weight.original0', 'lm_head.weight', 'encoder.pos_conv_embed.conv.parametrizations.weight.original1']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Load WavLM model!!!!!!!
+torch.Size([687, 768])
+  baseline rog=14.84 vel=10.791 effrank=38.8 AUC=0.9812
+    baseline           rog= 1.00x vel= 1.00x er= 38.9 AUC=0.9804 EER=0.071  (24s)
+    iso_0.5            rog= 0.50x vel= 0.50x er= 38.8 AUC=0.9679 EER=0.094  (24s)
+    iso_0.7            rog= 0.70x vel= 0.70x er= 39.2 AUC=0.9762 EER=0.088  (24s)
+    iso_0.875          rog= 0.87x vel= 0.87x er= 38.7 AUC=0.9804 EER=0.072  (25s)
+    iso_1.25           rog= 1.25x vel= 1.25x er= 39.1 AUC=0.9823 EER=0.070  (24s)
+    shift_0.5          rog= 1.01x vel= 1.00x er= 39.1 AUC=0.9798 EER=0.074  (24s)
+    shift_0.7          rog= 1.01x vel= 1.01x er= 39.0 AUC=0.9830 EER=0.073  (25s)
+    shift_0.875        rog= 1.00x vel= 1.00x er= 38.7 AUC=0.9808 EER=0.068  (25s)
+    shift_1.25         rog= 1.01x vel= 1.01x er= 38.8 AUC=0.9836 EER=0.064  (25s)
+    iso_0.7_ungated    rog= 0.65x vel= 0.64x er= 34.6 AUC=0.9626 EER=0.118  (25s)
+    spec_0.6           rog= 1.00x vel= 1.27x er= 73.4 AUC=0.9712 EER=0.088  (34s)
+    spec_0.8           rog= 1.00x vel= 1.12x er= 53.4 AUC=0.9789 EER=0.076  (34s)
+    spec_1.25          rog= 1.00x vel= 0.89x er= 26.9 AUC=0.9844 EER=0.066  (34s)
+    spec_1.6           rog= 1.00x vel= 0.78x er= 16.6 AUC=0.9864 EER=0.057  (33s)
+    smooth_3           rog= 1.00x vel= 0.64x er= 26.2 AUC=0.9853 EER=0.059  (24s)
+    smooth_5           rog= 1.00x vel= 0.48x er= 19.5 AUC=0.9818 EER=0.065  (24s)
+    smooth_9           rog= 1.00x vel= 0.33x er= 13.2 AUC=0.9795 EER=0.075  (24s)
+    jitter_0.5         rog= 1.00x vel= 1.17x er= 51.2 AUC=0.9817 EER=0.069  (25s)
+    jitter_1.0         rog= 1.00x vel= 1.43x er= 76.0 AUC=0.9764 EER=0.079  (25s)
+    shuffle            rog= 1.01x vel= 1.93x er= 39.0 AUC=0.9496 EER=0.121  (25s)
+    sub_top_0.7        rog= 0.72x vel= 0.88x er= 50.3 AUC=0.9348 EER=0.138  (34s)
+    sub_res_0.7        rog= 0.70x vel= 0.47x er=  7.9 AUC=0.9810 EER=0.079  (34s)
+
+  matched-velocity smooth condition: smooth_3 (vel 0.64x vs iso_0.7 0.70x)
+
+[I1] done -> /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/results/i1_geometry_causal_decomp

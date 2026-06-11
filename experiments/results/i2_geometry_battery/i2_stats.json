@@ -1,0 +1,25 @@
+{
+  "n_systems": 61,
+  "min_utts": 8,
+  "detector_eer_full_split": 0.26597151122925333,
+  "rog_L12": {
+    "loo_r2": -0.015136872433483495,
+    "perm_p": 0.09395302348825588,
+    "spearman": -0.30777366472765727,
+    "rho_smoothness_resid": -0.20761501850872552,
+    "p": 0.10837781180958463,
+    "rho_language_resid": -0.30777366472765727
+  },
+  "battery_without_rog_loo_r2": 0.11491163049056907,
+  "full_battery_loo_r2": 0.11758016776768898,
+  "unique_rog": 0.002668537277119909,
+  "best_competitor": {
+    "name": "vel_entropy_L9",
+    "alone": 0.08328011194286633,
+    "with_rog": 0.07013133309686181,
+    "partial_rho_rog_given_comp": -0.19984135378106818,
+    "p": 0.12255369353843915,
+    "partial_rho_comp_given_rog": 0.33120042305658376,
+    "p2": 0.009126462639758661
+  }
+}
