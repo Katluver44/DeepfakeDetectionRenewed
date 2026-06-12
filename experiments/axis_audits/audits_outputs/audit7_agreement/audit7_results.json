@@ -1,0 +1,108 @@
+{
+  "matrix": {
+    "aasist_ft": {
+      "aasist_ft": 1.0,
+      "aasist_zs": 0.3079,
+      "wavlm_gat": 0.5534,
+      "robust_goat": 0.3602
+    },
+    "aasist_zs": {
+      "aasist_ft": 0.3079,
+      "aasist_zs": 1.0,
+      "wavlm_gat": 0.3202,
+      "robust_goat": 0.5442
+    },
+    "wavlm_gat": {
+      "aasist_ft": 0.5534,
+      "aasist_zs": 0.3202,
+      "wavlm_gat": 1.0,
+      "robust_goat": 0.3014
+    },
+    "robust_goat": {
+      "aasist_ft": 0.3602,
+      "aasist_zs": 0.5442,
+      "wavlm_gat": 0.3014,
+      "robust_goat": 1.0
+    }
+  },
+  "n_systems": 61,
+  "pairs": [
+    {
+      "pair": "aasist_ft~wavlm_gat",
+      "type": "same-domain (MLAAD/MLAAD)",
+      "rho": 0.5534108937070332,
+      "ci_lo": 0.32347431579017705,
+      "ci_hi": 0.7287715133726324
+    },
+    {
+      "pair": "aasist_zs~robust_goat",
+      "type": "same-domain (ASVspoof/ASVspoof)",
+      "rho": 0.5442094130089898,
+      "ci_lo": 0.3262832192683428,
+      "ci_hi": 0.7179501840268221
+    },
+    {
+      "pair": "aasist_ft~aasist_zs",
+      "type": "same-arch cross-domain",
+      "rho": 0.3078794288736118,
+      "ci_lo": 0.04494915406161472,
+      "ci_hi": 0.5378443051131764
+    },
+    {
+      "pair": "aasist_ft~robust_goat",
+      "type": "cross/cross",
+      "rho": 0.36017979904812264,
+      "ci_lo": 0.07700857709191643,
+      "ci_hi": 0.5989101387943396
+    },
+    {
+      "pair": "wavlm_gat~aasist_zs",
+      "type": "cross/cross",
+      "rho": 0.32020095187731357,
+      "ci_lo": 0.055322647238104004,
+      "ci_hi": 0.5450904342121219
+    },
+    {
+      "pair": "wavlm_gat~robust_goat",
+      "type": "cross/cross",
+      "rho": 0.301427815970386,
+      "ci_lo": 0.03746173863004576,
+      "ci_hi": 0.5365648625409329
+    }
+  ],
+  "difference_tests": [
+    {
+      "contrast": "(aasist_ft~wavlm_gat) - (aasist_ft~aasist_zs)",
+      "delta": 0.2423355187661404,
+      "ci_lo": -0.04576346024351286,
+      "ci_hi": 0.5244325034163166,
+      "p_two": 0.10133333333333333
+    },
+    {
+      "contrast": "(aasist_ft~wavlm_gat) - (aasist_ft~robust_goat)",
+      "delta": 0.18707428430474704,
+      "ci_lo": -0.10570375996815828,
+      "ci_hi": 0.4804157497104796,
+      "p_two": 0.22266666666666668
+    },
+    {
+      "contrast": "(aasist_ft~wavlm_gat) - (wavlm_gat~aasist_zs)",
+      "delta": 0.2316858513494361,
+      "ci_lo": -0.06711922577847776,
+      "ci_hi": 0.5121685976373651,
+      "p_two": 0.11933333333333333
+    },
+    {
+      "contrast": "(aasist_ft~wavlm_gat) - (wavlm_gat~robust_goat)",
+      "delta": 0.24868034207087653,
+      "ci_lo": -0.016836068534826987,
+      "ci_hi": 0.5332212988937702,
+      "p_two": 0.062
+    }
+  ],
+  "second_same_domain_pair": {
+    "pair": "aasist_zs~robust_goat (both ASVspoof-trained)",
+    "rho": 0.5442094130089898,
+    "note": "the paper's own framing implies this is same-domain; it is 0.544, consistent with the domain-conditional story, but the paper lists 0.544 among unexplained cells without noting this"
+  }
+}

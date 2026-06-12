@@ -1,0 +1,86 @@
+{
+  "n_tests_recorded": 83,
+  "n_sig_uncorrected": 25,
+  "n_sig_bh_global": 1,
+  "headline_after_global_bh": [
+    {
+      "predictor": "sd_along",
+      "dataset": "MLAAD",
+      "detector": "wavlm_gat",
+      "p": 3.709853520860249e-07,
+      "q_bh_global": 3.079178422314007e-05
+    },
+    {
+      "predictor": "s_orth",
+      "dataset": "ITW",
+      "detector": "wavlm_gat",
+      "p": 0.0028490744052535135,
+      "q_bh_global": 0.059118293909010404
+    },
+    {
+      "predictor": "sd_along",
+      "dataset": "MLAAD",
+      "detector": "aasist_ft",
+      "p": 0.0057652696447435346,
+      "q_bh_global": 0.0716093920588947
+    },
+    {
+      "predictor": "s_along",
+      "dataset": "ASVspoof_i4",
+      "detector": "wavlm_gat",
+      "p": 0.006088305245824148,
+      "q_bh_global": 0.0716093920588947
+    },
+    {
+      "predictor": "vel_entropy_L12",
+      "dataset": "MLAAD",
+      "detector": "aasist_ft",
+      "p": 0.007030423092470152,
+      "q_bh_global": 0.0716093920588947
+    },
+    {
+      "predictor": "P3",
+      "dataset": "ASVspoof21",
+      "detector": "aasist_zs",
+      "p": 0.020444897775511124,
+      "q_bh_global": 0.10605790721046396
+    },
+    {
+      "predictor": "P3",
+      "dataset": "ASVspoof21",
+      "detector": "wavlm_gat",
+      "p": 0.03360983195084025,
+      "q_bh_global": 0.13948080259598702
+    }
+  ],
+  "i2_battery_fdr_survivors": 0,
+  "splithalf": {
+    "winner_freq": {
+      "sd_along": 0.767,
+      "rog_L0": 0.0785,
+      "vel_entropy_L9": 0.0495,
+      "vel_entropy_L12": 0.0325,
+      "top1_frac_L9": 0.023,
+      "twonn_id_L9": 0.0085,
+      "part_ratio_L9": 0.0075,
+      "mu_norm_L12": 0.0065,
+      "s_along": 0.0055,
+      "top1_frac_L12": 0.004,
+      "dist_bona_centroid_L12": 0.004,
+      "rog_L12": 0.0035,
+      "twonn_id_L12": 0.002,
+      "curvature_L12": 0.0015,
+      "eff_rank_L9": 0.001,
+      "dist_bona_centroid_L9": 0.001,
+      "vel_mean_L9": 0.001,
+      "vel_cv_L12": 0.001,
+      "tortuosity_L9": 0.0005,
+      "curvature_L9": 0.0005,
+      "recurrence_L9": 0.0005,
+      "recurrence_L12": 0.0005,
+      "s_orth": 0.0005
+    },
+    "sd_along_confirm_median_rho": 0.5683467741935484,
+    "sd_along_confirm_p05_rate": 0.9915254237288136
+  }
+}

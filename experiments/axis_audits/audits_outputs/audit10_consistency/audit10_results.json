@@ -1,0 +1,157 @@
+{
+  "verdict_counts": {
+    "VERIFIED": 8,
+    "MISLABELED": 6,
+    "MISLEADING": 5,
+    "CONTRADICTED": 2
+  },
+  "rows": [
+    {
+      "claim": "sd_along LOSO R\u00b2=0.273 on MLAAD (p=0.0005)",
+      "source": "abstract / \u00a73.1 / key_numbers",
+      "artifact_value": "recomputed R\u00b2=0.277, perm p=0.0002",
+      "verdict": "VERIFIED",
+      "note": "number was hardcoded in build_package.py (no artifact), but independent recomputation reproduces it; table2 variant says '+0.316' which is the TRIPLET model R\u00b2, a different quantity"
+    },
+    {
+      "claim": "table2: 'sd_along +0.316 (LOSO R\u00b2), p=0.0005'",
+      "source": "tables/table2_hardness_law.md",
+      "artifact_value": "0.316 is the triplet (s_along+vel_entropy+sd_along) R\u00b2; sd_along alone = 0.277",
+      "verdict": "MISLABELED",
+      "note": "two different R\u00b2 values presented as the same quantity in abstract (0.273) vs table2 (0.316)"
+    },
+    {
+      "claim": "sd_along replicates on AASIST-FT (rho=+0.349, p=0.006)",
+      "source": "abstract / \u00a73.1",
+      "artifact_value": "j6 rho=0.349 p=0.0058; BUT j6 LOSO regression r2=-0.032 (negative, ns)",
+      "verdict": "MISLEADING",
+      "note": "Spearman replicates; the LOSO-R\u00b2 version of the law FAILS on AASIST-FT (r2=-0.03, perm p=0.13) and this is not reported; metric switched between detectors"
+    },
+    {
+      "claim": "P3 rho=+0.599 (p=0.031) prospective, pre-registered",
+      "source": "abstract / \u00a73.2",
+      "artifact_value": "verbatim values match j4_results; but registered PRIMARY P1 failed (rho=0.25, ns); P3 was one of 4 registered predictors; Holm-corrected p=0.13 (within-family), 0.24 (8-test family); J2 prior prospective attempt failed on 9 tests",
+      "verdict": "MISLEADING",
+      "note": "selective promotion of a non-primary predictor; registration 63s before scoring in same script run"
+    },
+    {
+      "claim": "P3 replicates for AASIST (rho=+0.643, p=0.018)",
+      "source": "abstract / \u00a73.2",
+      "artifact_value": "verbatim match (j5 H1); detectors' hardness profiles correlate only rho=0.21, so quasi-independent; Holm within-family p=0.082",
+      "verdict": "VERIFIED",
+      "note": "with multiplicity caveat; directional robustness confirmed by bootstrap (never crosses 0) and LOAO jackknife"
+    },
+    {
+      "claim": "'P3 achieves 2/3 top-3 system hits'",
+      "source": "\u00a73.2",
+      "artifact_value": "WavLM: 2/3 (P(>=2 by chance)=0.108); AASIST: 1/3 (not mentioned); P1 and P2 predicted the SAME top-3 set",
+      "verdict": "MISLEADING",
+      "note": "the hit metric does not distinguish P3 from the failed P1/P2"
+    },
+    {
+      "claim": "cos(w_MLAAD, w_ITW) = 0.05 (near-orthogonal)",
+      "source": "abstract / \u00a73.3 / key_numbers",
+      "artifact_value": "recomputed: 0.103 (MLAAD frame), 0.027 (raw); split-half axis reliability >0.93 in all corpora -> rotation is real, not estimation noise",
+      "verdict": "VERIFIED",
+      "note": "qualitatively; exact value is frame-dependent (0.03-0.10) and the 0.0525 artifact has no committed generating script"
+    },
+    {
+      "claim": "cos(w_MLAAD, w_ASVspoof21) \u2248 0.36",
+      "source": "\u00a74 Key Findings",
+      "artifact_value": "recomputed: -0.207 (MLAAD frame), -0.140 (raw) \u2014 NEGATIVE; 0.362 is cos(w_mean, w_lda) WITHIN MLAAD from J1, a different quantity",
+      "verdict": "CONTRADICTED",
+      "note": "apparent copy/confusion of an unrelated number"
+    },
+    {
+      "claim": "ITW-internal axis fusion: EER 0.363 -> 0.292 (WavLM-GAT)",
+      "source": "\u00a73.3",
+      "artifact_value": "artifact: axis ALONE = 0.2917, fusion = 0.3123 (worse than axis alone); recomputed: axis 0.301, fused 0.306",
+      "verdict": "MISLABELED",
+      "note": "0.292 is not a fusion result; fusion HURTS on ITW for WavLM-GAT; also no committed script produced itw_fusion_test.json"
+    },
+    {
+      "claim": "fusion reduces EER by up to 33 pts under shift (AASIST-ZS on ITW 0.486->0.161), 'zero-training-cost'",
+      "source": "abstract / \u00a74 / \u00a73.3",
+      "artifact_value": "decomposition: supervised LDA probe ALONE achieves 0.101 on ITW and 0.100 on MLAAD \u2014 better than the fused 0.161/0.116; strict speaker-disjoint bona split: fused=0.193",
+      "verdict": "MISLEADING",
+      "note": "the gain comes from a supervised linear probe trained on labeled eval-corpus data, not from fusing the detector; bona speaker leakage inflates the ITW number; 'zero-training-cost' is inaccurate for these headline numbers (it is fair only for I7's MLAAD centroid-axis fusion)"
+    },
+    {
+      "claim": "I7 MLAAD fusion 0.272 -> 0.163",
+      "source": "\u00a73.1",
+      "artifact_value": "verified: baseline 0.272 -> fused 0.163; per-fold dEER all negative, all seeds",
+      "verdict": "VERIFIED",
+      "note": "system-disjoint protocol is sound; axis-alone=0.187 so fusion adds genuine value here"
+    },
+    {
+      "claim": "iso_0.7 'small causal C effect' (dAUC=-0.0023, p=0.024)",
+      "source": "\u00a75 I1 table",
+      "artifact_value": "seed signs [-1,+1,-1]; seed-level t-test p=0.21",
+      "verdict": "CONTRADICTED",
+      "note": "effect does not replicate across the 3 seeds; utterance-level bootstrap p-value is pseudo-replicated"
+    },
+    {
+      "claim": "sub_top dAUC=-0.0320*** / sub_res +0.0039*** (direction content causal)",
+      "source": "\u00a72.3 / \u00a75",
+      "artifact_value": "values match artifact; seed-consistent in sign; seed-level p=0.106/0.145 (n=3); no I1 contrast survives seed-level BH",
+      "verdict": "VERIFIED",
+      "note": "directionally, with weaker statistical support than *** implies"
+    },
+    {
+      "claim": "'true gated C-effect is dAUC = -0.0036'",
+      "source": "\u00a74 Key Findings",
+      "artifact_value": "gated iso_0.7 vs baseline = -0.0023; -0.0036 is the iso_0.7 vs shift_0.7 contrast",
+      "verdict": "MISLABELED",
+      "note": ""
+    },
+    {
+      "claim": "artifact accounts for ~75-80% of prior compaction effect",
+      "source": "\u00a72.3 / \u00a74",
+      "artifact_value": "recomputed share = 81.2%",
+      "verdict": "VERIFIED",
+      "note": ""
+    },
+    {
+      "claim": "ITW: 'per-speaker hardness: s_orth rho=+0.534 (p=0.003)'",
+      "source": "\u00a73.3",
+      "artifact_value": "verbatim match; survives Holm within 7-feature family (p=0.017); BUT rog12 rho=-0.561 (p=0.0015) is stronger and unreported; the two are collinear (rho=-0.687) and neither survives partialling out the other",
+      "verdict": "MISLEADING",
+      "note": "the specific attribution to s_orth (an axis quantity) over plain radius-of-gyration is not supported"
+    },
+    {
+      "claim": "ITW: '58 speakers'",
+      "source": "\u00a72.1",
+      "artifact_value": "subset analyzed: 49 spoof speakers present, 29 with >=10 utts used for the hardness law",
+      "verdict": "MISLABELED",
+      "note": ""
+    },
+    {
+      "claim": "same-domain cross-arch agreement rho=0.553; cross-domain 0.30-0.36",
+      "source": "abstract / \u00a73.4",
+      "artifact_value": "matrix verified; second same-domain pair (AASIST-ZS~RobustGoat, both ASVspoof-trained) = 0.544 SUPPORTS the story but is not identified as same-domain in the paper; same-vs-cross differences not individually significant at n=61 (bootstrap p=0.06-0.22)",
+      "verdict": "VERIFIED",
+      "note": "direction supported by two independent same-domain pairs; claim of significance for the difference would be unsupported"
+    },
+    {
+      "claim": "J3: adaptive LDA head with 250 labels halves EER (MLAAD -0.136, ITW -0.171)",
+      "source": "\u00a73.5 / key_numbers",
+      "artifact_value": "matches j3 artifacts; calibration is group-disjoint",
+      "verdict": "VERIFIED",
+      "note": "framing should note this is supervised adaptation, consistent with A5's decomposition"
+    },
+    {
+      "claim": "'13 controlled causal interventions' (abstract)",
+      "source": "abstract",
+      "artifact_value": "I1 has 22 conditions x 3 seeds; 21 non-baseline conditions",
+      "verdict": "MISLABELED",
+      "note": "count inconsistency"
+    },
+    {
+      "claim": "fig1 left: 'MLAAD LOSO R\u00b2=0.020, p=0.023' under sd_along scatter",
+      "source": "figures/fig1",
+      "artifact_value": "0.020/0.023 are s_along's stats; the scatter shows sd_along whose R\u00b2=0.277",
+      "verdict": "MISLABELED",
+      "note": "understates own result; middle panel mixes i4's rho=-0.714 (different corpus subset) with a 'P3 (LDA axis score)' x-axis from J4"
+    }
+  ]
+}

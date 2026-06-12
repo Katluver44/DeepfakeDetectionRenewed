@@ -1,0 +1,126 @@
+{
+  "i7_mlaad": {
+    "per_seed": {
+      "main": {
+        "baseline": 0.26597151122925333,
+        "fused": 0.15710270234729437
+      },
+      "s42": {
+        "baseline": 0.28547828823159216,
+        "fused": 0.16792218892948724
+      },
+      "s1024": {
+        "baseline": 0.26488780139579005,
+        "fused": 0.1630543005551224
+      }
+    },
+    "baseline_mean": 0.2721125336188785,
+    "fused_mean": 0.16269306394396799,
+    "axis_alone_eer": 0.18742896593182606,
+    "claimed": {
+      "baseline": 0.272,
+      "fused": 0.163
+    }
+  },
+  "i7_per_fold": [
+    {
+      "fold": 0,
+      "n_te": 356,
+      "dEER_main": -0.14326765188834154,
+      "dEER_s42": -0.18536061639509915,
+      "dEER_s1024": -0.09268030819754955
+    },
+    {
+      "fold": 1,
+      "n_te": 379,
+      "dEER_main": -0.12218999274836842,
+      "dEER_s42": -0.09767389970435653,
+      "dEER_s1024": -0.07399453338539635
+    },
+    {
+      "fold": 2,
+      "n_te": 378,
+      "dEER_main": -0.10576923076923078,
+      "dEER_s42": -0.11872056514913656,
+      "dEER_s1024": -0.08477237048665626
+    },
+    {
+      "fold": 3,
+      "n_te": 379,
+      "dEER_main": -0.10251688152240646,
+      "dEER_s42": -0.12137954126904404,
+      "dEER_s1024": -0.09746637647190129
+    },
+    {
+      "fold": 4,
+      "n_te": 354,
+      "dEER_main": -0.08755149618369362,
+      "dEER_s42": -0.10174687829336057,
+      "dEER_s1024": -0.11292434452144476
+    }
+  ],
+  "itw_internal": {
+    "baseline_eer": 0.3633333333333333,
+    "axis_alone_eer_speaker_disjoint": 0.30066666666666664,
+    "fused_eer_speaker_disjoint": 0.306,
+    "json_artifact": {
+      "itw_baseline": {
+        "EER": 0.3633,
+        "AUC": 0.6833
+      },
+      "mlaad_axis_on_itw": {
+        "EER": 0.518,
+        "AUC": 0.5269
+      },
+      "fusion_mlaad_axis": {
+        "lam0.5": {
+          "EER": 0.373
+        },
+        "lam1.0": {
+          "EER": 0.3873
+        },
+        "lam1.5": {
+          "EER": 0.41
+        },
+        "lam2.0": {
+          "EER": 0.423
+        }
+      },
+      "itw_internal_axis_speaker_disjoint": {
+        "EER": 0.2917,
+        "AUC": 0.783
+      },
+      "fusion_internal": {
+        "lam1.5": {
+          "EER": 0.3123,
+          "AUC": 0.7497
+        }
+      },
+      "cos_w_mlaad_w_itw": 0.0525,
+      "interpretation": "Position law holds within every domain (internal axis alone beats the fine-tuned detector on ITW by 7 EER points); the axis direction is domain-specific (cos=0.05), so cross-domain fusion fails exactly as E12/E13 channel-shift law predicts."
+    },
+    "note": "report's '0.363 -> 0.292 fusion' number is the AXIS ALONE in the artifact; true fusion was worse (0.312); no committed script produced this JSON"
+  },
+  "j5_h4_decomposition": {
+    "mlaad": {
+      "aasist_eer": 0.3759592534495553,
+      "lda_axis_alone_eer": 0.0996660811737411,
+      "fused_eer": 0.11649000122108151
+    },
+    "itw": {
+      "aasist_eer": 0.486,
+      "lda_axis_alone_eer": 0.10066666666666668,
+      "fused_eer": 0.16066666666666665,
+      "strict_bona_disjoint": {
+        "lda_axis_alone_eer": 0.1433333333333333,
+        "fused_eer": 0.19333333333333336
+      }
+    },
+    "asvspoof21": {
+      "aasist_eer": 0.07278846153846152,
+      "lda_axis_alone_eer": 0.1151923076923077,
+      "fused_eer": 0.07624999999999998
+    }
+  },
+  "j5_h4_verdict": "the large 'fusion' gains under domain shift are driven by the supervised corpus-internal LDA axis itself (trained on labeled eval-corpus data, group-disjoint); calling this 'zero-training-cost' is misleading \u2014 it is a supervised linear probe + ensemble"
+}
