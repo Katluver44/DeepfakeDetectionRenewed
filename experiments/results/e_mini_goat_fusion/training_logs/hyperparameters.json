@@ -1,0 +1,24 @@
+{
+  "backbone": "wavlm",
+  "use_GAT": true,
+  "n_edges": 10,
+  "use_aug": true,
+  "use_pool": true,
+  "use_clip": true,
+  "batch_size": 10,
+  "max_epochs": 4,
+  "reverb_prob": 0.0,
+  "num_workers": 4,
+  "drop_last": true,
+  "seed": 42,
+  "checkpoint_path": "/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/models/mini_goat.ckpt",
+  "processed_dir": "/lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/data/mini_goat_processed",
+  "script": "train_mini_goat.py",
+  "model_variant": "mini_goat",
+  "deviations_from_robust_goat": [
+    "Deliberately weak detector: ~500 train files (250 bonafide + 250 spoof) from ASVspoof-2019-LA `train` split (attacks A01-A06), vs robust_goat's limit=15000. Only 4 epochs. This is the intended manipulation for Workstream E's headroom hypothesis test, not a bug.",
+    "No reverb augmentation (reverb_prob=0) to keep the weak-detector regime simple.",
+    "Center-cropped 48000-sample tensors (same as prepare_mlaad_tiny.py); no additional random-crop freedom since source tensors are already exactly 3s.",
+    "Val set (150 utts) drawn from ASVspoof `validation` split (also A01-A06, attack-disjoint from the A07-A19 eval set mini_goat is scored on)."
+  ]
+}

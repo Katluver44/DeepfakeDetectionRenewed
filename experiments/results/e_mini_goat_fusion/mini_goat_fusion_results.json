@@ -1,0 +1,263 @@
+{
+  "purpose": "Workstream E headroom hypothesis test: does the ASVspoof-internal natural<->synthetic axis fusion lever help a DELIBERATELY WEAK detector (mini_goat, ~500 train files) more than it helps the near-ceiling robust_goat (EER~0.078, ASVspoof fusion Workstream C found dEER~0, p=0.80)?",
+  "validation_gate": {
+    "this_run_eer": 0.07125000000000001,
+    "i1_cached_eer": 0.07125000000000001,
+    "abs_eer_diff": 0.0,
+    "this_run_auc": 0.9822265625,
+    "i1_cached_auc": 0.9804625,
+    "abs_auc_diff": 0.001764062499999941,
+    "pearson_corr_logits": 0.9577238192601637,
+    "max_abs_logit_diff": 5.657233476638794,
+    "mean_abs_logit_diff": 1.115251165521331,
+    "note": "Phoneme_GAT.__call__ applies SpecAugment-style time masking via _mask_hidden_states(mask_time_prob=0.05) UNCONDITIONALLY -- it is not gated by stage=='train' or model.training (phoneme_GAT/modules.py lines 327-355, 546, 581). This makes the model's forward pass intrinsically stochastic even in eval mode: re-scoring the SAME checkpoint on the SAME utterances in a fresh process draws different random masks (RNG state differs run-to-run), so per-utterance logits are NOT expected to be bit-identical or even highly linearly correlated across independent runs. i1_geometry_causal_decomp.py's own baseline condition is subject to the identical non-determinism. EER and AUC (rank-based, aggregate) are the correct reproduction criteria here, not per-utterance correlation/magnitude, which is expected to show exactly this kind of noise (~0.95-0.96 Pearson) even for a byte-identical scoring implementation.",
+    "pass": true,
+    "tolerance_eer": 0.01,
+    "tolerance_auc": 0.01,
+    "criteria": "PASS requires |EER_this - EER_i1| <= 0.01 AND |AUC_this - AUC_i1| <= 0.01. Per-utterance Pearson correlation is reported for transparency but is NOT a pass/fail criterion because Phoneme_GAT's forward pass is intrinsically stochastic (unconditional SpecAugment masking, see 'note')."
+  },
+  "eval_selection": {
+    "corpus": "ASVspoof 2019 LA eval (test split), attacks A07-A19",
+    "n_utts": 1600,
+    "n_bona": 800,
+    "n_spoof": 800,
+    "n_systems": 13,
+    "systems": [
+      "A07",
+      "A08",
+      "A09",
+      "A10",
+      "A11",
+      "A12",
+      "A13",
+      "A14",
+      "A15",
+      "A16",
+      "A17",
+      "A18",
+      "A19"
+    ],
+    "selection_recipe": "identical to experiments/scripts/i1_geometry_causal_decomp.py (seed=42, np.random.default_rng(42).choice, 800 spoof + 800 bona)",
+    "labels_verified_vs_i1_cache": true
+  },
+  "mini_goat": {
+    "detector_alone_eer": 0.14375000000000002,
+    "axis_alone_eer": 0.1725,
+    "fused_eer": 0.11375000000000002,
+    "dEER_mean": -0.03,
+    "dEER_ci95": [
+      -0.045573225774096254,
+      -0.012501542675713606
+    ],
+    "dEER_p": 0.0,
+    "lambdas_per_fold": [
+      1.0,
+      1.0,
+      0.75,
+      0.75,
+      1.0
+    ]
+  },
+  "robust_goat_regated_this_run": {
+    "detector_alone_eer": 0.07125000000000001,
+    "axis_alone_eer": 0.1725,
+    "fused_eer": 0.07562500000000003,
+    "dEER_mean": 0.004375000000000018,
+    "dEER_ci95": [
+      -0.007500425707831393,
+      0.01563409545156672
+    ],
+    "dEER_p": 0.559,
+    "lambdas_per_fold": [
+      0.25,
+      0.25,
+      0.25,
+      0.25,
+      0.25
+    ]
+  },
+  "robust_goat_workstream_c_published": {
+    "demo_scope_caveat": "This is a fusion/robustness DEMO on n_systems=13 ASVspoof attacks, NOT a powered test of the system-hardness law (verdict P1, established/stress-tested at n=61 MLAAD systems). Utterance-level fusion metrics (n=1600) are well-powered; any system-level (n=13) regression would not be.",
+    "detector_architecture": "WavLM-GAT",
+    "detector_training_domain": "ASVspoof/robust (robust_goat.ckpt + 2 seeds: robust_goat_seed3.ckpt, robust_goat_seed7.ckpt)",
+    "detector_note": "robust_goat IS the WavLM-GAT architecture (frozen WavLM-L12 encoder + phoneme-GAT head), identical architecture to the MLAAD detector used in I7 (mlaad_robust_goat*.ckpt). The only difference is TRAINING DOMAIN (ASVspoof vs MLAAD) -- this experiment is the same-architecture / different-training-domain case, consistent with the verdict's cross-detector-agreement classification (audit7: aasist_zs~robust_goat is the ASVspoof-domain same-domain pair; robust_goat itself is WavLM-GAT, not a distinct architecture).",
+    "corpus": "ASVspoof 2019 LA eval, attacks A07-A19 (robust_goat's native training/eval domain), 1600 utts (800 bona / 800 spoof), reproduced from experiments/results/i4_asvspoof_position/features.npz (frozen WavLM-L12 embeddings) + experiments/results/i1_geometry_causal_decomp/i1_logits.npz (robust_goat 3-seed baseline logits on the identical 1600-utterance selection).",
+    "n_systems": 13,
+    "systems": [
+      "A07",
+      "A08",
+      "A09",
+      "A10",
+      "A11",
+      "A12",
+      "A13",
+      "A14",
+      "A15",
+      "A16",
+      "A17",
+      "A18",
+      "A19"
+    ],
+    "n_utts": 1600,
+    "n_bona": 800,
+    "n_spoof": 800,
+    "axis_construction": "unsupervised centroid difference: w = mean(z(spoof_trainfold)) - mean(z(bona_trainfold)), unit-normalized, standardization (mu,sd) fit on train-fold bona pool only -- identical construction to I7 (experiments/scripts/i7_axis_fusion.py) and I3/I4's LOAO axis. Estimated INTERNALLY on ASVspoof 2019 LA train folds (never transferred from MLAAD).",
+    "fusion_method": "s_fused = z(detector_logit) + lambda * z(axis_projection), lambda in {0,0.25,0.5,0.75,1,1.5,2,3} selected by train-fold AUC, 5-fold attack(system)-disjoint splits, bona split into independent random folds, all standardization/lambda fit on train folds only, evaluated out-of-fold.",
+    "detector_alone_eer": 0.07812500000000001,
+    "detector_alone_eer_per_seed": {
+      "s1": 0.07125000000000001,
+      "s3": 0.09187500000000001,
+      "s7": 0.07125000000000001
+    },
+    "axis_alone_eer": 0.1725,
+    "fused_eer": 0.07770833333333331,
+    "fused_eer_per_seed": {
+      "s1": 0.07499999999999998,
+      "s3": 0.08374999999999999,
+      "s7": 0.07437499999999997
+    },
+    "dEER_mean_over_seeds": -0.00041666666666670404,
+    "dEER_bootstrap_ci95": [
+      -0.0074949103558823,
+      0.006248168912997688
+    ],
+    "dEER_bootstrap_p": 0.798,
+    "per_fold_dEER": [
+      {
+        "fold": 0,
+        "n_te": 335,
+        "test_systems": "A07,A14,A19",
+        "lambda_s1": 0.25,
+        "EER_detector_s1": 0.125625,
+        "EER_fused_s1": 0.12535714285714283,
+        "dEER_s1": -0.000267857142857153,
+        "lambda_s3": 0.25,
+        "EER_detector_s3": 0.14616071428571428,
+        "EER_fused_s3": 0.15526785714285712,
+        "dEER_s3": 0.009107142857142841,
+        "lambda_s7": 0.5,
+        "EER_detector_s7": 0.10142857142857144,
+        "EER_fused_s7": 0.10767857142857143,
+        "dEER_s7": 0.006249999999999992,
+        "EER_axis_alone": 0.23875
+      },
+      {
+        "fold": 1,
+        "n_te": 359,
+        "test_systems": "A10,A16,A17",
+        "lambda_s1": 0.25,
+        "EER_detector_s1": 0.06391331658291455,
+        "EER_fused_s1": 0.03946293969849248,
+        "dEER_s1": -0.024450376884422066,
+        "lambda_s3": 0.25,
+        "EER_detector_s3": 0.07831344221105527,
+        "EER_fused_s3": 0.07206344221105528,
+        "dEER_s3": -0.006249999999999992,
+        "lambda_s7": 0.25,
+        "EER_detector_s7": 0.06391331658291455,
+        "EER_fused_s7": 0.047613065326633154,
+        "dEER_s7": -0.016300251256281394,
+        "EER_axis_alone": 0.2117776381909548
+      },
+      {
+        "fold": 2,
+        "n_te": 365,
+        "test_systems": "A09,A12,A13",
+        "lambda_s1": 0.25,
+        "EER_detector_s1": 0.01112804878048781,
+        "EER_fused_s1": 0.005564024390243905,
+        "dEER_s1": -0.005564024390243905,
+        "lambda_s3": 0.25,
+        "EER_detector_s3": 0.01913109756097562,
+        "EER_fused_s3": 0.013567073170731714,
+        "dEER_s3": -0.005564024390243906,
+        "lambda_s7": 0.25,
+        "EER_detector_s7": 0.016692073170731715,
+        "EER_fused_s7": 0.01112804878048781,
+        "dEER_s7": -0.005564024390243906,
+        "EER_axis_alone": 0.011814024390243904
+      },
+      {
+        "fold": 3,
+        "n_te": 283,
+        "test_systems": "A11,A18",
+        "lambda_s1": 0.25,
+        "EER_detector_s1": 0.07408536585365852,
+        "EER_fused_s1": 0.09878048780487804,
+        "dEER_s1": 0.02469512195121952,
+        "lambda_s3": 0.25,
+        "EER_detector_s3": 0.10284552845528457,
+        "EER_fused_s3": 0.11316056910569103,
+        "dEER_s3": 0.010315040650406462,
+        "lambda_s7": 0.25,
+        "EER_detector_s7": 0.12035060975609756,
+        "EER_fused_s7": 0.11316056910569103,
+        "dEER_s7": -0.007190040650406529,
+        "EER_axis_alone": 0.3085365853658536
+      },
+      {
+        "fold": 4,
+        "n_te": 258,
+        "test_systems": "A08,A15",
+        "lambda_s1": 0.25,
+        "EER_detector_s1": 0.02780612244897961,
+        "EER_fused_s1": 0.02780612244897961,
+        "dEER_s1": 0.0,
+        "lambda_s3": 0.25,
+        "EER_detector_s3": 0.05363520408163262,
+        "EER_fused_s3": 0.04853316326530614,
+        "dEER_s3": -0.005102040816326481,
+        "lambda_s7": 0.25,
+        "EER_detector_s7": 0.042283163265306144,
+        "EER_fused_s7": 0.03093112244897961,
+        "dEER_s7": -0.011352040816326535,
+        "EER_axis_alone": 0.05873724489795916
+      }
+    ],
+    "lambdas_per_fold": {
+      "s1": [
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "s3": [
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "s7": [
+        0.5,
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ]
+    },
+    "cos_internal_vs_mlaad": {
+      "cos_internal_vs_mlaad_own_frame": -0.07753869611322561,
+      "cos_internal_vs_mlaad_mlaad_frame": -0.08484204686296372,
+      "cos_internal_2019LA_vs_internal_2021LA": 0.7469743550351331
+    },
+    "provenance": {
+      "embeddings": "experiments/results/i4_asvspoof_position/features.npz",
+      "detector_logits": "experiments/results/i1_geometry_causal_decomp/i1_logits.npz",
+      "attack_id_reconstruction": "deterministic reproduction of experiments/scripts/i1_geometry_causal_decomp.py's seeded (seed=42) selection over HF dataset Bisher/as_vspoof_2019_la (system_id column only, offline mode, cached arrow files under data/asvspoof_2019_la/, no audio download, no GPU); verified byte-identical (max|\u0394hard|=8.93e-17) against experiments/results/i4_asvspoof_position/attack_table.csv",
+      "reference_method": "experiments/scripts/i7_axis_fusion.py (verdict P5, MLAAD EER 0.272->0.163, audited clean in experiments/axis_audits/audit5_fusion_claims.py)",
+      "mlaad_axis_source": "experiments/results/i3_position_geometry/embeddings.npz",
+      "asvspoof2021_axis_source (secondary rotation check)": "experiments/results/j4_asvspoof21/embeddings.npz"
+    }
+  },
+  "axis_construction": "unsupervised centroid difference: w = mean(z(spoof_trainfold)) - mean(z(bona_trainfold)), unit-normalized, standardization (mu,sd) fit on train-fold bona pool only -- IDENTICAL construction and fold protocol to Workstream C (experiments/results/c_asvspoof_fusion/asvspoof_internal_fusion.py). Axis is estimated on the SAME frozen WavLM-L12 embeddings (experiments/results/i4_asvspoof_position/features.npz X12), independent of which detector is being fused.",
+  "fusion_method": "s_fused = z(detector_logit) + lambda * z(axis_projection), lambda in {0,0.25,0.5,0.75,1,1.5,2,3} selected by train-fold AUC, 5-fold attack(system)-disjoint splits, bona split into independent random folds, all standardization/lambda fit on train folds only, evaluated out-of-fold. Bootstrap dEER: paired utterance bootstrap B=2000.",
+  "provenance": {
+    "embeddings": "experiments/results/i4_asvspoof_position/features.npz",
+    "mini_goat_checkpoint": "models/mini_goat.ckpt",
+    "robust_goat_checkpoint": "models/robust_goat.ckpt",
+    "i1_baseline_logits_for_gate": "experiments/results/i1_geometry_causal_decomp/i1_logits.npz",
+    "reference_fusion_script": "experiments/results/c_asvspoof_fusion/asvspoof_internal_fusion.py"
+  }
+}

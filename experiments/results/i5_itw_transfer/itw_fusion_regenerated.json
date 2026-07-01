@@ -1,0 +1,233 @@
+{
+  "provenance": {
+    "generating_script": "experiments/results/i5_itw_transfer/regen_itw_fusion.py",
+    "raw_inputs": [
+      "experiments/results/i5_itw_transfer/features.npz (X12 embeddings)",
+      "experiments/results/i5_itw_transfer/utt_table.csv (speaker, label, logit=WavLM-GAT detector score)",
+      "experiments/results/i5_itw_transfer/speaker_table.csv (sanity check only)",
+      "experiments/results/j5_aasist/aasist_scores.npz (sit=AASIST-ZS scores on ITW, row-aligned with utt_table.csv)"
+    ],
+    "reference_methodology": [
+      "experiments/axis_audits/audit5_fusion_claims.py",
+      "experiments/axis_audits/audit6_itw_speaker.py",
+      "experiments/axis_audits/audit_common.py"
+    ],
+    "purpose": "Correct the mislabeled experiments/results/i7_axis_fusion/itw_fusion_test.json (0.292 was reported downstream as 'fusion' but is actually axis-alone; true fusion is ~0.31 and HURTS relative to axis alone on ITW). This artifact is the unambiguous replacement; the original file is left in place, unmodified.",
+    "does_not_overwrite": "experiments/results/i7_axis_fusion/itw_fusion_test.json"
+  },
+  "axis_alone_eer": 0.30066666666666664,
+  "detector_alone_eer": 0.3633333333333333,
+  "fusion_eer": 0.306,
+  "fusion_hurts_relative_to_axis_alone": true,
+  "fusion_eer_speaker_disjoint": 0.19333333333333336,
+  "leakage_delta": -0.032666666666666705,
+  "cos_wITW_wMLAAD": 0.1034183911018936,
+  "cos_wITW_wMLAAD_unavailable_reason": null,
+  "pipeline_a_wavlmgat_centroid_axis": {
+    "description": "WavLM-GAT fine-tuned detector logit, fused with an unsupervised centroid-difference ITW-internal axis on standardized L12 embeddings. 5-fold, speaker-disjoint from construction (both bona and spoof speakers partitioned into folds jointly). This is the pipeline the original itw_fusion_test.json intended to report.",
+    "detector_alone_eer": 0.3633333333333333,
+    "axis_alone_eer": 0.30066666666666664,
+    "fusion_eer": 0.306,
+    "per_fold": [
+      {
+        "fold": 0,
+        "n_eval": 417,
+        "lambda": 2.0,
+        "detector_eer": 0.347685931383836,
+        "axis_eer": 0.2685470872668662,
+        "fused_eer": 0.2973520607874741,
+        "dEER_fusion_minus_axis": 0.0288049735206079,
+        "dEER_fusion_minus_detector": -0.05033387059636191
+      },
+      {
+        "fold": 1,
+        "n_eval": 909,
+        "lambda": 2.0,
+        "detector_eer": 0.31936084142394827,
+        "axis_eer": 0.3341666666666666,
+        "fused_eer": 0.3004854368932039,
+        "dEER_fusion_minus_axis": -0.03368122977346272,
+        "dEER_fusion_minus_detector": -0.018875404530744377
+      },
+      {
+        "fold": 2,
+        "n_eval": 698,
+        "lambda": 2.0,
+        "detector_eer": 0.3202189501531607,
+        "axis_eer": 0.23025445558340296,
+        "fused_eer": 0.26468079922027293,
+        "dEER_fusion_minus_axis": 0.03442634363686997,
+        "dEER_fusion_minus_detector": -0.055538150932887775
+      },
+      {
+        "fold": 3,
+        "n_eval": 382,
+        "lambda": 2.0,
+        "detector_eer": 0.36968062334103946,
+        "axis_eer": 0.23993207180980108,
+        "fused_eer": 0.2878956531666524,
+        "dEER_fusion_minus_axis": 0.047963581356851304,
+        "dEER_fusion_minus_detector": -0.08178497017438707
+      },
+      {
+        "fold": 4,
+        "n_eval": 594,
+        "lambda": 2.0,
+        "detector_eer": 0.39801980198019804,
+        "axis_eer": 0.29588327253778013,
+        "fused_eer": 0.29712089630015637,
+        "dEER_fusion_minus_axis": 0.0012376237623762387,
+        "dEER_fusion_minus_detector": -0.10089890568004167
+      }
+    ],
+    "n_speakers": 53,
+    "n_utts": 3000,
+    "fold_seed": 0,
+    "comparison_to_original_mislabeled_artifact": {
+      "original_itw_baseline_EER": 0.3633,
+      "original_itw_internal_axis_speaker_disjoint_EER": 0.2917,
+      "original_fusion_internal_lam1.5_EER": 0.3123,
+      "note": "The original artifact's 'itw_internal_axis_speaker_disjoint' (0.2917) was mislabeled downstream as the fusion result; its actual 'fusion_internal' value (0.3123) is WORSE than the axis alone. This script's independent from-scratch recomputation (different fold RNG / speaker partition) reproduces the same qualitative and closely matching quantitative finding: fusion_eer > axis_alone_eer."
+    }
+  },
+  "pipeline_b_aasist_lda_axis_leakage_quantification": {
+    "aasist_alone_eer": 0.486,
+    "leaky_bona_folds": {
+      "lda_axis_alone_eer": 0.10066666666666668,
+      "fused_eer": 0.16066666666666665,
+      "per_fold": [
+        {
+          "fold": 0,
+          "n_eval": 628,
+          "lambda": 2.0,
+          "lda_axis_eer": 0.07520564042303174,
+          "fused_eer": 0.1515374069721896
+        },
+        {
+          "fold": 1,
+          "n_eval": 690,
+          "lambda": 2.0,
+          "lda_axis_eer": 0.08113094644459956,
+          "fused_eer": 0.13491074099930186
+        },
+        {
+          "fold": 2,
+          "n_eval": 1234,
+          "lambda": 2.0,
+          "lda_axis_eer": 0.08900512290671142,
+          "fused_eer": 0.13612564036333896
+        },
+        {
+          "fold": 3,
+          "n_eval": 747,
+          "lambda": 2.0,
+          "lda_axis_eer": 0.1375311548047632,
+          "fused_eer": 0.21516431274808454
+        },
+        {
+          "fold": 4,
+          "n_eval": 881,
+          "lambda": 2.0,
+          "lda_axis_eer": 0.09156132649283333,
+          "fused_eer": 0.1317739461575078
+        }
+      ]
+    },
+    "strict_speaker_disjoint_bona_folds": {
+      "lda_axis_alone_eer": 0.1433333333333333,
+      "fused_eer": 0.19333333333333336,
+      "per_fold": [
+        {
+          "fold": 0,
+          "n_eval": 279,
+          "lambda": 2.0,
+          "lda_axis_eer": 0.1577517162471396,
+          "fused_eer": 0.24044622425629292
+        },
+        {
+          "fold": 1,
+          "n_eval": 479,
+          "lambda": 2.0,
+          "lda_axis_eer": 0.1419429247979097,
+          "fused_eer": 0.24095696905364578
+        },
+        {
+          "fold": 2,
+          "n_eval": 1055,
+          "lambda": 2.0,
+          "lda_axis_eer": 0.11279858819808355,
+          "fused_eer": 0.14786360728328768
+        },
+        {
+          "fold": 3,
+          "n_eval": 466,
+          "lambda": 2.0,
+          "lda_axis_eer": 0.15240274599542336,
+          "fused_eer": 0.29048436308161707
+        },
+        {
+          "fold": 4,
+          "n_eval": 721,
+          "lambda": 2.0,
+          "lda_axis_eer": 0.09985754985754985,
+          "fused_eer": 0.14007084007084009
+        }
+      ]
+    },
+    "strict_identity_disjoint_folds": {
+      "description": "Stronger than audit5's 'strict_group_bona': partitions bona AND spoof rows using a SINGLE speaker-identity fold assignment, so a person who appears as both a bona speaker and a spoof-clone target (true for ~46/49 ITW speakers) is entirely inside one fold. This is the variant this script's hard train/eval disjointness assertion actually verifies.",
+      "lda_axis_alone_eer": 0.12166666666666665,
+      "fused_eer": 0.16933333333333334,
+      "per_fold": [
+        {
+          "fold": 0,
+          "n_eval": 592,
+          "lambda": 2.0,
+          "lda_axis_eer": 0.16202635491975595,
+          "fused_eer": 0.2025329436496949
+        },
+        {
+          "fold": 1,
+          "n_eval": 359,
+          "lambda": 2.0,
+          "lda_axis_eer": 0.050655161393416456,
+          "fused_eer": 0.10942793224672417
+        },
+        {
+          "fold": 2,
+          "n_eval": 885,
+          "lambda": 2.0,
+          "lda_axis_eer": 0.10286293128146358,
+          "fused_eer": 0.1480451643269349
+        },
+        {
+          "fold": 3,
+          "n_eval": 535,
+          "lambda": 2.0,
+          "lda_axis_eer": 0.19036260896726015,
+          "fused_eer": 0.2653689979271374
+        },
+        {
+          "fold": 4,
+          "n_eval": 629,
+          "lambda": 2.0,
+          "lda_axis_eer": 0.06568629490192818,
+          "fused_eer": 0.09539384736984419
+        }
+      ]
+    },
+    "leakage_delta_lda_axis_alone": -0.04266666666666663,
+    "leakage_delta_fused": -0.032666666666666705,
+    "note": "leaky_bona_folds mirrors audit5/J5-H4's default protocol, where bona utterances are folded at random (independent of speaker), so the same bona speaker can appear in both the LDA-training fold and the held-out evaluation fold. strict_speaker_disjoint_bona_folds reproduces audit5's 'strict_group_bona' exactly (bona and spoof each speaker-disjoint, but the two partitions are independent of each other) -- this is the exact protocol behind the ~0.193 'strict speaker-disjoint' figure quoted in COMPREHENSIVE_VERDICT.md / AUDIT5_SUMMARY.md. Because ~46/49 ITW speakers have BOTH a bona and a spoof recording, that protocol does not fully eliminate identity leakage (a person's bona and spoof utterances can still land in different folds); strict_identity_disjoint_folds is this script's fix for that residual leakage, provided for transparency and verified by an explicit disjointness assertion."
+  },
+  "reference_audit_outputs_for_comparison": {
+    "audit5_itw_internal_axis_alone_speaker_disjoint": 0.30066666666666664,
+    "audit5_itw_internal_fused_speaker_disjoint": 0.306,
+    "audit5_original_artifact_axis_alone": 0.2917,
+    "audit5_original_artifact_fused": 0.3123,
+    "audit5_j5h4_itw_leaky_lda_alone": 0.10066666666666668,
+    "audit5_j5h4_itw_leaky_fused": 0.16066666666666665,
+    "audit5_j5h4_itw_strict_lda_alone": 0.1433333333333333,
+    "audit5_j5h4_itw_strict_fused": 0.19333333333333336
+  }
+}
