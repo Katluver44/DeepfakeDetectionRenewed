@@ -1,0 +1,123 @@
+{
+  "timestamp": "2026-07-01 02:19:38",
+  "spec_file": "PREDICTOR_SPEC.md",
+  "condition": "asvspoof21_df_source_asvspoof",
+  "n_attacks": 13,
+  "attacks": [
+    "A07",
+    "A08",
+    "A09",
+    "A10",
+    "A11",
+    "A12",
+    "A13",
+    "A14",
+    "A15",
+    "A16",
+    "A17",
+    "A18",
+    "A19"
+  ],
+  "n_min_utts_per_attack": 20,
+  "n_perm": 200000,
+  "perm_seed": 7,
+  "rho": 0.32967032967032966,
+  "p_one_sided_exact_perm": 0.13485932570337147,
+  "alpha": 0.05,
+  "acceptance_criterion": "p < 0.05 AND rho > 0 (one-sided, pre-specified)",
+  "confirmation_result": "FAILED",
+  "per_attack_table": [
+    {
+      "attack": "A07",
+      "pos_lda": 10.50812578201294,
+      "n_utts": 40,
+      "P3": -0.5057385934763061,
+      "hard_actual": 0.38
+    },
+    {
+      "attack": "A08",
+      "pos_lda": 10.226622581481934,
+      "n_utts": 40,
+      "P3": -0.4392468775105682,
+      "hard_actual": 0.38315789473684214
+    },
+    {
+      "attack": "A09",
+      "pos_lda": 12.457868576049805,
+      "n_utts": 40,
+      "P3": -0.966272412711034,
+      "hard_actual": 0.3807017543859649
+    },
+    {
+      "attack": "A10",
+      "pos_lda": 1.8813648223876953,
+      "n_utts": 40,
+      "P3": 1.5319225711204334,
+      "hard_actual": 0.5309649122807018
+    },
+    {
+      "attack": "A11",
+      "pos_lda": 9.05176067352295,
+      "n_utts": 40,
+      "P3": -0.16174174031988287,
+      "hard_actual": 0.4547368421052631
+    },
+    {
+      "attack": "A12",
+      "pos_lda": 9.232268333435059,
+      "n_utts": 40,
+      "P3": -0.20437807280163037,
+      "hard_actual": 0.33859649122807023
+    },
+    {
+      "attack": "A13",
+      "pos_lda": 13.938851356506348,
+      "n_utts": 40,
+      "P3": -1.3160840177034936,
+      "hard_actual": 0.252280701754386
+    },
+    {
+      "attack": "A14",
+      "pos_lda": 11.342279434204102,
+      "n_utts": 40,
+      "P3": -0.7027676418446877,
+      "hard_actual": 0.4028947368421052
+    },
+    {
+      "attack": "A15",
+      "pos_lda": 8.202495574951172,
+      "n_utts": 40,
+      "P3": 0.0388566671132481,
+      "hard_actual": 0.376140350877193
+    },
+    {
+      "attack": "A16",
+      "pos_lda": 7.37757682800293,
+      "n_utts": 40,
+      "P3": 0.23370440921148963,
+      "hard_actual": 0.35228070175438597
+    },
+    {
+      "attack": "A17",
+      "pos_lda": 6.596570014953613,
+      "n_utts": 40,
+      "P3": 0.41818004956877053,
+      "hard_actual": 0.356140350877193
+    },
+    {
+      "attack": "A18",
+      "pos_lda": 10.395549774169922,
+      "n_utts": 40,
+      "P3": -0.4791478764829121,
+      "hard_actual": 0.4412280701754385
+    },
+    {
+      "attack": "A19",
+      "pos_lda": -2.4403152465820312,
+      "n_utts": 40,
+      "P3": 2.5527135358365713,
+      "hard_actual": 0.4721052631578948
+    }
+  ],
+  "note": "This is the ONLY test run for this confirmation. No P1/P2/P4, no other detector, no other condition was scored under this pre-registration."
+}
