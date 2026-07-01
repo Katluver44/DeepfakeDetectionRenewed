@@ -81,7 +81,7 @@ def load_condition_metadata():
     import pyarrow.parquet as pq
 
     api = HfApi()
-    info = api.dataset_info(DF_REPO, repo_type="dataset")
+    info = api.dataset_info(DF_REPO)
     shard_files = sorted(s.rfilename for s in info.siblings
                           if s.rfilename.startswith("data/test-") and s.rfilename.endswith(".parquet"))
 
