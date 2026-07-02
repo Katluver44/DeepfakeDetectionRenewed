@@ -1,0 +1,95 @@
+{
+  "n_systems": 61,
+  "data_source": "experiments/results/i3_position_geometry/system_position.csv",
+  "note_on_l0_features": "Only vel_mean_L0 (vmean0) and rog_L0 (rog0) are cached at layer 0 for MLAAD (i2_geometry_battery/system_table.csv computed the full geometric battery -- vel_cv, vel_entropy, curvature, tortuosity, recurrence, twonn_id, etc. -- only at L9/L12, not L0). RMS is a waveform-level (not layer-0 embedding) channel proxy, also cached. These three (vmean0, rog0, rms) are therefore the complete available channel-proxy set; this is documented as a limitation of the recon, not a methodological choice.",
+  "fidelity_recomputed_sd_along_corr": 0.9997268484781465,
+  "marginal_spearman": {
+    "sd_along": {
+      "rho": 0.5894235854045478,
+      "p": 5.800141064019613e-07
+    },
+    "vmean0": {
+      "rho": -0.196562665256478,
+      "p": 0.12893924193442172
+    },
+    "rog0": {
+      "rho": -0.4248016922263352,
+      "p": 0.0006440894531397676
+    },
+    "rms": {
+      "rho": -0.43336858804865147,
+      "p": 0.0004852908681760684
+    }
+  },
+  "proxy_vs_sd_along_collinearity": {
+    "vmean0": {
+      "rho": -0.39280803807509246,
+      "p": 0.0017399548685285628
+    },
+    "rog0": {
+      "rho": -0.44621893178212574,
+      "p": 0.00031291202325195585
+    },
+    "rms": {
+      "rho": -0.3345848757271285,
+      "p": 0.008399800097398512
+    }
+  },
+  "partial_spearman": {
+    "controls": [
+      "vmean0",
+      "rog0",
+      "rms"
+    ],
+    "rho": 0.5792173453199365,
+    "p_asymptotic": 1.005627418431784e-06,
+    "n_perm": 10000,
+    "perm_p_twosided": 9.999000099990002e-05,
+    "seed": 0,
+    "per_control_partial": {
+      "vmean0": {
+        "rho": 0.5452670544685351,
+        "p_asymptotic": 5.520766071786415e-06
+      },
+      "rog0": {
+        "rho": 0.5672131147540983,
+        "p_asymptotic": 1.8765742192950033e-06
+      },
+      "rms": {
+        "rho": 0.5810153358011634,
+        "p_asymptotic": 9.139499600369988e-07
+      }
+    }
+  },
+  "ols_multivariate": {
+    "formula": "hardness ~ sd_along + vmean0 + rog0 + rms (standardized predictors)",
+    "r2": 0.40274986956685854,
+    "adj_r2": 0.36008914596449126,
+    "coef_sd_along": 0.07226675293354193,
+    "hc3_se": 0.024288273838545777,
+    "hc3_t": 2.9753762418000136,
+    "hc3_p": 0.002926293983502978,
+    "perm_p_coef": 0.00029997000299970003,
+    "n_perm": 10000,
+    "seed": 1,
+    "all_coefs": {
+      "const": 0.19622332805572887,
+      "sd_along": 0.07226675293354193,
+      "vmean0": 0.026773251585473196,
+      "rog0": -0.039521984800204864,
+      "rms": -0.014620862591294144
+    },
+    "all_hc3_p": {
+      "const": 1.5308755136368117e-38,
+      "sd_along": 0.002926293983502978,
+      "vmean0": 0.2742873399516451,
+      "rog0": 0.12236781381335547,
+      "rms": 0.40875281474776803
+    }
+  },
+  "acceptance": {
+    "criterion": "partial Spearman(sd_along, hardness | vmean0,rog0,rms) permutation p < 0.05",
+    "observed_perm_p": 9.999000099990002e-05,
+    "survives": true
+  }
+}

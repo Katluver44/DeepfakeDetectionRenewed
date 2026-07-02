@@ -1,0 +1,762 @@
+================================================================================
+ELI5.txt  —  A plain-language explainer for the paper
+"Low-Cost Geometric Directions in Frozen Speech Models: Where a Training-Free
+ Deepfake-Hardness Signal Helps — and Where It Does Not"
+================================================================================
+
+Who this is for: a college freshman who knows what a mean, a standard
+deviation, and a correlation are, and who has seen a picture of a neural
+network. By the end you should understand every concept well enough to write
+about this paper accurately.
+
+How to read it: each numbered section gives (a) the plain idea with an everyday
+analogy, then (b) "In this paper specifically:" with the actual numbers and how
+the concept is used in THIS repository. Sections 1–24 cover the paper as
+written; sections 25–32 cover the future work in the submission roadmap.
+
+The one-sentence summary of the whole paper: inside a big pre-trained speech AI
+there is a single hidden "real-vs-fake" direction; how SPREAD-OUT a fake-voice
+system's outputs are along that direction predicts how hard that system is to
+catch; that direction is different in every dataset (which is why detectors
+don't transfer); and you can bolt the direction onto a detector for free to help
+it — but only when the detector is weak enough to have room to improve.
+
+
+--------------------------------------------------------------------------------
+PART A — THE BUILDING BLOCKS
+--------------------------------------------------------------------------------
+
+1. SELF-SUPERVISED SPEECH MODEL / WavLM
+---------------------------------------
+Plain idea: A "self-supervised" model is one that teaches itself by playing
+fill-in-the-blank on huge amounts of raw data, with no human labels. Imagine
+someone who listened to tens of thousands of hours of speech and constantly
+tried to guess the masked-out chunk of each recording. To get good at that game
+they had to build a rich internal sense of how speech "works" — sounds,
+phonemes, speaker traits, acoustics. WavLM is exactly such a model for audio.
+
+In this paper specifically: The backbone is WavLM-base, a ~95-million-parameter
+(94.7M) model from Chen et al. 2022. It was pre-trained self-supervised on ~960
+hours of speech. The paper treats this model as a fixed measuring instrument:
+raw audio (16 kHz, 3-second clips) goes in, and internal representations come
+out. Nothing about WavLM is retrained.
+
+2. "FROZEN"
+-----------
+Plain idea: "Frozen" means you lock all the model's internal dials and never
+change them. You only USE the model; you don't teach it anything new. Like using
+a camera exactly as it ships from the factory instead of modifying its lens.
+
+In this paper specifically: WavLM's ~95M parameters are frozen. Only a small
+~13M-parameter "head" on top is ever trained (see §17). All the geometry the
+paper studies is measured in the frozen representation, "before any decision
+boundary is drawn." Freezing is what makes the method cheap (one GPU, no
+retraining) and is central to the paper's identity as a small-scale/low-cost
+method.
+
+3. ENCODER LAYERS / WHY LAYER 12 / MEAN-POOLING OVER TIME
+---------------------------------------------------------
+Plain idea (layers): A deep network processes input in stages ("layers"), each
+refining the previous one's output. Early layers in a speech model capture
+low-level acoustic detail (loudness, pitch, microphone character); middle/later
+layers capture more abstract linguistic content (phonemes, words, meaning).
+Think of an assembly line where each station adds more interpretation.
+
+Plain idea (mean-pooling over time): A 3-second clip is a sequence of many time
+frames, each with its own vector. "Mean-pooling over time" just averages those
+frames into ONE vector for the whole clip — like summarizing a paragraph by the
+average of its sentence meanings. It throws away the moment-to-moment order but
+gives one fixed-size fingerprint per clip.
+
+Why layer 12: WavLM-base has 12 transformer layers. Layer 12 is the last/deepest
+one, where representations are most linguistically abstract and most separated
+between natural and synthetic speech. The paper reads all its geometry from this
+layer.
+
+In this paper specifically: For each utterance they take WavLM
+hidden_states[12] (layer 12 of 12) and do `.mean(1)` — mean-pool over the time
+axis — producing one 768-dimensional vector per clip. Every axis, centroid, and
+projection in the paper lives in this "frozen WavLM-L12, mean-pooled" space. (A
+planned experiment, §26, will sweep all layers 0–12 to show the effect RISES
+with depth — evidence it's learned structure, not a microphone artifact.)
+
+4. EMBEDDINGS, 768-DIMENSIONAL SPACE, AND WHAT "A DIRECTION / AXIS" MEANS
+------------------------------------------------------------------------
+Plain idea (embedding): An embedding is a list of numbers that represents an
+object as a point in space. If I describe a person by (height, weight), that's a
+2-D embedding and each person is a dot on a plane. Speech clips get a 768-number
+embedding, so each clip is a dot in a 768-dimensional space. We can't picture
+768 dimensions, but the math (distances, averages, angles) works exactly like it
+does in 2-D or 3-D.
+
+Plain idea (a direction / axis): In that space, a "direction" is an arrow — a
+768-number vector — pointing some way. Any point can be "projected onto" the
+arrow: you drop a perpendicular from the point to the arrow and read off how far
+along you land. That single number is the point's "position along the axis."
+Think of a ruler laid across a cloud of dots: each dot gets a reading.
+
+In this paper specifically: Each utterance = a point in 768-D frozen WavLM-L12
+space. The "natural-vs-synthetic axis" is one specific arrow in that space (§6).
+Projecting an utterance onto it gives one number saying "how synthetic-ish this
+clip looks to the encoder."
+
+
+--------------------------------------------------------------------------------
+PART B — THE AXIS AND THE LAW
+--------------------------------------------------------------------------------
+
+5. THE NATURAL <-> SYNTHETIC AXIS: HOW IT'S COMPUTED
+----------------------------------------------------
+Plain idea: Take all the REAL (bona fide) clips; their embeddings form a cloud
+with a center of mass (the "centroid" = the average point). Take all the FAKE
+(spoof) clips; they have their own centroid. Draw the arrow from the fake center
+to the real center (or real minus fake). That arrow is the "real-vs-fake ruler."
+It's built purely from group averages — no trained classifier, just two centers
+and the line between them. This is why it's called "unsupervised" in the sense of
+"no detector/decision-boundary needed," even though it does use the bona/spoof
+group labels.
+
+Standardization: Before computing the arrow, each of the 768 coordinates is put
+on a common scale (subtract its mean, divide by its standard deviation, computed
+on the bona-fide clips). Analogy: if one feature is measured in millimeters and
+another in miles, you first convert everyone to "number of standard deviations
+from average" so no single coordinate dominates just because its raw units are
+big. In the code: mu = mean of train bona, sd = std of train bona, then
+z = (X - mu)/sd before taking centroid differences.
+
+"Corpus-internal": The axis is estimated separately WITHIN each dataset
+("corpus"), using only that dataset's own real and fake clips. It is never
+imported from another dataset. This matters enormously because the axis turns
+out to point a different way in every corpus (§10).
+
+Leave-one-system-out (LOSO) and why: A "system" is one particular voice-faking
+program (a specific TTS model). To measure how hard system A is, we must not let
+system A's own clips help define the ruler used to judge system A — that would be
+circular ("grading your own exam"). So when scoring system A, we build the axis
+from the real clips plus every OTHER system's fakes, leaving A out. Repeat,
+leaving each system out in turn. This guarantees a system never informs its own
+score. (The code in i7_axis_fusion.py does the fold-level analog: the axis for
+each held-out fold is built only from the OTHER folds' data.)
+
+In this paper specifically: w = centroid(spoof) − centroid(bona) in standardized
+frozen WavLM-L12 space, estimated corpus-internally and leave-one-system-out on
+MLAAD's 61 TTS systems. It is deliberately NOT the detector's own decision
+boundary — a point the paper stresses to defeat the "it's circular" objection
+(§20).
+
+6. sd_along (SPREAD ALONG THE AXIS) vs POSITION ALONG THE AXIS — AND WHY SPREAD
+   IS "THE LAW"
+------------------------------------------------------------------------------
+Plain idea: Project all of one system's fake clips onto the ruler. Now you have a
+bunch of readings. You can summarize them two ways:
+  - POSITION = the AVERAGE reading (where the system sits on the ruler, e.g. "how
+    fake-looking on average"). This is the intuitive first guess: "the closer a
+    system's fakes sit to the real end, the harder to catch."
+  - SPREAD (sd_along) = the STANDARD DEVIATION of the readings (how strung-out
+    the system's clips are along the ruler). A system with tight spread makes
+    fakes that all look about equally fake; a system with big spread makes some
+    fakes that look very fake and OTHERS that look almost genuine.
+
+The paper's key finding — "the law" — is that SPREAD, not position, predicts
+hardness. The mechanism: a system that spreads across the boundary produces some
+utterances that look essentially genuine to the encoder, and THOSE are exactly
+the ones that slip past the detector. Position alone (the obvious guess) does NOT
+survive; it is in fact the form that FAILED in the pre-registered test (§18).
+This is why the paper insists the result is not a triviality: the naive "closer =
+harder" story loses, and a second-moment quantity (a standard deviation) wins.
+
+In this paper specifically: sd_along = the standard deviation of a system's
+per-utterance projections onto the corpus-internal axis w. Across MLAAD's 61
+systems, higher sd_along => harder to detect (Spearman rho = 0.60). It is "the
+only quantity, out of 83 tested, to survive a global false-discovery-rate
+correction" (§9).
+
+7. DETECTION HARDNESS: 1 − AUC, and AUC / ROC / EER / FALSE POSITIVE vs FALSE
+   NEGATIVE / WHY EER
+----------------------------------------------------------------------------
+Plain idea (a detector's score): A detector outputs a number ("logit") for each
+clip — higher = "more likely fake." To make a decision you pick a threshold:
+above it, call "fake"; below, call "real."
+
+False positive vs false negative:
+  - FALSE POSITIVE = calling a genuine clip "fake" (false alarm).
+  - FALSE NEGATIVE = calling a fake clip "genuine" (a miss — the dangerous one
+    for security). "False positive rate" (FPR) and "false negative rate" (FNR)
+    move in opposite directions as you slide the threshold: catch more fakes and
+    you also cry wolf more often.
+
+ROC curve: Slide the threshold across all values and plot true-positive rate vs
+false-positive rate. That traced curve is the ROC. A perfect detector hugs the
+top-left corner; a coin-flip detector is the diagonal line.
+
+AUC (Area Under the ROC Curve): the area under that curve, from 0.5 (useless) to
+1.0 (perfect). Intuition: AUC = the probability that a randomly chosen fake gets
+a higher "fake" score than a randomly chosen real clip. It's threshold-free.
+
+Hardness = 1 − AUC: If AUC = 1 (easy, perfectly separable), hardness = 0. If
+AUC = 0.5 (impossible, fully overlapping), hardness = 0.5. So "1 − AUC" is a
+clean per-system difficulty score: high = hard to detect. Class overlap (fakes
+sitting among reals) directly lowers AUC — which is why the "spread across the
+boundary" mechanism (§6) connects so naturally to hardness.
+
+EER (Equal Error Rate): the single threshold where FPR = FNR (false alarms =
+misses). The value they share is the EER. Lower is better; 0.5 (50%) is
+chance. People use EER because it collapses the whole trade-off into one
+threshold-independent number that doesn't require picking an operating point, and
+it's the standard metric in the anti-spoofing field.
+
+In this paper specifically: Per-system hardness = 1 − AUC of the detector's
+scores for that system's fakes against a shared pool of genuine clips. Fusion
+gains are reported as EER changes (e.g., 0.144 -> 0.114 on the weak detector).
+The code's `eer_of()` finds the threshold where |FPR − FNR| is smallest and
+returns their average.
+
+
+--------------------------------------------------------------------------------
+PART C — STATISTICS AND WHY THE RESULT IS TRUSTWORTHY
+--------------------------------------------------------------------------------
+
+8. SPEARMAN rho, PERMUTATION p-VALUE, LOSO R^2
+----------------------------------------------
+Spearman rho (rank correlation): Plain idea: ordinary (Pearson) correlation
+asks "do the actual values move together in a straight line?" Spearman asks the
+gentler question "do the RANKINGS agree?" — rank the systems by sd_along, rank
+them by hardness, and see if the two orderings match. rho = +1 means identical
+ordering, 0 means unrelated, −1 means reversed. It's robust to outliers and
+non-straight relationships, which is why it's used for the "law."
+
+Permutation p-value: Plain idea: "Could I have gotten a correlation this strong
+by pure luck?" To find out, shuffle the hardness labels randomly thousands of
+times, breaking any real link, and recompute the correlation each time. If almost
+none of these shuffled (fake) datasets reach the correlation you actually
+observed, your result is unlikely to be coincidence. The p-value is the fraction
+of shuffles that matched or beat your real number. Small p = unlikely to be luck.
+It makes no assumptions about the data's shape — you build the "luck distribution"
+by brute force.
+
+LOSO R^2 (leave-one-system-out R-squared): R^2 ("coefficient of determination")
+is "what fraction of the variation in hardness can my predictor explain?" 0 =
+nothing, 1 = everything. "LOSO" means you fit the predictor while holding out
+each system, then test on the held-out one — an honest, non-cheating estimate of
+how well sd_along predicts a NEW system's hardness, not just systems it was fit
+on.
+
+In this paper specifically: On MLAAD's 61 systems, sd_along vs hardness gives
+Spearman rho = 0.60 (p < 10^-6), leave-one-system-out R^2 = 0.277 (permutation
+p = 2.5 x 10^-4), bootstrap rho 95% CI [0.41, 0.73]. Note: an earlier reported
+R^2 of 0.316 was wrong — that was a 3-feature model mislabeled as sd_along-alone;
+the audit corrected the single-feature value to 0.277.
+
+9. "THE LAW" AND "SURVIVES GLOBAL BH-FDR OUT OF 83 TESTS" (MULTIPLE COMPARISONS)
+-------------------------------------------------------------------------------
+Plain idea (the multiple-comparisons problem): If you run ONE test, a p < 0.05
+"false alarm by luck" happens 5% of the time. But if you run 83 tests, you'd
+EXPECT about 4 of them to look "significant" by pure chance even if nothing is
+real. So finding a small p-value among many tests is much weaker evidence than
+finding it in a single planned test. Analogy: buy 83 lottery tickets and one
+wins — that's not proof you're psychic.
+
+Benjamini–Hochberg False Discovery Rate (BH-FDR): a standard procedure that
+corrects for this. It sorts all the p-values and applies a sliding, stricter bar
+so that among everything you end up calling "significant," only a small
+controlled fraction are expected to be false. "Global BH-FDR across 83 tests"
+means the correction was applied to EVERYTHING tested in the whole project at
+once — the harshest possible bookkeeping.
+
+In this paper specifically: Of all 83 quantities tested across the study,
+sd_along -> hardness is the ONLY one that survives global BH-FDR (audit reports
+q < 0.001). Everything else — including a whole feature battery whose best was
+q = 0.078 — fails the global bar. That is why the paper elevates this one result
+to "the law" and treats the rest as exploratory. Caveat surfaced by the audit:
+the "83" count will change as new experiments are added, so the number should be
+kept in sync with the final ledger.
+
+10. THE AXIS ROTATES ACROSS CORPORA: COSINE SIMILARITY, CHANCE FLOOR, SPLIT-HALF
+    RELIABILITY, "POINTING BACKWARDS"
+--------------------------------------------------------------------------------
+Cosine similarity: Plain idea: a number from −1 to +1 measuring whether two
+arrows point the same way, ignoring their lengths. +1 = identical direction,
+0 = perpendicular (unrelated), −1 = opposite directions. It's just the cosine of
+the angle between them.
+
+Chance floor in 768 dimensions: Plain idea: in very high-dimensional space, two
+arrows drawn at random are almost always nearly perpendicular — their cosine sits
+near 0. (This is a real geometric fact: random unit vectors in n dimensions have
+expected |cosine| about 1/sqrt(n).) So "cosine near 0" between two axes means
+"no more aligned than two random arrows" — i.e., unrelated. In 768-D this chance
+floor is about 0.03.
+
+Split-half reliability: Plain idea: to check that a measurement is trustworthy
+(not noise), split the data in half, compute the thing on each half, and see if
+the two halves agree. If splitting a corpus and estimating its axis twice gives
+nearly the same arrow, the axis is measured cleanly, not by luck.
+
+Why a transferred axis can point BACKWARDS: If corpus A's axis and corpus B's
+axis have a NEGATIVE cosine, then using A's ruler on B doesn't just fail
+randomly — it systematically ranks things in reverse. The "real end" of A's ruler
+points toward B's "fake" region. That's worse than useless.
+
+In this paper specifically: Within one corpus the axis is nearly noise-free
+(split-half cosine ~0.93, up to 0.98). But the MLAAD axis and the ASVspoof-2019
+axis have cosine about −0.08 (slightly negative!), far below the within-corpus
+0.93 and inside the ~0.03 chance band. MLAAD-vs-ASVspoof2021 is even more
+negative (−0.14 to −0.21). Conclusion: each dataset has its OWN real-vs-fake
+direction; a transferred axis is uninformative or backwards. This is the paper's
+"geometric reason detectors fail to transfer across domains." (An earlier draft
+wrongly reported this cosine as +0.36 — a number that was actually a
+within-MLAAD quantity; the audit caught and reversed it.)
+
+11. RELIABILITY CEILING 0.86 / DISATTENUATION
+---------------------------------------------
+Plain idea: No measurement is perfectly repeatable — the hardness score itself
+has noise. If a target you're trying to predict is only, say, 86% self-consistent
+when re-measured, then no predictor on Earth can explain more than that 86%; the
+remaining 14% is just measurement noise, not real signal. That ceiling is set by
+the hardness metric's own reliability.
+
+Disattenuation: Plain idea: because your yardstick is noisy, the correlation you
+observe is an UNDER-estimate of the true underlying relationship. "Disattenuating"
+(correcting for attenuation) divides out the known noise to estimate what the
+correlation WOULD be if you could measure perfectly. It's the flip side of the
+"reliability ceiling."
+
+In this paper specifically: The hardness metric's split-half reliability is 0.86,
+so the R^2 ceiling is ~0.86. sd_along's R^2 of 0.277 is therefore about 0.277 /
+0.86 ~ 32% of the EXPLAINABLE variance — "a partial but robust account," not a
+full one. (Watch-out flagged by the roadmap: the paper's Setup section currently
+also says "split-half reliability 0.76," which conflicts with the audit's 0.86 —
+one of these is a typo/definition mismatch to be fixed. The audit value is 0.86.)
+The "attenuation signature of a real effect": rho rises 0.60 -> 0.64 -> 0.69 as
+you require >=8, >=12, >=16 utterances per system, i.e., as measurement noise
+falls — exactly what a true effect (not an artifact) does.
+
+
+--------------------------------------------------------------------------------
+PART D — FUSION, FOLDS, AND HEADROOM
+--------------------------------------------------------------------------------
+
+12. AXIS FUSION: fused = z(logit) + lambda * z(axis)
+----------------------------------------------------
+Plain idea: You have two opinions about each clip: the detector's score (logit)
+and the axis projection. Fusion just adds them into one combined score — but
+first you put both on the same scale, then weight the axis by a knob lambda.
+
+z-scoring, and why train-fold-only stats matter:
+  - z-score: convert a number to "how many standard deviations above/below its
+    mean," i.e. z = (value − mean)/SD. Now the detector's logits and the axis
+    projections live on a common, unit-free scale so you can sensibly add them.
+  - Train-fold-only stats: the mean and SD used for z-scoring (and the choice of
+    lambda) must be computed ONLY on the training data, never on the data you
+    evaluate on. Otherwise you've secretly peeked at the answers — the evaluation
+    numbers would be optimistic and dishonest ("leakage," §14). In the code, mu,
+    sd, lm, ls, pm, ps are all computed on `tr_mask` (the train fold) only.
+
+lambda (the trust knob): lambda controls how much you trust the axis relative to
+the detector. lambda = 0 means "ignore the axis, use the detector alone." Large
+lambda means "lean heavily on the axis." It's the dial between the two opinions.
+
+The grid {0, 0.25, 0.5, 0.75, 1, 1.5, 2, 3}: rather than solve for the best
+lambda analytically, they just try a fixed menu of values and keep whichever
+works best.
+
+How lambda is chosen — on the TRAINING fold, never on eval: for each fold, they
+pick the lambda that maximizes AUC on that fold's TRAINING data, then apply it to
+the held-out test data. Choosing lambda by looking at the test data would be
+cheating. In the code: `best = max(LAMS, key=lambda L: roc_auc_score(ytr,
+ztr_l + L*ztr_p))` — note `ytr`, the train labels.
+
+Why capping the grid at 2.0 broke the ITW experiment: On the In-the-Wild dataset,
+the training folds kept selecting the LARGEST allowed lambda (the grid maxed at
+2.0 and 2.0 was chosen in all folds) — a tell-tale sign the optimum was pinned at
+the boundary and the true best weight wanted to be even higher (or that the axis
+should dominate the detector entirely). Because the grid was capped too low, the
+procedure couldn't express "trust the axis a lot more than the weak detector,"
+and the fusion result was misleading. The rectified analysis (ITW_FUSION_
+REANALYSIS) found that on ITW, fusing actually HURTS relative to the axis alone
+(fusion EER 0.306 vs axis-alone 0.301) — the opposite of the original claim. A
+capped grid plus correlated errors (§16) is why the ITW experiment went wrong.
+
+In this paper specifically: The MLAAD in-domain fusion (0.272 -> 0.163, axis
+alone 0.187) and the weak-detector ASVspoof fusion (0.144 -> 0.114) are the clean
+fusion wins; the ITW "win" was a mislabeling artifact that the audit reversed.
+
+13. FOLDS / CROSS-VALIDATION / SPEAKER- & SYSTEM-DISJOINT SPLITS
+---------------------------------------------------------------
+Plain idea (cross-validation & folds): To test honestly, split your data into
+K equal parts ("folds"). Train on K−1 of them, test on the held-out one, rotate
+so each fold gets a turn as the test set, average the results. This reuses data
+efficiently while never testing on what you trained on.
+
+Speaker-disjoint / system-disjoint splits: A plain split can accidentally put the
+same speaker (or the same TTS system) in both train and test. Then the model can
+"win" just by recognizing a familiar voice or a familiar generator, not by
+learning the real task. "Speaker-disjoint" means no speaker appears in both
+train and test; "system-disjoint" means no synthesis system does. This forces the
+evaluation to measure generalization to NEW voices/systems.
+
+In this paper specifically: The fusion experiment (i7) uses 5-fold, SYSTEM-
+disjoint folds (spoof systems partitioned across folds; bona split into the same
+folds), with axis, z-stats, and lambda all fit on train folds only. The ITW work
+requires SPEAKER-disjoint folds — and that's where the trouble was (§14).
+
+14. LEAKAGE — THE ITW SPEAKER-LEAKAGE STORY (~3-4 EER POINTS)
+------------------------------------------------------------
+Plain idea (leakage): "Leakage" is any way information from the test set sneaks
+into training, making results look better than they truly are. It's the silent
+killer of ML papers.
+
+The ITW story: In the In-the-Wild fusion pipeline, genuine ("bona") clips were
+originally split into folds at RANDOM, independent of speaker. Because the same
+speaker's clips could then land in both the axis-training fold and the test fold,
+the model effectively saw the test speakers during training — leakage. When the
+folds were made strictly speaker-disjoint (each speaker's clips confined to one
+fold), the EER went UP because the artificial boost disappeared: e.g., the
+supervised-LDA-fusion number rose from 0.161 (leaky) to 0.193 (strict) — about
+3.3 EER points of the apparent performance were pure leakage. Roughly 3-4 EER
+points of the original ITW claim evaporated once leakage was closed.
+
+In this paper specifically: This is a "what does NOT work / what we corrected"
+result. It does not touch the core law or the clean MLAAD fusion; it's a honesty
+correction to the domain-shift narrative, and the word "zero-cost" is banned for
+any variant that used labels.
+
+15. HEADROOM: WHY FUSION HELPS WEAK DETECTORS AND NOT NEAR-CEILING ONES
+----------------------------------------------------------------------
+Plain idea: "Headroom" is how much room a detector has left to improve. A student
+scoring 55% has lots of room to gain from a tutor; a student already scoring 99%
+has almost none — a tutor can't add much. The free axis signal is like that
+tutor: it helps a weak detector a lot and a near-perfect detector essentially not
+at all, because there's nothing left to fix.
+
+In this paper specifically: A deliberately WEAK WavLM-GAT trained on only 500
+utterances had EER 0.144; axis fusion cut it to 0.114 (ΔEER = −0.030, 95% CI
+[−0.046, −0.013], improving all 5 folds — a ~21% relative reduction). The
+identical procedure on a STRONG, near-ceiling WavLM-GAT (EER ~0.071–0.078)
+produced no change beyond noise (ΔEER −0.0004 to +0.004, p ~ 0.56–0.80). The
+roadmap's X6 turns this two-point anecdote into a full "headroom curve" over
+7 training budgets (§29).
+
+16. CORRELATED ERRORS: WHY FUSING TWO CORRELATED SCORES CAN HURT
+---------------------------------------------------------------
+Plain idea: Combining two opinions helps most when they make DIFFERENT mistakes —
+their errors cancel. If two judges always get fooled by the same clips (their
+errors are correlated), averaging them adds nothing and can even amplify a shared
+blind spot. Ensembling folklore says "combining always helps," but that's only
+true when the components are diverse.
+
+In this paper specifically: On ITW the detector's errors and the axis's errors
+are correlated and both partly driven by recording-channel differences (§21), so
+fusing them doesn't cancel mistakes — it hurts (fusion 0.306 vs axis-alone
+0.301). This is precisely why the paper frames fusion's value as CONDITIONAL, not
+universal, and reports the "does not help" regime with the same care as the wins.
+
+
+--------------------------------------------------------------------------------
+PART E — THE DETECTORS, PRE-REGISTRATION, AND CONFOUNDS
+--------------------------------------------------------------------------------
+
+17. THE DETECTORS: WavLM-GAT, AASIST, mini_goat vs robust_goat, FINE-TUNED vs
+    ZERO-SHOT
+----------------------------------------------------------------------------
+What a GAT is (roughly): A Graph Attention Network treats data as a graph — nodes
+connected by edges — and lets each node "pay attention to" (weight) its neighbors
+when updating itself. "Attention" = learned importance weights: some neighbors
+matter more. Here the nodes are phonemes (speech-sound units), so the model
+compares phoneme-level features and learns which phoneme relationships betray a
+fake. (Velickovic et al. 2018 introduced GATs.)
+
+WavLM-GAT (the primary detector): A frozen WavLM encoder feeds a small trainable
+head: adaptive phoneme pooling -> a 3-layer, 6-head graph-attention network with
+skip connections -> a 2-layer BiLSTM -> mean-pool over phonemes + L2-normalize ->
+a linear head -> one spoof logit. Frozen encoder ~95M params; trainable head
+~13M. Architecture follows Zhang et al. 2025.
+
+AASIST: A different, well-known anti-spoofing architecture (Jung et al. 2022),
+also graph-attention-based but spectro-temporal, NOT built on WavLM. The paper
+uses it to show the law is not a WavLM/GAT quirk — the rank-order law replicates
+on AASIST (rho = 0.35, p = 0.006), which defeats the "circular / self-referential"
+objection because AASIST doesn't share WavLM's geometry.
+
+mini_goat vs robust_goat: These are two training budgets of the same WavLM-GAT.
+"mini_goat" = the deliberately WEAK detector (~500 utterances) with headroom;
+"robust_goat" = the STRONG, near-ceiling detector. Fusion helps mini_goat and not
+robust_goat — that's the headroom story (§15).
+
+Fine-tuned vs zero-shot: "Fine-tuned" = the head was trained on the target task's
+data. "Zero-shot" (ZS) = used as-is with no task-specific training. E.g.,
+"AASIST-FT" is fine-tuned on MLAAD; "AASIST-ZS" is applied cold. Fine-tuning
+usually helps in-domain but doesn't cure the cross-domain transfer failure the
+paper diagnoses.
+
+18. PRE-REGISTRATION: FROZEN SPEC, EXTERNAL TIMESTAMP, ONE-SHOT ACCEPTANCE, AND
+    WHY THE FAILED TEST CAN'T BE RETRIED
+------------------------------------------------------------------------------
+Plain idea: Pre-registration means writing down EXACTLY what you will test, how,
+and what counts as success — BEFORE you look at the answer — and locking it so
+you can't quietly change the rules after seeing results. It's the scientific
+equivalent of calling your pool shot before taking it. It stops "p-hacking" (the
+temptation to keep trying variations until something looks significant).
+
+The pieces:
+  - Frozen spec: a document (here, PREDICTOR_SPEC.md) fixing the single predictor
+    (P3), the dataset, the statistic (Spearman rho), the direction (one-sided,
+    rho > 0), the exact permutation-test settings (200,000 permutations, seed 7),
+    and the minimum-utterances rule (>=20/attack) — with NO results in it.
+  - External timestamp: to prove you didn't peek first, you commit the spec and
+    push a git tag to a public server (GitHub) BEFORE scoring. The push time is an
+    outside witness. (This fixed a flaw in the earlier attempt, where the "pre-
+    registration" file was written by the same script only 63 seconds before
+    scoring — no real outside commitment.)
+  - One-shot acceptance criterion: success is defined in advance as a single
+    binary rule — here, one-sided permutation p < 0.05. There is deliberately no
+    "promising but not significant" middle category.
+  - Why a failed test can't be retried: the whole point is that you get exactly
+    ONE swing on that held-out data with that one predictor. If it fails, trying
+    P1/P2/P4, another detector, another subset, or another dataset and reporting
+    the best would destroy the guarantee — it converts an honest one-shot test
+    back into fishing. So a fail must be reported as a fail, full stop.
+
+In this paper specifically: A pre-registered, git-tag-timestamped test of the
+axis-POSITION predictor (P3) on genuinely held-out ASVspoof2021-DF was run and
+FAILED honestly: rho = +0.33, p = 0.135, n = 13 attacks (needed rho >= ~0.47 at
+that tiny sample). The failure matters because (a) it shows the naive POSITION
+form of the intuition does not confirm out-of-sample, while the SPREAD law
+(sd_along) stands independently, and (b) reporting it strengthens the paper at an
+audit-culture venue. The roadmap's X2 re-runs this at real statistical power
+(n >= 40 systems, where rho ~ 0.3 suffices) as a new, separately pre-registered
+test.
+
+19. RELIABILITY / EXPLORATORY-vs-CONFIRMED / THE AUDIT
+------------------------------------------------------
+Plain idea: A "red-team audit" is having an independent skeptic recompute every
+number from the raw data and try to break each claim. Findings get sorted into
+"proven," "suggestive but not proven," and "wrong — fix it." Claims you set up in
+advance and confirm are "confirmatory"; things you noticed after looking at the
+data are "exploratory" and must be labeled as such (they're hypothesis-
+GENERATING, not hypothesis-TESTING).
+
+In this paper specifically: An independent audit recomputed all numbers from
+cached artifacts and returned a tally of 8 verified, 6 mislabeled, 5 misleading,
+2 contradicted claims — each corrected or removed. Examples corrected: the
+cross-corpus cosine (+0.36 -> negative), the R^2 (0.316 -> 0.277), a "small
+residual causal effect" dropped because its sign flipped across seeds, and
+"13 interventions" -> the 22 conditions actually run. The paper reports the audit
+in-line and keeps confirmed and exploratory results separate.
+
+
+--------------------------------------------------------------------------------
+PART F — MECHANISM, ADAPTATION, AND CONFOUNDS
+--------------------------------------------------------------------------------
+
+20. DIRECTIONALITY, NOT CIRCULARITY (why the law isn't a tautology)
+-------------------------------------------------------------------
+Plain idea: The worry: hardness is measured with a detector built on the SAME
+frozen encoder that supplies the axis, so maybe "spread along the axis" is just
+"spread along the detector's own decision line" — which would make the law true
+by definition (circular). The paper answers this three ways: (a) the axis is a
+two-centroid unsupervised direction, not the detector's boundary; (b) the naive
+POSITION form failed while SPREAD survived — a tautology would not be so picky;
+(c) the rank-order law replicates on AASIST, a detector that does NOT use WavLM's
+geometry. Plus a causal probe: scrambling the top discriminative directions hurts
+detection (ΔAUC −0.032) while scrambling an equal-size orthogonal residual does
+not (+0.004) — showing the SPECIFIC direction carries the signal, not just
+magnitude. (The paper is careful: only n = 3 seeds, so this is "trustworthy in
+sign, not a significance claim.")
+
+21. CHANNEL / RECORDING CONFOUND: vmean0 / LAYER-0 PROXIES, PARTIALLING OUT
+--------------------------------------------------------------------------
+Plain idea (channel): "Channel" = everything about HOW a clip was recorded and
+transmitted, separate from WHAT was said or whether it's fake: the microphone,
+room reverberation, background noise, the codec (MP3/Opus/etc.) and its bitrate,
+sampling rate, telephone-line compression. Two clips of identical content can
+look different to the encoder purely because of channel.
+
+The confound worry: if real and fake clips in a corpus happen to differ in
+channel (e.g., all fakes were encoded through the same vocoder pipeline), then a
+"real-vs-fake" axis might really be sensing the MICROPHONE, not the synthesis.
+The rotation across corpora (§10) could then be just different recording setups,
+not different synthesis semantics.
+
+vmean0 / layer-0 features as channel proxies: WavLM's layer 0 (and low-level
+"velocity"/RMS-energy statistics) mostly capture acoustic/channel detail, not
+linguistic content. So they serve as stand-ins ("proxies") for channel. If the
+layer-12 law survives even after you remove ("partial out") what these channel
+proxies explain, the law is probably about synthesis, not the microphone.
+
+Partialling out: Plain idea: statistically "subtract off" the part of a
+relationship explained by a nuisance variable, and see what's left. If sd_along
+still predicts hardness after partialling out channel proxies, channel isn't
+doing the work. (The paper does partial out n_utts, RMS, language, etc., and the
+law survives; it candidly notes it "cannot fully exclude" that some of the axis
+ROTATION reflects channel — which is exactly what roadmap experiments X4 and X5
+are designed to settle.)
+
+In this paper specifically: The paper concedes channel as an open question for
+the rotation result, and the roadmap adds a layer-wise profile (X4) and a
+channel-perturbation test (X5) to resolve whether rotation is channel or
+synthesis semantics.
+
+22. SHRINKAGE LDA (SUPERVISED AXIS) vs UNSUPERVISED CENTROID AXIS; "SUPERVISED
+    LIGHTWEIGHT ADAPTATION" vs "ZERO-COST"
+-----------------------------------------------------------------------------
+LDA (Linear Discriminant Analysis): Plain idea: a classic supervised way to find
+the single direction that BEST separates two labeled groups — it accounts not
+just for where the two centers are but for the spread/shape of each cloud, tilting
+the separating line to maximize class separation. It needs labels.
+
+Shrinkage (Ledoit-Wolf): In high dimensions (768!) with limited data, LDA's
+covariance estimate is unstable. "Shrinkage" pulls that estimate toward a simple,
+well-behaved default by an automatically chosen amount — a regularization trick
+(Ledoit & Wolf 2004) that keeps the direction sensible. In code:
+LinearDiscriminantAnalysis(solver="lsqr", shrinkage="auto").
+
+Unsupervised centroid axis vs supervised LDA axis:
+  - Centroid axis (the paper's main "axis"): just spoof-center minus bona-center.
+    Simple, needs group labels only to form the two centers; "zero-cost" in the
+    sense of no trained model.
+  - Shrinkage-LDA axis: a fitted, supervised direction; more powerful but it
+    consumes labels and fitting, so it is NOT "zero-cost."
+
+"Supervised lightweight adaptation" vs "zero-cost": The audit found that the big
+domain-shift "zero-cost fusion" gains were really coming from a supervised LDA
+probe fitted on the target corpus's labels — which is lightweight ADAPTATION using
+labels, not a free lunch. Honest framing: an unsupervised centroid axis is
+zero-cost and helps in-domain (MLAAD) and even beats a fine-tuned detector on ITW;
+but the label-using LDA gains are "supervised lightweight adaptation," and the
+word "zero-cost" must not be used for them.
+
+In this paper specifically: The confirmed clean fusion (MLAAD 0.272 -> 0.163,
+weak-ASVspoof 0.144 -> 0.114) uses the UNSUPERVISED centroid axis. The
+shrinkage-LDA axis is P3 in the pre-registered test and appears in the corrected
+ITW adaptation story.
+
+
+--------------------------------------------------------------------------------
+PART G — ANY OTHER AMBIGUOUS CONCEPTS WORTH NAILING DOWN
+--------------------------------------------------------------------------------
+
+23. BONA FIDE vs SPOOF; "SYSTEM" / "ATTACK"; TTS vs VC
+------------------------------------------------------
+- Bona fide = genuine human speech. Spoof = synthetic/fake speech. These are the
+  two classes throughout.
+- A "system" or "attack" = one specific speech-generation method (e.g., a
+  particular TTS model, or ASVspoof's coded attacks A07–A19). Per-system hardness
+  = how hard THAT generator is to catch.
+- TTS (text-to-speech) = generate speech from written text (no human source
+  voice for the words). VC (voice conversion) = take a REAL person's recording and
+  convert it to sound like a different speaker, keeping the original content and
+  prosody. The paper's law is a TTS phenomenon; on VC, all predictors give
+  rho ~ 0 (§24), because converted speech inherits its content from real source
+  speech, so its spread structure is different. (Roadmap X9 makes this a supported
+  finding rather than an unbacked assertion.)
+
+24. THE "83 TESTS" LEDGER AND FLOPs / COMPUTE BUDGET
+----------------------------------------------------
+- The "83-test ledger" is the running list of every statistical test in the
+  project, used for the global BH-FDR bookkeeping (§9). Keeping this honest count
+  is itself part of the paper's contribution ("method hygiene as a result").
+- FLOPs (floating-point operations) = a hardware-neutral measure of how much
+  computation a run costs. The paper stresses its LARGEST single training run is
+  ~10^16 FLOPs, far under a 10^20 budget — i.e., this is genuinely small-scale
+  (one GPU), which is its whole framing ("insight per FLOP," fit for a
+  methods-at-small-scale venue).
+
+
+--------------------------------------------------------------------------------
+PART H — FUTURE / ROADMAP CONCEPTS
+--------------------------------------------------------------------------------
+
+25. BACKBONE GENERALITY (X3)
+----------------------------
+Plain idea: Right now everything uses ONE self-supervised model (WavLM). "Backbone
+generality" asks: is the law a property of WavLM specifically, or of
+self-supervised speech geometry in general? To find out, re-embed the same clips
+with other frozen backbones — wav2vec 2.0 and HuBERT — and re-check the law. If it
+holds across three different SSL training objectives, it's a general property, not
+a WavLM quirk. (This directly kills the paper's own stated limitation.)
+
+26. LAYER SWEEP (X4)
+--------------------
+Plain idea: Instead of only layer 12, compute the law at EVERY layer 0–12. The
+expected picture: near-chance at layer 0 (low-level acoustics) rising to a peak at
+the deep layers. A rising profile is the cleanest possible evidence that the
+signal is LEARNED linguistic structure, not a recording artifact — because a pure
+channel artifact would show up strongest in the early (acoustic) layers, not the
+deep ones. Paired with partialling out layer-0 channel proxies (§21).
+
+27. CHANNEL-PERTURBATION ROTATION TEST (X5)
+-------------------------------------------
+Plain idea: To decide whether the axis rotation across corpora (§10) is about
+recording CHANNEL or about synthesis SEMANTICS, take one corpus and deliberately
+mangle its channel (MP3/Opus at two bitrates, add reverb, add noise, band-limit),
+re-embed, and re-estimate the axis. If heavy channel abuse barely rotates the axis
+(cosine stays well above 0.5) while merely switching corpora rotates it to ~0,
+then rotation is driven by synthesis/content, not channel. If channel alone
+reproduces the rotation, the honest story changes. Either outcome is publishable.
+
+28. HEADROOM CURVE (X6)
+-----------------------
+Plain idea: Upgrade the two-point "weak vs strong" anecdote (§15) into a full
+curve. Train detectors at seven budgets {125, 250, 500, 1k, 2k, 4k, full} with
+2–3 seeds, apply the identical free axis fusion to each, and plot the fusion gain
+(ΔEER) against the detector's own strength. The prediction: a smooth,
+monotone relationship — big gains for weak detectors shrinking to zero at the
+ceiling — giving a practitioner a rule for "when is the free lever worth it?"
+
+29. AXIS-GUIDED EVASION ATTACK / REJECTION-SAMPLING THREAT MODEL (X8)
+--------------------------------------------------------------------
+Plain idea: Flip the law into an attack. Threat model: an attacker has a TTS
+system and a copy of the public frozen WavLM, but NO access to the defender's
+detector. Rejection sampling = generate many candidate fakes, score each by its
+axis projection (how "genuine-looking"), and KEEP only the most bona-like fraction
+(top 50% / 25% / 10%), throwing the rest away. Because spread-across-the-boundary
+clips are the ones that evade (§6), selecting the genuine-looking tail should
+raise the detector's miss rate — a zero-knowledge, detector-blind evasion lever.
+Then test a countermeasure (axis-aware scoring) and check the attack transfers
+across detectors (WavLM-GAT and AASIST). Note: this is SELECTION among generated
+clips, not modifying the audio waveform — the framing must be precise. Compare at
+matched sample size (selection shrinks n) against a random-selection null.
+
+30. TTS vs VC AND SPREAD INHERITANCE (X9)
+-----------------------------------------
+Plain idea: Split every corpus's systems into TTS vs VC and report the law
+separately for each, regenerating the currently-unbacked "rho ~ 0 on VC" claim
+from actual artifacts. Mechanism probe ("spread inheritance"): for VC systems,
+does the SOURCE speech's spread predict hardness? If so, VC fakes inherit their
+spread structure from the real human recording they were converted from — a new
+mechanism paragraph and the reason the TTS law doesn't apply to VC.
+
+31. POOLED META-ANALYSIS / STOUFFER / RELIABILITY-CORRECTED (X10)
+-----------------------------------------------------------------
+Plain idea (meta-analysis): Combine evidence across many datasets into one
+overall estimate. Pool the per-system (sd_along, hardness) pairs from all corpora
+(MLAAD-en 61 + multilingual + ASVspoof19/21 + ...), z-scoring WITHIN each corpus
+first (so a corpus's baseline channel differences can't masquerade as the law).
+
+Stouffer's method: a standard way to combine several independent one-sided
+p-values into a single overall p-value by converting each to a z-score, summing,
+and re-normalizing. Caveat: corpora sharing a detector are not fully independent,
+so the combined p must be labeled exploratory.
+
+Reliability-corrected / disattenuated (see §11): report the disattenuated rho
+using the 0.86 hardness reliability, which makes the "captures ~32% of explainable
+variance" claim rigorous. Show a per-corpus forest plot (each corpus's rho with
+its confidence interval, plus the pooled estimate) so genuine between-corpus
+differences aren't hidden by the pooling.
+
+32. CLUSTER BOOTSTRAP
+---------------------
+Plain idea (bootstrap): Estimate uncertainty by resampling your data WITH
+replacement many times and recomputing the statistic each time; the spread of
+those recomputations gives a confidence interval — no formula needed.
+
+Cluster bootstrap: When data come in natural GROUPS (all utterances of one
+speaker, or one system), plain per-utterance resampling pretends you have more
+independent data points than you really do, giving falsely tight intervals. A
+CLUSTER bootstrap resamples whole GROUPS (speakers/systems) instead of individual
+utterances, respecting the dependence and giving honest, wider confidence
+intervals. Used to size the fusion and headroom-curve error bars correctly.
+
+================================================================================
+END OF ELI5.txt
+================================================================================

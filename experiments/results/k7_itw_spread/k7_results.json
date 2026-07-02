@@ -1,0 +1,66 @@
+{
+  "n_speakers": 29,
+  "min_utts_filter": "same as audit6_itw_speaker.py -- speaker_table.csv is pre-filtered to >=10 utts/speaker",
+  "data_source": "experiments/results/i5_itw_transfer/speaker_table.csv",
+  "s_orth_vs_rog12": {
+    "rho": -0.6866995073891624,
+    "p": 3.8946227357389666e-05
+  },
+  "marginal": {
+    "s_orth_vs_hard": {
+      "rho": 0.5339901477832512,
+      "p": 0.0028490744052535135
+    },
+    "rog12_vs_hard": {
+      "rho": -0.5610837438423644,
+      "p": 0.0015430561535325182
+    }
+  },
+  "pca_factor": {
+    "explained_variance_ratio": [
+      0.9521130870408219,
+      0.04788691295917807
+    ],
+    "pc1_loadings_signed": {
+      "s_orth": 0.7071067811865475,
+      "rog12": -0.7071067811865475
+    },
+    "sign_convention": "oriented so higher factor1 = higher expected hardness",
+    "rho_vs_hard": 0.5788177339901477,
+    "p_asymptotic": 0.001003448613814802,
+    "n_perm": 100000,
+    "perm_p_twosided": 0.001119988800111999,
+    "seed": 0
+  },
+  "discriminating_partials": {
+    "s_orth_given_rog12": {
+      "rho": 0.21083743842364527,
+      "p": 0.2722699893378561
+    },
+    "rog12_given_s_orth": {
+      "rho": 0.003448275862068965,
+      "p": 0.9858361244602545
+    },
+    "either_survives_p05": false,
+    "both_survive_p05": false
+  },
+  "channel_confound_caveat": {
+    "vmean0_vs_hard": {
+      "rho": -0.4645320197044333,
+      "p": 0.011125363788298644
+    },
+    "vmean0_vs_factor1": {
+      "rho": -0.8369458128078816,
+      "p": 1.5315252544711357e-08
+    },
+    "factor1_given_vmean0": {
+      "rho": 0.018719211822660092,
+      "p": 0.9232187120998646
+    }
+  },
+  "framing": {
+    "max_claim": "a single spread/compactness factor (PC1 of [s_orth, rog12]) predicts ITW speaker hardness",
+    "s_orth_specific_interpretation_separable_from_rog12": false,
+    "conclusion": "NOT separable: neither s_orth nor rog12 individually survives partialling out the other at p<0.05 (matches COMPREHENSIVE_VERDICT S2)."
+  }
+}

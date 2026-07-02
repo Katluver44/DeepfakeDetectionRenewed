@@ -1,0 +1,423 @@
+================================================================================
+references.txt — Under-supported / under-cited claims in main (1).pdf,
+with verified sources to add.
+================================================================================
+
+Scope: this file lists claims in the paper that currently stand without a
+citation (or lean on a single citation where the field expects a small anchor
+set), plus a couple of factual numbers that should trace to a primary source.
+Every source below was checked to exist (title/venue/year confirmed via web
+search against ISCA Archive, ACL Anthology, PMLR, arXiv, journal pages).
+Line numbers refer to the extracted text of main (1).pdf (COLM-2026 draft).
+Existing references.bib keys that already cover a claim are noted so nothing is
+double-added. The final section lists .bib entries that are fine as-is.
+
+Format per entry:
+  PAPER CLAIM  (quote / line ref)
+  WHY IT NEEDS SUPPORT
+  SOURCES (authors, title, venue, year + one-line relevance)
+  SUGGESTED BIBTEX KEY
+
+
+--------------------------------------------------------------------------------
+(a) "DETECTORS FAIL TO TRANSFER ACROSS DOMAINS"
+--------------------------------------------------------------------------------
+PAPER CLAIM: Abstract/Intro, lines 2-4, 22-24: "a detector trained on one
+recording domain often fails on another"; Sec 4 line 94: "Why does a predictor
+(or detector) fit on one corpus fail on another?" The paper asserts cross-domain
+failure as accepted background but cites nothing at the point of claim.
+
+WHY IT NEEDS SUPPORT: This is the central motivating premise. It is well
+established in the literature and should be anchored so reviewers see the paper's
+contribution (a geometric EXPLANATION) sits on top of a documented problem.
+
+SOURCES:
+  1. Nicolas M. Müller, Pavel Czempin, Franziska Dieckmann, Adam Froghyar,
+     Konstantin Böttinger. "Does Audio Deepfake Detection Generalize?"
+     Interspeech 2022, pp. 2783-2787. — The canonical demonstration that
+     detectors trained on one corpus collapse on out-of-distribution ("in the
+     wild") data; also introduces the In-the-Wild dataset.
+  2. Nicolas M. Müller, Nicholas Evans, Hemlata Tak, Philip Sperl, Konstantin
+     Böttinger. "Harder or Different? Understanding Generalization of Audio
+     Deepfake Detection." arXiv:2406.03512, 2024 (Interspeech 2024). —
+     Decomposes the in- vs out-of-domain gap into "hardness" and "difference";
+     finds the gap is dominated by DIFFERENCE, directly relevant to the paper's
+     "the axis rotates" explanation.
+  3. Xin Wang, Junichi Yamagishi, et al. "ASVspoof 2021: Towards Spoofed and
+     Deepfake Speech Detection in the Wild." arXiv:2210.02437, 2022
+     (also IEEE/ACM TASLP). — Challenge summary documenting robustness/
+     generalization degradation under new conditions.
+SUGGESTED KEYS: muller2022wild (ALREADY IN .bib), muller2024harder (ADD),
+  wang2022asvspoof21summary (ADD, optional).
+
+
+--------------------------------------------------------------------------------
+(b) PER-SYSTEM / PER-ATTACK DIFFICULTY VARIATION IN ASVspoof RESULTS
+--------------------------------------------------------------------------------
+PAPER CLAIM: Abstract lines 1-3 & Intro lines 21-23: "against a fixed detector
+some synthesis systems evade detection far more often than others." Presented as
+a known regularity with no citation.
+
+WHY IT NEEDS SUPPORT: The premise that per-attack/per-system EER varies widely
+against a fixed countermeasure is documented in ASVspoof analyses; cite so the
+"some systems are much harder" starting point is grounded rather than asserted.
+
+SOURCES:
+  1. Xin Wang, Junichi Yamagishi, Massimiliano Todisco, Héctor Delgado, et al.
+     "ASVspoof 2019: A Large-Scale Public Database of Synthesized, Converted and
+     Replayed Speech." Computer Speech & Language, 64:101114, 2020. — Reports
+     per-attack (A07-A19) countermeasure breakdowns showing large per-system
+     difficulty spread. (This is the "Wang et al. 2020" the paper's TEXT cites
+     but which is NOT yet the .bib ASVspoof19 entry — see note (j).)
+  2. Nicolas M. Müller, Nicholas Evans, Hemlata Tak, Philip Sperl, Konstantin
+     Böttinger. "Harder or Different? Understanding Generalization of Audio
+     Deepfake Detection." arXiv:2406.03512, 2024. — Explicitly analyzes
+     per-attack hardness heterogeneity within ASVspoof.
+  3. Junichi Yamagishi, Xin Wang, Massimiliano Todisco, et al. "ASVspoof 2021:
+     Accelerating Progress in Spoofed and Deepfake Speech Detection." ASVspoof
+     2021 Workshop, 2021. — Per-condition/per-attack result tables.
+SUGGESTED KEYS: wang2020asvspoof19 (ADD, see (j)), muller2024harder (ADD),
+  yamagishi2021asvspoof (ALREADY IN .bib).
+
+
+--------------------------------------------------------------------------------
+(c) THE VC-vs-TTS rho ~ 0 CLAIM  *** CURRENTLY BACKED BY NO ARTIFACT ***
+--------------------------------------------------------------------------------
+PAPER CLAIM: Sec 7 Limitations, lines 130-131: "on voice-conversion attacks all
+predictors give rho ~ 0, consistent with converted speech inheriting its content
+from source speech."
+
+WHY IT NEEDS SUPPORT: *** FLAG: per the roadmap (bug #7) and audit discipline,
+this number has NO committed regeneration script / artifact in the repo. *** It
+is stated as a finding but nothing produces it. Two remedies: (i) regenerate it
+from artifacts (roadmap X9) before relying on it, and (ii) meanwhile cite the VC
+detection-difficulty literature so the qualitative claim (VC behaves differently
+from TTS for spoof countermeasures, and VC preserves source content/prosody) is
+at least externally supported.
+
+SOURCES (for the qualitative VC-differs-from-TTS point; NOT a substitute for
+regenerating the rho~0 number):
+  1. Yi Zhao, Wen-Chin Huang, Xiaohai Tian, Junichi Yamagishi, et al. "Voice
+     Conversion Challenge 2020: Intra-lingual semi-parallel and cross-lingual
+     voice conversion." arXiv:2008.12527 / Joint Workshop for the Blizzard
+     Challenge and Voice Conversion Challenge 2020. — Establishes VC as a
+     content/prosody-preserving conversion of SOURCE speech (the mechanism the
+     paper invokes) and includes spoofing-countermeasure assessment of VC
+     outputs.
+  2. Rohan Kumar Das, Tomi Kinnunen, Wen-Chin Huang, Zhen-Hua Ling, Junichi
+     Yamagishi, et al. "Predictions of Subjective Ratings and Spoofing
+     Assessments of Voice Conversion Challenge 2020 Submissions." Joint Workshop
+     for Blizzard/VCC 2020, 2020. — Directly measures how VC systems fare
+     against spoofing countermeasures; supports "VC systems behave distinctly."
+  3. Xin Wang, Junichi Yamagishi, et al. "ASVspoof 2019: A Large-Scale Public
+     Database..." Computer Speech & Language, 64:101114, 2020. — Contains both
+     TTS and VC attacks (A07-A19) and reports their differing detectability.
+SUGGESTED KEYS: zhao2020vcc (ADD), das2020vccspoof (ADD),
+  wang2020asvspoof19 (ADD).
+
+
+--------------------------------------------------------------------------------
+(d) SSL LAYER-WISE ANALYSES JUSTIFYING LAYER-12 GEOMETRY
+--------------------------------------------------------------------------------
+PAPER CLAIM: Sec 2 lines 59-66 & Fig 1 caption: geometry is read from "frozen
+layer-12 space" / "WavLM-L12," with no justification for why a deep layer is the
+right place to find natural-vs-synthetic linguistic structure.
+
+WHY IT NEEDS SUPPORT: The choice of layer 12 (deepest, most linguistically
+abstract) is defensible but currently unsupported. Layer-wise probing studies
+show information stratifies from acoustic (early) to phonetic/word/semantic
+(deep) — exactly the rationale. (Also directly relevant to roadmap X4's layer
+sweep.)
+
+SOURCES:
+  1. Ankita Pasad, Ju-Chieh Chou, Karen Livescu. "Layer-Wise Analysis of a
+     Self-Supervised Speech Representation Model." IEEE ASRU 2021
+     (arXiv:2107.04734). — The standard reference that information is
+     stratified across layers (acoustic early, linguistic deep) in wav2vec 2.0.
+  2. Ankita Pasad, Chung-Ming Chien, Shane Settle, Karen Livescu. "What Do
+     Self-Supervised Speech Models Know About Words?" Transactions of the ACL
+     (TACL), 12:372-391, 2024. — Extends the layer-wise analysis (incl. HuBERT/
+     WavLM-family) to word identity/boundary/semantics; supports "deep layers
+     carry linguistic content."
+  3. Sanyuan Chen, Chengyi Wang, et al. "WavLM: Large-Scale Self-Supervised
+     Pre-Training for Full Stack Speech Processing." IEEE JSTSP 16(6):1505-1518,
+     2022. — The WavLM paper's own layer-weighting (learned per-layer weights
+     across downstream tasks) motivates using deep layers. (ALREADY IN .bib.)
+SUGGESTED KEYS: pasad2021layerwise (ADD), pasad2024words (ADD),
+  chen2022wavlm (ALREADY IN .bib).
+
+
+--------------------------------------------------------------------------------
+(e) FROZEN-SSL-FEATURE ANTI-SPOOFING FRONT-ENDS (to position "training-free")
+--------------------------------------------------------------------------------
+PAPER CLAIM: Intro lines 24-26 & Sec 2 lines 40-47: "Modern detectors sit on top
+of a large frozen self-supervised (SSL) speech encoder"; primary detector is a
+WavLM front-end + trainable head. The claim that SSL front-ends are the standard
+modern anti-spoofing recipe (against which "training-free" is positioned) needs
+anchoring.
+
+WHY IT NEEDS SUPPORT: Establishes the prior art the paper builds on and contrasts
+its training-free axis against.
+
+SOURCES:
+  1. Hemlata Tak, Massimiliano Todisco, Xin Wang, Jee-weon Jung, Junichi
+     Yamagishi, Nicholas Evans. "Automatic Speaker Verification Spoofing and
+     Deepfake Detection Using wav2vec 2.0 and Data Augmentation." Odyssey 2022,
+     pp. 112-119. — The canonical wav2vec2-front-end + AASIST-back-end anti-
+     spoofing system. (ALREADY IN .bib as tak2022ssl.)
+  2. Xin Wang, Junichi Yamagishi. "Investigating Self-Supervised Front Ends for
+     Speech Spoofing Countermeasures." Odyssey 2022, pp. 100-106
+     (arXiv:2111.07725). — Systematic study of frozen vs fine-tuned SSL front
+     ends (incl. WavLM/wav2vec2) for spoofing CMs; direct positioning reference.
+  3. Théophile Stourbe, Victor Miara, Théo Lepage, Réda Dehak. "Exploring WavLM
+     Back-ends for Speech Spoofing and Deepfake Detection." ASVspoof 2024
+     Workshop (arXiv:2409.05032), 2024. — WavLM-specifically as a spoofing
+     front/back-end; supports the WavLM-based detector design.
+SUGGESTED KEYS: tak2022ssl (ALREADY IN .bib), wang2022sslfrontend (ADD),
+  stourbe2024wavlm (ADD).
+
+
+--------------------------------------------------------------------------------
+(f) STATISTICAL METHODOLOGY (BH-FDR, PERMUTATION TESTS, SPLIT-HALF /
+    DISATTENUATION, PRE-REGISTRATION IN ML)
+--------------------------------------------------------------------------------
+PAPER CLAIM: Sec 3 lines 77-82 "survive a global Benjamini-Hochberg correction";
+"permutation p"; Sec 2 line 58 "split-half reliability ... R^2 ceiling"; the
+whole pre-registered held-out apparatus (roadmap / HEADLINE_STORY; to be added to
+the paper per bug #6). Methods used but not all cited.
+
+WHY IT NEEDS SUPPORT: A methods-culture venue expects the statistical machinery
+to be cited to primary sources.
+
+SOURCES:
+  BH-FDR:
+  1. Yoav Benjamini, Yosef Hochberg. "Controlling the False Discovery Rate: A
+     Practical and Powerful Approach to Multiple Testing." J. Royal Statistical
+     Society Series B, 57(1):289-300, 1995. — The FDR procedure. (ALREADY IN
+     .bib as benjamini1995controlling.)
+  Permutation tests:
+  2. Markus Ojala, Gemma C. Garriga. "Permutation Tests for Studying Classifier
+     Performance." Journal of Machine Learning Research, 11:1833-1863, 2010. —
+     Permutation-based significance for ML/classifier metrics; matches the
+     paper's permutation-p usage.
+  3. Phillip Good. "Permutation, Parametric, and Bootstrap Tests of Hypotheses."
+     Springer, 3rd ed., 2005. — Standard textbook reference for permutation
+     inference (optional, general anchor).
+  Split-half reliability / disattenuation:
+  4. Charles Spearman. "The Proof and Measurement of Association between Two
+     Things." American Journal of Psychology, 15(1):72-101, 1904. — Origin of
+     correction-for-attenuation / disattenuation used for the 0.86 reliability
+     ceiling and "32% of explainable variance."
+  Pre-registration in ML:
+  5. Luca Bertinetto, João F. Henriques, Samuel Albanie, Michela Paganini, Gül
+     Varol (eds.). "NeurIPS 2020 Workshop on Pre-registration in Machine
+     Learning." Proceedings of Machine Learning Research (PMLR), vol. 148, 2021.
+     — Establishes pre-registration/ confirmatory-vs-exploratory practice in ML;
+     supports the paper's pre-registered held-out test framing.
+SUGGESTED KEYS: benjamini1995controlling (ALREADY IN .bib), ojala2010permutation
+  (ADD), good2005permutation (ADD, optional), spearman1904attenuation (ADD),
+  preregml2020 (ADD).
+
+
+--------------------------------------------------------------------------------
+(g) HIGH-DIMENSIONAL CHANCE COSINE CONCENTRATION
+--------------------------------------------------------------------------------
+PAPER CLAIM: Sec 4 lines 98-99 & Fig 2b: "against a 768-dimensional chance floor
+of ~0.03"; cross-corpus cosines "inside the high-dimensional chance band." The
+claim that random directions in 768-D concentrate near cosine 0 (~1/sqrt(d)) is
+stated without a source.
+
+WHY IT NEEDS SUPPORT: The entire "the axis rotates to near-orthogonality" result
+depends on knowing that ~0.03 is the chance level; a reader should be pointed to
+the concentration-of-measure fact.
+
+SOURCES:
+  1. Michel Ledoux. "The Concentration of Measure Phenomenon." Mathematical
+     Surveys and Monographs vol. 89, American Mathematical Society, 2001. —
+     Standard reference for concentration on the high-dimensional sphere (random
+     unit vectors are nearly orthogonal).
+  2. Roman Vershynin. "High-Dimensional Probability: An Introduction with
+     Applications in Data Science." Cambridge University Press, 2018. —
+     Modern textbook; explicit E|cos| ~ 1/sqrt(d) / quasi-orthogonality of random
+     vectors (Ch. 3), directly the ~0.03 = 1/sqrt(768) claim.
+  3. Persi Diaconis, David Freedman. "Asymptotics of Graphical Projection
+     Pursuit." Annals of Statistics, 12(3):793-815, 1984. — Classic result that
+     high-dimensional projections concentrate (near-orthogonality of random
+     directions). (Optional, historical.)
+SUGGESTED KEYS: vershynin2018hdp (ADD), ledoux2001concentration (ADD, optional).
+
+
+--------------------------------------------------------------------------------
+(h) SHRINKAGE LDA (LEDOIT-WOLF)
+--------------------------------------------------------------------------------
+PAPER CLAIM: The shrinkage-LDA axis (P3) used in the pre-registered test and the
+domain-shift adaptation story (PREDICTOR_SPEC.md; audit). Uses
+LinearDiscriminantAnalysis(shrinkage="auto"); the shrinkage estimator should be
+cited if P3 / LDA adaptation appears in the paper.
+
+WHY IT NEEDS SUPPORT: "shrinkage=auto" is the Ledoit-Wolf analytic shrinkage;
+naming its source is expected in a methods venue.
+
+SOURCES:
+  1. Olivier Ledoit, Michael Wolf. "A Well-Conditioned Estimator for Large-
+     Dimensional Covariance Matrices." J. Multivariate Analysis, 88(2):365-411,
+     2004. — The analytic shrinkage covariance estimator behind sklearn's
+     shrinkage="auto". (ALREADY IN .bib as ledoit2004wellconditioned.)
+  2. Jerome H. Friedman. "Regularized Discriminant Analysis." J. American
+     Statistical Association, 84(405):165-175, 1989. — Foundational
+     regularized/shrinkage LDA (optional companion).
+SUGGESTED KEYS: ledoit2004wellconditioned (ALREADY IN .bib),
+  friedman1989rda (ADD, optional).
+
+
+--------------------------------------------------------------------------------
+(i) WavLM PARAMETER COUNT (94.7M base) PRIMARY SOURCE + 95M/100M FIX
+--------------------------------------------------------------------------------
+PAPER CLAIM: Abstract line 4 "frozen ~100M-parameter encoder"; Sec 2 line 46 &
+Reproducibility line 143 "~95M." Roadmap bug #1 flags the inconsistency; WavLM-
+base is 94.7M.
+
+WHY IT NEEDS SUPPORT: The parameter count should (a) be internally consistent and
+(b) trace to the primary source. Standardize on "~95M (WavLM-base, 94.7M)."
+
+SOURCES:
+  1. Sanyuan Chen, Chengyi Wang, Zhengyang Chen, Yu Wu, Shujie Liu, et al.
+     "WavLM: Large-Scale Self-Supervised Pre-Training for Full Stack Speech
+     Processing." IEEE JSTSP 16(6):1505-1518, 2022. — Primary source for the
+     WavLM Base architecture and its ~94.7M parameter count. (ALREADY IN .bib as
+     chen2022wavlm; use as the citation for the corrected number.)
+SUGGESTED KEY: chen2022wavlm (ALREADY IN .bib). No new source needed — this is a
+  consistency FIX, not a missing citation.
+
+
+--------------------------------------------------------------------------------
+(j) DATASETS: MLAAD, ASVspoof2019/2021, In-the-Wild, WaveFake, VCC2020
+--------------------------------------------------------------------------------
+PAPER CLAIM: Sec 2 lines 50-55 name MLAAD, ASVspoof 2019 LA (cited as "Wang et
+al. 2020"), and later ASVspoof-2021. The .bib currently has an ASVspoof-2019
+Interspeech entry (todisco2019asvspoof) but the paper's TEXT cites "Wang et al.,
+2020" (the Computer Speech & Language journal version) — a mismatch. In-the-Wild,
+WaveFake, and VCC2020 are referenced conceptually (esp. via roadmap X-experiments
+and the ITW analysis) without .bib entries.
+
+WHY IT NEEDS SUPPORT: Each dataset needs its correct primary citation; the
+ASVspoof-2019 text/.bib mismatch must be reconciled, and the 2021 evaluation plan
+should be cited (not just the summary) when codec conditions are discussed.
+
+SOURCES:
+  1. MLAAD — Nicolas M. Müller, Piotr Kawa, Wei Herng Choong, Edresson Casanova,
+     Eren Gölge, Thorsten Müller, Piotr Syga, Philip Sperl, Konstantin Böttinger.
+     "MLAAD: The Multi-Language Audio Anti-Spoofing Dataset." IJCNN 2024, pp.
+     1-7. — (ALREADY IN .bib as muller2024mlaad.)
+  2. ASVspoof 2019 (the journal version the TEXT cites) — Xin Wang, Junichi
+     Yamagishi, Massimiliano Todisco, Héctor Delgado, Andreas Nautsch, Nicholas
+     Evans, Md Sahidullah, et al. "ASVspoof 2019: A Large-Scale Public Database
+     of Synthesized, Converted and Replayed Speech." Computer Speech & Language,
+     64:101114, 2020. — ADD this to match the in-text "Wang et al., 2020"
+     (currently only the Interspeech'19 Todisco entry exists in .bib).
+  3. ASVspoof 2021 evaluation plan (for codec/channel conditions) — Junichi
+     Yamagishi, Xin Wang, Massimiliano Todisco, Md Sahidullah, Jose Patino,
+     Andreas Nautsch, Xuechen Liu, Kong Aik Lee, Tomi Kinnunen, Nicholas Evans,
+     Héctor Delgado. "ASVspoof 2021: Automatic Speaker Verification Spoofing and
+     Countermeasures Challenge Evaluation Plan." arXiv:2109.00535, 2021. —
+     Defines the DF/LA partitions and codec conditions used by the held-out test.
+  4. In-the-Wild — Nicolas M. Müller, Pavel Czempin, Franziska Dieckmann, Adam
+     Froghyar, Konstantin Böttinger. "Does Audio Deepfake Detection Generalize?"
+     Interspeech 2022, pp. 2783-2787. — The paper that introduces the In-the-Wild
+     dataset. (ALREADY IN .bib as muller2022wild; use it for ITW too.)
+  5. WaveFake — Joel Frank, Lea Schönherr. "WaveFake: A Data Set to Facilitate
+     Audio Deepfake Detection." NeurIPS 2021 Datasets and Benchmarks Track. —
+     ADD if WaveFake is referenced (roadmap-level).
+  6. VCC 2020 — Yi Zhao, Wen-Chin Huang, Xiaohai Tian, Junichi Yamagishi, Rohan
+     Kumar Das, Tomi Kinnunen, Zhen-Hua Ling, Tomoki Toda. "Voice Conversion
+     Challenge 2020: Intra-lingual semi-parallel and cross-lingual voice
+     conversion." arXiv:2008.12527 / Joint Blizzard-VCC Workshop 2020. — ADD for
+     VCC2020 (referenced in the DF held-out roster and VC scoping).
+SUGGESTED KEYS: muller2024mlaad (IN .bib), wang2020asvspoof19 (ADD),
+  asvspoof2021evalplan (ADD), muller2022wild (IN .bib), frank2021wavefake (ADD),
+  zhao2020vcc (ADD).
+
+
+--------------------------------------------------------------------------------
+(k) CHANNEL / CODEC CONFOUNDS IN ANTI-SPOOFING
+--------------------------------------------------------------------------------
+PAPER CLAIM: Sec 4 lines 102-104: "We cannot fully exclude that part of the
+rotation reflects recording-channel nuisance rather than synthesis semantics."
+The channel/codec confound is invoked but uncited. (Also central to roadmap
+X4/X5.)
+
+WHY IT NEEDS SUPPORT: The reviewer objection the paper concedes is exactly the
+one the codec/channel anti-spoofing literature is about; cite it so the concession
+is informed.
+
+SOURCES:
+  1. Junichi Yamagishi, Xin Wang, Massimiliano Todisco, et al. "ASVspoof 2021:
+     Automatic Speaker Verification Spoofing and Countermeasures Challenge
+     Evaluation Plan." arXiv:2109.00535, 2021. — Documents the codec/transmission
+     (PSTN, VoIP, a-law, G.722, Opus, etc.) channel variability designed into
+     ASVspoof 2021 LA/DF.
+  2. Xinhui Chen, You Zhang, Ge Zhu, Zhiyao Duan. "UR Channel-Robust Synthetic
+     Speech Detection System for ASVspoof 2021." ASVspoof 2021 Workshop
+     (arXiv:2107.12018), 2021. — Directly quantifies codec/channel effects on
+     spoof detection and channel-robust countermeasures; the strongest specific
+     cite for "channel is a real confound."
+  3. Xin Wang, Junichi Yamagishi, et al. "ASVspoof 2021: Towards Spoofed and
+     Deepfake Speech Detection in the Wild." arXiv:2210.02437 / IEEE-ACM TASLP,
+     2022/2023. — Post-challenge analysis of codec/transmission robustness.
+SUGGESTED KEYS: asvspoof2021evalplan (ADD), chen2021urchannel (ADD),
+  wang2022asvspoof21summary (ADD, optional).
+
+
+================================================================================
+EXISTING references.bib ENTRIES THAT ARE FINE AS-IS
+================================================================================
+These verified against the paper's actual citations and need no change:
+
+  - chen2022wavlm ............ WavLM (JSTSP 2022). Correct; also the WavLM param-
+                               count source for the 95M fix (note i).
+  - jung2022aasist ........... AASIST (ICASSP 2022). Correct, matches text.
+  - velickovic2018graph ...... Graph Attention Networks (ICLR 2018). Correct.
+  - muller2024mlaad .......... MLAAD (IJCNN 2024). Correct, matches text.
+  - muller2022wild ........... "Does Audio Deepfake Detection Generalize?"
+                               (Interspeech 2022). Correct; doubles as the
+                               In-the-Wild dataset citation.
+  - benjamini1995controlling . BH-FDR (JRSS-B 1995). Correct primary source.
+  - ledoit2004wellconditioned  Ledoit-Wolf shrinkage (2004). Correct.
+  - yamagishi2021asvspoof ..... ASVspoof 2021 summary. Fine as-is (but ADD the
+                               2021 evaluation-plan entry for codec conditions).
+  - baevski2020wav2vec ....... wav2vec 2.0 (NeurIPS 2020). Fine (used for X3
+                               backbone-generality).
+  - hsu2021hubert ............ HuBERT (TASLP 2021). Fine (X3).
+  - tak2022ssl ............... wav2vec2 + AASIST anti-spoofing (Odyssey 2022).
+                               Fine; front-end positioning ref (note e).
+  - tak2021rawnet2 ........... RawNet2 (ICASSP 2021). Fine.
+  - alain2016understanding ... Linear classifier probes. Fine (probing rationale).
+  - park2019specaugment ...... SpecAugment. Fine if augmentation is mentioned.
+
+NOTE ON A MISMATCH TO RECONCILE (not "fine as-is"):
+  - todisco2019asvspoof is the ASVspoof-2019 *Interspeech'19* paper, but the
+    paper's body text cites "Wang et al., 2020" (the *Computer Speech & Language*
+    journal version). ADD wang2020asvspoof19 and point the in-text ASVspoof-2019
+    citation at it (or keep both and cite consistently). See note (j).
+
+
+================================================================================
+CLAIMS FOR WHICH NO FULLY-SATISFYING SOURCE WAS FOUND
+================================================================================
+1. The VC rho ~ 0 quantitative claim (Sec 7, lines 130-131): NO external source
+   can supply this specific number — it is an internal empirical result with NO
+   committed regeneration artifact in the repo. The literature cites in (c)
+   support only the QUALITATIVE "VC differs / VC preserves source content" point.
+   The number itself must be regenerated from artifacts (roadmap X9) or softened;
+   do not cite it as established.
+2. The exact "0.86 reliability ceiling => 32% of explainable variance"
+   disattenuation step is internal; Spearman (1904) supports the METHOD but not
+   this project's numbers. (Also flag the internal 0.76-vs-0.86 inconsistency in
+   the paper's Setup section, per roadmap bug #2 — a fix, not a citation gap.)
+3. "83 quantities tested" — an internal ledger count with no external source
+   (and per roadmap bug #9 the number will shift as experiments are added). Keep
+   it in sync with the final FDR ledger; not a citation matter.
+
+================================================================================
+END OF references.txt
+================================================================================
