@@ -3,8 +3,6 @@
 This zip package lets you **re-check the numbers in our paper** by running a single
 Jupyter notebook: [`final_demo.ipynb`](final_demo.ipynb).
 
-You do **not** need to understand the science or write any code. You will:
-
 1. set up the software environment (copy-paste a few commands),
 2. put the provided model files in the right folder,
 3. open the notebook and click **“Run All”**,
@@ -12,11 +10,6 @@ You do **not** need to understand the science or write any code. You will:
 
 If the last table says **“All … metric checks matched targets within tolerance,”** the
 results reproduced. That's the whole goal.
-
-> **This guide assumes zero prior experience.** Every command is meant to be copied and
-> pasted exactly. Lines starting with `#` are just explanations — you don't type those.
-
----
 
 ## 0. What you need before starting
 
