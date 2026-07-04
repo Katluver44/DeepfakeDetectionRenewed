@@ -13,7 +13,7 @@ venv/
 *.ckpt
 experiments/results/e9_mixed_training/**/checkpoints/
 experiments/results/j6_aasist_mlaad/aasist_mlaad.pth
-
+models/good_models
 # Checkpoint directories
 experiments/checkpoints/
 DeepfakeDetectionRenewed/

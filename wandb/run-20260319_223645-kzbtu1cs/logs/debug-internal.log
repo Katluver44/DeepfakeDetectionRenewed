@@ -1,6 +1,0 @@
-{"time":"2026-03-19T22:36:46.036107412Z","level":"INFO","msg":"stream: starting","core version":"0.24.0"}
-{"time":"2026-03-19T22:36:46.322936242Z","level":"INFO","msg":"stream: created new stream","id":"kzbtu1cs"}
-{"time":"2026-03-19T22:36:46.323281744Z","level":"INFO","msg":"handler: started","stream_id":"kzbtu1cs"}
-{"time":"2026-03-19T22:36:46.32765995Z","level":"INFO","msg":"stream: started","id":"kzbtu1cs"}
-{"time":"2026-03-19T22:36:46.327756922Z","level":"INFO","msg":"sender: started","stream_id":"kzbtu1cs"}
-{"time":"2026-03-19T22:36:46.327705742Z","level":"INFO","msg":"writer: started","stream_id":"kzbtu1cs"}
