@@ -67,9 +67,11 @@ NF = TARGET_LEN // 320 - 1
 BS = 16
 N_SPOOF = N_BONA = 800
 EVAL_ATTACKS = [f"A{i:02d}" for i in range(7, 20)]
-SEEDS = {"s1": BASE/"models"/"robust_goat.ckpt",
-         "s3": BASE/"models"/"robust_goat_seed3.ckpt",
-         "s7": BASE/"models"/"robust_goat_seed7.ckpt"}
+# seed7 checkpoint is unrecoverable (truncated at the Drive source), so I1 runs
+# with the two available robust_GOAT seeds: s1 (robust_goat) and s3
+# (robust_goat_seed3), both taken from models/good_models per user direction.
+SEEDS = {"s1": BASE/"models"/"good_models"/"robust_goat.ckpt",
+         "s3": BASE/"models"/"good_models"/"robust_goat_seed3.ckpt"}
 N_BOOT = 2000
 
 # ─── data (identical selection to E9) ─────────────────────────────────────────
@@ -80,16 +82,20 @@ def _crop(wav):
     return wav[mid:mid + TARGET_LEN]
 
 print("[I1] loading ASVspoof eval subset ...", flush=True)
-from datasets import load_dataset, Audio as HFAudio
-ds = load_dataset("Bisher/as_vspoof_2019_la", cache_dir=str(BASE/"data"/"asvspoof_2019_la"),
-                  trust_remote_code=True)["test"]
+# Bisher/as_vspoof_2019_la no longer exists on the Hub and script-based datasets
+# (trust_remote_code) are unsupported by datasets>=5. Load the locally-built cache
+# (RohitGENAICODER/ASVspoofLADataset subset) saved via save_to_disk instead.
+from datasets import load_from_disk, Audio as HFAudio
+ds = load_from_disk(str(BASE/"data"/"asvspoof_2019_la"))["test"]
 sysids = ds["system_id"]
 rng = np.random.default_rng(SEED)
 spoof_idx = [i for i, s in enumerate(sysids) if s in EVAL_ATTACKS]
 bona_idx  = [i for i, s in enumerate(sysids) if s == "-"]
 sel = sorted(rng.choice(spoof_idx, N_SPOOF, replace=False).tolist() +
              rng.choice(bona_idx,  N_BONA,  replace=False).tolist())
-sub = ds.select(sel).cast_column("audio", HFAudio(sampling_rate=TARGET_SR))
+# audio is already stored as a decoded {array, sampling_rate=16000} struct in the
+# local cache, so no Audio-feature cast/resample is needed (TARGET_SR == 16000).
+sub = ds.select(sel)
 labels = np.array([0 if sysids[i] == "-" else 1 for i in sel])
 wavs = [_crop(torch.tensor(sub[i]["audio"]["array"], dtype=torch.float32)) for i in range(len(sub))]
 print(f"  {len(wavs)} utts (spoof={int(labels.sum())})")

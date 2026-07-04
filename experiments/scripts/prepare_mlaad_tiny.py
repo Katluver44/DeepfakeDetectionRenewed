@@ -53,7 +53,11 @@ log = logging.getLogger(__name__)
 # ─── Constants ────────────────────────────────────────────────────────────────
 
 REPO_ID = "mueller91/MLAAD-tiny"
-SNAP_REVISION = "9143e5ea709575ebab6bec52840a1043aada7bb1"
+# NOTE: revision 9143e5ea (2026-05-27) is a German-only, spoof-only regression of
+# this repo and does NOT match the reference manifests (English fake+bonafide).
+# 4130a5b9 (2026-02-10) is the en+de, fake+original(bonafide) snapshot whose 64
+# English systems + bonafide exactly match experiments/results/mlaad/baseline_eval.
+SNAP_REVISION = "4130a5b9955d86617e5e83c34a8057aa7efb6857"
 REPO_TYPE = "dataset"
 
 # Relative to project root (CWD when this script is invoked)

@@ -1,0 +1,9 @@
+  train 2000/10708
+  train 4000/10708
+  train 6000/10708
+  train 8000/10708
+  train 10000/10708
+  val 2000/2292
+[J6] train 10708 (spoof=5534), val 2292
+  epoch 1/8 loss=0.6883 val EER=0.2338 (355s)
+  epoch 2/8 loss=0.2332 val EER=0.2050 (356s)

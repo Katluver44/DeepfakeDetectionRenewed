@@ -1,0 +1,236 @@
+{
+  "repo_root": "/home/sagemaker-user/DeepfakeDetectionRenewed",
+  "force_rebuild": false,
+  "allow_downloads": true,
+  "run_heavy_experiments": true,
+  "run_log": [
+    {
+      "name": "warm ASVspoof2019 Hugging Face cache",
+      "status": "failed",
+      "seconds": 0.9095010757446289
+    },
+    {
+      "name": "prepare MLAAD-tiny raw snapshot and processed tensors",
+      "status": "failed",
+      "seconds": 0.1130058765411377
+    },
+    {
+      "name": "evaluate MLAAD checkpoints to regenerate baseline_eval JSONs",
+      "status": "missing_inputs",
+      "seconds": 0.0003495216369628906
+    },
+    {
+      "name": "prepare mini_goat ASVspoof train/val tensors",
+      "status": "missing_inputs",
+      "seconds": 0.0001595020294189453
+    },
+    {
+      "name": "I2 axis production / full MLAAD wave cache / geometry battery",
+      "status": "failed",
+      "seconds": 2.175588369369507
+    },
+    {
+      "name": "I3 position geometry and 3-seed MLAAD logits",
+      "status": "missing_inputs",
+      "seconds": 0.0004811286926269531
+    },
+    {
+      "name": "I7 axis fusion",
+      "status": "missing_inputs",
+      "seconds": 0.0006334781646728516
+    },
+    {
+      "name": "I1 ASVspoof causal decomposition and baseline logits",
+      "status": "missing_inputs",
+      "seconds": 0.0006699562072753906
+    },
+    {
+      "name": "I4 ASVspoof position geometry",
+      "status": "missing_inputs",
+      "seconds": 0.00033855438232421875
+    },
+    {
+      "name": "I6 test-time geometry boost and ITW logits",
+      "status": "missing_inputs",
+      "seconds": 0.00028514862060546875
+    },
+    {
+      "name": "I5 ITW transfer",
+      "status": "missing_inputs",
+      "seconds": 0.0005328655242919922
+    },
+    {
+      "name": "J3 axis-adaptive detector head",
+      "status": "missing_inputs",
+      "seconds": 0.000881195068359375
+    },
+    {
+      "name": "J4 ASVspoof21 prospective/rotation check",
+      "status": "missing_inputs",
+      "seconds": 0.00015354156494140625
+    },
+    {
+      "name": "J5 AASIST cross-family",
+      "status": "missing_inputs",
+      "seconds": 0.00036525726318359375
+    },
+    {
+      "name": "J6 AASIST MLAAD fine-tuning",
+      "status": "missing_inputs",
+      "seconds": 0.0005037784576416016
+    },
+    {
+      "name": "mini_goat score and axis fusion",
+      "status": "missing_inputs",
+      "seconds": 0.0002689361572265625
+    },
+    {
+      "name": "audit audit1_multiplicity.py",
+      "status": "ok",
+      "seconds": 25.980605363845825
+    },
+    {
+      "name": "audit audit2_sdalong_claim.py",
+      "status": "failed",
+      "seconds": 0.8263218402862549
+    },
+    {
+      "name": "audit audit3_asvspoof_prospective.py",
+      "status": "failed",
+      "seconds": 576.7582242488861
+    },
+    {
+      "name": "audit audit4_axis_rotation.py",
+      "status": "failed",
+      "seconds": 0.8323769569396973
+    },
+    {
+      "name": "audit audit5_fusion_claims.py",
+      "status": "failed",
+      "seconds": 0.8298091888427734
+    },
+    {
+      "name": "audit audit6_itw_speaker.py",
+      "status": "ok",
+      "seconds": 13.054535388946533
+    },
+    {
+      "name": "audit audit7_agreement.py",
+      "status": "ok",
+      "seconds": 7.83873438835144
+    },
+    {
+      "name": "audit audit8_i1_causal.py",
+      "status": "ok",
+      "seconds": 1.4501352310180664
+    },
+    {
+      "name": "audit audit9_hardness_reliability.py",
+      "status": "failed",
+      "seconds": 0.8327357769012451
+    },
+    {
+      "name": "audit audit10_consistency.py",
+      "status": "ok",
+      "seconds": 0.8239328861236572
+    }
+  ],
+  "failures": [
+    {
+      "step": "download robust_goat_seed3.ckpt",
+      "traceback": "Traceback (most recent call last):\n  File \"/tmp/ipykernel_9404/793315007.py\", line 42, in download_drive\n    out = gdown.download(url, str(dest), quiet=False, fuzzy=True)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: download() got an unexpected keyword argument 'fuzzy'\n"
+    },
+    {
+      "step": "download robust_goat_seed7.ckpt",
+      "traceback": "Traceback (most recent call last):\n  File \"/tmp/ipykernel_9404/793315007.py\", line 42, in download_drive\n    out = gdown.download(url, str(dest), quiet=False, fuzzy=True)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: download() got an unexpected keyword argument 'fuzzy'\n"
+    },
+    {
+      "step": "warm ASVspoof2019 Hugging Face cache",
+      "traceback": "Subprocess failed with exit code 1\n\nSTDOUT tail:\n\n\nSTDERR tail:\n`trust_remote_code` is not supported anymore.\nPlease check that the Hugging Face dataset 'Bisher/as_vspoof_2019_la' isn't based on a loading script and remove `trust_remote_code`.\nIf the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.\nTraceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/opt/conda/lib/python3.12/site-packages/datasets/load.py\", line 1698, in load_dataset\n    builder_instance = load_dataset_builder(\n                       ^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/conda/lib/python3.12/site-packages/datasets/load.py\", line 1325, in load_dataset_builder\n    dataset_module = dataset_module_factory(\n                     ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/conda/lib/python3.12/site-packages/datasets/load.py\", line 1211, in dataset_module_factory\n    raise e1 from None\n  File \"/opt/conda/lib/python3.12/site-packages/datasets/load.py\", line 1168, in dataset_module_factory\n    raise DatasetNotFoundError(f\"Dataset '{path}' doesn't exist on the Hub or cannot be accessed.\") from e\ndatasets.exceptions.DatasetNotFoundError: Dataset 'Bisher/as_vspoof_2019_la' doesn't exist on the Hub or cannot be accessed.\n"
+    },
+    {
+      "step": "prepare MLAAD-tiny raw snapshot and processed tensors",
+      "traceback": "Subprocess failed with exit code 1\n\nSTDOUT tail:\n\n\nSTDERR tail:\n/home/sagemaker-user/DeepfakeDetectionRenewed/experiments/scripts/prepare_mlaad_tiny.py:103: SyntaxWarning: invalid escape sequence '\\d'\n  _\\d+ segment \u2014 everything before it is the book/speaker proxy.\nTraceback (most recent call last):\n  File \"/home/sagemaker-user/DeepfakeDetectionRenewed/experiments/scripts/prepare_mlaad_tiny.py\", line 42, in <module>\n    import soundfile as sf\nModuleNotFoundError: No module named 'soundfile'\n"
+    },
+    {
+      "step": "evaluate MLAAD checkpoints to regenerate baseline_eval JSONs",
+      "traceback": "Required inputs are missing before command execution:\n - experiments/data/mlaad_tiny_processed/splits/test.json"
+    },
+    {
+      "step": "prepare mini_goat ASVspoof train/val tensors",
+      "traceback": "Required inputs are missing before command execution:\n - data/asvspoof_2019_la"
+    },
+    {
+      "step": "I2 axis production / full MLAAD wave cache / geometry battery",
+      "traceback": "Subprocess failed with exit code 1\n\nSTDOUT tail:\n[I2] 1846 records\n  waves 400/1846\n  waves 800/1846\n  waves 1200/1846\n  waves 1600/1846\n\n\nSTDERR tail:\nTraceback (most recent call last):\n  File \"/home/sagemaker-user/DeepfakeDetectionRenewed/experiments/scripts/i2_geometry_battery.py\", line 62, in <module>\n    waves = np.stack(waves); ok_idx = np.array(ok_idx)\n            ^^^^^^^^^^^^^^^\n  File \"/opt/conda/lib/python3.12/site-packages/numpy/core/shape_base.py\", line 445, in stack\n    raise ValueError('need at least one array to stack')\nValueError: need at least one array to stack\n"
+    },
+    {
+      "step": "I3 position geometry and 3-seed MLAAD logits",
+      "traceback": "Required inputs are missing before command execution:\n - outputs/px_wave_cache/i2_full_test_waves.npz"
+    },
+    {
+      "step": "I7 axis fusion",
+      "traceback": "Required inputs are missing before command execution:\n - outputs/px_wave_cache/i2_full_test_waves.npz\n - experiments/results/i3_position_geometry/embeddings.npz\n - experiments/results/i3_position_geometry/logits_main.npy\n - experiments/results/i3_position_geometry/logits_s42.npy\n - experiments/results/i3_position_geometry/logits_s1024.npy"
+    },
+    {
+      "step": "I1 ASVspoof causal decomposition and baseline logits",
+      "traceback": "Required inputs are missing before command execution:\n - models/robust_goat_seed3.ckpt\n - models/robust_goat_seed7.ckpt"
+    },
+    {
+      "step": "I4 ASVspoof position geometry",
+      "traceback": "Required inputs are missing before command execution:\n - experiments/results/i1_geometry_causal_decomp/i1_logits.npz"
+    },
+    {
+      "step": "I6 test-time geometry boost and ITW logits",
+      "traceback": "Required inputs are missing before command execution:\n - outputs/px_wave_cache/i2_full_test_waves.npz"
+    },
+    {
+      "step": "I5 ITW transfer",
+      "traceback": "Required inputs are missing before command execution:\n - experiments/results/i6_testtime_boost/i6_logits.npz\n - experiments/results/i3_position_geometry/embeddings.npz"
+    },
+    {
+      "step": "J3 axis-adaptive detector head",
+      "traceback": "Required inputs are missing before command execution:\n - outputs/px_wave_cache/i2_full_test_waves.npz\n - experiments/results/i3_position_geometry/embeddings.npz\n - experiments/results/i5_itw_transfer/features.npz\n - experiments/results/i4_asvspoof_position/features.npz\n - experiments/results/i1_geometry_causal_decomp/i1_logits.npz"
+    },
+    {
+      "step": "J4 ASVspoof21 prospective/rotation check",
+      "traceback": "Required inputs are missing before command execution:\n - experiments/results/i1_geometry_causal_decomp/i1_logits.npz"
+    },
+    {
+      "step": "J5 AASIST cross-family",
+      "traceback": "Required inputs are missing before command execution:\n - baselines/aasist/models/AASIST.py\n - baselines/aasist/models/weights/AASIST.pth\n - baselines/aasist/config/AASIST.conf"
+    },
+    {
+      "step": "J6 AASIST MLAAD fine-tuning",
+      "traceback": "Required inputs are missing before command execution:\n - baselines/aasist/models/AASIST.py\n - baselines/aasist/models/weights/AASIST.pth\n - baselines/aasist/config/AASIST.conf\n - experiments/data/mlaad_tiny_processed/splits/train.json"
+    },
+    {
+      "step": "mini_goat score and axis fusion",
+      "traceback": "Required inputs are missing before command execution:\n - experiments/results/i1_geometry_causal_decomp/i1_logits.npz\n - experiments/results/i4_asvspoof_position/features.npz"
+    },
+    {
+      "step": "audit audit2_sdalong_claim.py",
+      "traceback": "Subprocess failed with exit code 1\n\nSTDOUT tail:\n\n\nSTDERR tail:\nTraceback (most recent call last):\n  File \"/home/sagemaker-user/DeepfakeDetectionRenewed/experiments/axis_audits/audit2_sdalong_claim.py\", line 29, in <module>\n    d = ac.load_mlaad()\n        ^^^^^^^^^^^^^^^\n  File \"/home/sagemaker-user/DeepfakeDetectionRenewed/experiments/axis_audits/audit_common.py\", line 37, in load_mlaad\n    ok = np.load(WAVE_CACHE / \"i2_full_test_waves.npz\", allow_pickle=True)[\"ok_idx\"]\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/conda/lib/python3.12/site-packages/numpy/lib/npyio.py\", line 427, in load\n    fid = stack.enter_context(open(os_fspath(file), \"rb\"))\n                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/home/sagemaker-user/DeepfakeDetectionRenewed/outputs/px_wave_cache/i2_full_test_waves.npz'\n"
+    },
+    {
+      "step": "audit audit3_asvspoof_prospective.py",
+      "traceback": "Subprocess failed with exit code 1\n\nSTDOUT tail:\n detector pred     rho  p_perm  p_holm_within  p_holm_all8  q_bh_all8\nwavlm_gat   P1  0.2527  0.4029         0.5307       0.9783     0.8057\nwavlm_gat   P2  0.1923  0.5307         0.5307       0.9783     0.8208\nwavlm_gat   P3  0.5989  0.0336         0.1344       0.2353     0.1344\nwavlm_gat   P4 -0.3736  0.2093         0.5307       0.9783     0.5580\naasist_zs   P1  0.1538  0.6156         0.9783       0.9783     0.8208\naasist_zs   P2  0.0659  0.8346         0.9783       0.9783     0.9539\naasist_zs   P3  0.6429  0.0204         0.0818       0.1636     0.1344\naasist_zs   P4 -0.0110  0.9783         0.9783       0.9783     0.9783\n\nJ2 prior prospective tests (all ns): 9\n\nWavLM vs AASIST per-attack hardness agreement: rho=+0.214 (p=0.482)\n\n\nSTDERR tail:\nTraceback (most recent call last):\n  File \"/home/sagemaker-user/DeepfakeDetectionRenewed/experiments/axis_audits/audit3_asvspoof_prospective.py\", line 90, in <module>\n    z = np.load(ac.RES / \"j4_asvspoof21\" / \"waves_sel.npz\", allow_pickle=True)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/conda/lib/python3.12/site-packages/numpy/lib/npyio.py\", line 427, in load\n    fid = stack.enter_context(open(os_fspath(file), \"rb\"))\n                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/home/sagemaker-user/DeepfakeDetectionRenewed/experiments/results/j4_asvspoof21/waves_sel.npz'\n"
+    },
+    {
+      "step": "audit audit4_axis_rotation.py",
+      "traceback": "Subprocess failed with exit code 1\n\nSTDOUT tail:\n\n\nSTDERR tail:\nTraceback (most recent call last):\n  File \"/home/sagemaker-user/DeepfakeDetectionRenewed/experiments/axis_audits/audit4_axis_rotation.py\", line 33, in <module>\n    ml = ac.load_mlaad()\n         ^^^^^^^^^^^^^^^\n  File \"/home/sagemaker-user/DeepfakeDetectionRenewed/experiments/axis_audits/audit_common.py\", line 37, in load_mlaad\n    ok = np.load(WAVE_CACHE / \"i2_full_test_waves.npz\", allow_pickle=True)[\"ok_idx\"]\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/conda/lib/python3.12/site-packages/numpy/lib/npyio.py\", line 427, in load\n    fid = stack.enter_context(open(os_fspath(file), \"rb\"))\n                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/home/sagemaker-user/DeepfakeDetectionRenewed/outputs/px_wave_cache/i2_full_test_waves.npz'\n"
+    },
+    {
+      "step": "audit audit5_fusion_claims.py",
+      "traceback": "Subprocess failed with exit code 1\n\nSTDOUT tail:\n\n\nSTDERR tail:\nTraceback (most recent call last):\n  File \"/home/sagemaker-user/DeepfakeDetectionRenewed/experiments/axis_audits/audit5_fusion_claims.py\", line 32, in <module>\n    i7 = np.load(ac.RES / \"i7_axis_fusion\" / \"i7_scores.npz\")\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/conda/lib/python3.12/site-packages/numpy/lib/npyio.py\", line 427, in load\n    fid = stack.enter_context(open(os_fspath(file), \"rb\"))\n                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/home/sagemaker-user/DeepfakeDetectionRenewed/experiments/results/i7_axis_fusion/i7_scores.npz'\n"
+    },
+    {
+      "step": "audit audit9_hardness_reliability.py",
+      "traceback": "Subprocess failed with exit code 1\n\nSTDOUT tail:\n\n\nSTDERR tail:\nTraceback (most recent call last):\n  File \"/home/sagemaker-user/DeepfakeDetectionRenewed/experiments/axis_audits/audit9_hardness_reliability.py\", line 35, in <module>\n    d = ac.load_mlaad()\n        ^^^^^^^^^^^^^^^\n  File \"/home/sagemaker-user/DeepfakeDetectionRenewed/experiments/axis_audits/audit_common.py\", line 37, in load_mlaad\n    ok = np.load(WAVE_CACHE / \"i2_full_test_waves.npz\", allow_pickle=True)[\"ok_idx\"]\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/conda/lib/python3.12/site-packages/numpy/lib/npyio.py\", line 427, in load\n    fid = stack.enter_context(open(os_fspath(file), \"rb\"))\n                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/home/sagemaker-user/DeepfakeDetectionRenewed/outputs/px_wave_cache/i2_full_test_waves.npz'\n"
+    },
+    {
+      "step": "paper metric audit",
+      "traceback": "                             metric  actual  expected    tol    ok\n       mini_goat detector-alone EER     NaN  0.143750 0.0020 False\n                mini_goat fused EER     NaN  0.113750 0.0020 False\nAASIST zero-shot MLAAD baseline EER     NaN  0.375959 0.0005 False\n   AASIST zero-shot MLAAD fused EER     NaN  0.116490 0.0005 False\n         AASIST fine-tuned test EER     NaN  0.200451 0.0005 False\n     AASIST fine-tuned sd_along rho     NaN  0.349498 0.0005 False\n            ASVspoof21 WavLM P3 rho     NaN  0.598901 0.0005 False\n              ASVspoof21 WavLM P3 p     NaN  0.030554 0.0005 False"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+[I2] 1846 records
+  waves 400/1846
+  waves 800/1846
+  waves 1200/1846
+  waves 1600/1846
+2026-07-04 08:30:21.622314: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1783153821.645190  130764 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1783153821.654201  130764 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1783153821.835621  130764 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1783153821.836242  130764 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1783153821.836248  130764 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1783153821.836252  130764 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+Some weights of WavLMForCTC were not initialized from the model checkpoint at microsoft/wavlm-base and are newly initialized: ['lm_head.bias', 'lm_head.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+  loaded 1846 (bona=908 spoof=938), 63 system-language units
+Load WavLM model!!!!!!!
+torch.Size([687, 768])
+  detector EER on full split: 0.266
+  battery: (1846, 35)
+  61 system units (>= 8 utts), 30 features; hardness range [0.007, 0.581]
+
+[5a] top univariate (by LOO R^2):
+        feature  spearman  p_spearman   pearson    loo_r2    q_fdr
+ vel_entropy_L9  0.351824    0.005428  0.388166  0.083267 0.078081
+vel_entropy_L12  0.309942    0.015064  0.385007  0.082701 0.079120
+         rog_L0 -0.381386    0.002424 -0.338221  0.052616 0.072734
+    mu_norm_L12  0.289476    0.023648  0.317788  0.035384 0.101350
+         rog_L9 -0.205605    0.111915 -0.272507  0.015843 0.259573
+    vel_mean_L9 -0.176097    0.174608 -0.229850 -0.000426 0.336605
+    eff_rank_L9 -0.265574    0.038584 -0.248128 -0.014797 0.144691
+        rog_L12 -0.307774    0.015824 -0.241568 -0.015199 0.079120
+    vel_mean_L0 -0.157007    0.226891 -0.207887 -0.017112 0.358249
+  part_ratio_L9 -0.325754    0.010411 -0.248310 -0.020206 0.078081
+   vel_mean_L12 -0.182708    0.158727 -0.191075 -0.020404 0.336605
+  tortuosity_L9 -0.147065    0.258049 -0.154294 -0.030057 0.387073
+
+[5b] rog_L12 alone LOO R^2=-0.015 (perm p=0.0940)
+     battery w/o rog=+0.115  full battery=+0.117  unique(rog)=+0.003
+     best competitor=vel_entropy_L9: alone=+0.083, rog+comp=+0.070
+     partial spearman rog|comp: rho=-0.198 p=0.1265
+     partial spearman comp|rog: rho=+0.330 p=0.0093
+     rog vs smoothness-residualized hardness: rho=-0.208 p=0.1071
+     rog vs language-residualized hardness:   rho=-0.308 p=0.0158
+
+[5c] PCA factors vs hardness:
+ pc  var_frac  spearman_hardness        p  rog_L12_loading                                                                                         top_loadings
+  1  0.444499          -0.270386 0.035072         0.134980 eff_rank_L9:+0.26; part_ratio_L9:+0.26; vel_mean_L12:+0.25; eff_rank_L12:+0.24; tortuosity_L12:+0.24
+  2  0.186578          -0.028662 0.826438        -0.038966 curvature_L9:-0.36; curvature_L12:-0.32; accel_mean_L9:-0.32; vel_mean_L9:-0.26; tortuosity_L9:-0.26
+  3  0.085334           0.228609 0.076377        -0.154253     rog_L9:-0.41; vel_entropy_L12:+0.32; curvature_L12:+0.31; mu_norm_L9:-0.28; vel_entropy_L9:+0.28
+  4  0.058575          -0.066420 0.611042        -0.430780             rog_L12:-0.43; vel_entropy_L12:-0.40; mu_norm_L12:+0.39; twonn_id_L9:+0.27; rog_L9:-0.25
+  5  0.039810           0.258488 0.044282        -0.204247       vel_entropy_L9:+0.57; recurrence_L12:-0.32; rog_L0:-0.32; vel_cv_L9:-0.27; recurrence_L9:-0.26
+  6  0.033831           0.087626 0.501894        -0.393931       rog_L12:-0.39; twonn_id_L9:+0.37; vel_entropy_L9:+0.36; mu_norm_L12:-0.36; recurrence_L9:-0.36
+
+[5d] top pairs:
+             f1              f2   loo_r2
+vel_entropy_L12     mu_norm_L12 0.154898
+vel_entropy_L12          rog_L0 0.154796
+ vel_entropy_L9 vel_entropy_L12 0.143420
+ vel_entropy_L9          rog_L0 0.132304
+ vel_entropy_L9     mu_norm_L12 0.130758
+vel_entropy_L12         rog_L12 0.116760
+vel_entropy_L12          rog_L9 0.101540
+ vel_entropy_L9          rog_L9 0.097515
+
+[I2] done -> /home/sagemaker-user/DeepfakeDetectionRenewed/experiments/results/i2_geometry_battery

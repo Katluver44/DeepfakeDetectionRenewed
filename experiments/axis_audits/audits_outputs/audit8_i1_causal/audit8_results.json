@@ -14,7 +14,7 @@
         0.0003937499999999705,
         -0.01244843750000002
       ],
-      "q_bh_seed": 0.28481180546592877
+      "q_bh_seed": 0.2848118054659288
     },
     {
       "A": "iso_0.7",
@@ -24,13 +24,13 @@
       "p_reported": 0.024,
       "seed_consistent": false,
       "t_seed": -1.8530077029764787,
-      "p_seed_ttest": 0.20506449993546874,
+      "p_seed_ttest": 0.20506449993546877,
       "seed_deltas": [
         -0.0029296875,
         8.281249999997353e-05,
         -0.004162500000000069
       ],
-      "q_bh_seed": 0.28481180546592877
+      "q_bh_seed": 0.2848118054659288
     },
     {
       "A": "iso_0.875",
@@ -168,13 +168,13 @@
       "p_reported": 0.282,
       "seed_consistent": false,
       "t_seed": -1.2572865115235672,
-      "p_seed_ttest": 0.3355748222086452,
+      "p_seed_ttest": 0.3355748222086451,
       "seed_deltas": [
         -0.0023453125000000297,
         0.0005515624999999913,
         -0.001431249999999995
       ],
-      "q_bh_seed": 0.4415458186955858
+      "q_bh_seed": 0.4415458186955856
     },
     {
       "A": "spec_1.25",
@@ -184,7 +184,7 @@
       "p_reported": 0.008,
       "seed_consistent": true,
       "t_seed": 7.966294397739213,
-      "p_seed_ttest": 0.015394570239645956,
+      "p_seed_ttest": 0.015394570239645957,
       "seed_deltas": [
         0.0028000000000000247,
         0.002798437499999973,
@@ -248,7 +248,7 @@
       "p_reported": 0.463,
       "seed_consistent": false,
       "t_seed": -0.7976536156429449,
-      "p_seed_ttest": 0.5087292180902556,
+      "p_seed_ttest": 0.5087292180902555,
       "seed_deltas": [
         -0.003642187500000005,
         0.001198437499999927,
@@ -312,7 +312,7 @@
       "p_reported": 0.0,
       "seed_consistent": true,
       "t_seed": -2.8181156118946458,
-      "p_seed_ttest": 0.10622782982979145,
+      "p_seed_ttest": 0.10622782982979147,
       "seed_deltas": [
         -0.04090312500000004,
         -0.009445312500000025,
@@ -404,12 +404,12 @@
   "headline_verdicts": {
     "iso_0.7": {
       "seed_consistent": false,
-      "p_seed": 0.20506449993546874,
+      "p_seed": 0.20506449993546877,
       "verdict": "does NOT survive seed-level inference"
     },
     "sub_top_0.7": {
       "seed_consistent": true,
-      "p_seed": 0.10622782982979145,
+      "p_seed": 0.10622782982979147,
       "verdict": "does NOT survive seed-level inference"
     },
     "sub_res_0.7": {

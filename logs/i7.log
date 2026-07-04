@@ -1,0 +1,20 @@
+[I7] lambda picked per fold: {'main': [1.5, 1.5, 1.5, 1.5, 2.0], 's42': [1.5, 2.0, 2.0, 1.5, 2.0], 's1024': [1.5, 1.5, 1.5, 1.5, 2.0]}
+ seed     scorer      EER      AUC
+ main   detector 0.265972 0.805764
+ main      fused 0.157103 0.922493
+  s42   detector 0.285478 0.785725
+  s42      fused 0.167922 0.911627
+s1024   detector 0.264888 0.800697
+s1024      fused 0.163054 0.917509
+    - axis_alone 0.187429 0.872483
+
+[boot] dEER=-0.1094 [-0.1287,-0.0908] p=0.0000
+       dAUC=+0.1198 [+0.1024,+0.1367] p=0.0000
+
+quartile  AUC_detector  AUC_fused  delta
+ Q1_easy        0.9495     0.9851 0.0356
+      Q2        0.8705     0.9522 0.0817
+      Q3        0.7687     0.9050 0.1363
+ Q4_hard        0.6168     0.8371 0.2203
+
+[I7] done -> /home/sagemaker-user/DeepfakeDetectionRenewed/experiments/results/i7_axis_fusion
