@@ -1,0 +1,9 @@
+tensors: total=783 identical=732 differing=51
+sample DIFFERING (non-wavlm) weights:
+   model.GAT.gat_net.0.scoring_fn_target: mean_abs_diff=0.05581
+   model.GAT.gat_net.0.scoring_fn_source: mean_abs_diff=0.06781
+   model.GAT.gat_net.0.bias: mean_abs_diff=0.00386
+   model.GAT.gat_net.0.linear_proj.weight: mean_abs_diff=0.04256
+   model.GAT.gat_net.0.skip_proj.weight: mean_abs_diff=0.02538
+   model.GAT.gat_net.1.scoring_fn_target: mean_abs_diff=0.05812
+wavlm backbone tensors=248 differing=0 (expected ~0 if frozen)

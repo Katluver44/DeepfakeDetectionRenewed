@@ -1,8 +1,7 @@
 {
   "seeds": [
     "s1",
-    "s3",
-    "s7"
+    "s3"
   ],
   "n_boot": 2000,
   "smooth_star": "smooth_3",

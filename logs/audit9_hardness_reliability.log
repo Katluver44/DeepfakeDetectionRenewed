@@ -1,1 +1,13 @@
 MLAAD hardness split-half: 0.759 -> full-sample reliability≈0.863; R² ceiling≈0.863; sd_along's 0.277 uses 32.1% of explainable variance
+bona-pool bootstrap: sd_along rho median=+0.598 CI=[+0.593,+0.603]; hardness rank stability=1.000
+ min_utts  n_systems    rho      p  loso_r2
+        8         61 0.5974 0.0000   0.2766
+       12         51 0.6420 0.0000   0.2973
+       16         28 0.6880 0.0001   0.1631
+       25          1    NaN    NaN      NaN
+cross-seed hardness agreement:
+        main    s42  s1024
+main   1.000  0.968  0.913
+s42    0.968  1.000  0.893
+s1024  0.913  0.893  1.000
+done -> /home/sagemaker-user/DeepfakeDetectionRenewed/experiments/axis_audits/audits_outputs/audit9_hardness_reliability

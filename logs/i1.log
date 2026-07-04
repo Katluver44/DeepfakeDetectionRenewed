@@ -1,0 +1,72 @@
+[I1] loading ASVspoof eval subset ...
+  1600 utts (spoof=800)
+2026-07-04 10:26:54.807216: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1783160814.832433   71307 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1783160814.842376   71307 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1783160815.027343   71307 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1783160815.028035   71307 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1783160815.028041   71307 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1783160815.028044   71307 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+
+[seed] s1
+Load WavLM model!!!!!!!
+Some weights of WavLMForCTC were not initialized from the model checkpoint at microsoft/wavlm-base and are newly initialized: ['lm_head.bias', 'lm_head.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+torch.Size([687, 768])
+  baseline rog=14.80 vel=10.969 effrank=40.1 AUC=0.9835
+    baseline           rog= 1.00x vel= 1.01x er= 40.6 AUC=0.9805 EER=0.073  (26s)
+    iso_0.5            rog= 0.50x vel= 0.50x er= 40.0 AUC=0.9702 EER=0.092  (26s)
+    iso_0.7            rog= 0.69x vel= 0.69x er= 39.7 AUC=0.9779 EER=0.082  (26s)
+    iso_0.875          rog= 0.88x vel= 0.88x er= 40.1 AUC=0.9802 EER=0.073  (26s)
+    iso_1.25           rog= 1.25x vel= 1.24x er= 39.8 AUC=0.9798 EER=0.070  (26s)
+    shift_0.5          rog= 1.00x vel= 0.99x er= 39.7 AUC=0.9745 EER=0.089  (26s)
+    shift_0.7          rog= 1.00x vel= 1.00x er= 40.1 AUC=0.9780 EER=0.079  (26s)
+    shift_0.875        rog= 1.00x vel= 1.00x er= 40.2 AUC=0.9801 EER=0.071  (27s)
+    shift_1.25         rog= 1.00x vel= 1.00x er= 40.2 AUC=0.9769 EER=0.087  (27s)
+    iso_0.7_ungated    rog= 0.65x vel= 0.64x er= 36.0 AUC=0.9716 EER=0.088  (27s)
+    spec_0.6           rog= 1.00x vel= 1.26x er= 75.2 AUC=0.9748 EER=0.089  (33s)
+    spec_0.8           rog= 1.00x vel= 1.10x er= 54.2 AUC=0.9800 EER=0.076  (33s)
+    spec_1.25          rog= 1.00x vel= 0.90x er= 28.0 AUC=0.9859 EER=0.059  (34s)
+    spec_1.6           rog= 1.00x vel= 0.79x er= 17.3 AUC=0.9872 EER=0.059  (34s)
+    smooth_3           rog= 1.00x vel= 0.65x er= 27.1 AUC=0.9822 EER=0.065  (27s)
+    smooth_5           rog= 1.00x vel= 0.48x er= 20.4 AUC=0.9805 EER=0.071  (26s)
+    smooth_9           rog= 1.00x vel= 0.33x er= 13.7 AUC=0.9793 EER=0.074  (27s)
+    jitter_0.5         rog= 1.00x vel= 1.17x er= 53.0 AUC=0.9810 EER=0.071  (26s)
+    jitter_1.0         rog= 1.00x vel= 1.41x er= 77.8 AUC=0.9772 EER=0.079  (26s)
+    shuffle            rog= 1.00x vel= 1.90x er= 40.1 AUC=0.9675 EER=0.103  (26s)
+    sub_top_0.7        rog= 0.72x vel= 0.88x er= 51.5 AUC=0.9422 EER=0.144  (34s)
+    sub_res_0.7        rog= 0.70x vel= 0.48x er=  8.1 AUC=0.9853 EER=0.063  (33s)
+
+[seed] s3
+Load WavLM model!!!!!!!
+Some weights of WavLMForCTC were not initialized from the model checkpoint at microsoft/wavlm-base and are newly initialized: ['lm_head.bias', 'lm_head.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+torch.Size([687, 768])
+  baseline rog=14.78 vel=10.940 effrank=39.9 AUC=0.9824
+    baseline           rog= 1.00x vel= 0.99x er= 40.0 AUC=0.9806 EER=0.080  (27s)
+    iso_0.5            rog= 0.50x vel= 0.50x er= 39.9 AUC=0.9766 EER=0.089  (27s)
+    iso_0.7            rog= 0.70x vel= 0.70x er= 40.2 AUC=0.9795 EER=0.080  (27s)
+    iso_0.875          rog= 0.88x vel= 0.88x er= 39.9 AUC=0.9823 EER=0.071  (26s)
+    iso_1.25           rog= 1.25x vel= 1.25x er= 40.1 AUC=0.9827 EER=0.066  (26s)
+    shift_0.5          rog= 1.00x vel= 1.00x er= 40.0 AUC=0.9804 EER=0.083  (26s)
+    shift_0.7          rog= 1.00x vel= 1.00x er= 40.2 AUC=0.9841 EER=0.073  (27s)
+    shift_0.875        rog= 1.00x vel= 1.00x er= 40.0 AUC=0.9809 EER=0.067  (26s)
+    shift_1.25         rog= 1.00x vel= 1.01x er= 40.3 AUC=0.9820 EER=0.078  (26s)
+    iso_0.7_ungated    rog= 0.65x vel= 0.64x er= 36.0 AUC=0.9633 EER=0.113  (27s)
+    spec_0.6           rog= 1.00x vel= 1.27x er= 75.3 AUC=0.9742 EER=0.086  (34s)
+    spec_0.8           rog= 1.00x vel= 1.11x er= 54.3 AUC=0.9790 EER=0.084  (34s)
+    spec_1.25          rog= 1.00x vel= 0.89x er= 27.5 AUC=0.9834 EER=0.070  (34s)
+    spec_1.6           rog= 1.00x vel= 0.80x er= 17.6 AUC=0.9835 EER=0.064  (34s)
+    smooth_3           rog= 1.00x vel= 0.64x er= 26.9 AUC=0.9828 EER=0.066  (27s)
+    smooth_5           rog= 1.00x vel= 0.48x er= 20.3 AUC=0.9806 EER=0.072  (26s)
+    smooth_9           rog= 1.00x vel= 0.34x er= 13.7 AUC=0.9821 EER=0.071  (27s)
+    jitter_0.5         rog= 1.00x vel= 1.18x er= 53.0 AUC=0.9819 EER=0.072  (27s)
+    jitter_1.0         rog= 1.00x vel= 1.42x er= 78.2 AUC=0.9806 EER=0.084  (27s)
+    shuffle            rog= 1.00x vel= 1.89x er= 40.0 AUC=0.9662 EER=0.099  (27s)
+    sub_top_0.7        rog= 0.72x vel= 0.88x er= 51.4 AUC=0.9582 EER=0.114  (34s)
+    sub_res_0.7        rog= 0.70x vel= 0.48x er=  8.3 AUC=0.9813 EER=0.079  (34s)
+
+  matched-velocity smooth condition: smooth_3 (vel 0.64x vs iso_0.7 0.70x)
+
+[I1] done -> /home/sagemaker-user/DeepfakeDetectionRenewed/experiments/results/i1_geometry_causal_decomp
