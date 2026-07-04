@@ -1,0 +1,109 @@
+=== CELL 14 SOURCE ===
+import wandb
+from pytorch_lightning import Trainer
+from pytorch_lightning.loggers import WandbLogger
+
+if wandb.run is not None:
+    wandb.finish()
+
+wandb_logger = WandbLogger(
+    project="DeepfakeDetectionRenewed",
+    entity="krishrawat0222-f",
+    name="robust-goat-train",
+    log_model=True,
+    tags=["robust", "multi-aug", "30k", "from-scratch"],
+)
+wandb_logger.experiment.config.update({
+    "train_samples":   30000,
+    "aug_prob":        0.35,
+    "clean_prob":      0.65,
+    "aug_weights":     dict(zip(AUG_NAMES, AUG_WEIGHTS)),
+    "balance":         "50/50 bonafide/spoof",
+    "n_edges":         10,
+    "max_epochs":      7,
+    "batch_size":      20,
+    "aug_rationale":   "proportional to goat.pth struggle scores from attack sweep",
+}, allow_val_change=True)
+
+trainer = Trainer(
+    accelerator="gpu",
+    devices=1,
+    max_epochs=7,
+    logger=wandb_logger,
+    callbacks=[
+        BinaryACC_Callback(batch_key="label", output_key="logit"),
+        BinaryAUC_Callback(batch_key="label", output_key="logit"),
+        EER_Callback(batch_key="label", output_key="logit"),
+        TPR_Callback(batch_key="label", output_key="logit"),
+        TNR_Callback(batch_key="label", output_key="logit"),
+        FPR_Callback(batch_key="label", output_key="logit"),
+        FNR_Callback(batch_key="label", output_key="logit"),
+    ],
+    log_every_n_steps=10,
+)
+
+[34m[1mwandb[0m: [33mWARNING[0m The anonymous setting has no effect and will be removed in a future version.
+[34m[1mwandb[0m: [wandb.login()] Loaded credentials for https://api.wandb.ai from /home/ubuntu/.netrc.
+[34m[1mwandb[0m: Currently logged in as: [33myashaspatil[0m ([33mkrishrawat0222-f[0m) to [32mhttps://api.wandb.ai[0m. Use [1m`wandb login --relogin`[0m to force relogin
+
+<IPython.core.display.HTML object>
+<IPython.core.display.HTML object>
+<IPython.core.display.HTML object>
+<IPython.core.display.HTML object>
+<IPython.core.display.HTML object>
+<IPython.core.display.HTML object>
+[34m[1mwandb[0m: Detected [huggingface_hub.inference] in use.
+[34m[1mwandb[0m: Use W&B Weave for improved LLM call tracing. Install Weave with `pip install weave` then add `import weave` to the top of your script.
+[34m[1mwandb[0m: For more information, check out the docs at: https://weave-docs.wandb.ai/
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+
+
+
+=== CELL 15 SOURCE ===
+trainer.fit(audio_model_lit, train_dataloader, val_dataloader)
+
+You are using a CUDA device ('NVIDIA A100-SXM4-40GB') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name          | Type                    | Params | Mode 
+------------------------------------------------------------------
+0 | model         | Phoneme_GAT             | 106 M  | train
+1 | bce_loss      | BCEWithLogitsLoss       | 0      | train
+2 | ce_loss       | CrossEntropyLoss        | 0      | train
+3 | contrast_loss | BinaryTokenContrastLoss | 0      | train
+4 | clip_head     | Sequential              | 1.2 M  | train
+5 | clip_loss     | CLIPLoss1D              | 1      | train
+------------------------------------------------------------------
+12.9 M    Trainable params
+94.9 M    Non-trainable params
+107 M     Total params
+431.401   Total estimated model params size (MB)
+
+Sanity Checking: |          | 0/? [00:00<?, ?it/s]
+Training: |          | 0/? [00:00<?, ?it/s]
+Validation: |          | 0/? [00:00<?, ?it/s]
+Validation: |          | 0/? [00:00<?, ?it/s]
+Validation: |          | 0/? [00:00<?, ?it/s]
+Validation: |          | 0/? [00:00<?, ?it/s]
+Validation: |          | 0/? [00:00<?, ?it/s]
+`Trainer.fit` stopped: `max_epochs=7` reached.
+
+
+
+=== CELL 16 SOURCE ===
+torch.save(audio_model_lit.state_dict(), "robust_goat.pth")
+trainer.save_checkpoint("robust_goat.ckpt")
+print("✅ Saved robust_goat.pth + robust_goat.ckpt")
+
+if wandb.run is not None:
+    wandb.finish()
+
+✅ Saved robust_goat.pth + robust_goat.ckpt
+
+<IPython.core.display.HTML object>
+<IPython.core.display.HTML object>
+<IPython.core.display.HTML object>
+<IPython.core.display.HTML object>
+
