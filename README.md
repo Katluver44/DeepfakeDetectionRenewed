@@ -1,6 +1,6 @@
 # Reproducing the Deepfake-Speech Detection Results
 
-This repository lets you **re-check the numbers in our paper** by running a single
+This zip package lets you **re-check the numbers in our paper** by running a single
 Jupyter notebook: [`final_demo.ipynb`](final_demo.ipynb).
 
 You do **not** need to understand the science or write any code. You will:
@@ -35,9 +35,9 @@ results reproduced. That's the whole goal.
 
 ---
 
-## 1. Get the code
+## 1. Unzip the artifact package
 
-Download or copy this repository onto your machine, then move into its folder in the terminal:
+Unzip the submitted artifact package, then move into its folder in the terminal:
 
 ```bash
 cd DeepfakeDetectionRenewed
@@ -173,7 +173,7 @@ Run these only if you want to reproduce those specific extra rows.
 
 ---
 
-## 8. What's in this repository
+## 8. What's in this zip package
 
 | Path | What it is |
 |---|---|
