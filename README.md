@@ -179,7 +179,6 @@ Run these only if you want to reproduce those specific extra rows.
 | `experiments/data/`, `data/`, `outputs/` | Prepared datasets and cached computations. |
 | `baselines/aasist/` | The official AASIST baseline model (auto-downloaded if missing). |
 | `phoneme_GAT/`, `callbacks.py`, `loader.py` | The detector model code. |
-| `paper/`, `jathin_aaky.pdf` | The paper itself. |
 
 ---
 
