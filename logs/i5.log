@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "/home/sagemaker-user/DeepfakeDetectionRenewed/experiments/scripts/i5_itw_transfer.py", line 38, in <module>
-    itw = px.load_itw_waves(n_per_class=3000)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sagemaker-user/DeepfakeDetectionRenewed/experiments/scripts/px_common.py", line 294, in load_itw_waves
-    assert META_CSV.exists(), f"meta.csv not found at {META_CSV}"
-           ^^^^^^^^^^^^^^^^^
-AssertionError: meta.csv not found at /home/sagemaker-user/DeepfakeDetectionRenewed/data/in_the_wild/downloads/extracted/c3c93f2f54ac2d261fa7010629351505bd6e05597ea22fd4a35c92dda590a3bf/release_in_the_wild/meta.csv

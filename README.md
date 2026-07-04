@@ -1,51 +1,85 @@
-# DeepfakeDetectionRenewed Reproduction README
+# Reproducing the Deepfake-Speech Detection Results
 
-This repository contains the code, notebooks, cached result artifacts, and reviewer-facing rerun paths for the MOSS@COLM submission on deepfake speech detection. The fastest way to verify the artifact is to run the demo notebook against the committed outputs and downloaded checkpoints. The more expensive path is the full regeneration notebook, which rebuilds datasets, caches, metrics, and audits from the original scripts.
+This repository lets you **re-check the numbers in our paper** by running a single
+Jupyter notebook: [`final_demo.ipynb`](final_demo.ipynb).
 
-## Reviewer Quick Start
+You do **not** need to understand the science or write any code. You will:
 
-Run all commands from the repository root:
+1. set up the software environment (copy-paste a few commands),
+2. put the provided model files in the right folder,
+3. open the notebook and click **“Run All”**,
+4. read the summary table it prints at the end.
+
+If the last table says **“All … metric checks matched targets within tolerance,”** the
+results reproduced. That's the whole goal.
+
+> **This guide assumes zero prior experience.** Every command is meant to be copied and
+> pasted exactly. Lines starting with `#` are just explanations — you don't type those.
+
+---
+
+## 0. What you need before starting
+
+| Requirement | Details |
+|---|---|
+| **A computer with an NVIDIA GPU** | Strongly recommended. The models use a GPU; on a CPU-only machine the notebook still runs but some steps are very slow. A cloud GPU (e.g. an “L4” or “A100” instance) works great. |
+| **~20 GB of free disk space** | For the environment, model files, and cached data. |
+| **Python 3.12** | The programming language runtime. Check with `python --version`. If you don't have it, install [Miniconda](https://docs.conda.io/en/latest/miniconda.html) and run `conda create -n repro python=3.12 && conda activate repro`. |
+| **The model files (“checkpoints”)** | Provided separately — see [Step 3](#3-download-the-model-files-checkpoints). |
+| **(Optional) A free Hugging Face account** | Only if a dataset download asks you to log in. See [Step 4](#4-optional-hugging-face-login). |
+
+**What is a “terminal”?** It's a text window where you type commands.
+- **Mac:** open the app called *Terminal*.
+- **Windows:** open *Anaconda Prompt* (comes with Miniconda) or *PowerShell*.
+- **Linux / cloud server:** you're probably already in one.
+
+---
+
+## 1. Get the code
+
+Download or copy this repository onto your machine, then move into its folder in the terminal:
 
 ```bash
 cd DeepfakeDetectionRenewed
 ```
 
-Create an environment using one of the provided setup scripts:
+Everything below is run from **inside this folder**.
+
+---
+
+## 2. Set up the software environment
+
+You only do this **once**. Copy-paste these two commands:
 
 ```bash
-bash repro_setup_py310.sh
+# 1) Install PyTorch built for CUDA 12.9 (the deep-learning engine)
+pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu129
+
+# 2) Install everything else the notebook needs
+pip install -r requirements.txt
 ```
 
-or, for the older tested Python 3.9/CUDA 12.1 stack:
+- **No NVIDIA GPU, or a different CUDA version?** Replace the first command's
+  `--index-url ...` with the matching one from
+  <https://pytorch.org/get-started/locally/> (keep version `2.8.0`).
+- The notebook also has an **“Environment setup” cell at the very top** that runs these
+  installs for you automatically — so if you skip this step, just run that first cell and
+  it will fix the environment. It prints `All core imports OK.` when everything is ready.
 
-```bash
-bash repro_setup_py39.sh
-```
+---
 
-Then open the demo notebook:
+## 3. Download the model files (“checkpoints”)
 
-```bash
-jupyter notebook new_demo.ipynb
-```
+The trained models are large files provided by the authors (they **cannot be re-trained**
+by reviewers — that needs the full dataset and days of GPU time). Download them from Figshare:
 
-In the paper/package this notebook may be referred to as `demo.ipynb` or `final_demo.ipynb`; in this checkout the reviewer-facing lightweight notebook is `new_demo.ipynb`. The full cold-rerun notebook is `reproducibility_full.ipynb`.
+**https://figshare.com/s/fda6530ff838a2813db9**
 
-## Checkpoints
-
-Download the submitted checkpoint artifacts from Figshare:
-
-https://figshare.com/s/fda6530ff838a2813db9
-
-Place the downloaded checkpoint files under:
-
-```text
-models/good_models/
-```
-
-The demo notebook expects these main checkpoints:
+Then put **all of these files** into the folder `models/good_models/`:
 
 ```text
 models/good_models/robust_goat.ckpt
+models/good_models/robust_goat_seed3.ckpt
 models/good_models/mini_goat-best-epoch=02-val-eer=0.0933.ckpt
 models/good_models/mlaad_goat-best-epoch=05-val-eer=0.2795.ckpt
 models/good_models/mlaad_robust_goat.ckpt
@@ -53,137 +87,119 @@ models/good_models/mlaad_robust_goat_seed42-best-epoch=05-val-eer=0.3030.ckpt
 models/good_models/mlaad_robust_goat_seed1024-best-epoch=03-val-eer=0.2976.ckpt
 ```
 
-`new_demo.ipynb` includes a "Checkpoint QA" section that CPU-loads these files, reports parameter counts and short hashes, and flags missing or corrupt checkpoints. `reproducibility_full.ipynb` also creates compatibility aliases in `models/` and `experiments/checkpoints/` for historical script paths.
+Don't worry about memorizing these — the notebook has a **“Checkpoint”** cell that checks
+the folder and **prints the exact name of any file that is missing**, so you'll know if one
+is in the wrong place.
 
-## Data Artifacts
+---
 
-The code uses public datasets and repository-generated caches:
+## 4. (Optional) Hugging Face login
 
-- ASVspoof 2019 LA: loaded through Hugging Face in the notebooks/scripts and cached under `data/asvspoof_2019_la`.
-- MLAAD-tiny: prepared by `experiments/scripts/prepare_mlaad_tiny.py` into `experiments/data/mlaad_tiny_processed/`.
-- In-the-Wild speech: optional, used by ITW transfer experiments; see the optional ITW section in `reproducibility_full.ipynb`.
-- ASVspoof 2021 LA keys: optional, used by the prospective ASVspoof21 checks; the notebook expects `/tmp/keys/LA/CM/trial_metadata.txt`.
-
-To regenerate the core processed dataset artifacts:
-
-```bash
-python experiments/scripts/prepare_mlaad_tiny.py
-```
-
-The expected MLAAD-tiny outputs are:
-
-```text
-experiments/data/mlaad_tiny_processed/splits/train.json
-experiments/data/mlaad_tiny_processed/splits/val.json
-experiments/data/mlaad_tiny_processed/splits/test.json
-```
-
-## Demo Notebook
-
-Use `new_demo.ipynb` for the main review pass. It:
-
-- validates package imports and repository paths;
-- loads paper target numbers from `final_outputs2/summary_assets/key_numbers.json`;
-- reruns scripts when their raw caches are available;
-- otherwise validates the committed artifacts;
-- checks metrics for EER, AUC, balanced accuracy, fusion deltas, and audit outputs;
-- loads submitted checkpoints from `models/good_models/`;
-- prints validation flags for unavailable external assets without hiding metric mismatches.
-
-The final cell should print that all collected paper metric checks matched their targets within tolerance. If it prints validation flags, inspect the flagged missing external assets or caches; cached metric validation can still be successful.
-
-## Full Reproduction Notebook
-
-Use `reproducibility_full.ipynb` for a fuller rerun. Important toggles are defined in the first code cell:
-
-```python
-FORCE_REBUILD = False
-ALLOW_DOWNLOADS = True
-INSTALL_MISSING_PACKAGES = False
-STOP_ON_FAILURE = False
-RUN_HEAVY_EXPERIMENTS = True
-```
-
-Set `FORCE_REBUILD=True` for a cold regeneration. Set `RUN_HEAVY_EXPERIMENTS=False` for preflight, checkpoint, dataset, and audit checks without the longest experiment runs. The notebook writes a machine-readable report to:
-
-```text
-experiments/results/reproducibility_notebook_report.json
-```
-
-## Metrics and Result Files
-
-Evaluation metrics and dataset references are surfaced in `new_demo.ipynb` and `reproducibility_full.ipynb`. The main committed result artifacts are in:
-
-```text
-experiments/results/
-outputs/
-final_outputs/
-final_outputs2/
-```
-
-High-level paper numbers are summarized in:
-
-```text
-final_outputs2/summary_assets/key_numbers.json
-final_outputs2/tables/
-final_outputs2/report/paper_style_summary.md
-```
-
-## Training Logs
-
-Reviewers should look for training logs in the `training_logs` folders. The main submitted training logs include:
-
-```text
-experiments/results/e_mini_goat_fusion/training_logs/
-experiments/results/mlaad/training_logs/
-```
-
-Some exploratory or ablation runs store Lightning-style logs as `metrics.csv` and `hparams.yaml` under experiment-specific folders such as:
-
-```text
-experiments/results/mlaad/*/logs_seed*/
-experiments/results/mlaad/ct_feature_injection/logs_seed*/
-```
-
-## Optional Training Recipes
-
-`new_demo.ipynb` includes disabled-by-default training recipes. Set:
-
-```python
-RUN_TRAINING = True
-```
-
-to intentionally regenerate checkpoints. Leave `TRAINING_SMOKE_TEST=True` for one-batch sanity jobs where supported. Full recipes include:
+Some datasets are downloaded automatically from Hugging Face. If a download step fails with
+a “not authorized” message, make a free account at <https://huggingface.co>, create an
+access token (Settings → Access Tokens), and run:
 
 ```bash
-python experiments/results/e_mini_goat_fusion/prepare_mini_goat_data.py
-python experiments/results/e_mini_goat_fusion/train_mini_goat.py --checkpoint-path models/mini_goat.ckpt --ckpt-dir experiments/checkpoints --log-dir experiments/results/e_mini_goat_fusion/training_logs
-python experiments/train_new_seed.py --seed 3 --epochs 7 --wandb 0
-python experiments/train_new_seed.py --seed 7 --epochs 7 --wandb 0
-python experiments/scripts/prepare_mlaad_tiny.py
-python experiments/scripts/train_mlaad_regular.py --checkpoint-path experiments/checkpoints/mlaad_goat.ckpt --log-dir experiments/results/mlaad/training_logs/mlaad_goat
-python experiments/scripts/train_mlaad_adversarial.py --checkpoint-path models/mlaad_robust_goat.ckpt --log-dir experiments/results/mlaad/training_logs/mlaad_robust_goat
+export HF_TOKEN=hf_your_token_here      # Mac/Linux
+# On Windows PowerShell:  $env:HF_TOKEN = "hf_your_token_here"
 ```
 
-## Estimated Compute and FLOP Budgets
+Then re-run the notebook cell that failed. (Most of the core results don't need this.)
 
-These are order-of-magnitude estimates for reviewer planning, not profiler-certified FLOP counts. The logs show WavLM-GAT-style models with about 107M total parameters, about 12.9M trainable parameters in several MLAAD runs, batch size 20 for MLAAD training scripts, 3 second / 16 kHz audio crops, and 7 epoch defaults for the main MLAAD regular/adversarial recipes.
+---
 
-| Task | Expected hardware | Approximate budget |
-| --- | --- | --- |
-| `new_demo.ipynb` cached validation | CPU or single GPU helpful | minutes to under 1 GPU-hour; mostly loads artifacts, reads CSV/JSON/NPZ files, and reruns only scripts whose caches are present |
-| `reproducibility_full.ipynb` with existing caches | single NVIDIA GPU recommended | several GPU-hours depending on which heavy cells are enabled |
-| Cold dataset/cache rebuild | CPU plus network; GPU for scoring | dominated by dataset download and WavLM embedding/scoring; plan for many GB of disk and multi-hour wall time |
-| One MLAAD WavLM-GAT training run | A100-class GPU recommended | roughly 7 epochs, batch size 20; logs for related runs show hundreds of batches per epoch and minute-scale epochs on A100; budget on the order of 1e17 FLOPs per checkpoint |
-| Full multi-seed/audit reproduction | one or more GPUs | order of 1e18 FLOPs when regenerating all checkpoints, embeddings, and audit runs from scratch |
+## 5. Run the notebook
 
-For exact wall-clock evidence, inspect the relevant `training_logs` folders and `experiments/results/reproducibility_notebook_report.json`.
+Start Jupyter:
 
-## Expected Review Workflow
+```bash
+jupyter notebook final_demo.ipynb
+```
 
-1. Download Figshare checkpoints into `models/good_models/`.
-2. Build the Python environment with `repro_setup_py310.sh` or `repro_setup_py39.sh`.
-3. Run `new_demo.ipynb` end to end and inspect the final validation summary.
-4. Inspect `training_logs` folders for training curves and hyperparameters.
-5. Use `reproducibility_full.ipynb` when a cold or near-cold regeneration is required.
+This opens a page in your web browser. Then, in the menu at the top:
 
+**Run → Run All Cells**
+
+Now wait. The notebook runs each step from top to bottom. Cells that are already computed
+are skipped quickly; the heavy steps (loading models, computing features) take longer. A
+full run typically takes **tens of minutes to a couple of hours** depending on your GPU.
+
+You'll see progress messages under each cell. A ▶️ number like `[5]` next to a cell means it
+finished; `[*]` means it's still working.
+
+---
+
+## 6. How to know it worked
+
+Scroll to the bottom section, **“Final Reproducibility Report.”** It prints:
+
+1. **A table of every step** and whether it ran, was skipped (already cached), or failed.
+2. **A metric table** comparing our re-computed numbers to the paper's targets. Each row
+   says `ok = True` when it matches.
+
+✅ **Success looks like:** the final line prints
+**`All extracted paper metric checks matched targets within tolerance.`**
+
+The key numbers you should see match (within a tiny tolerance):
+
+| What it measures | Paper target |
+|---|---|
+| mini_goat detector-alone error rate (EER) | 0.14375 |
+| mini_goat fused error rate | 0.11375 |
+| AASIST zero-shot MLAAD error rate | 0.375959 |
+| AASIST zero-shot MLAAD fused error rate | 0.116490 |
+| AASIST fine-tuned test error rate | 0.200451 |
+| AASIST fine-tuned “sd_along” correlation | 0.349498 |
+| ASVspoof-2021 WavLM P3 correlation / p-value | 0.598901 / 0.030554 |
+
+If a row is flagged as a failure, look at the step table above it — usually it means an
+**optional dataset** (below) wasn't downloaded. That does not affect the core results.
+
+---
+
+## 7. Optional extras (you can skip these)
+
+Two experiments need extra public datasets that are **not required** for the main results.
+They live in clearly-marked cells at the **bottom** of the notebook:
+
+- **In-the-Wild** (adds the `I5`/`I6`/`audit4` rows). The cell downloads the
+  `mueller91/In-The-Wild` dataset from Hugging Face automatically (you may need the token
+  from Step 4).
+- **ASVspoof 2021** (adds the `J4`/`J5`/`audit3` rows). This one needs an official “keys”
+  file placed at `/tmp/keys/LA/CM/trial_metadata.txt`; the cell explains exactly where to
+  download it. Without it, the cell simply skips itself.
+
+Run these only if you want to reproduce those specific extra rows.
+
+---
+
+## 8. What's in this repository
+
+| Path | What it is |
+|---|---|
+| `final_demo.ipynb` | **The notebook you run.** Everything starts here. |
+| `requirements.txt` | The exact list of software versions. |
+| `models/good_models/` | Where you put the downloaded model files (Step 3). |
+| `experiments/scripts/` | The analysis programs the notebook runs. |
+| `experiments/axis_audits/` | Independent “audit” checks of each scientific claim. |
+| `experiments/results/` | Saved result files the notebook validates against. |
+| `experiments/data/`, `data/`, `outputs/` | Prepared datasets and cached computations. |
+| `baselines/aasist/` | The official AASIST baseline model (auto-downloaded if missing). |
+| `phoneme_GAT/`, `callbacks.py`, `loader.py` | The detector model code. |
+| `paper/`, `jathin_aaky.pdf` | The paper itself. |
+
+---
+
+## 9. Troubleshooting
+
+| Problem | Fix |
+|---|---|
+| `ModuleNotFoundError` / an import fails | Re-run the **Environment setup** cell at the top of the notebook, or re-run the two `pip install` commands in [Step 2](#2-set-up-the-software-environment). |
+| A cell about **checkpoints** says files are “MISSING” | Make sure all 7 files from [Step 3](#3-download-the-model-files-checkpoints) are in `models/good_models/` with their exact names. |
+| A **dataset download** fails with an authorization error | Do [Step 4](#4-optional-hugging-face-login) (Hugging Face token), then re-run that cell. |
+| `torchaudio` complains about **CUDA versions** | Your GPU's CUDA doesn't match. Reinstall torch/torchaudio using the correct `--index-url` from <https://pytorch.org/get-started/locally/>. |
+| It's **very slow** | You're likely running on CPU. A machine with an NVIDIA GPU is much faster. |
+| An **optional** (In-the-Wild / ASVspoof-2021) cell fails | That's expected if you didn't set up those datasets — it doesn't affect the main results. |
+
+If a step fails, the notebook keeps going and records the full error in the **Final
+Reproducibility Report** at the bottom, so you can always see exactly what happened.

@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/home/sagemaker-user/DeepfakeDetectionRenewed/experiments/scripts/build_asvspoof_2019_la_cache.py", line 69, in <module>
-    import soundfile as sf
-ModuleNotFoundError: No module named 'soundfile'

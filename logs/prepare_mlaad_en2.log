@@ -1,135 +1,0 @@
-/home/sagemaker-user/DeepfakeDetectionRenewed/experiments/scripts/prepare_mlaad_tiny.py:107: SyntaxWarning: invalid escape sequence '\d'
-  _\d+ segment — everything before it is the book/speaker proxy.
-07:35:11 INFO ============================================================
-07:35:11 INFO MLAAD-tiny Phase 0 — Dataset Preparation
-07:35:11 INFO ============================================================
-07:35:11 INFO Download attempt 1/3 …
-Fetching 15383 files:   0%|          | 0/15383 [00:00<?, ?it/s]Fetching 15383 files:   6%|▌         | 866/15383 [00:00<00:01, 8647.31it/s]Fetching 15383 files:  11%|█▏        | 1731/15383 [00:00<00:01, 8361.63it/s]Fetching 15383 files:  17%|█▋        | 2568/15383 [00:00<00:01, 7937.63it/s]Fetching 15383 files:  22%|██▏       | 3375/15383 [00:00<00:01, 7960.62it/s]Fetching 15383 files:  27%|██▋       | 4180/15383 [00:00<00:01, 7925.99it/s]Fetching 15383 files:  33%|███▎      | 5017/15383 [00:00<00:01, 7976.45it/s]Fetching 15383 files:  38%|███▊      | 5852/15383 [00:00<00:01, 8066.24it/s]Fetching 15383 files:  43%|████▎     | 6660/15383 [00:00<00:01, 8028.68it/s]Fetching 15383 files:  49%|████▊     | 7477/15383 [00:00<00:00, 8067.50it/s]Fetching 15383 files:  54%|█████▍    | 8311/15383 [00:01<00:00, 8126.75it/s]Fetching 15383 files:  60%|█████▉    | 9153/15383 [00:01<00:00, 8185.93it/s]Fetching 15383 files:  65%|██████▌   | 10019/15383 [00:01<00:00, 8295.68it/s]Fetching 15383 files:  71%|███████   | 10878/15383 [00:01<00:00, 8368.67it/s]Fetching 15383 files:  76%|███████▌  | 11715/15383 [00:01<00:00, 8366.60it/s]Fetching 15383 files:  82%|████████▏ | 12553/15383 [00:01<00:00, 8365.34it/s]Fetching 15383 files:  87%|████████▋ | 13403/15383 [00:01<00:00, 8397.48it/s]Fetching 15383 files:  93%|█████████▎| 14258/15383 [00:01<00:00, 8400.92it/s]Fetching 15383 files:  98%|█████████▊| 15099/15383 [00:01<00:00, 8330.47it/s]Fetching 15383 files: 100%|██████████| 15383/15383 [00:01<00:00, 8240.16it/s]
-07:35:13 INFO Snapshot ready at: experiments/data/mlaad_tiny_raw/snapshot/datasets--mueller91--MLAAD-tiny/snapshots/4130a5b9955d86617e5e83c34a8057aa7efb6857
-07:35:13 INFO Snapshot directory: experiments/data/mlaad_tiny_raw/snapshot/datasets--mueller91--MLAAD-tiny/snapshots/4130a5b9955d86617e5e83c34a8057aa7efb6857
-07:35:13 INFO Loading speaker metadata from meta.csv files …
-07:35:13 INFO Speaker map: 7900 entries
-07:35:13 INFO Discovering WAV files …
-07:35:14 INFO Found bonafide directory: experiments/data/mlaad_tiny_raw/snapshot/datasets--mueller91--MLAAD-tiny/snapshots/4130a5b9955d86617e5e83c34a8057aa7efb6857/original (7390 WAVs)
-07:35:14 INFO Discovered 15290 samples total.
-07:35:14 INFO Wrote experiments/data/mlaad_tiny_processed/dataset_inventory.json
-07:35:14 INFO Wrote experiments/data/mlaad_tiny_processed/dataset_inventory.md
-07:35:14 INFO Preprocessing audio …
-07:35:14 INFO [1/15290] cached: fake__de__CaroTTS__Kanzlerin_03_17_f000019
-07:35:14 INFO [765/15290] cached: fake__de__Kartoffelbox__odysseus_18_f000160
-07:35:14 INFO [1528/15290] processed
-07:35:15 INFO [2292/15290] processed
-07:35:16 INFO [3056/15290] processed
-07:35:17 INFO [3820/15290] processed
-07:35:18 INFO [4584/15290] processed
-07:35:19 INFO [5348/15290] processed
-07:35:20 INFO [6112/15290] processed
-07:35:21 INFO [6876/15290] processed
-07:35:22 INFO [7640/15290] processed
-07:35:23 INFO [8404/15290] processed
-07:35:24 INFO [9168/15290] processed
-07:35:25 INFO [9932/15290] processed
-07:35:26 INFO [10696/15290] processed
-07:35:27 INFO [11460/15290] processed
-07:35:28 INFO [12224/15290] processed
-07:35:29 INFO [12988/15290] processed
-07:35:30 INFO [13752/15290] processed
-07:35:31 INFO [14516/15290] processed
-07:35:32 INFO [15280/15290] processed
-07:35:32 INFO [15290/15290] processed
-07:35:32 INFO Preprocessing complete: 15290 ok, 0 errors.
-07:35:32 INFO Wrote experiments/data/mlaad_tiny_processed/dataset_inventory.json
-07:35:32 INFO Wrote experiments/data/mlaad_tiny_processed/dataset_inventory.md
-07:35:32 INFO Creating stratified speaker-disjoint splits …
-07:35:32 INFO Language de: 2820 total samples, 36 speakers
-07:35:32 INFO Greedy speaker split: train=70.1% val=15.0% test=14.9%
-07:35:32 INFO   altehaus -> val (38 samples)
-07:35:32 INFO   alter_afrikaner -> train (227 samples)
-07:35:32 INFO   caspar_hauser -> train (153 samples)
-07:35:32 INFO   das_letzte_marchen -> val (112 samples)
-07:35:32 INFO   die_kanzlerin_direkt -> train (21 samples)
-07:35:32 INFO   erzaehlungen -> train (293 samples)
-07:35:32 INFO   ferien_vom_ich -> train (117 samples)
-07:35:32 INFO   frankenstein -> test (73 samples)
-07:35:32 INFO   grune_gesicht -> test (96 samples)
-07:35:32 INFO   grune_haus -> train (32 samples)
-07:35:32 INFO   herrnarnesschatz -> test (51 samples)
-07:35:32 INFO   kammmacher -> train (11 samples)
-07:35:32 INFO   kanzlerin -> train (208 samples)
-07:35:32 INFO   kleine_lord -> val (67 samples)
-07:35:32 INFO   kleinzaches -> train (39 samples)
-07:35:32 INFO   koenigsgaukler -> val (15 samples)
-07:35:32 INFO   liebesbriefe -> test (33 samples)
-07:35:32 INFO   maedchenvommoorhof -> train (11 samples)
-07:35:32 INFO   maerchen -> train (85 samples)
-07:35:32 INFO   mein_weg_als_deutscher_und_jude -> test (27 samples)
-07:35:32 INFO   menschenhasser -> train (75 samples)
-07:35:32 INFO   neujahr -> val (4 samples)
-07:35:32 INFO   odysseus -> train (64 samples)
-07:35:32 INFO   reisenachtilsit -> train (20 samples)
-07:35:32 INFO   sandmann -> val (15 samples)
-07:35:32 INFO   schmied_seines_glueckes -> test (14 samples)
-07:35:32 INFO   spiegel_kaetzchen -> test (18 samples)
-07:35:32 INFO   sterben -> val (27 samples)
-07:35:32 INFO   tom_sawyer -> val (76 samples)
-07:35:32 INFO   toten_seelen -> train (235 samples)
-07:35:32 INFO   tschun -> test (80 samples)
-07:35:32 INFO   undine -> test (27 samples)
-07:35:32 INFO   untermbirnbaum -> val (43 samples)
-07:35:32 INFO   weihnachtsabend -> train (32 samples)
-07:35:32 INFO   werde_die_du_bist -> val (26 samples)
-07:35:32 INFO   zweiplaneten -> train (355 samples)
-07:35:32 INFO Language en: 12470 total samples, 16 speakers
-07:35:32 INFO Greedy speaker split: train=70.0% val=15.0% test=15.0%
-07:35:32 INFO   dorothy_and_wizard_oz -> test (385 samples)
-07:35:32 INFO   emerald_city_of_oz -> val (452 samples)
-07:35:32 INFO   hunters_space -> test (284 samples)
-07:35:32 INFO   jane_eyre -> train (1773 samples)
-07:35:32 INFO   midnight_passenger -> train (782 samples)
-07:35:32 INFO   northandsouth -> train (1646 samples)
-07:35:32 INFO   ozma_of_oz -> val (279 samples)
-07:35:32 INFO   pink_fairy_book -> train (797 samples)
-07:35:32 INFO   piratesofersatz -> test (511 samples)
-07:35:32 INFO   poisoned_pen -> val (762 samples)
-07:35:32 INFO   rinkitink_baum -> val (376 samples)
-07:35:32 INFO   silent_bullet -> test (691 samples)
-07:35:32 INFO   skyisland -> train (400 samples)
-07:35:32 INFO   the_master_key -> train (306 samples)
-07:35:32 INFO   the_sea_fairies -> train (551 samples)
-07:35:32 INFO   wives_and_daughters -> train (2475 samples)
-07:35:32 INFO Split train: 10708 records
-07:35:32 INFO Split val: 2292 records
-07:35:32 INFO Split test: 2290 records
-07:35:32 INFO Wrote experiments/data/mlaad_tiny_processed/splits/train.json (10708 records)
-07:35:32 INFO Wrote experiments/data/mlaad_tiny_processed/splits/val.json (2292 records)
-07:35:32 INFO Wrote experiments/data/mlaad_tiny_processed/splits/test.json (2290 records)
-07:35:32 INFO Wrote experiments/data/mlaad_tiny_processed/splits/test_LOCKED.md (hash: b61fe8f686393afe…)
-07:35:32 INFO Wrote experiments/data/mlaad_tiny_processed/metadata.json
-07:35:32 INFO Wrote experiments/data/mlaad_tiny_processed/splits_config.json
-07:35:32 INFO Wrote experiments/data/mlaad_tiny_processed/run_config.json
-07:35:32 INFO Phase 0 complete. Processed dataset at: experiments/data/mlaad_tiny_processed
-07:35:32 INFO Run config: experiments/data/mlaad_tiny_processed/run_config.json
-
-══════════════════════════════════════════════════════════════════════
-SANITY CHECKS
-══════════════════════════════════════════════════════════════════════
-  [PASS] (a) inventory count matches records
-         inventory=15290, records=15290
-  [PASS] (b) no duplicate sample_ids
-         0 duplicates
-  [PASS] (c) split sizes within ±10 pp of target
-         train=0.700 (target=0.70), val=0.150 (target=0.15), test=0.150 (target=0.15)
-  [PASS] (d) bonafide:spoof ratio consistent across splits
-         {'train': 0.48319013821441914, 'val': 0.4838568935427574, 'test': 0.4834061135371179}
-  [PASS] (e) language balance (de fraction) consistent across splits
-         train: de_ratio=0.191, val: de_ratio=0.189, test: de_ratio=0.186
-  [PASS] (f) all attack systems represented in train
-         missing in train: []
-  [PASS] (g) speaker IDs disjoint between train and test
-         leaked speakers: []
-  [PASS] (h) test SHA-256 in test_LOCKED.md matches computed hash
-         hash=b61fe8f686393afe…
-══════════════════════════════════════════════════════════════════════
-  Result: ALL PASS
-══════════════════════════════════════════════════════════════════════
-

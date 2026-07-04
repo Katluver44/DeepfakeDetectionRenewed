@@ -1,77 +1,0 @@
-[I2] 1846 records
-  waves 400/1846
-  waves 800/1846
-  waves 1200/1846
-  waves 1600/1846
-  loaded 1846 (bona=908 spoof=938), 63 system-language units
-Load WavLM model!!!!!!!
-config.json: 0.00B [00:00, ?B/s]config.json: 2.24kB [00:00, 5.69MB/s]
-pytorch_model.bin:   0%|          | 0.00/378M [00:00<?, ?B/s]pytorch_model.bin:   8%|▊         | 31.5M/378M [00:00<00:01, 270MB/s]pytorch_model.bin:  19%|█▉        | 73.4M/378M [00:00<00:01, 299MB/s]pytorch_model.bin:  28%|██▊       | 105M/378M [00:00<00:00, 302MB/s] pytorch_model.bin:  39%|███▉      | 147M/378M [00:00<00:00, 309MB/s]pytorch_model.bin:  47%|████▋     | 178M/378M [00:00<00:00, 308MB/s]pytorch_model.bin:  56%|█████▌    | 210M/378M [00:00<00:00, 308MB/s]pytorch_model.bin:  67%|██████▋   | 252M/378M [00:00<00:00, 305MB/s]pytorch_model.bin:  75%|███████▍  | 283M/378M [00:00<00:00, 307MB/s]pytorch_model.bin:  83%|████████▎ | 315M/378M [00:01<00:00, 308MB/s]pytorch_model.bin:  94%|█████████▍| 357M/378M [00:01<00:00, 312MB/s]pytorch_model.bin: 100%|██████████| 378M/378M [00:01<00:00, 305MB/s]
-Some weights of WavLMForCTC were not initialized from the model checkpoint at microsoft/wavlm-base and are newly initialized: ['encoder.pos_conv_embed.conv.parametrizations.weight.original1', 'encoder.pos_conv_embed.conv.parametrizations.weight.original0', 'lm_head.bias', 'lm_head.weight']
-You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
-Some weights of the model checkpoint at microsoft/wavlm-base were not used when initializing WavLMModel: ['encoder.pos_conv_embed.conv.weight_g', 'encoder.pos_conv_embed.conv.weight_v']
-- This IS expected if you are initializing WavLMModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
-- This IS NOT expected if you are initializing WavLMModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-Some weights of WavLMModel were not initialized from the model checkpoint at microsoft/wavlm-base and are newly initialized: ['encoder.pos_conv_embed.conv.parametrizations.weight.original1', 'encoder.pos_conv_embed.conv.parametrizations.weight.original0']
-You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
-torch.Size([687, 768])
-  detector EER on full split: 0.266
-  battery 0/1846
-  battery 160/1846
-  battery 320/1846
-  battery 480/1846
-  battery 640/1846
-  battery 800/1846
-  battery 960/1846
-  battery 1120/1846
-  battery 1280/1846
-  battery 1440/1846
-  battery 1600/1846
-  battery 1760/1846
-  battery: (1846, 35)
-  61 system units (>= 8 utts), 30 features; hardness range [0.007, 0.581]
-
-[5a] top univariate (by LOO R^2):
-        feature  spearman  p_spearman   pearson    loo_r2    q_fdr
- vel_entropy_L9  0.351824    0.005428  0.388144  0.083280 0.078081
-vel_entropy_L12  0.309942    0.015064  0.385091  0.082783 0.079120
-         rog_L0 -0.381386    0.002424 -0.338129  0.052567 0.072734
-    mu_norm_L12  0.289476    0.023648  0.317905  0.035479 0.101350
-         rog_L9 -0.205605    0.111915 -0.272411  0.015803 0.259573
-    vel_mean_L9 -0.176097    0.174608 -0.229680 -0.000512 0.336605
-    eff_rank_L9 -0.265574    0.038584 -0.247968 -0.014873 0.144691
-        rog_L12 -0.307774    0.015824 -0.241715 -0.015137 0.079120
-    vel_mean_L0 -0.157007    0.226891 -0.207778 -0.017148 0.358249
-  part_ratio_L9 -0.325754    0.010411 -0.248138 -0.020281 0.078081
-   vel_mean_L12 -0.182708    0.158727 -0.190873 -0.020486 0.336605
-  tortuosity_L9 -0.147065    0.258049 -0.154122 -0.030119 0.387073
-
-[5b] rog_L12 alone LOO R^2=-0.015 (perm p=0.0940)
-     battery w/o rog=+0.115  full battery=+0.118  unique(rog)=+0.003
-     best competitor=vel_entropy_L9: alone=+0.083, rog+comp=+0.070
-     partial spearman rog|comp: rho=-0.200 p=0.1226
-     partial spearman comp|rog: rho=+0.331 p=0.0091
-     rog vs smoothness-residualized hardness: rho=-0.208 p=0.1084
-     rog vs language-residualized hardness:   rho=-0.308 p=0.0158
-
-[5c] PCA factors vs hardness:
- pc  var_frac  spearman_hardness        p  rog_L12_loading                                                                                         top_loadings
-  1  0.444499          -0.270386 0.035072         0.134980 eff_rank_L9:+0.26; part_ratio_L9:+0.26; vel_mean_L12:+0.25; eff_rank_L12:+0.24; tortuosity_L12:+0.24
-  2  0.186578          -0.028662 0.826438        -0.038966 curvature_L9:-0.36; curvature_L12:-0.32; accel_mean_L9:-0.32; vel_mean_L9:-0.26; tortuosity_L9:-0.26
-  3  0.085334           0.228609 0.076377        -0.154253     rog_L9:-0.41; vel_entropy_L12:+0.32; curvature_L12:+0.31; mu_norm_L9:-0.28; vel_entropy_L9:+0.28
-  4  0.058575          -0.066420 0.611042        -0.430780             rog_L12:-0.43; vel_entropy_L12:-0.40; mu_norm_L12:+0.39; twonn_id_L9:+0.27; rog_L9:-0.25
-  5  0.039810           0.258488 0.044282        -0.204247       vel_entropy_L9:+0.57; recurrence_L12:-0.32; rog_L0:-0.32; vel_cv_L9:-0.27; recurrence_L9:-0.26
-  6  0.033831           0.087626 0.501894        -0.393932       rog_L12:-0.39; twonn_id_L9:+0.37; vel_entropy_L9:+0.36; mu_norm_L12:-0.36; recurrence_L9:-0.36
-
-[5d] top pairs:
-             f1              f2   loo_r2
-vel_entropy_L12     mu_norm_L12 0.155076
-vel_entropy_L12          rog_L0 0.154820
- vel_entropy_L9 vel_entropy_L12 0.143491
- vel_entropy_L9          rog_L0 0.132277
- vel_entropy_L9     mu_norm_L12 0.130857
-vel_entropy_L12         rog_L12 0.116911
-vel_entropy_L12          rog_L9 0.101581
- vel_entropy_L9          rog_L9 0.097505
-
-[I2] done -> /lambda/nfs/algovirginia/workspace/DeepfakeDetectionRenewed/experiments/results/i2_geometry_battery

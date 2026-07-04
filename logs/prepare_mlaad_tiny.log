@@ -1,121 +1,0 @@
-/home/sagemaker-user/DeepfakeDetectionRenewed/experiments/scripts/prepare_mlaad_tiny.py:103: SyntaxWarning: invalid escape sequence '\d'
-  _\d+ segment — everything before it is the book/speaker proxy.
-06:32:23 INFO ============================================================
-06:32:23 INFO MLAAD-tiny Phase 0 — Dataset Preparation
-06:32:23 INFO ============================================================
-06:32:23 INFO Download attempt 1/3 …
-Fetching 15383 files:   0%|          | 0/15383 [00:00<?, ?it/s]Fetching 15383 files:   0%|          | 3/15383 [00:00<09:45, 26.25it/s]Fetching 15383 files:   0%|          | 6/15383 [00:00<33:36,  7.63it/s]Fetching 15383 files:   0%|          | 13/15383 [00:00<18:01, 14.21it/s]Fetching 15383 files:   0%|          | 15/15383 [00:01<20:26, 12.53it/s]Fetching 15383 files:   0%|          | 23/15383 [00:01<16:28, 15.54it/s]Fetching 15383 files:   0%|          | 29/15383 [00:01<12:46, 20.02it/s]Fetching 15383 files:   0%|          | 32/15383 [00:02<14:16, 17.93it/s]Fetching 15383 files:   0%|          | 35/15383 [00:02<15:43, 16.27it/s]Fetching 15383 files:   0%|          | 40/15383 [00:02<12:07, 21.10it/s]Fetching 15383 files:   0%|          | 46/15383 [00:02<11:20, 22.53it/s]Fetching 15383 files:   0%|          | 51/15383 [00:02<11:57, 21.37it/s]Fetching 15383 files:   0%|          | 57/15383 [00:03<11:13, 22.77it/s]Fetching 15383 files:   0%|          | 62/15383 [00:03<11:07, 22.96it/s]Fetching 15383 files:   0%|          | 70/15383 [00:03<09:27, 26.99it/s]Fetching 15383 files:   0%|          | 73/15383 [00:03<13:01, 19.58it/s]Fetching 15383 files:   1%|          | 80/15383 [00:03<09:35, 26.57it/s]Fetching 15383 files:   1%|          | 88/15383 [00:04<10:27, 24.39it/s]Fetching 15383 files:   1%|          | 97/15383 [00:04<07:51, 32.41it/s]Fetching 15383 files:   1%|          | 102/15383 [00:04<08:25, 30.25it/s]Fetching 15383 files:   1%|          | 106/15383 [00:05<11:07, 22.87it/s]Fetching 15383 files:   1%|          | 116/15383 [00:05<07:32, 33.74it/s]Fetching 15383 files:   1%|          | 121/15383 [00:05<09:28, 26.84it/s]Fetching 15383 files:   1%|          | 126/15383 [00:05<09:47, 25.97it/s]Fetching 15383 files:   1%|          | 135/15383 [00:05<07:49, 32.45it/s]Fetching 15383 files:   1%|          | 140/15383 [00:05<07:38, 33.26it/s]Fetching 15383 files:   1%|          | 145/15383 [00:06<08:41, 29.24it/s]Fetching 15383 files:   1%|          | 149/15383 [00:06<08:26, 30.07it/s]Fetching 15383 files:   1%|          | 153/15383 [00:06<08:23, 30.22it/s]Fetching 15383 files:   1%|          | 160/15383 [00:06<06:53, 36.79it/s]Fetching 15383 files:   1%|          | 165/15383 [00:06<07:09, 35.42it/s]Fetching 15383 files:   1%|          | 169/15383 [00:06<07:20, 34.50it/s]Fetching 15383 files:   1%|          | 174/15383 [00:07<09:08, 27.75it/s]Fetching 15383 files:   1%|          | 180/15383 [00:07<09:50, 25.75it/s]Fetching 15383 files:   1%|          | 189/15383 [00:07<07:07, 35.53it/s]Fetching 15383 files:   1%|▏         | 194/15383 [00:07<07:32, 33.53it/s]Fetching 15383 files:   1%|▏         | 199/15383 [00:07<07:34, 33.40it/s]Fetching 15383 files:   1%|▏         | 203/15383 [00:07<07:29, 33.79it/s]Fetching 15383 files:   1%|▏         | 208/15383 [00:08<06:49, 37.05it/s]Fetching 15383 files:   1%|▏         | 212/15383 [00:08<11:30, 21.96it/s]Fetching 15383 files:   1%|▏         | 218/15383 [00:08<09:11, 27.52it/s]Fetching 15383 files:   1%|▏         | 224/15383 [00:08<10:47, 23.42it/s]Fetching 15383 files:   1%|▏         | 230/15383 [00:09<10:41, 23.61it/s]Fetching 15383 files:   2%|▏         | 244/15383 [00:09<06:30, 38.81it/s]Fetching 15383 files:   2%|▏         | 249/15383 [00:09<06:25, 39.30it/s]Fetching 15383 files:   2%|▏         | 254/15383 [00:09<06:36, 38.19it/s]Fetching 15383 files:   2%|▏         | 259/15383 [00:09<06:50, 36.82it/s]Fetching 15383 files:   2%|▏         | 266/15383 [00:09<06:34, 38.28it/s]Fetching 15383 files:   2%|▏         | 271/15383 [00:09<06:27, 38.97it/s]Fetching 15383 files:   2%|▏         | 276/15383 [00:10<06:27, 39.01it/s]Fetching 15383 files:   2%|▏         | 281/15383 [00:10<06:16, 40.11it/s]Fetching 15383 files:   2%|▏         | 286/15383 [00:10<06:10, 40.78it/s]Fetching 15383 files:   2%|▏         | 291/15383 [00:10<06:33, 38.32it/s]Fetching 15383 files:   2%|▏         | 295/15383 [00:10<08:24, 29.92it/s]Fetching 15383 files:   2%|▏         | 299/15383 [00:10<08:09, 30.84it/s]Fetching 15383 files:   2%|▏         | 306/15383 [00:10<06:59, 35.91it/s]Fetching 15383 files:   2%|▏         | 310/15383 [00:11<08:17, 30.30it/s]Fetching 15383 files:   2%|▏         | 315/15383 [00:11<12:12, 20.57it/s]Fetching 15383 files:   2%|▏         | 327/15383 [00:11<07:35, 33.07it/s]Fetching 15383 files:   2%|▏         | 332/15383 [00:12<09:27, 26.51it/s]Fetching 15383 files:   2%|▏         | 344/15383 [00:12<06:30, 38.55it/s]Fetching 15383 files:   2%|▏         | 350/15383 [00:12<06:02, 41.47it/s]Fetching 15383 files:   2%|▏         | 356/15383 [00:12<07:55, 31.59it/s]Fetching 15383 files:   2%|▏         | 364/15383 [00:12<06:24, 39.10it/s]Fetching 15383 files:   2%|▏         | 370/15383 [00:13<07:50, 31.91it/s]Fetching 15383 files:   2%|▏         | 379/15383 [00:13<07:18, 34.18it/s]Fetching 15383 files:   3%|▎         | 387/15383 [00:13<06:25, 38.92it/s]Fetching 15383 files:   3%|▎         | 392/15383 [00:13<07:30, 33.29it/s]Fetching 15383 files:   3%|▎         | 396/15383 [00:13<08:04, 30.91it/s]Fetching 15383 files:   3%|▎         | 401/15383 [00:13<08:51, 28.18it/s]Fetching 15383 files:   3%|▎         | 409/15383 [00:14<07:20, 33.99it/s]Fetching 15383 files:   3%|▎         | 413/15383 [00:14<07:49, 31.89it/s]Fetching 15383 files:   3%|▎         | 418/15383 [00:14<10:51, 22.99it/s]Fetching 15383 files:   3%|▎         | 428/15383 [00:14<08:43, 28.57it/s]Fetching 15383 files:   3%|▎         | 439/15383 [00:15<06:25, 38.80it/s]Fetching 15383 files:   3%|▎         | 444/15383 [00:15<06:36, 37.64it/s]Fetching 15383 files:   3%|▎         | 449/15383 [00:15<06:24, 38.88it/s]Fetching 15383 files:   3%|▎         | 454/15383 [00:15<07:47, 31.92it/s]Fetching 15383 files:   3%|▎         | 459/15383 [00:15<07:11, 34.56it/s]Fetching 15383 files:   3%|▎         | 466/15383 [00:15<07:30, 33.11it/s]Fetching 15383 files:   3%|▎         | 471/15383 [00:16<07:36, 32.66it/s]Fetching 15383 files:   3%|▎         | 476/15383 [00:16<09:51, 25.19it/s]Fetching 15383 files:   3%|▎         | 487/15383 [00:16<06:22, 38.90it/s]Fetching 15383 files:   3%|▎         | 493/15383 [00:16<09:57, 24.92it/s]Fetching 15383 files:   3%|▎         | 506/15383 [00:17<06:28, 38.27it/s]Fetching 15383 files:   3%|▎         | 513/15383 [00:17<11:14, 22.04it/s]Fetching 15383 files:   3%|▎         | 529/15383 [00:17<06:50, 36.17it/s]Fetching 15383 files:   3%|▎         | 537/15383 [00:18<07:02, 35.13it/s]Fetching 15383 files:   4%|▎         | 544/15383 [00:18<06:35, 37.52it/s]Fetching 15383 files:   4%|▎         | 550/15383 [00:18<07:13, 34.22it/s]Fetching 15383 files:   4%|▎         | 556/15383 [00:18<07:05, 34.86it/s]Fetching 15383 files:   4%|▎         | 561/15383 [00:18<07:03, 34.97it/s]Fetching 15383 files:   4%|▎         | 566/15383 [00:18<06:38, 37.21it/s]Fetching 15383 files:   4%|▎         | 571/15383 [00:19<09:38, 25.60it/s]Fetching 15383 files:   4%|▍         | 584/15383 [00:19<06:07, 40.30it/s]Fetching 15383 files:   4%|▍         | 590/15383 [00:19<08:13, 30.00it/s]Fetching 15383 files:   4%|▍         | 602/15383 [00:20<06:58, 35.36it/s]Fetching 15383 files:   4%|▍         | 610/15383 [00:20<06:28, 38.03it/s]Fetching 15383 files:   4%|▍         | 615/15383 [00:20<06:21, 38.72it/s]Fetching 15383 files:   4%|▍         | 620/15383 [00:20<06:22, 38.58it/s]Fetching 15383 files:   4%|▍         | 625/15383 [00:20<07:23, 33.24it/s]Fetching 15383 files:   4%|▍         | 629/15383 [00:20<09:20, 26.31it/s]Fetching 15383 files:   4%|▍         | 639/15383 [00:21<06:51, 35.80it/s]Fetching 15383 files:   4%|▍         | 644/15383 [00:21<06:30, 37.70it/s]Fetching 15383 files:   4%|▍         | 649/15383 [00:21<14:16, 17.21it/s]Fetching 15383 files:   4%|▍         | 675/15383 [00:22<05:33, 44.04it/s]Fetching 15383 files:   4%|▍         | 685/15383 [00:22<05:49, 42.08it/s]Fetching 15383 files:   5%|▍         | 694/15383 [00:22<07:00, 34.93it/s]Fetching 15383 files:   5%|▍         | 703/15383 [00:22<06:05, 40.20it/s]Fetching 15383 files:   5%|▍         | 710/15383 [00:23<07:33, 32.36it/s]Fetching 15383 files:   5%|▍         | 717/15383 [00:23<07:11, 33.97it/s]Fetching 15383 files:   5%|▍         | 725/15383 [00:23<06:18, 38.77it/s]Fetching 15383 files:   5%|▍         | 731/15383 [00:23<07:00, 34.83it/s]Fetching 15383 files:   5%|▍         | 740/15383 [00:23<06:12, 39.29it/s]Fetching 15383 files:   5%|▍         | 746/15383 [00:24<06:42, 36.35it/s]Fetching 15383 files:   5%|▍         | 751/15383 [00:24<09:40, 25.22it/s]Fetching 15383 files:   5%|▍         | 757/15383 [00:24<09:25, 25.85it/s]Fetching 15383 files:   5%|▌         | 773/15383 [00:24<05:39, 42.99it/s]Fetching 15383 files:   5%|▌         | 779/15383 [00:25<05:43, 42.58it/s]Fetching 15383 files:   5%|▌         | 785/15383 [00:25<06:00, 40.45it/s]Fetching 15383 files:   5%|▌         | 791/15383 [00:25<06:07, 39.71it/s]Fetching 15383 files:   5%|▌         | 797/15383 [00:25<05:55, 41.02it/s]Fetching 15383 files:   5%|▌         | 802/15383 [00:25<05:41, 42.68it/s]Fetching 15383 files:   5%|▌         | 808/15383 [00:25<06:20, 38.34it/s]Fetching 15383 files:   5%|▌         | 814/15383 [00:25<06:08, 39.57it/s]Fetching 15383 files:   5%|▌         | 819/15383 [00:26<07:21, 33.01it/s]Fetching 15383 files:   5%|▌         | 827/15383 [00:26<05:56, 40.80it/s]Fetching 15383 files:   5%|▌         | 832/15383 [00:26<06:41, 36.28it/s]Fetching 15383 files:   5%|▌         | 838/15383 [00:26<06:16, 38.64it/s]Fetching 15383 files:   5%|▌         | 844/15383 [00:26<06:32, 37.07it/s]Fetching 15383 files:   6%|▌         | 850/15383 [00:26<05:54, 41.02it/s]Fetching 15383 files:   6%|▌         | 855/15383 [00:26<05:44, 42.15it/s]Fetching 15383 files:   6%|▌         | 860/15383 [00:27<07:21, 32.91it/s]Fetching 15383 files:   6%|▌         | 866/15383 [00:27<06:38, 36.45it/s]Fetching 15383 files:   6%|▌         | 872/15383 [00:27<06:31, 37.05it/s]Fetching 15383 files:   6%|▌         | 880/15383 [00:27<07:23, 32.73it/s]Fetching 15383 files:   6%|▌         | 888/15383 [00:27<06:33, 36.81it/s]Fetching 15383 files:   6%|▌         | 895/15383 [00:28<07:14, 33.36it/s]Fetching 15383 files:   6%|▌         | 903/15383 [00:28<05:52, 41.05it/s]Fetching 15383 files:   6%|▌         | 908/15383 [00:28<06:31, 36.93it/s]Fetching 15383 files:   6%|▌         | 913/15383 [00:28<06:50, 35.28it/s]Fetching 15383 files:   6%|▌         | 919/15383 [00:28<06:14, 38.63it/s]Fetching 15383 files:   6%|▌         | 924/15383 [00:28<06:21, 37.90it/s]Fetching 15383 files:   6%|▌         | 929/15383 [00:29<07:09, 33.68it/s]Fetching 15383 files:   6%|▌         | 935/15383 [00:29<06:45, 35.65it/s]Fetching 15383 files:   6%|▌         | 937/15383 [00:29<07:31, 32.00it/s]
-06:32:53 WARNING Attempt 1 failed: 429 Client Error: Too Many Requests for url: https://huggingface.co/api/datasets/mueller91/MLAAD-tiny/xet-read-token/9143e5ea709575ebab6bec52840a1043aada7bb1 (Request ID: Root=1-6a48a915-05936f4c499d86347f6b1d9d;99f43a12-70f1-4b39-835e-f6820cbad977)
-
-We had to rate limit your IP (3.136.172.40). To continue using our service, create a HF account or login to your existing account, and make sure you pass a HF_TOKEN if you're using the API.
-06:32:53 INFO Retrying in 30 s …
-06:33:23 INFO Download attempt 2/3 …
-06:33:23 INFO Snapshot ready at: experiments/data/mlaad_tiny_raw/snapshot/datasets--mueller91--MLAAD-tiny/snapshots/9143e5ea709575ebab6bec52840a1043aada7bb1
-06:33:23 INFO Snapshot directory: experiments/data/mlaad_tiny_raw/snapshot/datasets--mueller91--MLAAD-tiny/snapshots/9143e5ea709575ebab6bec52840a1043aada7bb1
-06:33:23 INFO Loading speaker metadata from meta.csv files …
-06:33:23 INFO Speaker map: 900 entries
-06:33:23 INFO Discovering WAV files …
-06:33:23 WARNING No bonafide directory found in snapshot. Splits will be spoof-only. Re-run after completing the download.
-06:33:23 INFO Discovered 923 samples total.
-06:33:23 INFO Wrote experiments/data/mlaad_tiny_processed/dataset_inventory.json
-06:33:23 INFO Wrote experiments/data/mlaad_tiny_processed/dataset_inventory.md
-06:33:23 INFO Preprocessing audio …
-06:33:23 INFO [46/923] processed
-06:33:23 INFO [92/923] processed
-06:33:23 INFO [138/923] processed
-06:33:23 INFO [184/923] processed
-06:33:24 INFO [230/923] processed
-06:33:24 INFO [276/923] processed
-06:33:24 INFO [322/923] processed
-06:33:24 INFO [368/923] processed
-06:33:24 INFO [414/923] processed
-06:33:24 INFO [460/923] processed
-06:33:24 INFO [506/923] processed
-06:33:24 INFO [552/923] processed
-06:33:24 INFO [598/923] processed
-06:33:24 INFO [644/923] processed
-06:33:24 INFO [690/923] processed
-06:33:24 INFO [736/923] processed
-06:33:24 INFO [782/923] processed
-06:33:24 INFO [828/923] processed
-06:33:24 INFO [874/923] processed
-06:33:24 INFO [920/923] processed
-06:33:24 INFO [923/923] processed
-06:33:24 INFO Preprocessing complete: 923 ok, 0 errors.
-06:33:24 INFO Wrote experiments/data/mlaad_tiny_processed/dataset_inventory.json
-06:33:24 INFO Wrote experiments/data/mlaad_tiny_processed/dataset_inventory.md
-06:33:24 INFO Creating stratified speaker-disjoint splits …
-06:33:24 INFO Language de: 923 total samples, 36 speakers
-06:33:24 INFO Greedy speaker split: train=70.0% val=15.0% test=15.1%
-06:33:24 INFO   altehaus -> test (18 samples)
-06:33:24 INFO   alter_afrikaner -> train (87 samples)
-06:33:24 INFO   caspar_hauser -> train (50 samples)
-06:33:24 INFO   das_letzte_marchen -> test (35 samples)
-06:33:24 INFO   die_kanzlerin_direkt -> test (5 samples)
-06:33:24 INFO   erzaehlungen -> train (91 samples)
-06:33:24 INFO   ferien_vom_ich -> val (39 samples)
-06:33:24 INFO   frankenstein -> train (26 samples)
-06:33:24 INFO   grune_gesicht -> test (25 samples)
-06:33:24 INFO   grune_haus -> test (9 samples)
-06:33:24 INFO   herrnarnesschatz -> train (12 samples)
-06:33:24 INFO   kammmacher -> train (5 samples)
-06:33:24 INFO   kanzlerin -> train (84 samples)
-06:33:24 INFO   kleine_lord -> train (23 samples)
-06:33:24 INFO   kleinzaches -> val (14 samples)
-06:33:24 INFO   koenigsgaukler -> test (3 samples)
-06:33:24 INFO   liebesbriefe -> test (10 samples)
-06:33:24 INFO   maedchenvommoorhof -> train (2 samples)
-06:33:24 INFO   maerchen -> val (25 samples)
-06:33:24 INFO   mein_weg_als_deutscher_und_jude -> train (7 samples)
-06:33:24 INFO   menschenhasser -> train (26 samples)
-06:33:24 INFO   neujahr -> val (1 samples)
-06:33:24 INFO   odysseus -> train (16 samples)
-06:33:24 INFO   reisenachtilsit -> val (5 samples)
-06:33:24 INFO   sandmann -> val (5 samples)
-06:33:24 INFO   schmied_seines_glueckes -> val (6 samples)
-06:33:24 INFO   spiegel_kaetzchen -> test (4 samples)
-06:33:24 INFO   sterben -> train (7 samples)
-06:33:24 INFO   tom_sawyer -> val (22 samples)
-06:33:24 INFO   toten_seelen -> train (78 samples)
-06:33:24 INFO   tschun -> test (23 samples)
-06:33:24 INFO   undine -> train (6 samples)
-06:33:24 INFO   untermbirnbaum -> val (11 samples)
-06:33:24 INFO   weihnachtsabend -> test (7 samples)
-06:33:24 INFO   werde_die_du_bist -> val (10 samples)
-06:33:24 INFO   zweiplaneten -> train (126 samples)
-06:33:24 INFO Split train: 646 records
-06:33:24 INFO Split val: 138 records
-06:33:24 INFO Split test: 139 records
-06:33:24 INFO Wrote experiments/data/mlaad_tiny_processed/splits/train.json (646 records)
-06:33:24 INFO Wrote experiments/data/mlaad_tiny_processed/splits/val.json (138 records)
-06:33:24 INFO Wrote experiments/data/mlaad_tiny_processed/splits/test.json (139 records)
-06:33:24 INFO Wrote experiments/data/mlaad_tiny_processed/splits/test_LOCKED.md (hash: 18d92ace0934ee5b…)
-06:33:24 INFO Wrote experiments/data/mlaad_tiny_processed/metadata.json
-06:33:24 INFO Wrote experiments/data/mlaad_tiny_processed/splits_config.json
-06:33:24 INFO Wrote experiments/data/mlaad_tiny_processed/run_config.json
-06:33:24 INFO Phase 0 complete. Processed dataset at: experiments/data/mlaad_tiny_processed
-06:33:24 INFO Run config: experiments/data/mlaad_tiny_processed/run_config.json
-
-══════════════════════════════════════════════════════════════════════
-SANITY CHECKS
-══════════════════════════════════════════════════════════════════════
-  [PASS] (a) inventory count matches records
-         inventory=923, records=923
-  [PASS] (b) no duplicate sample_ids
-         0 duplicates
-  [PASS] (c) split sizes within ±10 pp of target
-         train=0.700 (target=0.70), val=0.150 (target=0.15), test=0.151 (target=0.15)
-  [PASS] (d) bonafide:spoof ratio [SKIPPED — no bonafide]
-         bonafide not yet downloaded
-  [PASS] (e) language balance (de fraction) consistent across splits
-         train: de_ratio=1.000, val: de_ratio=1.000, test: de_ratio=1.000
-  [PASS] (f) all attack systems represented in train
-         missing in train: []
-  [PASS] (g) speaker IDs disjoint between train and test
-         leaked speakers: []
-  [PASS] (h) test SHA-256 in test_LOCKED.md matches computed hash
-         hash=18d92ace0934ee5b…
-══════════════════════════════════════════════════════════════════════
-  Result: ALL PASS
-══════════════════════════════════════════════════════════════════════
-

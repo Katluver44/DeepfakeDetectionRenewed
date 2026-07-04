@@ -1,44 +1,0 @@
-[build_asvspoof_2019_la_cache] opening remote zip central directory: https://huggingface.co/datasets/RohitGENAICODER/ASVspoofLADataset/resolve/main/LA.zip
-  zip size=7.65 GB, 122314 entries (central directory only, no bulk download)
-
-[build_asvspoof_2019_la_cache] train: reading protocol LA/ASVspoof2019_LA_cm_protocols/ASVspoof2019.LA.cm.train.trl.txt
-  official partition has 25380 utterances (2580 bonafide, 22800 spoof)
-  sampled 800 utterances for local cache (400 bonafide + 400 spoof across 6 attack types)
-  downloading 800 flac files (49.5 MB uncompressed) with 8 workers ...
-    ... 200/800
-    ... 400/800
-    ... 600/800
-    ... 800/800
-  done in 12.2s, 49.5 MB flac bytes
-
-[build_asvspoof_2019_la_cache] validation: reading protocol LA/ASVspoof2019_LA_cm_protocols/ASVspoof2019.LA.cm.dev.trl.txt
-  official partition has 24844 utterances (2548 bonafide, 22296 spoof)
-  sampled 300 utterances for local cache (150 bonafide + 150 spoof across 6 attack types)
-  downloading 300 flac files (18.7 MB uncompressed) with 8 workers ...
-    ... 200/300
-  done in 5.2s, 18.7 MB flac bytes
-
-[build_asvspoof_2019_la_cache] test: reading protocol LA/ASVspoof2019_LA_cm_protocols/ASVspoof2019.LA.cm.eval.trl.txt
-  official partition has 71237 utterances (7355 bonafide, 63882 spoof)
-  sampled 1900 utterances for local cache (950 bonafide + 950 spoof across 13 attack types)
-  downloading 1900 flac files (114.2 MB uncompressed) with 8 workers ...
-    ... 200/1900
-    ... 400/1900
-    ... 600/1900
-    ... 800/1900
-    ... 1000/1900
-    ... 1200/1900
-    ... 1400/1900
-    ... 1600/1900
-    ... 1800/1900
-  done in 91.5s, 114.2 MB flac bytes
-
-[build_asvspoof_2019_la_cache] saving DatasetDict to /home/sagemaker-user/DeepfakeDetectionRenewed/data/asvspoof_2019_la
-Saving the dataset (0/1 shards):   0%|          | 0/800 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 800/800 [00:00<00:00, 40128.72 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 800/800 [00:00<00:00, 39761.62 examples/s]
-Saving the dataset (0/1 shards):   0%|          | 0/300 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 300/300 [00:00<00:00, 38209.93 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 300/300 [00:00<00:00, 37750.25 examples/s]
-Saving the dataset (0/1 shards):   0%|          | 0/1900 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 1900/1900 [00:00<00:00, 58486.80 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 1900/1900 [00:00<00:00, 58224.85 examples/s]
-
-[build_asvspoof_2019_la_cache] done. 3000 files, 182.3 MB, splits=['train', 'validation', 'test']
-  train: 800 rows
-  validation: 300 rows
-  test: 1900 rows
