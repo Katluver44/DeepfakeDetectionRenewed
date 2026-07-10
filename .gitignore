@@ -6,6 +6,13 @@ data/
 .ipynb_checkpoints/
 pretrained/
 secret.txt
+
+# ── LaugHSMI local runtime/data artifacts ──────────────────────
+laughsmi/venv*/
+laughsmi/models/
+laughsmi/laughter-detection/
+laughsmi/data/
+laughsmi/qc/**/*.wav
 venv/
 
 # ── Model checkpoints & weights (large binaries) ──────────────
@@ -63,3 +70,4 @@ experiments/results/rep_similarity/
 # experiments/results/**/*.json
 # experiments/results/**/*.png
 
+secret.txt

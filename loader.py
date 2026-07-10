@@ -15,7 +15,10 @@ except Exception:
 # -------------------------------------------------------------------
 # Stable audio backend
 # -------------------------------------------------------------------
-torchaudio.set_audio_backend("sox_io")
+# torchaudio >= 2.9 dropped the legacy backend-selection API (dispatcher is
+# automatic now); guard so this module still imports on newer torchaudio.
+if hasattr(torchaudio, "set_audio_backend"):
+    torchaudio.set_audio_backend("sox_io")
 
 TARGET_SR = 16000
 TARGET_SAMPLES = 3 * TARGET_SR  # 48000 samples = 3 seconds

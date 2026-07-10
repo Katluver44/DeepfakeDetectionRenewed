@@ -1,0 +1,6 @@
+method,auc_L9,cosdist_real_L9,auc_L12,cosdist_real_L12
+bark_laughter_token,0.998,0.041,0.998,0.049
+bark_laughs_inline,1.0,0.084,1.0,0.119
+audioldm2,1.0,0.093,1.0,0.101
+parler_tts,1.0,0.115,1.0,0.124
+xtts,1.0,0.027,1.0,0.027

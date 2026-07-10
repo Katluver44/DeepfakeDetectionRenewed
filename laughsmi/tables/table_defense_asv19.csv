@@ -1,0 +1,4 @@
+agg,clean_eer_pct,thr,base_catch,aug_catch,evasion_rate
+mean,3.67,0.279,0.99,0.971,0.029
+max,4.33,0.3666,0.971,0.99,0.01
+p90,4.33,0.3657,0.971,0.981,0.019

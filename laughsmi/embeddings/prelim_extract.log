@@ -1,0 +1,5 @@
+Resuming: 491/722 rows already computed.
+Loading weights:   0%|          | 0/488 [00:00<?, ?it/s]Loading weights: 100%|██████████| 488/488 [00:00<00:00, 31657.08it/s]
+extracting:   0%|          | 0/722 [00:00<?, ?it/s]extracting:  68%|██████▊   | 492/722 [00:00<00:00, 1323.76it/s]extracting:  87%|████████▋ | 625/722 [00:06<00:01, 72.08it/s]  extracting:  94%|█████████▍| 681/722 [00:09<00:00, 55.72it/s]extracting:  99%|█████████▉| 713/722 [00:10<00:00, 48.35it/s]extracting: 100%|██████████| 722/722 [00:10<00:00, 66.03it/s]
+Wrote embeddings/prelim_features.parquet (722 rows)
+Wrote embeddings/prelim_embeddings/mean_emb_layer9.npy, embeddings/prelim_embeddings/mean_emb_layer12.npy (shape (722, 1024))

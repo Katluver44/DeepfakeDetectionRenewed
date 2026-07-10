@@ -1,0 +1,3 @@
+probe,n,n_laugh,n_speech,auc_mean,auc_std,n_folds,metric,cosine_dist_laugh_vs_to_speech_asv_bona
+logreg_laugh_vs_asv_bonafide_speech,600.0,300.0,300.0,1.0,0.0,5.0,,
+,,,,,,,centroid_cosine_distance_layer12,0.1650559902191162

@@ -1,0 +1,2 @@
+cosine_dist_laugh-spoof_to_laugh-bona,cosine_dist_laugh-spoof_to_laugh-vs,cosine_dist_laugh-spoof_to_speech-bona,cosine_dist_laugh-spoof_to_speech-spoof,n_genuine,n_synthetic,auc_mean,auc_std,n_folds
+0.008839309215545654,0.16050571203231812,0.01242738962173462,0.011698544025421143,280,162,0.9902225378787879,0.0073961347223400935,5

@@ -1,0 +1,3 @@
+dataset,n_aug_fakes,clean_eer_pct,thr_at_eer,base_spoof_score_mean,aug_spoof_score_mean,delta_mean,delta_median,wilcoxon_p,rank_biserial,base_catch_rate,aug_catch_rate,evasion_rate_after,newly_evaded_n,delta_start,delta_mid,delta_end
+ASVspoof19 (asv19 model),105,5.33,0.3181,0.8988,0.6039,-0.2949,-0.2764,0.0,-0.782,0.971,0.8,0.2,20,-0.3766434927647178,-0.2258882268021504,-0.2780235391110182
+MLAAD (mlaad model),109,37.26,0.9956,0.9631,0.9616,-0.0015,-0.0033,0.000247,-0.405,0.606,0.376,0.624,33,0.009873045118231522,-0.00776176956983713,-0.00733426958322525

@@ -1,0 +1,9 @@
+comparison,wavlm_l12,wavlm_l12_pca20,content_free,verdict
+real vs bark_laughter_token,0.978,0.978,0.706,WavLM>floor (signal)
+real vs bark_laughs_inline,0.967,0.956,0.772,WavLM>floor (signal)
+real vs audioldm2,0.972,0.967,0.961,tie w/ floor (quirk)
+real vs parler_tts,0.994,0.994,0.889,WavLM>floor (signal)
+real vs xtts,0.972,0.972,0.711,WavLM>floor (signal)
+speech vs laugh (sanity),1.0,1.0,0.95,tie w/ floor (quirk)
+,,,,
+label_shuffle_control=0.479,,,,real_vs_real=0.449

@@ -1,0 +1,4 @@
+test,n_pairs,statistic,p_value,rank_biserial_r,mean_laugh_bona,mean_speech_bona
+paired_wilcoxon_C_layer12,24,8.0,2.9802322387695312e-06,-0.9466666666666667,-121.80093417931009,-117.71977825334788
+paired_wilcoxon_T_layer9,24,15.0,1.633167266845703e-05,-0.9,0.5296840724761597,0.6190885052576954
+h4_probe_genuine_vs_synthetic_laughter_auc,53,,,,0.6047619047619047,0.1462687862229302

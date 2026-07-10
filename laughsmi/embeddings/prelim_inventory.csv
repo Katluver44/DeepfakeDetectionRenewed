@@ -1,0 +1,723 @@
+group,file_path,start_s,end_s,pair_id,speaker
+laugh-bona,data/in_the_wild/45.wav,9.875,13.675,0,Mark Zuckerberg
+laugh-bona,data/in_the_wild/72.wav,0.9845,2.7347,1,Barack Obama
+laugh-bona,data/in_the_wild/82.wav,9.0,9.5,2,Alec Guinness
+laugh-bona,data/in_the_wild/113.wav,7.9466,10.2241,3,Donald Trump
+laugh-bona,data/in_the_wild/113.wav,14.3336,15.1752,4,Donald Trump
+laugh-bona,data/in_the_wild/129.wav,4.643,6.1722,5,Milton Friedman
+laugh-bona,data/in_the_wild/158.wav,5.2319,7.7846,6,Donald Trump
+laugh-bona,data/in_the_wild/223.wav,2.9853,5.6618,7,Barack Obama
+laugh-bona,data/in_the_wild/244.wav,3.0361,4.7711,8,Barack Obama
+laugh-bona,data/in_the_wild/330.wav,0.0,0.5,9,Bernie Sanders
+laugh-bona,data/in_the_wild/358.wav,0.0,0.5091,10,Ayn Rand
+laugh-bona,data/in_the_wild/365.wav,2.5143,3.431,11,Barack Obama
+laugh-bona,data/in_the_wild/419.wav,0.0,0.5,12,Barack Obama
+laugh-bona,data/in_the_wild/465.wav,0.0,0.5088,13,Barack Obama
+laugh-bona,data/in_the_wild/564.wav,1.7643,2.6465,14,Mark Zuckerberg
+laugh-bona,data/in_the_wild/575.wav,1.0024,2.3472,15,2Pac
+laugh-bona,data/in_the_wild/575.wav,3.912,5.379,16,2Pac
+laugh-bona,data/in_the_wild/575.wav,12.4939,16.357,17,2Pac
+laugh-bona,data/in_the_wild/575.wav,18.8998,19.9756,18,2Pac
+laugh-bona,data/in_the_wild/576.wav,0.0,0.5,19,Bernie Sanders
+laugh-bona,data/in_the_wild/591.wav,0.0,0.5,20,Bernie Sanders
+laugh-bona,data/in_the_wild/603.wav,0.8669,2.1402,21,Mark Zuckerberg
+laugh-bona,data/in_the_wild/672.wav,9.24,10.0222,22,Barack Obama
+laugh-bona,data/in_the_wild/672.wav,14.6667,15.3022,23,Barack Obama
+laugh-bona,data/in_the_wild/672.wav,18.6756,20.8756,24,Barack Obama
+laugh-bona,data/in_the_wild/719.wav,4.5709,6.456,25,Barack Obama
+laugh-bona,data/in_the_wild/799.wav,0.0,1.1333,26,Bernie Sanders
+laugh-bona,data/in_the_wild/830.wav,0.0,0.5252,27,Barack Obama
+laugh-bona,data/in_the_wild/837.wav,1.317,2.1502,28,Bernie Sanders
+laugh-bona,data/in_the_wild/907.wav,0.0,0.7413,29,Queen Elizabeth II
+laugh-bona,data/in_the_wild/926.wav,1.4796,2.4951,30,Barack Obama
+laugh-bona,data/in_the_wild/954.wav,0.0,0.7483,31,Bill Clinton
+laugh-bona,data/in_the_wild/966.wav,4.4778,5.1711,32,Barack Obama
+laugh-bona,data/in_the_wild/975.wav,0.0,0.5,33,Barack Obama
+laugh-bona,data/in_the_wild/1016.wav,0.0,0.55,34,Bernie Sanders
+laugh-bona,data/in_the_wild/1044.wav,7.9051,12.9577,35,Tucker Carlson
+laugh-bona,data/in_the_wild/1044.wav,20.1134,24.8758,36,Tucker Carlson
+laugh-bona,data/in_the_wild/1056.wav,3.8473,6.1723,37,Bill Clinton
+laugh-bona,data/in_the_wild/1067.wav,0.0,0.5,38,Mark Zuckerberg
+laugh-bona,data/in_the_wild/1134.wav,0.0,0.5,39,Barack Obama
+laugh-bona,data/in_the_wild/1147.wav,2.1951,3.3659,40,Donald Trump
+laugh-bona,data/in_the_wild/1166.wav,3.2949,5.0713,41,Donald Trump
+laugh-bona,data/in_the_wild/1189.wav,1.7821,6.0992,42,Barack Obama
+laugh-bona,data/in_the_wild/1200.wav,1.2234,1.8351,43,Bill Clinton
+laugh-bona,data/in_the_wild/1206.wav,4.6253,5.8398,44,Bob Ross
+laugh-bona,data/in_the_wild/1262.wav,0.0,0.7897,45,Bill Clinton
+laugh-bona,data/in_the_wild/1278.wav,3.5971,5.7721,46,Donald Trump
+laugh-bona,data/in_the_wild/1284.wav,3.6914,6.3061,47,Norm MacDonald
+laugh-bona,data/in_the_wild/1349.wav,0.0,1.7516,48,Barack Obama
+laugh-bona,data/in_the_wild/1357.wav,0.0,1.5902,49,Bill Clinton
+laugh-bona,data/in_the_wild/1377.wav,0.0,0.5,50,Donald Trump
+laugh-bona,data/in_the_wild/1468.wav,0.0,0.8194,51,Barack Obama
+laugh-bona,data/in_the_wild/1504.wav,6.0961,9.6014,52,Adam Driver
+laugh-bona,data/in_the_wild/1579.wav,0.0,0.5,53,JFK
+laugh-bona,data/in_the_wild/1615.wav,1.9636,2.7636,54,Bill Clinton
+laugh-bona,data/in_the_wild/1628.wav,0.0,0.6934,55,Arnold Schwarzenegger
+laugh-bona,data/in_the_wild/1660.wav,0.0,0.5,56,Barack Obama
+laugh-bona,data/in_the_wild/1673.wav,0.0,0.7225,57,Bill Clinton
+laugh-bona,data/in_the_wild/1734.wav,3.1298,4.9679,58,Bill Burr
+laugh-bona,data/in_the_wild/1734.wav,10.9792,12.246,59,Bill Burr
+laugh-bona,data/in_the_wild/1806.wav,1.2082,2.5774,60,Bernie Sanders
+laugh-bona,data/in_the_wild/1934.wav,0.0,0.5,61,Bernie Sanders
+laugh-bona,data/in_the_wild/1939.wav,0.0,0.5,62,Barack Obama
+laugh-bona,data/in_the_wild/1959.wav,15.4085,16.12,63,Malcolm X
+laugh-bona,data/in_the_wild/1976.wav,0.0,0.5,64,Barack Obama
+laugh-bona,data/in_the_wild/2230.wav,2.054,3.8973,65,Barack Obama
+laugh-bona,data/in_the_wild/2293.wav,0.0,1.2385,66,2Pac
+laugh-bona,data/in_the_wild/2317.wav,2.4962,3.9699,67,Barack Obama
+laugh-bona,data/in_the_wild/2377.wav,2.0927,4.3348,68,Donald Trump
+laugh-bona,data/in_the_wild/2387.wav,0.0,0.5,69,Alexandria Ocasio-Cortez
+laugh-bona,data/in_the_wild/2501.wav,0.0,2.0914,70,Donald Trump
+laugh-bona,data/in_the_wild/2553.wav,0.1728,1.9011,71,Arnold Schwarzenegger
+laugh-bona,data/in_the_wild/2581.wav,2.3831,3.6686,72,Barack Obama
+laugh-bona,data/in_the_wild/2619.wav,2.6729,3.72,73,Bernie Sanders
+laugh-bona,data/in_the_wild/2643.wav,2.2,2.7,74,Boris Johnson
+laugh-bona,data/in_the_wild/2663.wav,3.356,4.8058,75,Donald Trump
+laugh-bona,data/in_the_wild/2710.wav,0.0,1.1343,76,Bill Clinton
+laugh-bona,data/in_the_wild/2722.wav,0.0,0.8615,77,Bill Clinton
+laugh-bona,data/in_the_wild/2773.wav,0.0,0.5,78,Bernie Sanders
+laugh-bona,data/in_the_wild/2773.wav,6.3142,7.2734,79,Bernie Sanders
+laugh-bona,data/in_the_wild/2789.wav,2.8943,3.9492,80,Barack Obama
+laugh-bona,data/in_the_wild/2822.wav,5.6569,6.4728,81,Barack Obama
+laugh-bona,data/in_the_wild/2906.wav,5.0292,7.0731,82,Jimmy Carter
+laugh-bona,data/in_the_wild/3014.wav,0.0,0.5,83,Christopher Hitchens
+laugh-bona,data/in_the_wild/3026.wav,0.0,0.5,84,Donald Trump
+laugh-bona,data/in_the_wild/3065.wav,0.0,0.5667,85,Donald Trump
+laugh-bona,data/in_the_wild/3083.wav,2.0046,4.1891,86,Barack Obama
+laugh-bona,data/in_the_wild/3146.wav,10.6767,16.2752,87,Alan Watts
+laugh-bona,data/in_the_wild/3221.wav,0.2281,1.8247,88,FDR
+laugh-bona,data/in_the_wild/3301.wav,4.516,6.0941,89,FDR
+laugh-bona,data/in_the_wild/3301.wav,8.0365,10.7558,90,FDR
+laugh-bona,data/in_the_wild/3301.wav,14.6647,16.4614,91,FDR
+laugh-bona,data/in_the_wild/3301.wav,17.0927,19.1807,92,FDR
+laugh-bona,data/in_the_wild/3305.wav,0.0,2.2426,93,Donald Trump
+laugh-bona,data/in_the_wild/3323.wav,0.6839,3.9009,94,Mark Zuckerberg
+laugh-bona,data/in_the_wild/3460.wav,3.9219,6.4726,95,Bill Clinton
+laugh-bona,data/in_the_wild/3463.wav,0.0,0.5,96,Bill Clinton
+laugh-bona,data/in_the_wild/3479.wav,0.0,0.5,97,Barack Obama
+laugh-bona,data/in_the_wild/3527.wav,0.0,3.2656,98,Mark Zuckerberg
+laugh-bona,data/in_the_wild/3527.wav,9.2866,11.1745,99,Mark Zuckerberg
+laugh-bona,data/in_the_wild/3570.wav,0.0,1.1717,100,Barack Obama
+laugh-bona,data/in_the_wild/3583.wav,1.4073,1.9073,101,Barack Obama
+laugh-bona,data/in_the_wild/3687.wav,3.39,4.17,102,Bill Clinton
+laugh-bona,data/in_the_wild/3691.wav,8.8323,10.2743,103,Alexandria Ocasio-Cortez
+laugh-bona,data/in_the_wild/3696.wav,0.0,0.8095,104,Adam Driver
+laugh-bona,data/in_the_wild/3715.wav,0.0,0.7412,105,Donald Trump
+laugh-bona,data/in_the_wild/3717.wav,0.0,0.5,106,Gilbert Gottfried
+laugh-bona,data/in_the_wild/3758.wav,0.0,1.0713,107,Barack Obama
+laugh-bona,data/in_the_wild/3806.wav,4.9537,5.9286,108,Barack Obama
+laugh-bona,data/in_the_wild/3808.wav,0.0,1.2306,109,Donald Trump
+laugh-bona,data/in_the_wild/3821.wav,2.2558,3.3673,110,Bill Clinton
+laugh-bona,data/in_the_wild/3863.wav,0.0792,0.6601,111,Mark Zuckerberg
+laugh-bona,data/in_the_wild/3864.wav,9.5745,11.8772,112,Bill Burr
+laugh-bona,data/in_the_wild/3896.wav,5.5795,6.3726,113,Barack Obama
+laugh-bona,data/in_the_wild/3933.wav,7.0378,7.7391,114,Bernie Sanders
+laugh-bona,data/in_the_wild/3950.wav,1.3394,2.0233,115,Mark Zuckerberg
+laugh-bona,data/in_the_wild/3952.wav,2.8503,5.3345,116,Barack Obama
+laugh-bona,data/in_the_wild/3975.wav,2.5915,4.1702,117,2Pac
+laugh-bona,data/in_the_wild/4008.wav,2.4,2.9,118,Barack Obama
+laugh-bona,data/in_the_wild/4024.wav,6.84,10.108,119,Alec Guinness
+laugh-bona,data/in_the_wild/4043.wav,0.0,0.5,120,Barack Obama
+laugh-bona,data/in_the_wild/4060.wav,2.7941,4.0696,121,Bill Clinton
+laugh-bona,data/in_the_wild/4180.wav,0.9782,1.4782,122,Ayn Rand
+laugh-bona,data/in_the_wild/4268.wav,2.9846,3.9692,123,Barack Obama
+laugh-bona,data/in_the_wild/4321.wav,6.75,7.4732,124,Christopher Hitchens
+laugh-bona,data/in_the_wild/4338.wav,4.0796,5.1713,125,Barack Obama
+laugh-bona,data/in_the_wild/4358.wav,3.0974,3.5974,126,Bernie Sanders
+laugh-bona,data/in_the_wild/4398.wav,0.0,0.7441,127,Donald Trump
+laugh-bona,data/in_the_wild/4479.wav,0.0,0.6632,128,Barack Obama
+laugh-bona,data/in_the_wild/4490.wav,14.1298,16.5753,129,Alec Guinness
+laugh-bona,data/in_the_wild/4521.wav,2.7425,4.3699,130,Mark Zuckerberg
+laugh-bona,data/in_the_wild/4545.wav,4.8635,6.0725,131,Barack Obama
+laugh-bona,data/in_the_wild/4618.wav,0.0,0.5,132,Barack Obama
+laugh-bona,data/in_the_wild/4618.wav,4.6611,5.6719,133,Barack Obama
+laugh-bona,data/in_the_wild/4629.wav,4.1845,7.23,134,2Pac
+laugh-bona,data/in_the_wild/4629.wav,14.262,15.4752,135,2Pac
+laugh-bona,data/in_the_wild/4668.wav,11.7135,12.8748,136,Malcolm X
+laugh-bona,data/in_the_wild/4774.wav,0.0,0.5112,137,Barack Obama
+laugh-bona,data/in_the_wild/4788.wav,0.7114,2.9511,138,Alexandria Ocasio-Cortez
+laugh-bona,data/in_the_wild/4797.wav,3.9429,5.1714,139,Barack Obama
+laugh-bona,data/in_the_wild/4829.wav,0.0,1.4571,140,Arnold Schwarzenegger
+laugh-bona,data/in_the_wild/4841.wav,0.0,1.1966,141,Donald Trump
+laugh-bona,data/in_the_wild/4849.wav,0.0,0.5,142,Bill Clinton
+laugh-bona,data/in_the_wild/4881.wav,0.0,0.5,143,Barack Obama
+laugh-bona,data/in_the_wild/4899.wav,3.7538,4.8713,144,Bernie Sanders
+laugh-bona,data/in_the_wild/4907.wav,7.3716,7.8736,145,Barack Obama
+laugh-bona,data/in_the_wild/4914.wav,0.0,2.5698,146,Arnold Schwarzenegger
+laugh-bona,data/in_the_wild/4953.wav,3.555,4.74,147,Donald Trump
+laugh-bona,data/in_the_wild/4955.wav,1.3226,2.8422,148,Barack Obama
+laugh-bona,data/in_the_wild/4970.wav,0.0,1.4182,149,Mark Zuckerberg
+laugh-bona,data/in_the_wild/5045.wav,2.5712,3.6686,150,Donald Trump
+laugh-bona,data/in_the_wild/5084.wav,0.0,0.5,151,Donald Trump
+laugh-bona,data/in_the_wild/5106.wav,0.0,0.7071,152,Christopher Hitchens
+laugh-bona,data/in_the_wild/5140.wav,2.0289,5.8864,153,Donald Trump
+laugh-bona,data/in_the_wild/5157.wav,0.0,0.5768,154,Donald Trump
+laugh-bona,data/in_the_wild/5183.wav,0.0,0.5,155,Bill Clinton
+laugh-bona,data/in_the_wild/5218.wav,0.0,0.5,156,Alexandria Ocasio-Cortez
+laugh-bona,data/in_the_wild/5218.wav,12.525,13.275,157,Alexandria Ocasio-Cortez
+laugh-bona,data/in_the_wild/5236.wav,4.6162,7.2732,158,Barack Obama
+laugh-bona,data/in_the_wild/5245.wav,0.0,0.5056,159,Barack Obama
+laugh-bona,data/in_the_wild/5268.wav,12.6578,13.6763,160,Billie Eilish
+laugh-bona,data/in_the_wild/5319.wav,3.9294,5.5282,161,Mark Zuckerberg
+laugh-bona,data/in_the_wild/5375.wav,0.0,1.0983,162,Donald Trump
+laugh-bona,data/in_the_wild/5474.wav,4.3008,6.573,163,Milton Friedman
+laugh-bona,data/in_the_wild/5521.wav,0.0,1.0504,164,Donald Trump
+laugh-bona,data/in_the_wild/5528.wav,0.0,0.9949,165,Arnold Schwarzenegger
+laugh-bona,data/in_the_wild/5555.wav,2.097,2.6417,166,Barack Obama
+laugh-bona,data/in_the_wild/5645.wav,2.7946,4.2868,167,Barack Obama
+laugh-bona,data/in_the_wild/5685.wav,0.0,0.5,168,Donald Trump
+laugh-bona,data/in_the_wild/5689.wav,5.8385,7.1225,169,Queen Elizabeth II
+laugh-bona,data/in_the_wild/5705.wav,7.04,7.5733,170,2Pac
+laugh-bona,data/in_the_wild/5742.wav,5.1081,6.973,171,Donald Trump
+laugh-bona,data/in_the_wild/5836.wav,0.0,0.8101,172,Boris Johnson
+laugh-bona,data/in_the_wild/5837.wav,0.0,0.5,173,Donald Trump
+laugh-bona,data/in_the_wild/5849.wav,3.0027,4.3703,174,Barack Obama
+laugh-bona,data/in_the_wild/5873.wav,9.8648,12.3749,175,Barack Obama
+laugh-bona,data/in_the_wild/5888.wav,0.0,0.5852,176,Barack Obama
+laugh-bona,data/in_the_wild/5916.wav,7.003,10.2744,177,Mark Zuckerberg
+laugh-bona,data/in_the_wild/6024.wav,0.0,0.7668,178,Donald Trump
+laugh-bona,data/in_the_wild/6088.wav,0.2374,1.1871,179,Barack Obama
+speech-bona,data/in_the_wild/45.wav,2.9891,6.7891,0,Mark Zuckerberg
+speech-bona,data/in_the_wild/72.wav,3.7689,5.5191,1,Barack Obama
+speech-bona,data/in_the_wild/82.wav,0.0361,0.5361,2,Alec Guinness
+speech-bona,data/in_the_wild/113.wav,4.4287,6.7062,3,Donald Trump
+speech-bona,data/in_the_wild/113.wav,2.5448,3.3864,4,Donald Trump
+speech-bona,data/in_the_wild/129.wav,0.188,1.7172,5,Milton Friedman
+speech-bona,data/in_the_wild/158.wav,0.803,3.3557,6,Donald Trump
+speech-bona,data/in_the_wild/223.wav,6.7424,9.4189,7,Barack Obama
+speech-bona,data/in_the_wild/244.wav,0.2997,2.0347,8,Barack Obama
+speech-bona,data/in_the_wild/330.wav,1.9546,2.4546,9,Bernie Sanders
+speech-bona,data/in_the_wild/358.wav,1.7581,2.2672,10,Ayn Rand
+speech-bona,data/in_the_wild/365.wav,0.5062,1.4229,11,Barack Obama
+speech-bona,data/in_the_wild/419.wav,2.99,3.49,12,Barack Obama
+speech-bona,data/in_the_wild/465.wav,1.6971,2.2059,13,Barack Obama
+speech-bona,data/in_the_wild/564.wav,3.769,4.6512,14,Mark Zuckerberg
+speech-bona,data/in_the_wild/575.wav,7.9418,9.2866,15,2Pac
+speech-bona,data/in_the_wild/575.wav,9.0264,10.4934,16,2Pac
+speech-bona,data/in_the_wild/575.wav,6.8354,10.6985,17,2Pac
+speech-bona,data/in_the_wild/575.wav,8.1379,9.2137,18,2Pac
+speech-bona,data/in_the_wild/576.wav,3.2684,3.7684,19,Bernie Sanders
+speech-bona,data/in_the_wild/591.wav,1.6648,2.1648,20,Bernie Sanders
+speech-bona,data/in_the_wild/603.wav,3.6946,4.9679,21,Mark Zuckerberg
+speech-bona,data/in_the_wild/672.wav,3.7764,4.5586,22,Barack Obama
+speech-bona,data/in_the_wild/672.wav,6.513,7.1485,23,Barack Obama
+speech-bona,data/in_the_wild/672.wav,2.2817,4.4817,24,Barack Obama
+speech-bona,data/in_the_wild/719.wav,0.8587,2.7438,25,Barack Obama
+speech-bona,data/in_the_wild/799.wav,2.1438,3.2771,26,Bernie Sanders
+speech-bona,data/in_the_wild/830.wav,3.246,3.7712,27,Barack Obama
+speech-bona,data/in_the_wild/837.wav,5.606,6.4392,28,Bernie Sanders
+speech-bona,data/in_the_wild/907.wav,2.1233,2.8646,29,Queen Elizabeth II
+speech-bona,data/in_the_wild/926.wav,3.507,4.5225,30,Barack Obama
+speech-bona,data/in_the_wild/954.wav,2.822,3.5703,31,Bill Clinton
+speech-bona,data/in_the_wild/966.wav,2.074,2.7673,32,Barack Obama
+speech-bona,data/in_the_wild/975.wav,2.8693,3.3693,33,Barack Obama
+speech-bona,data/in_the_wild/1016.wav,8.8366,9.3866,34,Bernie Sanders
+speech-bona,data/in_the_wild/1044.wav,14.0277,19.0803,35,Tucker Carlson
+speech-bona,data/in_the_wild/1044.wav,0.7393,5.5017,36,Tucker Carlson
+speech-bona,data/in_the_wild/1056.wav,0.4975,2.8225,37,Bill Clinton
+speech-bona,data/in_the_wild/1067.wav,3.6282,4.1282,38,Mark Zuckerberg
+speech-bona,data/in_the_wild/1134.wav,2.5395,3.0395,39,Barack Obama
+speech-bona,data/in_the_wild/1147.wav,0.0205,1.1913,40,Donald Trump
+speech-bona,data/in_the_wild/1166.wav,0.2166,1.993,41,Donald Trump
+speech-bona,data/in_the_wild/1189.wav,8.0007,12.3178,42,Barack Obama
+speech-bona,data/in_the_wild/1200.wav,4.9526,5.5643,43,Bill Clinton
+speech-bona,data/in_the_wild/1206.wav,0.7802,1.9947,44,Bob Ross
+speech-bona,data/in_the_wild/1262.wav,1.8818,2.6715,45,Bill Clinton
+speech-bona,data/in_the_wild/1278.wav,0.1787,2.3537,46,Donald Trump
+speech-bona,data/in_the_wild/1284.wav,0.039,2.6537,47,Norm MacDonald
+speech-bona,data/in_the_wild/1349.wav,2.9178,4.6694,48,Barack Obama
+speech-bona,data/in_the_wild/1357.wav,3.0454,4.6356,49,Bill Clinton
+speech-bona,data/in_the_wild/1377.wav,1.7634,2.2634,50,Donald Trump
+speech-bona,data/in_the_wild/1468.wav,5.8195,6.6389,51,Barack Obama
+speech-bona,data/in_the_wild/1504.wav,1.5898,5.0951,52,Adam Driver
+speech-bona,data/in_the_wild/1579.wav,1.5257,2.0257,53,JFK
+speech-bona,data/in_the_wild/1615.wav,0.1407,0.9407,54,Bill Clinton
+speech-bona,data/in_the_wild/1628.wav,1.9495,2.6429,55,Arnold Schwarzenegger
+speech-bona,data/in_the_wild/1660.wav,1.5809,2.0809,56,Barack Obama
+speech-bona,data/in_the_wild/1673.wav,2.9794,3.7019,57,Bill Clinton
+speech-bona,data/in_the_wild/1734.wav,7.8318,9.6699,58,Bill Burr
+speech-bona,data/in_the_wild/1734.wav,6.8885,8.1553,59,Bill Burr
+speech-bona,data/in_the_wild/1806.wav,4.1488,5.518,60,Bernie Sanders
+speech-bona,data/in_the_wild/1934.wav,1.8355,2.3355,61,Bernie Sanders
+speech-bona,data/in_the_wild/1939.wav,2.08,2.58,62,Barack Obama
+speech-bona,data/in_the_wild/1959.wav,1.8548,2.5663,63,Malcolm X
+speech-bona,data/in_the_wild/1976.wav,2.2,2.7,64,Barack Obama
+speech-bona,data/in_the_wild/2230.wav,5.2727,7.116,65,Barack Obama
+speech-bona,data/in_the_wild/2293.wav,3.1299,4.3684,66,2Pac
+speech-bona,data/in_the_wild/2317.wav,0.0145,1.4882,67,Barack Obama
+speech-bona,data/in_the_wild/2377.wav,9.8,12.0421,68,Donald Trump
+speech-bona,data/in_the_wild/2387.wav,5.0081,5.5081,69,Alexandria Ocasio-Cortez
+speech-bona,data/in_the_wild/2501.wav,3.5992,5.6906,70,Donald Trump
+speech-bona,data/in_the_wild/2553.wav,3.0218,4.7501,71,Arnold Schwarzenegger
+speech-bona,data/in_the_wild/2581.wav,0.0951,1.3806,72,Barack Obama
+speech-bona,data/in_the_wild/2619.wav,0.3608,1.4079,73,Bernie Sanders
+speech-bona,data/in_the_wild/2643.wav,0.7214,1.2214,74,Boris Johnson
+speech-bona,data/in_the_wild/2663.wav,0.8982,2.348,75,Donald Trump
+speech-bona,data/in_the_wild/2710.wav,2.2383,3.3726,76,Bill Clinton
+speech-bona,data/in_the_wild/2722.wav,2.2517,3.1132,77,Bill Clinton
+speech-bona,data/in_the_wild/2773.wav,1.6512,2.1512,78,Bernie Sanders
+speech-bona,data/in_the_wild/2773.wav,2.723,3.6822,79,Bernie Sanders
+speech-bona,data/in_the_wild/2789.wav,0.053,1.1079,80,Barack Obama
+speech-bona,data/in_the_wild/2822.wav,3.7519,4.5678,81,Barack Obama
+speech-bona,data/in_the_wild/2906.wav,1.225,3.2689,82,Jimmy Carter
+speech-bona,data/in_the_wild/3014.wav,2.1812,2.6812,83,Christopher Hitchens
+speech-bona,data/in_the_wild/3026.wav,1.7352,2.2352,84,Donald Trump
+speech-bona,data/in_the_wild/3065.wav,4.3493,4.916,85,Donald Trump
+speech-bona,data/in_the_wild/3083.wav,6.8972,9.0817,86,Barack Obama
+speech-bona,data/in_the_wild/3146.wav,0.7996,6.3981,87,Alan Watts
+speech-bona,data/in_the_wild/3221.wav,2.892,4.4886,88,FDR
+speech-bona,data/in_the_wild/3301.wav,0.1093,1.6874,89,FDR
+speech-bona,data/in_the_wild/3301.wav,0.4148,3.1341,90,FDR
+speech-bona,data/in_the_wild/3301.wav,1.6553,3.452,91,FDR
+speech-bona,data/in_the_wild/3301.wav,0.7126,2.8006,92,FDR
+speech-bona,data/in_the_wild/3305.wav,8.7005,10.9431,93,Donald Trump
+speech-bona,data/in_the_wild/3323.wav,6.4772,9.6942,94,Mark Zuckerberg
+speech-bona,data/in_the_wild/3460.wav,0.349,2.8997,95,Bill Clinton
+speech-bona,data/in_the_wild/3463.wav,1.5144,2.0144,96,Bill Clinton
+speech-bona,data/in_the_wild/3479.wav,2.5387,3.0387,97,Barack Obama
+speech-bona,data/in_the_wild/3527.wav,4.87,8.1356,98,Mark Zuckerberg
+speech-bona,data/in_the_wild/3527.wav,5.2716,7.1595,99,Mark Zuckerberg
+speech-bona,data/in_the_wild/3570.wav,2.545,3.7167,100,Barack Obama
+speech-bona,data/in_the_wild/3583.wav,5.4996,5.9996,101,Barack Obama
+speech-bona,data/in_the_wild/3687.wav,0.7906,1.5706,102,Bill Clinton
+speech-bona,data/in_the_wild/3691.wav,6.2311,7.6731,103,Alexandria Ocasio-Cortez
+speech-bona,data/in_the_wild/3696.wav,2.8191,3.6286,104,Adam Driver
+speech-bona,data/in_the_wild/3715.wav,3.2885,4.0297,105,Donald Trump
+speech-bona,data/in_the_wild/3717.wav,2.6402,3.1402,106,Gilbert Gottfried
+speech-bona,data/in_the_wild/3758.wav,2.8177,3.889,107,Barack Obama
+speech-bona,data/in_the_wild/3806.wav,2.1442,3.1191,108,Barack Obama
+speech-bona,data/in_the_wild/3808.wav,4.0799,5.3105,109,Donald Trump
+speech-bona,data/in_the_wild/3821.wav,0.0935,1.205,110,Bill Clinton
+speech-bona,data/in_the_wild/3863.wav,4.6725,5.2534,111,Mark Zuckerberg
+speech-bona,data/in_the_wild/3864.wav,16.2189,18.5216,112,Bill Burr
+speech-bona,data/in_the_wild/3896.wav,1.4571,2.2502,113,Barack Obama
+speech-bona,data/in_the_wild/3933.wav,12.8872,13.5885,114,Bernie Sanders
+speech-bona,data/in_the_wild/3950.wav,4.4568,5.1407,115,Mark Zuckerberg
+speech-bona,data/in_the_wild/3952.wav,6.4301,8.9143,116,Barack Obama
+speech-bona,data/in_the_wild/3975.wav,0.0,1.5787,117,2Pac
+speech-bona,data/in_the_wild/4008.wav,0.1616,0.6616,118,Barack Obama
+speech-bona,data/in_the_wild/4024.wav,1.5443,4.8123,119,Alec Guinness
+speech-bona,data/in_the_wild/4043.wav,4.2928,4.7928,120,Barack Obama
+speech-bona,data/in_the_wild/4060.wav,0.1509,1.4264,121,Bill Clinton
+speech-bona,data/in_the_wild/4180.wav,2.6268,3.1268,122,Ayn Rand
+speech-bona,data/in_the_wild/4268.wav,0.9458,1.9304,123,Barack Obama
+speech-bona,data/in_the_wild/4321.wav,3.8208,4.544,124,Christopher Hitchens
+speech-bona,data/in_the_wild/4338.wav,1.4633,2.555,125,Barack Obama
+speech-bona,data/in_the_wild/4358.wav,0.8383,1.3383,126,Bernie Sanders
+speech-bona,data/in_the_wild/4398.wav,2.0685,2.8126,127,Donald Trump
+speech-bona,data/in_the_wild/4479.wav,2.6861,3.3493,128,Barack Obama
+speech-bona,data/in_the_wild/4490.wav,10.5215,12.967,129,Alec Guinness
+speech-bona,data/in_the_wild/4521.wav,0.0355,1.6629,130,Mark Zuckerberg
+speech-bona,data/in_the_wild/4545.wav,1.2821,2.4911,131,Barack Obama
+speech-bona,data/in_the_wild/4618.wav,2.6174,3.1174,132,Barack Obama
+speech-bona,data/in_the_wild/4618.wav,1.4943,2.5051,133,Barack Obama
+speech-bona,data/in_the_wild/4629.wav,9.674,12.7195,134,2Pac
+speech-bona,data/in_the_wild/4629.wav,1.7041,2.9173,135,2Pac
+speech-bona,data/in_the_wild/4668.wav,4.6728,5.8341,136,Malcolm X
+speech-bona,data/in_the_wild/4774.wav,1.7821,2.2933,137,Barack Obama
+speech-bona,data/in_the_wild/4788.wav,4.8506,7.0903,138,Alexandria Ocasio-Cortez
+speech-bona,data/in_the_wild/4797.wav,0.7721,2.0006,139,Barack Obama
+speech-bona,data/in_the_wild/4829.wav,3.0771,4.5342,140,Arnold Schwarzenegger
+speech-bona,data/in_the_wild/4841.wav,3.3048,4.5014,141,Donald Trump
+speech-bona,data/in_the_wild/4849.wav,1.7565,2.2565,142,Bill Clinton
+speech-bona,data/in_the_wild/4881.wav,3.7571,4.2571,143,Barack Obama
+speech-bona,data/in_the_wild/4899.wav,0.9812,2.0987,144,Bernie Sanders
+speech-bona,data/in_the_wild/4907.wav,5.7157,6.2177,145,Barack Obama
+speech-bona,data/in_the_wild/4914.wav,14.2588,16.8286,146,Arnold Schwarzenegger
+speech-bona,data/in_the_wild/4953.wav,0.8662,2.0512,147,Donald Trump
+speech-bona,data/in_the_wild/4955.wav,3.9368,5.4564,148,Barack Obama
+speech-bona,data/in_the_wild/4970.wav,2.5584,3.9766,149,Mark Zuckerberg
+speech-bona,data/in_the_wild/5045.wav,0.0213,1.1187,150,Donald Trump
+speech-bona,data/in_the_wild/5084.wav,16.3447,16.8447,151,Donald Trump
+speech-bona,data/in_the_wild/5106.wav,1.943,2.6501,152,Christopher Hitchens
+speech-bona,data/in_the_wild/5140.wav,7.2343,11.0918,153,Donald Trump
+speech-bona,data/in_the_wild/5157.wav,1.6633,2.2401,154,Donald Trump
+speech-bona,data/in_the_wild/5183.wav,1.679,2.179,155,Bill Clinton
+speech-bona,data/in_the_wild/5218.wav,1.9316,2.4316,156,Alexandria Ocasio-Cortez
+speech-bona,data/in_the_wild/5218.wav,3.4288,4.1788,157,Alexandria Ocasio-Cortez
+speech-bona,data/in_the_wild/5236.wav,0.8879,3.5449,158,Barack Obama
+speech-bona,data/in_the_wild/5245.wav,2.0457,2.5513,159,Barack Obama
+speech-bona,data/in_the_wild/5268.wav,18.0874,19.1059,160,Billie Eilish
+speech-bona,data/in_the_wild/5319.wav,0.57,2.1688,161,Mark Zuckerberg
+speech-bona,data/in_the_wild/5375.wav,3.087,4.1853,162,Donald Trump
+speech-bona,data/in_the_wild/5474.wav,0.7487,3.0209,163,Milton Friedman
+speech-bona,data/in_the_wild/5521.wav,2.6231,3.6735,164,Donald Trump
+speech-bona,data/in_the_wild/5528.wav,2.6992,3.6941,165,Arnold Schwarzenegger
+speech-bona,data/in_the_wild/5555.wav,3.7902,4.3349,166,Barack Obama
+speech-bona,data/in_the_wild/5645.wav,0.2049,1.6971,167,Barack Obama
+speech-bona,data/in_the_wild/5685.wav,1.9671,2.4671,168,Donald Trump
+speech-bona,data/in_the_wild/5689.wav,1.5801,2.8641,169,Queen Elizabeth II
+speech-bona,data/in_the_wild/5705.wav,4.9636,5.4969,170,2Pac
+speech-bona,data/in_the_wild/5742.wav,0.501,2.3659,171,Donald Trump
+speech-bona,data/in_the_wild/5836.wav,8.11,8.9201,172,Boris Johnson
+speech-bona,data/in_the_wild/5837.wav,1.8618,2.3618,173,Donald Trump
+speech-bona,data/in_the_wild/5849.wav,0.4748,1.8424,174,Barack Obama
+speech-bona,data/in_the_wild/5873.wav,5.7682,8.2783,175,Barack Obama
+speech-bona,data/in_the_wild/5888.wav,3.0891,3.6743,176,Barack Obama
+speech-bona,data/in_the_wild/5916.wav,0.9191,4.1905,177,Mark Zuckerberg
+speech-bona,data/in_the_wild/6024.wav,3.5389,4.3057,178,Donald Trump
+speech-bona,data/in_the_wild/6088.wav,3.1513,4.101,179,Barack Obama
+laugh-vs,data/vocalsound/audio_16k_raw/subset4/m2144_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset4/m2147_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset1/f0679_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset4/m1575_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset1/f0807_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset3/m0725_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset4/m1483_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset2/f2569_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset2/f1628_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset2/f3149_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset4/m2348_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset4/m2420_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset4/m1896_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset1/f1023_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset1/f0887_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset2/f2730_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset1/f1075_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset3/m0413_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset5/m3124_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset3/m0035_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset5/m2990_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset1/f0942_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset2/f3097_1_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset3/m1134_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset2/f2897_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset5/m2606_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset3/m0342_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset3/m0503_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset1/f1236_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset3/m0494_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset4/m2152_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset1/f0581_2_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset5/m2727_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset5/m2733_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset4/m1275_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset1/m3313_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset2/f1605_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset2/f2784_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset3/m0648_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset3/m0579_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset1/f0298_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset2/f1816_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset4/m2321_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset3/m1208_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset2/f2938_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset1/f1226_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset5/m2553_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset3/m0587_2_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset3/m0805_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset2/f2558_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset4/m2467_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset5/m2773_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset2/f2972_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset2/f1934_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset5/m3082_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset3/m0022_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset3/m1067_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset3/f3332_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset2/f2660_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset3/m0474_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset1/f0460_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset1/f1184_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset3/f3352_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset3/f3350_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset3/m0695_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset2/f2251_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset1/f1464_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset2/f3107_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset3/f3353_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset4/m2379_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset2/f3055_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset3/m1106_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset4/m1810_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset3/m1093_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset1/f1374_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset1/f0891_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset2/f1957_2_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset1/f1480_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset1/f0569_3_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset4/m2202_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset5/m2555_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset5/m3258_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset1/f0962_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset2/f2293_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset2/f3277_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset5/m3217_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset3/m0429_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset4/m1498_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset3/m0394_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset4/m1710_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset2/f3044_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset3/m0031_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset5/m2782_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset3/m0790_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset1/f0292_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset5/m2859_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset1/m3348_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset2/f2866_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset5/m2514_0_laughter.wav,0.0,-1.0,,
+laugh-vs,data/vocalsound/audio_16k_raw/subset2/f2678_0_laughter.wav,0.0,-1.0,,
+speech-spoof,data/in_the_wild/92.wav,0.6356,2.2137,,Mitch Hedberg
+speech-spoof,data/in_the_wild/5927.wav,1.1502,1.6502,,Bill Clinton
+speech-spoof,data/in_the_wild/1416.wav,0.614,3.2905,,FDR
+speech-spoof,data/in_the_wild/4295.wav,6.3157,7.589,,Ronald Reagan
+speech-spoof,data/in_the_wild/2942.wav,0.9056,3.1477,,Arnold Schwarzenegger
+speech-spoof,data/in_the_wild/4417.wav,4.0006,5.1339,,Bernie Sanders
+speech-spoof,data/in_the_wild/5316.wav,0.8568,1.3588,,Bernie Sanders
+speech-spoof,data/in_the_wild/3484.wav,1.9595,2.4595,,Milton Friedman
+speech-spoof,data/in_the_wild/5688.wav,1.1263,2.6,,Ronald Reagan
+speech-spoof,data/in_the_wild/2166.wav,0.7653,2.5155,,George Carlin
+speech-spoof,data/in_the_wild/257.wav,3.1143,3.6143,,Richard Nixon
+speech-spoof,data/in_the_wild/3358.wav,2.4933,3.5482,,Ronald Reagan
+speech-spoof,data/in_the_wild/3348.wav,2.1508,3.1663,,Milton Friedman
+speech-spoof,data/in_the_wild/1818.wav,2.8387,3.5458,,Queen Elizabeth II
+speech-spoof,data/in_the_wild/5259.wav,3.2658,3.7658,,Martin Luther King
+speech-spoof,data/in_the_wild/4659.wav,0.5956,1.5123,,Bernie Sanders
+speech-spoof,data/in_the_wild/2333.wav,0.0,1.3,,Ronald Reagan
+speech-spoof,data/in_the_wild/2369.wav,0.8599,1.3599,,Ayn Rand
+speech-spoof,data/in_the_wild/5064.wav,0.3682,2.8137,,Milton Friedman
+speech-spoof,data/in_the_wild/2814.wav,0.2735,2.4735,,Nelson Mandela
+speech-spoof,data/in_the_wild/5043.wav,0.0,2.1,,Alec Guinness
+speech-spoof,data/in_the_wild/2702.wav,0.6402,1.1402,,The Notorious B.I.G.
+speech-spoof,data/in_the_wild/5829.wav,0.5683,1.3505,,Milton Friedman
+speech-spoof,data/in_the_wild/3916.wav,1.5409,2.0409,,Alec Guinness
+speech-spoof,data/in_the_wild/1759.wav,1.3166,2.414,,Alec Guinness
+speech-spoof,data/in_the_wild/514.wav,0.7231,1.2322,,Richard Nixon
+speech-spoof,data/in_the_wild/1520.wav,4.3109,4.82,,Orson Welles
+speech-spoof,data/in_the_wild/3461.wav,0.3607,1.5913,,Martin Luther King
+speech-spoof,data/in_the_wild/5999.wav,2.8192,4.3979,,Mark Zuckerberg
+speech-spoof,data/in_the_wild/3501.wav,6.1093,6.6093,,Louis Farrakhan
+speech-spoof,data/in_the_wild/835.wav,1.307,2.4044,,Bernie Sanders
+speech-spoof,data/in_the_wild/6078.wav,10.5379,11.7469,,Christopher Hitchens
+speech-spoof,data/in_the_wild/541.wav,4.3572,4.9927,,Ayn Rand
+speech-spoof,data/in_the_wild/5618.wav,1.4513,2.1628,,Bill Clinton
+speech-spoof,data/in_the_wild/4934.wav,0.76,1.5794,,Ronald Reagan
+speech-spoof,data/in_the_wild/3629.wav,0.1399,0.6399,,Louis C.K.
+speech-spoof,data/in_the_wild/4939.wav,0.4607,4.2607,,Ronald Reagan
+speech-spoof,data/in_the_wild/722.wav,0.9418,1.605,,Ronald Reagan
+speech-spoof,data/in_the_wild/5458.wav,8.9013,10.6363,,Jerry Seinfeld
+speech-spoof,data/in_the_wild/1808.wav,0.0,2.4,,Barack Obama
+speech-spoof,data/in_the_wild/4286.wav,1.4679,1.9679,,Barack Obama
+speech-spoof,data/in_the_wild/2338.wav,1.5412,4.0513,,Queen Elizabeth II
+speech-spoof,data/in_the_wild/6032.wav,0.3879,2.6601,,Bill Clinton
+speech-spoof,data/in_the_wild/3426.wav,0.4922,0.9922,,The Notorious B.I.G.
+speech-spoof,data/in_the_wild/3786.wav,0.4832,1.1903,,Alan Watts
+speech-spoof,data/in_the_wild/4708.wav,2.3108,2.8108,,Ronald Reagan
+speech-spoof,data/in_the_wild/3770.wav,1.9227,2.9335,,Nelson Mandela
+speech-spoof,data/in_the_wild/4154.wav,5.3239,5.8351,,Boris Johnson
+speech-spoof,data/in_the_wild/3086.wav,0.0989,2.2834,,Bernie Sanders
+speech-spoof,data/in_the_wild/294.wav,0.9917,2.063,,Bernie Sanders
+speech-spoof,data/in_the_wild/546.wav,0.277,1.5525,,Bernie Sanders
+speech-spoof,data/in_the_wild/3866.wav,0.3097,0.8097,,Bernie Sanders
+speech-spoof,data/in_the_wild/4601.wav,0.5972,2.4823,,Barack Obama
+speech-spoof,data/in_the_wild/3734.wav,6.457,7.899,,John Cleese
+speech-spoof,data/in_the_wild/1321.wav,0.9081,2.1387,,Christopher Hitchens
+speech-spoof,data/in_the_wild/1735.wav,0.0157,1.2997,,Malcolm X
+speech-spoof,data/in_the_wild/2252.wav,1.1287,1.7055,,Bernie Sanders
+speech-spoof,data/in_the_wild/4710.wav,0.0141,1.1474,,Queen Elizabeth II
+speech-spoof,data/in_the_wild/889.wav,1.227,2.3883,,Adam Driver
+speech-spoof,data/in_the_wild/1695.wav,3.4194,4.6479,,Bill Clinton
+speech-spoof,data/in_the_wild/4167.wav,4.19,5.2449,,Alec Guinness
+speech-spoof,data/in_the_wild/5272.wav,3.5985,4.8825,,Bernie Sanders
+speech-spoof,data/in_the_wild/4427.wav,5.1541,7.8306,,Mark Zuckerberg
+speech-spoof,data/in_the_wild/1160.wav,2.2823,3.6515,,Queen Elizabeth II
+speech-spoof,data/in_the_wild/5804.wav,0.0656,0.5656,,Ronald Reagan
+speech-spoof,data/in_the_wild/6077.wav,0.6923,1.1923,,Milton Friedman
+speech-spoof,data/in_the_wild/5834.wav,4.3458,4.8458,,Bill Burr
+speech-spoof,data/in_the_wild/5537.wav,0.97,1.4756,,Bill Clinton
+speech-spoof,data/in_the_wild/2192.wav,0.466,2.1943,,FDR
+speech-spoof,data/in_the_wild/573.wav,1.2686,1.8019,,Christopher Hitchens
+speech-spoof,data/in_the_wild/1993.wav,0.2791,1.4936,,Ayn Rand
+speech-spoof,data/in_the_wild/3006.wav,1.2764,3.5161,,Ayn Rand
+speech-spoof,data/in_the_wild/2463.wav,2.5377,3.0377,,Mark Zuckerberg
+speech-spoof,data/in_the_wild/3792.wav,0.249,1.8764,,Mark Zuckerberg
+speech-spoof,data/in_the_wild/2448.wav,9.3273,10.1888,,Bernie Sanders
+speech-spoof,data/in_the_wild/1090.wav,0.474,0.974,,Queen Elizabeth II
+speech-spoof,data/in_the_wild/2517.wav,3.4485,4.467,,Ayn Rand
+speech-spoof,data/in_the_wild/982.wav,0.0,3.4,,Ronald Reagan
+speech-spoof,data/in_the_wild/4604.wav,2.5421,3.0421,,Bernie Sanders
+speech-spoof,data/in_the_wild/970.wav,0.0,1.9,,Alec Guinness
+speech-spoof,data/in_the_wild/2593.wav,3.871,5.338,,Gilbert Gottfried
+speech-spoof,data/in_the_wild/1228.wav,5.3996,6.8494,,Alec Guinness
+speech-spoof,data/in_the_wild/5348.wav,0.7772,4.0452,,Bernie Sanders
+speech-spoof,data/in_the_wild/5330.wav,0.4378,1.1391,,Bill Clinton
+speech-spoof,data/in_the_wild/874.wav,0.0,1.6,,Milton Friedman
+speech-spoof,data/in_the_wild/4770.wav,1.1527,3.8097,,Martin Luther King
+speech-spoof,data/in_the_wild/3934.wav,0.2153,1.4285,,Milton Friedman
+speech-spoof,data/in_the_wild/1574.wav,0.5676,3.8356,,Christopher Hitchens
+speech-spoof,data/in_the_wild/4602.wav,1.2394,5.1025,,Mitch Hedberg
+speech-spoof,data/in_the_wild/1126.wav,3.241,3.741,,Frank Sinatra
+speech-spoof,data/in_the_wild/4587.wav,0.7565,4.6196,,Ronald Reagan
+speech-spoof,data/in_the_wild/1633.wav,1.0009,4.2689,,Ronald Reagan
+speech-spoof,data/in_the_wild/3459.wav,7.4627,7.9627,,Ayn Rand
+speech-spoof,data/in_the_wild/3265.wav,1.3159,2.4142,,Ayn Rand
+speech-spoof,data/in_the_wild/1434.wav,3.5966,4.7309,,Bernie Sanders
+speech-spoof,data/in_the_wild/2071.wav,0.1025,2.1905,,Alec Guinness
+speech-spoof,data/in_the_wild/1515.wav,4.0086,4.5086,,George W. Bush
+speech-spoof,data/in_the_wild/246.wav,2.2309,2.7309,,Martin Luther King
+speech-spoof,data/in_the_wild/1643.wav,1.2412,2.9762,,Milton Friedman
+speech-spoof,data/in_the_wild/4088.wav,8.142,10.0069,,George Carlin
+laugh-spoof,data/in_the_wild/31.wav,0.0,0.5,,Bill Burr
+laugh-spoof,data/in_the_wild/31.wav,7.6737,9.4427,,Bill Burr
+laugh-spoof,data/in_the_wild/59.wav,0.0,1.5198,,Louis C.K.
+laugh-spoof,data/in_the_wild/59.wav,6.6872,8.7896,,Louis C.K.
+laugh-spoof,data/in_the_wild/126.wav,2.0927,4.841,,Mitch Hedberg
+laugh-spoof,data/in_the_wild/170.wav,0.0,2.9651,,Tucker Carlson
+laugh-spoof,data/in_the_wild/184.wav,0.0,1.4318,,Barack Obama
+laugh-spoof,data/in_the_wild/225.wav,0.0,1.0174,,Bill Clinton
+laugh-spoof,data/in_the_wild/357.wav,2.7768,3.8688,,Ronald Reagan
+laugh-spoof,data/in_the_wild/512.wav,0.0,1.063,,Louis C.K.
+laugh-spoof,data/in_the_wild/525.wav,0.0,0.5,,Mark Zuckerberg
+laugh-spoof,data/in_the_wild/535.wav,0.0,1.8537,,The Notorious B.I.G.
+laugh-spoof,data/in_the_wild/542.wav,5.0346,6.0632,,Louis Farrakhan
+laugh-spoof,data/in_the_wild/692.wav,0.0,0.5,,Louis Farrakhan
+laugh-spoof,data/in_the_wild/715.wav,0.0,0.5,,Bernie Sanders
+laugh-spoof,data/in_the_wild/720.wav,0.0,0.8231,,Mark Zuckerberg
+laugh-spoof,data/in_the_wild/737.wav,0.0,1.4532,,Bill Clinton
+laugh-spoof,data/in_the_wild/795.wav,0.0,0.9249,,Bill Burr
+laugh-spoof,data/in_the_wild/797.wav,11.2687,13.0597,,Scarlett Johansson
+laugh-spoof,data/in_the_wild/843.wav,0.0,0.5,,Alexandria Ocasio-Cortez
+laugh-spoof,data/in_the_wild/901.wav,5.7433,8.4187,,Bernie Sanders
+laugh-spoof,data/in_the_wild/968.wav,12.2029,13.775,,Kanye West
+laugh-spoof,data/in_the_wild/983.wav,0.0,1.5429,,Ronald Reagan
+laugh-spoof,data/in_the_wild/1008.wav,0.0,0.5,,2Pac
+laugh-spoof,data/in_the_wild/1021.wav,2.7292,4.1695,,Gilbert Gottfried
+laugh-spoof,data/in_the_wild/1048.wav,0.0,1.8531,,The Notorious B.I.G.
+laugh-spoof,data/in_the_wild/1115.wav,2.1985,3.9695,,Mitch Hedberg
+laugh-spoof,data/in_the_wild/1181.wav,1.8414,4.7981,,Martin Luther King
+laugh-spoof,data/in_the_wild/1183.wav,1.0798,1.9891,,Martin Luther King
+laugh-spoof,data/in_the_wild/1273.wav,0.3932,2.8261,,Bill Burr
+laugh-spoof,data/in_the_wild/1367.wav,1.439,2.1192,,Martin Luther King
+laugh-spoof,data/in_the_wild/1391.wav,0.0,0.5,,Tucker Carlson
+laugh-spoof,data/in_the_wild/1393.wav,0.0,1.2071,,The Notorious B.I.G.
+laugh-spoof,data/in_the_wild/1416.wav,0.0,0.5,,FDR
+laugh-spoof,data/in_the_wild/1476.wav,0.0,0.5,,John Cleese
+laugh-spoof,data/in_the_wild/1476.wav,7.5836,9.601,,John Cleese
+laugh-spoof,data/in_the_wild/1539.wav,0.0,0.5728,,John Cleese
+laugh-spoof,data/in_the_wild/1598.wav,0.9714,1.9186,,John Cleese
+laugh-spoof,data/in_the_wild/1688.wav,6.82,12.4744,,2Pac
+laugh-spoof,data/in_the_wild/1698.wav,0.0,1.2,,Alan Watts
+laugh-spoof,data/in_the_wild/1705.wav,0.0,0.5839,,Kanye West
+laugh-spoof,data/in_the_wild/1715.wav,0.8936,1.9404,,Martin Luther King
+laugh-spoof,data/in_the_wild/1742.wav,2.1677,9.5926,,The Notorious B.I.G.
+laugh-spoof,data/in_the_wild/1755.wav,0.0,1.2188,,Barack Obama
+laugh-spoof,data/in_the_wild/1790.wav,0.0,0.6811,,Bill Clinton
+laugh-spoof,data/in_the_wild/1795.wav,0.0,1.3588,,Mark Zuckerberg
+laugh-spoof,data/in_the_wild/1808.wav,0.0,1.24,,Barack Obama
+laugh-spoof,data/in_the_wild/1827.wav,0.0,1.6433,,Tucker Carlson
+laugh-spoof,data/in_the_wild/1882.wav,5.2509,5.9103,,Kanye West
+laugh-spoof,data/in_the_wild/1882.wav,9.3051,10.2332,,Kanye West
+laugh-spoof,data/in_the_wild/1908.wav,1.2365,2.1707,,Bill Clinton
+laugh-spoof,data/in_the_wild/1980.wav,1.2385,4.8462,,Barack Obama
+laugh-spoof,data/in_the_wild/2034.wav,0.0,1.1822,,Alexandria Ocasio-Cortez
+laugh-spoof,data/in_the_wild/2048.wav,3.6142,4.1142,,Bernie Sanders
+laugh-spoof,data/in_the_wild/2116.wav,8.0892,11.466,,The Notorious B.I.G.
+laugh-spoof,data/in_the_wild/2180.wav,1.0215,3.09,,Mark Zuckerberg
+laugh-spoof,data/in_the_wild/2191.wav,0.0,0.5,,Barack Obama
+laugh-spoof,data/in_the_wild/2208.wav,10.7401,11.4747,,Louis Farrakhan
+laugh-spoof,data/in_the_wild/2274.wav,0.0,1.8537,,Mark Zuckerberg
+laugh-spoof,data/in_the_wild/2290.wav,0.0,2.0571,,Barack Obama
+laugh-spoof,data/in_the_wild/2347.wav,3.8406,5.8722,,Boris Johnson
+laugh-spoof,data/in_the_wild/2353.wav,0.0,0.5103,,Alexandria Ocasio-Cortez
+laugh-spoof,data/in_the_wild/2429.wav,0.0,0.6957,,Winston Churchill
+laugh-spoof,data/in_the_wild/2432.wav,0.0,0.5318,,Alexandria Ocasio-Cortez
+laugh-spoof,data/in_the_wild/2432.wav,2.2966,4.7383,,Alexandria Ocasio-Cortez
+laugh-spoof,data/in_the_wild/2432.wav,10.9792,11.4792,,Alexandria Ocasio-Cortez
+laugh-spoof,data/in_the_wild/2432.wav,12.9818,13.4895,,Alexandria Ocasio-Cortez
+laugh-spoof,data/in_the_wild/2432.wav,20.1134,21.7331,,Alexandria Ocasio-Cortez
+laugh-spoof,data/in_the_wild/2477.wav,0.0,1.2361,,Bernie Sanders
+laugh-spoof,data/in_the_wild/2477.wav,4.9443,6.6012,,Bernie Sanders
+laugh-spoof,data/in_the_wild/2481.wav,2.2324,3.2676,,Louis Farrakhan
+laugh-spoof,data/in_the_wild/2482.wav,0.0,0.6606,,The Notorious B.I.G.
+laugh-spoof,data/in_the_wild/2494.wav,0.0,0.5,,Queen Elizabeth II
+laugh-spoof,data/in_the_wild/2537.wav,8.1812,8.9843,,The Notorious B.I.G.
+laugh-spoof,data/in_the_wild/2547.wav,0.0,1.75,,Bill Clinton
+laugh-spoof,data/in_the_wild/2586.wav,0.0,0.5,,Bill Clinton
+laugh-spoof,data/in_the_wild/2586.wav,4.5425,5.6718,,Bill Clinton
+laugh-spoof,data/in_the_wild/2603.wav,0.0,1.9253,,Louis Farrakhan
+laugh-spoof,data/in_the_wild/2644.wav,2.0153,3.9695,,Bernie Sanders
+laugh-spoof,data/in_the_wild/2832.wav,0.0,0.5,,Bernie Sanders
+laugh-spoof,data/in_the_wild/2846.wav,0.0,0.9598,,The Notorious B.I.G.
+laugh-spoof,data/in_the_wild/2846.wav,7.5524,11.2402,,The Notorious B.I.G.
+laugh-spoof,data/in_the_wild/2847.wav,21.2289,22.9757,,Robert Kardashian
+laugh-spoof,data/in_the_wild/2855.wav,0.0,1.75,,The Notorious B.I.G.
+laugh-spoof,data/in_the_wild/2859.wav,0.0,0.5,,John Cleese
+laugh-spoof,data/in_the_wild/2865.wav,0.0,2.3613,,Norm MacDonald
+laugh-spoof,data/in_the_wild/2920.wav,0.0,0.5,,Bernie Sanders
+laugh-spoof,data/in_the_wild/2961.wav,2.5535,3.0969,,Bernie Sanders
+laugh-spoof,data/in_the_wild/2967.wav,0.0,1.0909,,The Notorious B.I.G.
+laugh-spoof,data/in_the_wild/2980.wav,0.0,0.807,,Alec Guinness
+laugh-spoof,data/in_the_wild/2981.wav,0.0,0.5958,,Mark Zuckerberg
+laugh-spoof,data/in_the_wild/3063.wav,0.0,2.0926,,Louis Farrakhan
+laugh-spoof,data/in_the_wild/3086.wav,0.0,1.0051,,Bernie Sanders
+laugh-spoof,data/in_the_wild/3097.wav,0.0,1.642,,Gilbert Gottfried
+laugh-spoof,data/in_the_wild/3127.wav,0.415,3.242,,Alexandria Ocasio-Cortez
+laugh-spoof,data/in_the_wild/3310.wav,0.0,1.9545,,Mark Zuckerberg
+laugh-spoof,data/in_the_wild/3349.wav,3.1967,4.9645,,Bill Burr
+laugh-spoof,data/in_the_wild/3349.wav,21.2384,23.1758,,Bill Burr
+laugh-spoof,data/in_the_wild/3369.wav,1.4399,2.2482,,Martin Luther King
+laugh-spoof,data/in_the_wild/3383.wav,0.0,0.5,,John Cleese
+laugh-spoof,data/in_the_wild/3383.wav,13.3014,14.075,,John Cleese
+laugh-spoof,data/in_the_wild/3486.wav,2.4265,3.4912,,Boris Johnson
+laugh-spoof,data/in_the_wild/3486.wav,3.8626,5.5958,,Boris Johnson
+laugh-spoof,data/in_the_wild/3486.wav,9.2356,11.8355,,Boris Johnson
+laugh-spoof,data/in_the_wild/3514.wav,1.5305,2.5508,,Martin Luther King
+laugh-spoof,data/in_the_wild/3748.wav,0.0,0.5,,Bernie Sanders
+laugh-spoof,data/in_the_wild/3764.wav,0.8462,2.1577,,Nelson Mandela
+laugh-spoof,data/in_the_wild/3775.wav,7.6394,8.6682,,George Carlin
+laugh-spoof,data/in_the_wild/3817.wav,0.0,0.5368,,Martin Luther King
+laugh-spoof,data/in_the_wild/3918.wav,3.2313,6.0464,,Louis Farrakhan
+laugh-spoof,data/in_the_wild/3944.wav,0.0,0.7344,,Kanye West
+laugh-spoof,data/in_the_wild/3961.wav,0.0,1.08,,The Notorious B.I.G.
+laugh-spoof,data/in_the_wild/3987.wav,0.0,1.9545,,2Pac
+laugh-spoof,data/in_the_wild/4004.wav,4.7652,7.7734,,The Notorious B.I.G.
+laugh-spoof,data/in_the_wild/4032.wav,9.1689,9.6689,,Mark Zuckerberg
+laugh-spoof,data/in_the_wild/4155.wav,0.0,0.5,,Louis Farrakhan
+laugh-spoof,data/in_the_wild/4203.wav,0.0,0.5,,2Pac
+laugh-spoof,data/in_the_wild/4203.wav,3.8933,7.4621,,2Pac
+laugh-spoof,data/in_the_wild/4220.wav,0.0,0.5,,Boris Johnson
+laugh-spoof,data/in_the_wild/4243.wav,0.0,0.7864,,Dave Chappelle
+laugh-spoof,data/in_the_wild/4257.wav,0.0,1.4867,,FDR
+laugh-spoof,data/in_the_wild/4261.wav,0.0,0.5,,Barack Obama
+laugh-spoof,data/in_the_wild/4324.wav,0.0,2.3613,,Mark Zuckerberg
+laugh-spoof,data/in_the_wild/4337.wav,0.0,0.6316,,Alexandria Ocasio-Cortez
+laugh-spoof,data/in_the_wild/4337.wav,3.7368,5.6842,,Alexandria Ocasio-Cortez
+laugh-spoof,data/in_the_wild/4353.wav,0.0,0.9122,,Bernie Sanders
+laugh-spoof,data/in_the_wild/4360.wav,0.0,0.5,,Ronald Reagan
+laugh-spoof,data/in_the_wild/4448.wav,0.0,1.1082,,Scarlett Johansson
+laugh-spoof,data/in_the_wild/4448.wav,17.4351,18.0754,,Scarlett Johansson
+laugh-spoof,data/in_the_wild/4621.wav,13.5155,14.9601,,Mark Zuckerberg
+laugh-spoof,data/in_the_wild/4735.wav,1.3778,3.0656,,Barack Obama
+laugh-spoof,data/in_the_wild/4807.wav,3.6198,6.946,,Alexandria Ocasio-Cortez
+laugh-spoof,data/in_the_wild/4807.wav,14.9682,16.827,,Alexandria Ocasio-Cortez
+laugh-spoof,data/in_the_wild/4990.wav,0.0,0.5416,,Mark Zuckerberg
+laugh-spoof,data/in_the_wild/5013.wav,10.9074,12.6748,,Louis Farrakhan
+laugh-spoof,data/in_the_wild/5032.wav,0.0,0.5093,,Boris Johnson
+laugh-spoof,data/in_the_wild/5038.wav,0.0,0.5,,Bernie Sanders
+laugh-spoof,data/in_the_wild/5090.wav,0.0,2.5634,,JFK
+laugh-spoof,data/in_the_wild/5131.wav,0.0,0.7688,,Alexandria Ocasio-Cortez
+laugh-spoof,data/in_the_wild/5131.wav,10.2171,10.9858,,Alexandria Ocasio-Cortez
+laugh-spoof,data/in_the_wild/5138.wav,1.8206,2.3206,,Martin Luther King
+laugh-spoof,data/in_the_wild/5138.wav,5.1701,9.7743,,Martin Luther King
+laugh-spoof,data/in_the_wild/5214.wav,0.0,0.5,,Bill Clinton
+laugh-spoof,data/in_the_wild/5250.wav,0.0,0.5,,Bernie Sanders
+laugh-spoof,data/in_the_wild/5467.wav,0.0,0.5667,,Gilbert Gottfried
+laugh-spoof,data/in_the_wild/5471.wav,0.0,1.3176,,Barack Obama
+laugh-spoof,data/in_the_wild/5480.wav,0.8511,2.94,,Mark Zuckerberg
+laugh-spoof,data/in_the_wild/5486.wav,0.0,2.2308,,Alexandria Ocasio-Cortez
+laugh-spoof,data/in_the_wild/5495.wav,0.0,0.5,,Alexandria Ocasio-Cortez
+laugh-spoof,data/in_the_wild/5518.wav,0.0,0.5,,Bill Burr
+laugh-spoof,data/in_the_wild/5532.wav,11.2175,13.1749,,Bill Clinton
+laugh-spoof,data/in_the_wild/5562.wav,1.5838,2.3192,,Mark Zuckerberg
+laugh-spoof,data/in_the_wild/5597.wav,0.0,0.5414,,Louis Farrakhan
+laugh-spoof,data/in_the_wild/5600.wav,0.0,0.5,,Gilbert Gottfried
+laugh-spoof,data/in_the_wild/5617.wav,0.0,0.5,,Alec Guinness
+laugh-spoof,data/in_the_wild/5622.wav,0.0,0.5,,Orson Welles
+laugh-spoof,data/in_the_wild/5655.wav,0.0,0.5,,Alexandria Ocasio-Cortez
+laugh-spoof,data/in_the_wild/5664.wav,0.0,0.6669,,Bob Ross
+laugh-spoof,data/in_the_wild/5674.wav,0.0,0.5,,2Pac
+laugh-spoof,data/in_the_wild/5980.wav,0.0,4.4708,,Ronald Reagan
+laugh-spoof,data/in_the_wild/5999.wav,0.0,0.5,,Mark Zuckerberg
+laugh-spoof,data/in_the_wild/5999.wav,4.6277,7.4734,,Mark Zuckerberg

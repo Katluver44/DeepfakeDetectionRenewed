@@ -50,13 +50,41 @@ from ay2.tools.text._phonemes import Phonemer_Tokenizer_Recombination
 from pandas import Series
 torch.serialization.add_safe_globals([Namespace, Phonemer_Tokenizer_Recombination, Series])
 
-from phoneme_GAT.modules import Phoneme_GAT_lit
 from loader import _make_balanced_indices, TARGET_SR, TARGET_SAMPLES
 from callbacks import EER_Callback
 from callbacks_rational import (
     BinaryACC_Callback, BinaryAUC_Callback,
     TPR_Callback, TNR_Callback, FPR_Callback, FNR_Callback,
 )
+
+# Phoneme_GAT's frozen "phoneme_model" submodule unconditionally tries to load
+# a hardcoded, non-existent vocab path (/lambda/nfs/.../vocab_phoneme) and a
+# hardcoded pretrained checkpoint. Same monkeypatch as
+# laughsmi/scripts/score_itw_detector.py / experiments/scripts/px_common.py:
+# build a bare BaseModule (WavLM CTC head, no tokenizer) instead of touching
+# the broken paths -- harmless here since this submodule's weights are
+# retrained from scratch as part of Phoneme_GAT_lit anyway.
+import phoneme_GAT.modules as _pgat_mm
+import phoneme_GAT.phoneme_model as _pgat_pm
+from phoneme_GAT.phoneme_model import BaseModule as _PGAT_BaseModule
+from phoneme_GAT.phoneme_model import network_param as _pgat_network_param
+from phoneme_GAT.phoneme_model import optim_param as _pgat_optim_param
+
+
+def _patched_load_phoneme_model(network_name="wavlm", pretrained_path=None, total_num_phonemes=198):
+    _pgat_network_param.network_name = network_name
+    _pgat_network_param.pretrained_name = "microsoft/wavlm-base"
+    _pgat_network_param.vocab_size = total_num_phonemes
+    return _PGAT_BaseModule(
+        _pgat_network_param, _pgat_optim_param, tokenizer=None,
+        total_num_phonemes=total_num_phonemes,
+    )
+
+
+_pgat_pm.load_phoneme_model = _patched_load_phoneme_model
+_pgat_mm.load_phoneme_model = _patched_load_phoneme_model
+
+from phoneme_GAT.modules import Phoneme_GAT_lit
 
 # ─── Hyperparameters ─────────────────────────────────────────────────────────
 # Match ASVspoof runs exactly; deviations documented in DEVIATIONS below.

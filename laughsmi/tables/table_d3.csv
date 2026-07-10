@@ -1,0 +1,7 @@
+feature,real_mean,bark_mean,mannwhitney_p,rank_biserial
+L12 compactness (C),-177.3262,-171.7162,1.29e-02,-0.166
+L9 traj. irregularity (T),0.7944,0.7938,6.72e-02,-0.122
+
+probe_real_vs_bark_AUC (5-fold),mean,std
+L9,1.0,0.0
+L12,0.999,0.001
