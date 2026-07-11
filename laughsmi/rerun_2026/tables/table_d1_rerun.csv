@@ -1,0 +1,2 @@
+dataset,n_aug_fakes,clean_eer_pct,thr_at_eer,base_spoof_score_mean,aug_spoof_score_mean,delta_mean,delta_median,wilcoxon_p,rank_biserial,base_catch_rate,aug_catch_rate,evasion_rate_after,newly_evaded_n,delta_start,delta_mid,delta_end
+ASVspoof19 (asv19 model) -- rerun 2026-07-11,105,6.0,0.2804,0.8886,0.6249,-0.2637,-0.149,0.0,-0.682,0.962,0.743,0.257,24,-0.24166238183776537,-0.32326895719099985,-0.216267449480872

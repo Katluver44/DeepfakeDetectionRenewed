@@ -1,0 +1,35 @@
+[0;93m2026-07-11 05:52:48.990449181 [W:onnxruntime:Default, device_discovery.cc:283 GetGpuDevices] Failed to detect devices under "/sys/class/drm/card0": device_discovery.cc:93 ReadFileContents Failed to open file: "/sys/class/drm/card0/device/vendor"[m
+2026-07-11 05:52:51.960814: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1783749171.973261   72717 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1783749171.977578   72717 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1783749171.988717   72717 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1783749171.988740   72717 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1783749171.988745   72717 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1783749171.988749   72717 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+Some weights of WavLMForCTC were not initialized from the model checkpoint at microsoft/wavlm-base and are newly initialized: ['lm_head.bias', 'lm_head.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+[extract] loading detector ../models/asv19-wavlm-gat-full.ckpt on cuda ...
+Load WavLM model!!!!!!!
+torch.Size([687, 768])
+[extract] loaded in 7.1s; backbone=WavLMModel
+[extract] set=base dir=data/eval_asv19 n=300
+  ...base 8/300
+  ...base 48/300
+  ...base 88/300
+  ...base 128/300
+  ...base 168/300
+  ...base 208/300
+  ...base 248/300
+  ...base 288/300
+[extract] set=aug dir=data/eval_asv19_aug n=300
+  ...aug 8/300
+  ...aug 48/300
+  ...aug 88/300
+  ...aug 128/300
+  ...aug 168/300
+  ...aug 208/300
+  ...aug 248/300
+  ...aug 288/300
+[extract] wrote rerun_2026/embeddings/wavlm_base_embeddings.npz (layers (0, 9, 12), shapes: [(600, 768), (600, 768), (600, 768)])
+[extract] wrote rerun_2026/embeddings/wavlm_base_meta.csv (600 rows)
