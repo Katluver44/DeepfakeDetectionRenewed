@@ -71,3 +71,4 @@ experiments/results/rep_similarity/
 # experiments/results/**/*.png
 
 secret.txt
+secrets.txt
