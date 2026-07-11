@@ -225,3 +225,12 @@ laughter attack is a different kind of perturbation (a localized acoustic
 insert, not a change in overall synthesis quality) that the linear spoof↔bona
 axis was not built to capture, and its evasion mechanism is largely orthogonal
 to that axis rather than a movement toward the bona-fide centroid.
+
+## C3 (architecture & benchmark independence) — added 2026-07-11
+- Obtained official AASIST: cloned github.com/clovaai/aasist; staged AASIST.pth + AASIST.py + AASIST.conf into baselines/aasist/{models,config}.
+- MLAAD-tiny eval built: `python rerun_2026/concerns/c3_build_mlaad.py` -> data/eval_mlaad (64 spoof + 120 LibriSpeech bona). (mueller91/MLAAD is gated/inaccessible; used mueller91/MLAAD-tiny + openslr/librispeech_asr.)
+- MLAAD augment/score: augment_laughter.py --src data/eval_mlaad --out data/eval_mlaad_aug --laugh-dirs data/laugh_bank_bark --frac 0.7 --seed 20260710; scored base/aug with ../models/mlaad_wavlm-gat.ckpt -> rerun_2026/concerns/{base,aug}_mlaad.csv.
+- MLAAD real-speech-insert control: data/real_speech_bank (30 LibriSpeech clips) -> data/eval_mlaad_realaug -> rerun_2026/concerns/realaug_mlaad.csv.
+- Analyses: c3_mlaad_analysis.py, c3_aasist_pipeline.py, d1_defense.py (asv19 ref + mlaad), c3_figure.py.
+- Outputs: tables/c3_{aasist,mlaad}_insertion.csv, tables/c3_{aasist,mlaad}_defense.csv, tables/c3_asv19_defense_ref.csv, figures/c3_architecture_independence.png; RESULTS.md "## C3" section.
+- Verdict: (3b) AASIST YES (evasion 0.057 -> 0.00 under worst-window; clean EER 1%). (3a) MLAAD WavLM-GAT BLOCKED — checkpoint out-of-domain on MLAAD-tiny (clean EER 47%), insertion not interpretable.
