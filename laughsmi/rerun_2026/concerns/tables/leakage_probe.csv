@@ -1,0 +1,7 @@
+probe,auc,boot_ci_lo,boot_ci_hi,interpretation
+"real-VocalSound vs real2-ESC50 (WavLM L12+PCA20, raw pipeline)",0.993,0.97,1.0,"two independent REAL corpora; high AUC here = corpus/channel signal, not laughter authenticity"
+"real-VocalSound vs XTTS (WavLM L12+PCA20, confound-controlled, from table_d3_fixed.csv)",0.972,,,"prior reported real-vs-XTTS separability (VocalSound anchor, XTTS cloned FROM VocalSound)"
+"real2-ESC50 vs XTTS (WavLM L12+PCA20, raw pipeline)",1.0,1.0,1.0,independent-anchor XTTS separability; XTTS was NOT cloned from ESC-50
+"label-shuffle control (real2 vs bark_token, raw pipeline)",0.488,,,sanity: should be ~0.5
+"real2 internal random-half-split, WavLM (confound-controlled pipeline)",0.487,,,sanity: should be ~0.5 (no true label difference within one corpus)
+"real2 internal random-half-split, content-free 8-scalar (confound-controlled pipeline)",0.6,,,sanity: should be ~0.5

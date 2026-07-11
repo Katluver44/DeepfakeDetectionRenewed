@@ -1,0 +1,7 @@
+comparison,pipeline,n_real2,n_synth,wavlm_l12_pca20_auc,boot_mean,boot_ci_lo,boot_ci_hi,n_boot_valid
+real2 vs bark_laughter_token,raw (matches cached d3_multi),40,100,1.0,0.998,0.986,1.0,2000
+real2 vs bark_laughs_inline,raw (matches cached d3_multi),40,40,1.0,1.0,1.0,1.0,2000
+real2 vs parler_tts,raw (matches cached d3_multi),40,32,1.0,1.0,1.0,1.0,2000
+real2 vs xtts,raw (matches cached d3_multi),40,30,1.0,1.0,1.0,1.0,2000
+real2 vs audioldm2,raw (matches cached d3_multi),40,30,1.0,0.997,0.963,1.0,2000
+real2 (ESC-50) vs real-VocalSound,raw (matches cached d3_multi),40,300,0.993,0.992,0.97,1.0,2000

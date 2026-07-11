@@ -1,0 +1,7 @@
+comparison,pipeline,n_real2,n_synth,wavlm_l12_pca20_auc,boot_mean,boot_ci_lo,boot_ci_hi,n_boot_valid
+real2 vs bark_laughter_token,"real2=fixed(2s,peaknorm) / synth=raw(cached)",40,100,0.994,0.996,0.977,1.0,2000
+real2 vs bark_laughs_inline,"real2=fixed(2s,peaknorm) / synth=raw(cached)",40,40,1.0,1.0,1.0,1.0,2000
+real2 vs parler_tts,"real2=fixed(2s,peaknorm) / synth=raw(cached)",40,32,1.0,1.0,0.994,1.0,2000
+real2 vs xtts,"real2=fixed(2s,peaknorm) / synth=raw(cached)",40,30,1.0,1.0,1.0,1.0,2000
+real2 vs audioldm2,"real2=fixed(2s,peaknorm) / synth=raw(cached)",40,30,1.0,1.0,1.0,1.0,2000
+real2 vs real-VocalSound,"real2=fixed(2s,peaknorm) / VocalSound=raw(cached)",40,300,0.994,0.993,0.969,1.0,2000

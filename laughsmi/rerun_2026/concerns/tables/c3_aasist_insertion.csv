@@ -1,0 +1,2 @@
+dataset,n_aug_fakes,clean_eer_pct,thr_at_eer,base_spoof_score_mean,aug_spoof_score_mean,delta_mean,delta_median,wilcoxon_p,rank_biserial,base_catch_rate,aug_catch_rate,evasion_rate_after,delta_start,delta_mid,delta_end
+"ASVspoof19 (AASIST, official pretrained)",105,1.0,-1.6267,4.8142,2.9223,-1.8919,-1.355,1.4e-05,-0.488,0.99,0.943,0.057,-2.246,-1.6792,-1.7415

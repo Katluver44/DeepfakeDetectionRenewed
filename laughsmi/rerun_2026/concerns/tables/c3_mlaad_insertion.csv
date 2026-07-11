@@ -1,0 +1,2 @@
+dataset,n_aug_fakes,clean_eer_pct,thr_at_eer,base_spoof_score_mean,aug_spoof_score_mean,delta_mean,delta_median,wilcoxon_p,rank_biserial,base_catch_rate,aug_catch_rate,evasion_rate_after,newly_evaded_n,delta_start,delta_mid,delta_end
+MLAAD (mlaad_wavlm-gat),45,47.19,0.4727,0.5571,0.7695,0.2123,0.1715,8.1e-05,0.646,0.511,0.756,0.244,2,0.2003755326072375,0.27946247748638453,0.11268738792701201

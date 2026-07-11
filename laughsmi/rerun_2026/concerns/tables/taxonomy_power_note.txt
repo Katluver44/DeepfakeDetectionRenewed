@@ -1,0 +1,13 @@
+C1 sensitivity/power note (N=20 real vs N=20 synthetic per family)
+=====================================================================
+Two-sided alpha=.05, target power=.80.
+Using the Hanley-McNeil asymptotic SE(AUC) at n1=n2=20 and the
+AUC<->Cliff's delta identity (delta = 2*AUC - 1), the minimum |delta|
+reliably detectable at 80% power is approximately 0.45.
+Effects smaller than this (delta roughly in [-0.55, 0.55]) are
+underpowered at N=20/20 even before any multiple-comparison correction;
+a non-significant or FDR-non-surviving cell in that range should be read
+as 'inconclusive', not 'no difference'. This also means several of the
+already-significant large-delta cells (|delta|>0.6) are comfortably
+powered, while borderline cells (|delta| 0.2-0.4) are the ones the FDR
+correction and small N should make us most skeptical of.
